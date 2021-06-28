@@ -3,11 +3,11 @@ import {Layout, Text} from "@ui-kitten/components";
 
 
 const Login = () => {
-    return(
+    return (
         <Layout>
-<Text>
-    welcome
-</Text>
+            <Text>
+                welcome
+            </Text>
         </Layout>
     );
 }
