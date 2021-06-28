@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
 // colors
-export const Colors = {
+const Colors = {
     primary: '#1960d8',
     secondary: '#eef5ff',
     tertiary: '#1F2937',
@@ -14,13 +14,14 @@ export const Colors = {
     red: '#EF4444',
 };
 
-const {primary, secondary, tertiary, darkLight, white, green, red} = Colors;
+export const {primary, secondary, tertiary, darkLight, white, green, red} = Colors;
 
 export const Container = styled.View`
   flex :1;
   padding-top: ${StatusBarHeight + 10}px;
   background-color: ${white};
 `;
+
 export const Content = styled.View`
   flex:1;
   width: 100%;
@@ -31,5 +32,4 @@ export const Content = styled.View`
 export const Logo = styled.Image`
   width: 250px;
   height: 200px;
-    
 `;

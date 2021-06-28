@@ -1,11 +1,13 @@
 import React from "react";
-import {Layout} from "@ui-kitten/components";
+import {Layout, Text} from "@ui-kitten/components";
 
 
 const Login = () => {
     return(
         <Layout>
-
+<Text>
+    welcome
+</Text>
         </Layout>
     );
 }
