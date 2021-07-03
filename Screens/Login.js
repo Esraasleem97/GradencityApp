@@ -24,11 +24,11 @@ const Login = ({navigation}) => {
     return (
         <Layout>
             <StatusBar style='light'/>
-            <ImageBackground source={require('../assets/plants.jpg')}>
+            <ImageBackground source={require('../assets/bg-plants3.jpg')}>
                 <ScrollView>
                     <Container>
                         <HeaderLogin>
-                            <Logo source={require('../assets/plant-logo.png')}/>
+                            <Logo source={require('../assets/plants-logo.jpg')}/>
                         </HeaderLogin>
                         <Title>تسجيل الدخول</Title>
                         <Content>

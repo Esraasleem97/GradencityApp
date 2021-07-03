@@ -46,29 +46,37 @@ export const Container = styled.View`
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
+  
 
 `;
 export const HeaderLogin = styled.View`
   width: 100%;
   height: 200px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Logo = styled.Image`
-  width: ${250}px;
+  width: ${200}px;
   height:${200}px;
+ border-radius: ${500}px;
+  
 `;
 
 export const Content = styled.View`
   width: 80%;
   height: 100%;
+  flex: 1;
+  align-items: center;
   justify-content: center;
+
 `;
 
 export const Title = styled.Text`
   margin-vertical: ${StatusBarHeight + 5}px;
   font-size: ${32}px;
   font-weight: 800;
-  color: ${tertiary};
+  color: ${white};
 `;
 
 
@@ -90,7 +98,7 @@ export const TextInputStyled = styled.TextInput`
 `;
 
 export const Label = styled.Text`
-  color: ${darkgray};
+  color: ${darkLight};
   font-size: ${13}px;
   text-align: right;
 `;
@@ -131,21 +139,19 @@ export const ButtonText = styled.Text`
 `;
 export const TitleContainer = styled.View`
   width: 100%;
-  height:${120}px;
-  background-color: ${green3};
+  height:${80}px;
   border-bottom-left-radius: ${30}px;
   border-bottom-right-radius: ${30}px;
 `;
 export const TitlePage = styled.Text`
-  color: ${white};
+  color: ${tertiary};
   margin-top:${30}px;
   text-align: center;
-  font-size: ${25}px;
+  font-size: ${30}px;
+  font-weight: bold;
 `;
 
 export const Grid = styled.View`
-  position: relative;
-  top: ${-60}px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -153,15 +159,7 @@ export const Grid = styled.View`
 `;
 let CheckPlatFormForCardDesign;
 if (Platform.OS === 'ios') {
-  CheckPlatFormForCardDesign =`
-  border: 1px solid ${secondary};
-  border-radius:${5}px;
-  padding: ${15}px ${15}px ${0}px ${15}px;
-  margin: ${10}px;
-  background-color: ${white};
-  justify-content: center;
-  align-items:center;
-  flex-direction:row;
+  CheckPlatFormForCardDesign =` 
   shadow-color: ${green2};
   shadow-offset: {
     width: 0;
@@ -172,30 +170,27 @@ if (Platform.OS === 'ios') {
 
 `;
 }else {
-   CheckPlatFormForCardDesign =`
-  border: 1px solid ${secondary};
+   CheckPlatFormForCardDesign =`elevation: 5`;
+}
+
+export const Card = styled.TouchableOpacity`
   border-radius:${5}px;
   padding: ${15}px;
   margin: ${10}px;
-  background-color: ${greenLight1};
+  background-color: ${white};
   justify-content: center;
   align-items:center;
-  flex-direction:row;
-  
-  elevation: 5`;
-}
-
-export const Card = styled.TouchableOpacity`${CheckPlatFormForCardDesign }`;
+  ${CheckPlatFormForCardDesign }`;
 
 
 export const CardText = styled.Text`
-  font-size:${20}px;
+  font-size:${15}px;
   color: ${tertiary};
  
 `;
 export const CardImage = styled.Image`
-  width: ${60}%;
-  height: ${120}px;
+  width: ${90}px;
+  height: ${70}px;
   border-radius: 200px;
 
 `;
