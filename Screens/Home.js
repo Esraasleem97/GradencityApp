@@ -27,13 +27,13 @@ const Home = ({navigation}) => {
     return (
 
 
-        <RefreshHandler>
+
             <Layout>
                 <ImageBackground source={require('../assets/bg-plants6.jpg')}>
                     <TitleContainer>
                         <TitlePage>الصفحة الرئيسية</TitlePage>
                     </TitleContainer>
-
+                    <RefreshHandler>
                         <Container>
                             <Grid>
                                 {data.map((item) => {
@@ -47,11 +47,11 @@ const Home = ({navigation}) => {
                                 })}
                             </Grid>
                         </Container>
+                    </RefreshHandler>
 
                 </ImageBackground>
 
             </Layout>
-        </RefreshHandler>
 
     );
 
