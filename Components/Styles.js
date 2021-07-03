@@ -179,7 +179,6 @@ export const TitlePage = styled.Text`
 export const Grid = styled.View`
   position: relative;
   top: 20px;
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;

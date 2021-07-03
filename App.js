@@ -16,11 +16,13 @@ const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const checkUserIsSet = async () => {
+
         let user = await AsyncStorage.getItem('user')
+
         if (user) {
-            setIsAuthenticated(true)
+            setIsAuthenticated(true);
         } else {
-            setIsAuthenticated(false)
+            setIsAuthenticated(false);
         }
     }
 
