@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
-import { Platform} from "react-native";
+import {Platform} from "react-native";
 
 const StatusBarHeight = Constants.statusBarHeight;
 // colors
@@ -10,7 +10,7 @@ export const Colors = {
     secondary: '#f1f5f5',
     tertiary: '#11270b',
     brown: '#9d551a',
-    greenLight1 :'#f5fdf7',
+    greenLight1: '#f5fdf7',
     darkLight: '#9CA3AF',
     white: '#FFFFFF',
     green1: '#10B981',
@@ -40,18 +40,12 @@ const {
 
 let shadow = Platform.OS === 'ios'
     ? ` 
- shadow-color: ${green2};
-  shadow-offset: {
-    width: 0;
-    height:${1}px;
-  };
-  shadow-opacity: 0.5;
-  shadow-radius: ${5}px`
-    : `elevation: 15;` ;
+  shadow-opacity: 0.3;`
+    : `elevation: 15;`;
 
 
 export const Container = styled.View`
-  width:100%;
+  width: 100%;
   height: 100%;
   align-items: center;
   overflow: hidden;
@@ -108,11 +102,10 @@ export const HeaderShape = styled.View`
 `;
 
 
-
 export const Logo = styled.Image`
   width: ${200}px;
-  height:${200}px;
- border-radius: ${500}px;
+  height: ${200}px;
+  border-radius: ${500}px;
 `;
 
 export const Content = styled.View`
@@ -139,9 +132,9 @@ export const FormArea = styled.View`
 `;
 export const TextInputStyled = styled.TextInput`
   background-color: ${secondary};
-  padding:${15}px ${40}px;
+  padding: ${15}px ${40}px;
   height: ${50}px;
-  border-radius:${5}px;
+  border-radius: ${5}px;
   font-size: ${16}px;
   margin-top: ${3}px;
   margin-bottom: ${10}px;
@@ -173,8 +166,8 @@ export const RightIcon = styled.TouchableOpacity`
 export const ForgetPassword = styled.Text`
   color: ${darkLight};
   text-align: right;
-  margin: ${10}px ${5}px; 
-  font-size:${14}px;
+  margin: ${10}px ${5}px;
+  font-size: ${14}px;
 `;
 export const Button = styled.TouchableOpacity`
   padding: ${15}px;
@@ -194,14 +187,13 @@ export const TitleContainer = styled.View`
   width: 100%;
   background-color: #ACD876;
   ${shadow}
-  height:${80}px;
+  height: ${90}px;
   border-bottom-left-radius: ${30}px;
   border-bottom-right-radius: ${30}px;
-
 `;
 export const TitlePage = styled.Text`
   color: ${tertiary};
-  margin-top:${30}px;
+  margin-top: ${30}px;
   text-align: center;
   font-size: ${30}px;
   font-weight: bold;
@@ -211,43 +203,37 @@ export const Grid = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  
+
 `;
 let CheckPlatFormForCardDesign;
 
 if (Platform.OS === 'ios') {
-  CheckPlatFormForCardDesign =` 
-  shadow-color: ${green2};
-  shadow-offset: {
-    width: 0;
-    height:${1}px;
-  };
-  shadow-opacity: 0.5;
-  shadow-radius: ${5}px;`;
-}else {
-   CheckPlatFormForCardDesign =`elevation: 5`;
+    CheckPlatFormForCardDesign = ` 
+  shadow-opacity: 0.3;`;
+} else {
+    CheckPlatFormForCardDesign = `elevation: 5`;
 }
 
 export const Card = styled.TouchableOpacity`
-  border-radius:${5}px;
+  border-radius: ${5}px;
   padding: ${15}px;
   margin: ${10}px;
   background-color: ${white};
   justify-content: center;
-  align-items:center;
-  ${CheckPlatFormForCardDesign }
+  align-items: center;
+  ${CheckPlatFormForCardDesign}
 `;
 
 
 export const CardText = styled.Text`
-  font-size:${15}px;
+  font-size: ${15}px;
   color: ${tertiary};
- 
+
 `;
 export const CardImage = styled.Image`
   width: ${90}px;
   height: ${90}px;
-  
+
 
 `;
 

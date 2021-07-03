@@ -1,22 +1,25 @@
 import React from "react";
 import {Button, ButtonText, Container, Content, ForgetPassword, FormArea} from "./Styles";
 import Input from "./Input";
-import {Formik} from "formik";
+import {Formik,Field} from "formik";
 import {KeyboardAvoidingView} from "react-native";
+import {IndexPath, Select, SelectItem} from "@ui-kitten/components";
 
 const SharedScreens = () =>{
-
+    const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0));
     return(
         <Container>
-            <KeyboardAvoidingView>
+
             <Content>
 
                 <Formik
-                    initialValues={{clause: '', password: ''}}
+                    initialValues={{clause: '', quantity: '',time:'',daily_achievement:'',monthly_achievement:''}}
                     onSubmit={(value) => console.log(value)}>
                     {
                         ({handleChange, handleBlur, values}) =>
                             <FormArea>
+
+
                                 <Input
                                     label='اسم المستخدم'
                                     icon='user'
@@ -37,14 +40,14 @@ const SharedScreens = () =>{
 
 
                                 <Button>
-                                    <ButtonText>تسجيل الدخول</ButtonText>
+                                    <ButtonText>حفظ</ButtonText>
                                 </Button>
                             </FormArea>
                     }
                 </Formik>
 
             </Content>
-            </KeyboardAvoidingView>
+
         </Container>
     )
 }

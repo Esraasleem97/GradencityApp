@@ -24,11 +24,11 @@ const Login = ({navigation}) => {
 
 
     return (
-        <RefreshHandler>
+
             <Layout>
                 <StatusBar style='light'/>
                 <ImageBackground source={require('../assets/bg-plants3.jpg')}>
-
+                    <RefreshHandler>
                     <Container>
 
                         <HeaderLogin>
@@ -75,9 +75,10 @@ const Login = ({navigation}) => {
                             </Formik>
                         </Content>
                     </Container>
+                    </RefreshHandler>
                 </ImageBackground>
             </Layout>
-        </RefreshHandler>
+
     );
 }
 

@@ -26,9 +26,11 @@ const Home = ({navigation}) => {
         {id: 7, title: 'التدوير', img: require('../assets/plants8.png'), nav: 'Checkin'},
     ]
     return (
+
             <Layout>
                 <ImageBackground source={require('../assets/bg-plants6.jpg')}>
                    <Header title='الصفحة الرئيسية'/>
+
                     <RefreshHandler>
                         <Container>
                             <Grid>
