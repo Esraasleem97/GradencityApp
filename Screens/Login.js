@@ -17,7 +17,10 @@ import {ScrollView, TouchableOpacity} from "react-native";
 
 
 const Login = ({navigation}) => {
-    const [hidePassword, setHidePassword] = useState(true);
+
+    const [hidePassword,setHidePassword] = useState(true);
+
+
     return (
         <Layout>
             <StatusBar style='light'/>

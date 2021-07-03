@@ -1,10 +1,9 @@
 import React from 'react';
-import {Layout, Text} from "@ui-kitten/components";
+import {Layout} from "@ui-kitten/components";
 import {
     Container,
     Grid,
     ImageBackground,
-    Title,
     Card,
     CardImage,
     CardText,
@@ -13,10 +12,10 @@ import {
 } from "../Components/Styles";
 import {ScrollView, View} from "react-native";
 
-const Home = ({navigation}) => {
+const Home = () => {
 
     const data = [
-        {id: 0, title: 'الإدخال', img: require('../assets/plants1.jpg'), navigate: 'Checkin'},
+        {id: 0, title: 'الإدخال', img: require('../assets/plants4.png'), navigate: 'Checkin'},
         {id: 1, title: 'الإخراج', img: require('../assets/plants2.jpg'), navigate: 'Checkin'},
         {id: 2, title: 'الإنجازات', img: require('../assets/plants1.jpg'), navigate: 'Checkin'},
         {id: 3, title: 'زراعة البذور', img: require('../assets/plants1.jpg'), navigate: 'Checkin'},
@@ -36,7 +35,10 @@ const Home = ({navigation}) => {
                         <View>
                             {data.map((item) => {
                                 return (
-                                    <Card>
+
+                                    <Card key={item.id}>
+
+
                                         <CardImage resizeMode='contain' source={item.img}/>
                                         <CardText>{item.title}</CardText>
                                     </Card>
