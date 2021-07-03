@@ -10,12 +10,13 @@ export const Colors = {
     secondary: '#f1f5f5',
     tertiary: '#11270b',
     brown: '#9d551a',
+    greenLight1 :'#f5fdf7',
     darkLight: '#9CA3AF',
     white: '#FFFFFF',
     green1: '#10B981',
     green2: '#149623',
     green3: '#099567',
-    greenLight: '#d5f2e3',
+    greenLight2: '#d5f2e3',
     red: '#EF4444',
     darkgray: '#555555',
 };
@@ -29,10 +30,11 @@ const {
     green1,
     green2,
     green3,
-    greenLight,
+    greenLight1,
     red,
     darkgray,
-    brown
+    brown,
+    brownLight
 } = Colors;
 
 let shadow = Platform.OS === 'ios'
@@ -55,11 +57,15 @@ export const Container = styled.View`
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
+
 `;
 export const HeaderLogin = styled.View`
   width: 100%;
   height: 200px;
+  justify-content: center;
+  align-items: center;
 `;
+
 
 export const Shadow = styled.View`
   width: 100%;
@@ -76,13 +82,23 @@ export const HeaderShape = styled.View`
   background-color: #FF7E68;
   border-bottom-left-radius: ${0}px;
   border-bottom-right-radius: ${100}px;
+`;
 
+
+
+export const Logo = styled.Image`
+  width: ${200}px;
+  height:${200}px;
+ border-radius: ${500}px;
 `;
 
 export const Content = styled.View`
   width: 80%;
   height: 100%;
+  flex: 1;
+  align-items: center;
   justify-content: center;
+
 `;
 
 export const Title = styled.Text`
@@ -90,7 +106,7 @@ export const Title = styled.Text`
   font-size: ${32}px;
   font-weight: 800;
   color: ${white};
-  align-self: center;
+
 `;
 
 
@@ -112,7 +128,7 @@ export const TextInputStyled = styled.TextInput`
 `;
 
 export const Label = styled.Text`
-  color: ${darkgray};
+  color: ${darkLight};
   font-size: ${13}px;
   text-align: right;
 `;
@@ -153,66 +169,65 @@ export const ButtonText = styled.Text`
 `;
 export const TitleContainer = styled.View`
   width: 100%;
-  height: ${100}px;
   background-color: #ACD876;
-  border-bottom-left-radius: ${0}px;
-  border-bottom-right-radius: ${100}px;
   ${shadow}
-
+  height:${80}px;
+  border-bottom-left-radius: ${30}px;
+  border-bottom-right-radius: ${30}px;
 
 `;
 export const TitlePage = styled.Text`
-  color: ${white};
+  color: ${tertiary};
   margin-top:${30}px;
   text-align: center;
-  font-size: ${25}px;
+  font-size: ${30}px;
+  font-weight: bold;
 `;
 
 export const Grid = styled.View`
   position: relative;
   top: 20px;
+
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  
 `;
 let CheckPlatFormForCardDesign;
+
 if (Platform.OS === 'ios') {
-  CheckPlatFormForCardDesign =`
-  border: 1px solid ${secondary};
-  border-radius:${5}px;
-  padding: ${15}px ${15}px ${0}px ${15}px;
-  margin: ${10}px;
-  background-color: ${white};
-  justify-content: center;
+  CheckPlatFormForCardDesign =` 
   shadow-color: ${green2};
   shadow-offset: {
     width: 0;
     height:${1}px;
   };
   shadow-opacity: 0.5;
-  shadow-radius: ${5}px;
-
-`;
+  shadow-radius: ${5}px;`;
 }else {
-   CheckPlatFormForCardDesign =`
-  border: 1px solid ${secondary};
+   CheckPlatFormForCardDesign =`elevation: 5`;
+}
+
+export const Card = styled.TouchableOpacity`
   border-radius:${5}px;
-  padding: ${15}px ${15}px ${0}px ${15}px;
+  padding: ${15}px;
   margin: ${10}px;
   background-color: ${white};
   justify-content: center;
-  elevation: 15`;
-}
-
-export const Card = styled.TouchableOpacity`${CheckPlatFormForCardDesign }`;
+  align-items:center;
+  ${CheckPlatFormForCardDesign }
+`;
 
 
 export const CardText = styled.Text`
-  font-size:${14}px;
+  font-size:${15}px;
   color: ${tertiary};
-  text-align: center;
+ 
 `;
 export const CardImage = styled.Image`
-  width: ${80}px;
-  height:${80}px;
+  width: ${90}px;
+  height: ${90}px;
+  
+
 `;
+

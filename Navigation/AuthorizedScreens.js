@@ -3,12 +3,23 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 
 import Home from './../Screens/Home';
+import {createStackNavigator} from "@react-navigation/stack";
+import Weed from "../Screens/Weed";
+import Profile from "../Screens/Profile";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
+const HomeScreensContainer = () => {
+    return (
+        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+            <Stack.Screen name='Home' component={Home}/>
+            <Stack.Screen name='Weed' component={Weed}/>
+        </Stack.Navigator>
+    )
+}
 
 /**
- *
  * @returns {JSX.Element}
  * @constructor
  *  used / present  for authenticated user
@@ -18,8 +29,8 @@ const AuthorizedScreens = () => {
         <NavigationContainer>
             <Tab.Navigator
                 tabBarOptions={{
-                    labelStyle: {fontSize: 14 },
-                    tabStyle: {flex: 1, justifyContent: 'center' },
+                    labelStyle: {fontSize: 14},
+                    tabStyle: {flex: 1, justifyContent: 'center'},
                     indicatorStyle: {
                         marginHorizontal: '5%',
                         width: '40%'
@@ -30,9 +41,13 @@ const AuthorizedScreens = () => {
                 }}
                 initialRouteName='Home'
             >
-                <Tab.Screen name="Home" component={Home}/>
+                <Tab.Screen name="Home" component={HomeScreensContainer}/>
+                <Tab.Screen name="Profile" component={Profile}/>
+                <Tab.Screen name="Logout" component={Profile}/>
 
             </Tab.Navigator>
+
+
         </NavigationContainer>
     );
 }

@@ -3,17 +3,19 @@ import {
     Container,
     Content,
     HeaderLogin,
-    HeaderShape,
     FormArea,
-    Title,
     ForgetPassword,
-    Button, ButtonText, ImageBackground, Shadow
+    Button,
+    ButtonText,
+    ImageBackground,
+    Logo
 } from "../Components/Styles";
 import {Layout,} from "@ui-kitten/components";
 import {Formik} from 'formik';
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
-import {ScrollView, TouchableOpacity} from "react-native";
+import {TouchableOpacity} from "react-native";
+import RefreshHandler from "../Components/RefreshHandler";
 
 
 const Login = ({navigation}) => {
@@ -22,20 +24,15 @@ const Login = ({navigation}) => {
 
 
     return (
-        <Layout>
-            <StatusBar style='light'/>
-            <ImageBackground source={require('../assets/plants.jpg')}>
-                <ScrollView>
+        <RefreshHandler>
+            <Layout>
+                <StatusBar style='light'/>
+                <ImageBackground source={require('../assets/bg-plants3.jpg')}>
+
                     <Container>
 
                         <HeaderLogin>
-
-                            <Shadow>
-                                <HeaderShape>
-                                    <Title>تسجيل الدخول</Title>
-                                </HeaderShape>
-                            </Shadow>
-
+                            <Logo source={require('../assets/plants-logo.jpg')}/>
                         </HeaderLogin>
 
                         <Content>
@@ -78,11 +75,9 @@ const Login = ({navigation}) => {
                             </Formik>
                         </Content>
                     </Container>
-                </ScrollView>
-            </ImageBackground>
-        </Layout>
-
-
+                </ImageBackground>
+            </Layout>
+        </RefreshHandler>
     );
 }
 

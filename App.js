@@ -17,13 +17,11 @@ const App = () => {
 
     const checkUserIsSet = async () => {
         let user = await AsyncStorage.getItem('user')
-
         if (user) {
             setIsAuthenticated(true)
         } else {
             setIsAuthenticated(false)
         }
-
     }
 
     if (!appIsReady) {
@@ -40,8 +38,8 @@ const App = () => {
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
-                <UnAuthorizedScreens/>
-                {/*<AuthorizedScreens/>*/}
+                {/*<UnAuthorizedScreens/>*/}
+                <AuthorizedScreens/>
                 {/*{isAuthenticated*/}
                 {/*    ? <AuthorizedScreens/>*/}
                 {/*    : <UnAuthorizedScreens/>*/}
