@@ -190,8 +190,8 @@ export const CardText = styled.Text`
 `;
 export const CardImage = styled.Image`
   width: ${90}px;
-  height: ${70}px;
-  border-radius: 200px;
+  height: ${90}px;
+  
 
 `;
 
