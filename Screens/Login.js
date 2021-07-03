@@ -19,6 +19,7 @@ import {TouchableOpacity} from "react-native";
 
 const Login = ({navigation}) => {
     const [hidePassword,setHidePassword] = useState(true);
+
     return (
 
         <Layout>
