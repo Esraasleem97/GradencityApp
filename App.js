@@ -40,8 +40,8 @@ const App = () => {
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
-
-                <AuthorizedScreens/>
+                <UnAuthorizedScreens/>
+                {/*<AuthorizedScreens/>*/}
                 {/*{isAuthenticated*/}
                 {/*    ? <AuthorizedScreens/>*/}
                 {/*    : <UnAuthorizedScreens/>*/}

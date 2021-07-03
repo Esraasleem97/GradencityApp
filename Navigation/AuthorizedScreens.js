@@ -24,7 +24,7 @@ const AuthorizedScreens = () => {
                         marginHorizontal: '5%',
                         width: '40%'
                     },
-                    activeTintColor: '#018605',
+                    activeTintColor: '#094414',
                     inactiveTintColor: '#000000',
                     style: {backgroundColor: 'white'},
                 }}

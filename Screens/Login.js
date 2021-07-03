@@ -3,11 +3,11 @@ import {
     Container,
     Content,
     HeaderLogin,
-    Logo,
+    HeaderShape,
     FormArea,
     Title,
     ForgetPassword,
-    Button, ButtonText, ImageBackground
+    Button, ButtonText, ImageBackground, Shadow
 } from "../Components/Styles";
 import {Layout,} from "@ui-kitten/components";
 import {Formik} from 'formik';
@@ -18,7 +18,7 @@ import {ScrollView, TouchableOpacity} from "react-native";
 
 const Login = ({navigation}) => {
 
-    const [hidePassword,setHidePassword] = useState(true);
+    const [hidePassword, setHidePassword] = useState(true);
 
 
     return (
@@ -27,16 +27,23 @@ const Login = ({navigation}) => {
             <ImageBackground source={require('../assets/plants.jpg')}>
                 <ScrollView>
                     <Container>
+
                         <HeaderLogin>
-                            <Logo source={require('../assets/plant-logo.png')}/>
+
+                            <Shadow>
+                                <HeaderShape>
+                                    <Title>تسجيل الدخول</Title>
+                                </HeaderShape>
+                            </Shadow>
+
                         </HeaderLogin>
-                        <Title>تسجيل الدخول</Title>
+
                         <Content>
                             <Formik
                                 initialValues={{username: '', password: ''}}
                                 onSubmit={(value) => console.log(value)}>
                                 {
-                                    ({handleChange, handleBlur, handleSubmit, values}) =>
+                                    ({handleChange, handleBlur, values}) =>
                                         <FormArea>
                                             <Input
                                                 label='اسم المستخدم'

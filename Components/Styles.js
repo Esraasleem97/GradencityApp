@@ -35,6 +35,17 @@ const {
     brown
 } = Colors;
 
+let shadow = Platform.OS === 'ios'
+    ? ` 
+ shadow-color: ${green2};
+  shadow-offset: {
+    width: 0;
+    height:${1}px;
+  };
+  shadow-opacity: 0.5;
+  shadow-radius: ${5}px`
+    : `elevation: 15;` ;
+
 
 export const Container = styled.View`
   width:100%;
@@ -44,16 +55,28 @@ export const Container = styled.View`
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
-
 `;
 export const HeaderLogin = styled.View`
   width: 100%;
   height: 200px;
 `;
 
-export const Logo = styled.Image`
-  width: ${250}px;
-  height:${200}px;
+export const Shadow = styled.View`
+  width: 100%;
+  height: ${108}px;
+  background-color: #ffbab0;
+  border-bottom-left-radius: ${0}px;
+  border-bottom-right-radius: ${100}px;
+  ${shadow}
+`;
+
+export const HeaderShape = styled.View`
+  width: 100%;
+  height: ${100}px;
+  background-color: #FF7E68;
+  border-bottom-left-radius: ${0}px;
+  border-bottom-right-radius: ${100}px;
+
 `;
 
 export const Content = styled.View`
@@ -66,7 +89,8 @@ export const Title = styled.Text`
   margin-vertical: ${StatusBarHeight + 5}px;
   font-size: ${32}px;
   font-weight: 800;
-  color: ${tertiary};
+  color: ${white};
+  align-self: center;
 `;
 
 
@@ -115,24 +139,27 @@ export const ForgetPassword = styled.Text`
 `;
 export const Button = styled.TouchableOpacity`
   padding: ${15}px;
-  background-color: ${green3};
+  background-color: #FF7E68;
   justify-content: center;
-  border-radius: ${5}px;
+  border-radius: ${50}px;
   margin: ${5}px;
   height: ${60}px;
-
 `;
 export const ButtonText = styled.Text`
   color: ${white};
   font-size: ${18}px;
   text-align: center;
+
 `;
 export const TitleContainer = styled.View`
   width: 100%;
-  height:${130}px;
-  background-color: ${green3};
-  border-bottom-left-radius: ${30}px;
-  border-bottom-right-radius: ${30}px;
+  height: ${100}px;
+  background-color: #ACD876;
+  border-bottom-left-radius: ${0}px;
+  border-bottom-right-radius: ${100}px;
+  ${shadow}
+
+
 `;
 export const TitlePage = styled.Text`
   color: ${white};
@@ -143,7 +170,7 @@ export const TitlePage = styled.Text`
 
 export const Grid = styled.View`
   position: relative;
-  top: ${-60}px;
+  top: 20px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -174,7 +201,7 @@ if (Platform.OS === 'ios') {
   margin: ${10}px;
   background-color: ${white};
   justify-content: center;
-  elevation: 5`;
+  elevation: 15`;
 }
 
 export const Card = styled.TouchableOpacity`${CheckPlatFormForCardDesign }`;
