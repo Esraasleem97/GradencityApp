@@ -31,6 +31,7 @@ const {
     green2,
     green3,
     greenLight1,
+    greenLight2,
     red,
     darkgray,
     brown,
@@ -42,12 +43,33 @@ export const Container = styled.View`
   width:100%;
   height: 100%;
   align-items: center;
+  
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
-  
+`;
+export const HeaderOpacityStyle = styled.View`
+  position: absolute;
+  width: 100%;
+  height: 110px;
+  background-color: ${greenLight2};
+  border-bottom-right-radius: 200px;
+`;
 
+export const HeaderStyle = styled.View`
+  width: 100%;
+  height: 100px;
+  background-color: ${green3};
+  elevation: 10;
+  justify-content: center;
+  align-items: center;
+  border-bottom-right-radius: 200px;
+`;
+export const TitleStyle = styled.Text`
+color: ${white};
+  font-size: 35px;
+  font-weight: bold;
 `;
 export const HeaderLogin = styled.View`
   width: 100%;

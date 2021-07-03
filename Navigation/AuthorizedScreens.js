@@ -10,9 +10,10 @@ import Profile from "../Screens/Profile";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
 const HomeScreensContainer = () => {
     return (
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='Home' headerMode='false'>
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Weed' component={Weed} />
         </Stack.Navigator>
