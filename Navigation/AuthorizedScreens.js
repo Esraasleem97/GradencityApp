@@ -3,9 +3,21 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 
 import Home from './../Screens/Home';
+import {createStackNavigator} from "@react-navigation/stack";
+import Weed from "../Screens/Weed";
+import Profile from "../Screens/Profile";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
+const HomeScreensContainer = () => {
+    return (
+        <Stack.Navigator initialRouteName='Home'>
+            <Stack.Screen name='Home' component={Home} />
+            <Stack.Screen name='Weed' component={Weed} />
+        </Stack.Navigator>
+    )
+}
 
 /**
  *
@@ -30,9 +42,12 @@ const AuthorizedScreens = () => {
                 }}
                 initialRouteName='Home'
             >
-                <Tab.Screen name="Home" component={Home}/>
+                <Tab.Screen name="Home" component={HomeScreensContainer}/>
+                <Tab.Screen name="Profile" component={Profile}/>
 
             </Tab.Navigator>
+
+
         </NavigationContainer>
     );
 }
