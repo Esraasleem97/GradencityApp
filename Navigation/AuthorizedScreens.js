@@ -44,6 +44,7 @@ const AuthorizedScreens = () => {
             >
                 <Tab.Screen name="Home" component={HomeScreensContainer}/>
                 <Tab.Screen name="Profile" component={Profile}/>
+                <Tab.Screen name="Logout" component={Profile}/>
 
             </Tab.Navigator>
 
