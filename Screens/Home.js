@@ -16,7 +16,7 @@ const Home = () => {
 
     const data = [
         {id: 0, title: 'الإدخال', img: require('../assets/plants1.png'), navigate: 'Checkin'},
-        {id: 1, title: 'الإخراج', img: require('../assets/plants2.png'), navigate: 'Checkin'},
+        {id: 1, title: 'الإخراج', img: require('../assets/plants2.jpg'), navigate: 'Checkin'},
         {id: 2, title: 'الإنجازات', img: require('../assets/plants3.png'), navigate: 'Checkin'},
         {id: 3, title: 'زراعة البذور', img: require('../assets/plants4.jpg'), navigate: 'Checkin'},
         {id: 4, title: 'التعقيل', img: require('../assets/plants5.jpg'), navigate: 'Checkin'},
