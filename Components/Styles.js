@@ -149,27 +149,24 @@ export const Grid = styled.View`
 `;
 export const Card = styled.TouchableOpacity`
   border: 1px solid ${secondary};
-  border-radius: 5px;
-  padding: 15px 15px 0 15px;
-  margin: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px 0;
   background-color: ${white};
-  justify-content: center;
-  shadow-color: ${green2};
-  shadow-offset: {
-    width: 0;
-    height: 1px;
-  };
-  shadow-opacity: 0.5;
-  shadow-radius: 5px;
-  elevation: 5;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  elevation: 10;
 `;
 
 export const CardText = styled.Text`
-  font-size: 14px;
+  font-size: 20px;
   color: ${tertiary};
-  text-align: center;
+ 
 `;
 export const CardImage = styled.Image`
-  width: 80px;
-  height: 80px;
+  width: 60%;
+  height: 120px;
+  border-radius: 200px;
 `;
+
