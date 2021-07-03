@@ -13,15 +13,15 @@ const Stack = createStackNavigator();
 
 const HomeScreensContainer = () => {
     return (
-        <Stack.Navigator initialRouteName='Home' headerMode='false'>
-            <Stack.Screen name='Home' component={Home} />
-            <Stack.Screen name='Weed' component={Weed} />
+
+        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+            <Stack.Screen name='Home' component={Home}/>
+            <Stack.Screen name='Weed' component={Weed}/>
         </Stack.Navigator>
     )
 }
 
 /**
- *
  * @returns {JSX.Element}
  * @constructor
  *  used / present  for authenticated user
@@ -31,13 +31,13 @@ const AuthorizedScreens = () => {
         <NavigationContainer>
             <Tab.Navigator
                 tabBarOptions={{
-                    labelStyle: {fontSize: 14 },
-                    tabStyle: {flex: 1, justifyContent: 'center' },
+                    labelStyle: {fontSize: 14},
+                    tabStyle: {flex: 1, justifyContent: 'center'},
                     indicatorStyle: {
                         marginHorizontal: '5%',
                         width: '40%'
                     },
-                    activeTintColor: '#018605',
+                    activeTintColor: '#094414',
                     inactiveTintColor: '#000000',
                     style: {backgroundColor: 'white'},
                 }}

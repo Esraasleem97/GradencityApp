@@ -38,11 +38,23 @@ const {
     brownLight
 } = Colors;
 
+let shadow = Platform.OS === 'ios'
+    ? ` 
+ shadow-color: ${green2};
+  shadow-offset: {
+    width: 0;
+    height:${1}px;
+  };
+  shadow-opacity: 0.5;
+  shadow-radius: ${5}px`
+    : `elevation: 15;` ;
+
 
 export const Container = styled.View`
   width:100%;
   height: 100%;
   align-items: center;
+  overflow: hidden;
   
 `;
 export const ImageBackground = styled.ImageBackground`
@@ -50,15 +62,14 @@ export const ImageBackground = styled.ImageBackground`
   height: 100%;
 `;
 export const HeaderOpacityStyle = styled.View`
-  position: absolute;
   width: 100%;
   height: 110px;
   background-color: ${greenLight2};
   border-bottom-right-radius: 200px;
 `;
 
+
 export const HeaderStyle = styled.View`
-  width: 100%;
   height: 100px;
   background-color: ${green3};
   elevation: 10;
@@ -67,7 +78,7 @@ export const HeaderStyle = styled.View`
   border-bottom-right-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
-color: ${white};
+  color: ${white};
   font-size: 35px;
   font-weight: bold;
 `;
@@ -78,11 +89,30 @@ export const HeaderLogin = styled.View`
   align-items: center;
 `;
 
+
+export const Shadow = styled.View`
+  width: 100%;
+  height: ${108}px;
+  background-color: #ffbab0;
+  border-bottom-left-radius: ${0}px;
+  border-bottom-right-radius: ${100}px;
+  ${shadow}
+`;
+
+export const HeaderShape = styled.View`
+  width: 100%;
+  height: ${100}px;
+  background-color: #FF7E68;
+  border-bottom-left-radius: ${0}px;
+  border-bottom-right-radius: ${100}px;
+`;
+
+
+
 export const Logo = styled.Image`
   width: ${200}px;
   height:${200}px;
  border-radius: ${500}px;
-  
 `;
 
 export const Content = styled.View`
@@ -99,6 +129,7 @@ export const Title = styled.Text`
   font-size: ${32}px;
   font-weight: 800;
   color: ${white};
+
 `;
 
 
@@ -147,23 +178,26 @@ export const ForgetPassword = styled.Text`
 `;
 export const Button = styled.TouchableOpacity`
   padding: ${15}px;
-  background-color: ${green3};
+  background-color: #FF7E68;
   justify-content: center;
-  border-radius: ${5}px;
+  border-radius: ${50}px;
   margin: ${5}px;
   height: ${60}px;
-
 `;
 export const ButtonText = styled.Text`
   color: ${white};
   font-size: ${18}px;
   text-align: center;
+
 `;
 export const TitleContainer = styled.View`
   width: 100%;
+  background-color: #ACD876;
+  ${shadow}
   height:${80}px;
   border-bottom-left-radius: ${30}px;
   border-bottom-right-radius: ${30}px;
+
 `;
 export const TitlePage = styled.Text`
   color: ${tertiary};
@@ -180,6 +214,7 @@ export const Grid = styled.View`
   
 `;
 let CheckPlatFormForCardDesign;
+
 if (Platform.OS === 'ios') {
   CheckPlatFormForCardDesign =` 
   shadow-color: ${green2};
@@ -188,9 +223,7 @@ if (Platform.OS === 'ios') {
     height:${1}px;
   };
   shadow-opacity: 0.5;
-  shadow-radius: ${5}px;
-
-`;
+  shadow-radius: ${5}px;`;
 }else {
    CheckPlatFormForCardDesign =`elevation: 5`;
 }
@@ -202,7 +235,8 @@ export const Card = styled.TouchableOpacity`
   background-color: ${white};
   justify-content: center;
   align-items:center;
-  ${CheckPlatFormForCardDesign }`;
+  ${CheckPlatFormForCardDesign }
+`;
 
 
 export const CardText = styled.Text`

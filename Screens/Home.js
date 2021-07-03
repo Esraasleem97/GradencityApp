@@ -10,7 +10,8 @@ import {
     TitlePage,
     TitleContainer
 } from "../Components/Styles";
-import {ScrollView, View} from "react-native";
+import RefreshHandler from "../Components/RefreshHandler";
+import Header from "../Components/Header";
 
 const Home = ({navigation}) => {
 
@@ -25,29 +26,29 @@ const Home = ({navigation}) => {
         {id: 7, title: 'التدوير', img: require('../assets/plants8.png'), nav: 'Checkin'},
     ]
     return (
-        <Layout>
+            <Layout>
                 <ImageBackground source={require('../assets/bg-plants6.jpg')}>
-                    <TitleContainer>
-                        <TitlePage>الصفحة الرئيسية</TitlePage>
-                    </TitleContainer>
-                    <ScrollView>
+                   <Header title='الصفحة الرئيسية'/>
+                    <RefreshHandler>
                         <Container>
-                        <Grid>
-                            {data.map((item) => {
-                                return (
+                            <Grid>
+                                {data.map((item) => {
+                                    return (
 
-                                    <Card key={item.id} onPress={() => {navigation.navigate(`${item.nav}`)}}>
-                                        <CardImage resizeMode='contain' source={item.img}/>
-                                        <CardText>{item.title}</CardText>
-                                    </Card>
-                                )
-                            })}
-                        </Grid>
+                                        <Card key={item.id} onPress={() => {navigation.navigate(`${item.nav}`)}}>
+                                            <CardImage resizeMode='contain' source={item.img}/>
+                                            <CardText>{item.title}</CardText>
+                                        </Card>
+                                    )
+                                })}
+                            </Grid>
                         </Container>
-                    </ScrollView>
+                    </RefreshHandler>
                 </ImageBackground>
 
-        </Layout>
+            </Layout>
+
+
     );
 
 }

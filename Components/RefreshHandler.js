@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import {RefreshControl, ScrollView} from "react-native";
 
 
-const RefreshHandler = ({template}) => {
+const RefreshHandler = ({children}) => {
 
     const wait = timeout => {
         return new Promise(resolve => {
@@ -21,8 +21,8 @@ const RefreshHandler = ({template}) => {
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#1960d8']} />}>
-            {template}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']} />}>
+            {children}
         </ScrollView>
     )
 

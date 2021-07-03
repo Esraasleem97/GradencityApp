@@ -3,40 +3,44 @@ import {
     Container,
     Content,
     HeaderLogin,
-    Logo,
     FormArea,
-    Title,
     ForgetPassword,
-    Button, ButtonText, ImageBackground
+    Button,
+    ButtonText,
+    ImageBackground,
+    Logo
 } from "../Components/Styles";
 import {Layout,} from "@ui-kitten/components";
 import {Formik} from 'formik';
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
-import {ScrollView, TouchableOpacity} from "react-native";
+import {TouchableOpacity} from "react-native";
+import RefreshHandler from "../Components/RefreshHandler";
 
 
 const Login = ({navigation}) => {
 
-    const [hidePassword,setHidePassword] = useState(true);
+    const [hidePassword, setHidePassword] = useState(true);
 
 
     return (
-        <Layout>
-            <StatusBar style='light'/>
-            <ImageBackground source={require('../assets/bg-plants3.jpg')}>
-                <ScrollView>
+        <RefreshHandler>
+            <Layout>
+                <StatusBar style='light'/>
+                <ImageBackground source={require('../assets/bg-plants3.jpg')}>
+
                     <Container>
+
                         <HeaderLogin>
                             <Logo source={require('../assets/plants-logo.jpg')}/>
                         </HeaderLogin>
-                        <Title>تسجيل الدخول</Title>
+
                         <Content>
                             <Formik
                                 initialValues={{username: '', password: ''}}
                                 onSubmit={(value) => console.log(value)}>
                                 {
-                                    ({handleChange, handleBlur, handleSubmit, values}) =>
+                                    ({handleChange, handleBlur, values}) =>
                                         <FormArea>
                                             <Input
                                                 label='اسم المستخدم'
@@ -71,11 +75,9 @@ const Login = ({navigation}) => {
                             </Formik>
                         </Content>
                     </Container>
-                </ScrollView>
-            </ImageBackground>
-        </Layout>
-
-
+                </ImageBackground>
+            </Layout>
+        </RefreshHandler>
     );
 }
 
