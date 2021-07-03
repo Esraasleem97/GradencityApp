@@ -16,8 +16,22 @@ const Tab = createBottomTabNavigator();
 const AuthorizedScreens = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator initialRouteName='Home'>
+            <Tab.Navigator
+                tabBarOptions={{
+                    labelStyle: {fontSize: 14 },
+                    tabStyle: {flex: 1, justifyContent: 'center' },
+                    indicatorStyle: {
+                        marginHorizontal: '5%',
+                        width: '40%'
+                    },
+                    activeTintColor: '#018605',
+                    inactiveTintColor: '#000000',
+                    style: {backgroundColor: 'white'},
+                }}
+                initialRouteName='Home'
+            >
                 <Tab.Screen name="Home" component={Home}/>
+
             </Tab.Navigator>
         </NavigationContainer>
     );
