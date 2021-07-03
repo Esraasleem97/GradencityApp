@@ -11,6 +11,7 @@ import {
     TitleContainer
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
+import Header from "../Components/Header";
 
 const Home = ({navigation}) => {
 
@@ -18,21 +19,18 @@ const Home = ({navigation}) => {
         {id: 0, title: 'الإدخال', img: require('../assets/plants1.png'), nav: 'Checkin'},
         {id: 1, title: 'الإخراج', img: require('../assets/plants2.jpg'), nav: 'Checkin'},
         {id: 2, title: 'الإنجازات', img: require('../assets/plants3.png'), nav: 'Checkin'},
-        {id: 3, title: 'زراعة البذور', img: require('../assets/plants4.jpg'), nav: 'Weed'},
+        {id: 3, title: 'زراعة البذور', img: require('../assets/plants4.jpg'), nav: 'Seed'},
         {id: 4, title: 'التعقيل', img: require('../assets/plants5.jpg'), nav: 'Checkin'},
-        {id: 5, title: 'التعشيب', img: require('../assets/plants6.png'), nav: 'Checkin'},
+        {id: 5, title: 'التعشيب', img: require('../assets/plants6.png'), nav: 'Weed'},
         {id: 6, title: 'تقليم أو نقل', img: require('../assets/plants7.png'), nav: 'Checkin'},
         {id: 7, title: 'التدوير', img: require('../assets/plants8.png'), nav: 'Checkin'},
     ]
     return (
 
-
-
             <Layout>
                 <ImageBackground source={require('../assets/bg-plants6.jpg')}>
-                    <TitleContainer>
-                        <TitlePage>الصفحة الرئيسية</TitlePage>
-                    </TitleContainer>
+                   <Header title='الصفحة الرئيسية'/>
+
                     <RefreshHandler>
                         <Container>
                             <Grid>
@@ -48,10 +46,10 @@ const Home = ({navigation}) => {
                             </Grid>
                         </Container>
                     </RefreshHandler>
-
                 </ImageBackground>
 
             </Layout>
+
 
     );
 
