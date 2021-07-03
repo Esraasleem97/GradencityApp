@@ -1,6 +1,16 @@
 import React from 'react';
 import {Layout, Text} from "@ui-kitten/components";
-import {Container, Grid, ImageBackground, Title, Card, CardImage, CardText} from "../Components/Styles";
+import {
+    Container,
+    Grid,
+    ImageBackground,
+    Title,
+    Card,
+    CardImage,
+    CardText,
+    TitlePage,
+    TitleContainer, GridContainer
+} from "../Components/Styles";
 import {ScrollView} from "react-native";
 
 const Home = ({navigation}) => {
@@ -17,10 +27,15 @@ const Home = ({navigation}) => {
     ]
     return (
         <Layout>
-            <Container>
+
                 <ImageBackground source={require('../assets/plants.jpg')}>
-                    <Title>الصفحة الرئيسية</Title>
+
                     <ScrollView>
+                        <Container>
+                            <TitleContainer>
+                                <TitlePage>الصفحة الرئيسية</TitlePage>
+                            </TitleContainer>
+
                         <Grid>
                             {data.map((item) => {
                                 return (
@@ -31,9 +46,11 @@ const Home = ({navigation}) => {
                                 )
                             })}
                         </Grid>
+
+                        </Container>
                     </ScrollView>
                 </ImageBackground>
-            </Container>
+
         </Layout>
     );
 

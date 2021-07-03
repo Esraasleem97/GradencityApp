@@ -8,7 +8,7 @@ export const Colors = {
     primary: '#1960d8',
     secondary: '#f1f5f5',
     tertiary: '#11270b',
-    brown:'#9d551a',
+    brown: '#9d551a',
     darkLight: '#9CA3AF',
     white: '#FFFFFF',
     green1: '#10B981',
@@ -16,25 +16,34 @@ export const Colors = {
     green3: '#099567',
     greenLight: '#d5f2e3',
     red: '#EF4444',
-    darkgray:'#555555',
+    darkgray: '#555555',
 };
 
-const {primary, secondary, tertiary, darkLight, white, green1, green2, green3, greenLight, red,darkgray,brown} = Colors;
+const {
+    primary,
+    secondary,
+    tertiary,
+    darkLight,
+    white,
+    green1,
+    green2,
+    green3,
+    greenLight,
+    red,
+    darkgray,
+    brown
+} = Colors;
 
 
 export const Container = styled.View`
   width: 100%;
   height: 100%;
-  justify-content: center;
   align-items: center;
- 
-  
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
-  align-items: center;
-  
+
 `;
 export const HeaderLogin = styled.View`
   width: 100%;
@@ -117,14 +126,29 @@ export const ButtonText = styled.Text`
   font-size: 18px;
   text-align: center;
 `;
-export const Grid = styled.View`
+export const TitleContainer = styled.View`
+  width: 100%;
+  height: 130px;
+  background-color: ${green3};
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+`;
+export const TitlePage = styled.Text`
+  color: ${white};
+  margin-top:30px ;
+  text-align: center;
+  font-size: 25px;
+`;
 
+export const Grid = styled.View`
+  position: relative;
+  top: -60px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 `;
 export const Card = styled.TouchableOpacity`
-  border:1px solid ${secondary};
+  border: 1px solid ${secondary};
   border-radius: 5px;
   padding: 15px 15px 0 15px;
   margin: 10px;
@@ -137,7 +161,7 @@ export const Card = styled.TouchableOpacity`
   };
   shadow-opacity: 0.5;
   shadow-radius: 5px;
-  elevation:5;
+  elevation: 5;
 `;
 
 export const CardText = styled.Text`
@@ -147,5 +171,5 @@ export const CardText = styled.Text`
 `;
 export const CardImage = styled.Image`
   width: 80px;
-  height:80px;
+  height: 80px;
 `;
