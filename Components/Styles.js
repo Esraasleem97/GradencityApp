@@ -69,7 +69,7 @@ export const HeaderOpacityStyle = styled.View`
 export const HeaderStyle = styled.View`
   height: 80px;
   background-color: ${green3};
-  elevation: 10;
+  ${shadow}
   justify-content: center;
   align-items: center;
   border-bottom-right-radius: 200px;
@@ -206,7 +206,6 @@ export const Grid = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
 `;
 let CheckPlatFormForCardDesign;
 
