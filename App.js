@@ -43,8 +43,7 @@ const images = [
     require("./assets/plants6.png"),
     require("./assets/plants7.png"),
     require("./assets/plants8.png"),
-    require("./assets/splash.png"),
-
+    require("./assets/splash.png")
 ];
 
 const App = () => {
@@ -55,11 +54,9 @@ const App = () => {
 
     const handleResourcesAsync = async () => {
         try {
-
             const cacheImages = images.map(image => {
                 return Asset.fromModule(image).downloadAsync();
             });
-
             return Promise.all(cacheImages);
         } catch (e) {
             console.warn(e)

@@ -6,9 +6,7 @@ import {
     ImageBackground,
     Card,
     CardImage,
-    CardText,
-    TitlePage,
-    TitleContainer
+    CardText
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
@@ -27,28 +25,29 @@ const Home = ({navigation}) => {
     ]
     return (
 
-            <Layout>
-                <ImageBackground source={require('../assets/bg-plants6.jpg')}>
-                   <Header title='الصفحة الرئيسية'/>
+        <Layout>
+            <ImageBackground source={require('../assets/bg-plants6.jpg')}>
+                <Header title='الصفحة الرئيسية'/>
 
-                    <RefreshHandler>
-                        <Container>
-                            <Grid>
-                                {data.map((item) => {
+                <RefreshHandler>
+                    <Container>
+                        <Grid>
+                            {
+                                data.map((item) => {
                                     return (
-
                                         <Card key={item.id} onPress={() => {navigation.navigate(`${item.nav}`)}}>
                                             <CardImage resizeMode='contain' source={item.img}/>
                                             <CardText>{item.title}</CardText>
                                         </Card>
                                     )
-                                })}
-                            </Grid>
-                        </Container>
-                    </RefreshHandler>
-                </ImageBackground>
+                                })
+                            }
+                        </Grid>
+                    </Container>
+                </RefreshHandler>
+            </ImageBackground>
 
-            </Layout>
+        </Layout>
 
 
     );

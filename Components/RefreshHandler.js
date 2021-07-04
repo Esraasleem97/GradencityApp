@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from "react";
-import {RefreshControl, ScrollView} from "react-native";
-import {Container} from "./Styles";
+import {FlatList, RefreshControl} from "react-native";
 
 
 const RefreshHandler = ({children}) => {
@@ -21,11 +20,16 @@ const RefreshHandler = ({children}) => {
 
     return (
 
-        <ScrollView style={{height:'100%'}}
-            showsVerticalScrollIndicator={false}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']} />}>
-            {children}
-        </ScrollView>
+        <FlatList style={{height: '100%'}}
+                  showsVerticalScrollIndicator={false}
+                  refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']}/>}
+                  nestedScrollEnabled={true}
+                  keyboardShouldPersistTaps='always'
+                  ListHeaderComponent={() => (children)}
+                  data={[]}
+                  renderItem={null}
+                  keyExtractor={() => "App-Init"}
+        />
 
     )
 

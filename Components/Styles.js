@@ -48,9 +48,9 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
- 
- 
-  
+
+
+
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
@@ -67,14 +67,16 @@ export const HeaderOpacityStyle = styled.View`
 
 
 export const HeaderStyle = styled.View`
+  padding-top: 10px;
+  flex-direction: row;
   height: 80px;
   background-color: ${green3};
   ${shadow}
-  justify-content: center;
   align-items: center;
   border-bottom-right-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
+  margin-left: ${Platform.OS === 'ios' ? '130px' : '140px'};
   color: ${white};
   font-size: 30px;
   font-weight: bold;
