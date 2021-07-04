@@ -4,7 +4,7 @@ import {userLoginReducer, userRegisterReducer} from "./Reducers/userReducers";
 
 const rootReducer = combineReducers({
     userLogin:userLoginReducer ,
-    userRegister:userRegisterReducer
+    userRegister:userRegisterReducer ,
 });
 
 

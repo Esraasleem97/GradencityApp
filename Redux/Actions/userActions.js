@@ -71,7 +71,6 @@ export const userRegisterHandler = (userData = {}) => async (dispatch) => {
             headers: {
                 'Content-Type': 'application/json',
                 'X-API-KEY': API_PROTECTION
-
             }
         }
 
@@ -110,7 +109,7 @@ export const userRegisterHandler = (userData = {}) => async (dispatch) => {
  * @returns {(function(*, *): void)|*}
  * @constructor
  */
-export const Logout = () => async (dispatch) => {
+export const userLogoutHandler = () => async (dispatch) => {
 
     await AsyncStorage.removeItem('user')
 
