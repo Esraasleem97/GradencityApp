@@ -26,7 +26,7 @@ const RefreshHandler = ({children}) => {
                   refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']}/>}
                   nestedScrollEnabled={true}
                   keyboardShouldPersistTaps='always'
-                  ListEmptyComponent={() => (children)}
+                  ListEmptyComponent={() => ( children )}
                   data={[]}
                   renderItem={null}
                   keyExtractor={() => "App-Init"}
