@@ -68,6 +68,8 @@ export const HeaderOpacityStyle = styled.View`
 
 export const HeaderStyle = styled.View`
   flex-direction: row;
+  justify-content: space-between;
+  padding:0 30px ;
   height: 80px;
   background-color: ${green3};
   ${shadow};
@@ -75,9 +77,10 @@ export const HeaderStyle = styled.View`
   border-bottom-right-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
-  width: 75%;
+  margin-left: ${Platform.OS === 'ios' ? '130px' : '35%'};
   color: ${white};
   font-size: 30px;
+  text-align: center;
   font-weight: bold;
 `;
 export const HeaderLogin = styled.View`

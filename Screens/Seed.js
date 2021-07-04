@@ -3,15 +3,15 @@ import {Layout } from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 
-const Weed = ({navigation}) => {
+const Seed = ({navigation}) => {
 
     return (
         <Layout>
-            <Header title='التعشيب' navigation={navigation} />
+            <Header title='زراعة البذور' navigation={navigation} />
             <SharedScreens />
         </Layout>
 
     )
 }
 
-export default Weed;
+export default Seed;
