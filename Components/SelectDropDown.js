@@ -35,8 +35,6 @@ const SelectDropDown = () => {
                     //On text change listener on the searchable input
                     onItemSelect={(item) => alert(JSON.stringify(item))}
                     //onItemSelect called after the selection from the dropdown
-                    containerStyle={{padding: 5}}
-                    //suggestion container style
                     textInputStyle={styles.styledInputSearch}
                     chip={true}
                     itemStyle={
