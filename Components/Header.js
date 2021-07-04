@@ -1,15 +1,31 @@
 import React from "react";
+import {Ionicons} from '@expo/vector-icons';
 
 import {HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
+import {TouchableOpacity} from "react-native";
 
-const Header = ({title}) =>{
+const Header = ({title, navigation}) => {
 
-    return(
-            <HeaderOpacityStyle>
-                <HeaderStyle>
-                    <TitleStyle>{title}</TitleStyle>
-                </HeaderStyle>
-            </HeaderOpacityStyle>
+    return (
+        <HeaderOpacityStyle>
+            <HeaderStyle>
+
+                {
+                    navigation &&
+                    <TouchableOpacity>
+                        <Ionicons name="arrow-back-circle"
+                                  size={40}
+                                  color="white"
+                                  onPress={() => navigation.navigate('Home')}
+                                  style={{marginLeft: 15}}
+                        />
+                    </TouchableOpacity>
+                }
+                <TitleStyle>
+                    {title}
+                </TitleStyle>
+            </HeaderStyle>
+        </HeaderOpacityStyle>
     )
 }
 

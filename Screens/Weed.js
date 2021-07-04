@@ -1,14 +1,14 @@
 import React from "react";
-import {Layout} from "@ui-kitten/components";
+import {Layout } from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 
-const Weed = () => {
+const Weed = ({navigation}) => {
 
     return (
         <Layout>
-            <Header title='زراعة البذور'/>
-            <SharedScreens/>
+            <Header title='زراعة البذور' navigation={navigation} />
+            <SharedScreens />
         </Layout>
 
     )

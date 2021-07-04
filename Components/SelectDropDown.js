@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 
 //Item array for the dropdown
@@ -24,54 +24,35 @@ const SelectDropDown = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
-                <Text style={styles.titleText}>
-                    Example of Searchable Dropdown / Picker in React Native
-                </Text>
-                <Text style={styles.headingText}>
-                    Searchable Dropdown from Static Array
-                </Text>
-                    <SearchableDropdown
-                        onTextChange={(text) => console.log(text)}
-                        //On text change listener on the searchable input
-                        onItemSelect={(item) => alert(JSON.stringify(item))}
-                        //onItemSelect called after the selection from the dropdown
-                        containerStyle={{padding: 5}}
-                        //suggestion container style
-                        textInputStyle={{
-                            //inserted text style
-                            padding: 12,
-                            borderWidth: 1,
-                            borderColor: '#ccc',
-                            backgroundColor: '#FAF7F6',
-                        }}
-                        itemStyle={{
-                            //single dropdown item style
-                            padding: 10,
-                            marginTop: 2,
-                            backgroundColor: '#FAF9F8',
-                            borderColor: '#bbb',
-                            borderWidth: 1,
-                        }}
-                        itemTextStyle={{
-                            //text style of a single dropdown item
-                            color: '#222',
-                        }}
-                        itemsContainerStyle={{
-                            //items container style you can pass maxHeight
-                            //to restrict the items dropdown height
-                            maxHeight: '60%',
-                        }}
-                        items={items}
-                        //mapping of item array
-                        defaultIndex={2}
-                        //default selected item index
-                        placeholder="placeholder"
-                        //place holder for the search input
-                        resetValue={false}
-                        //reset textInput Value with true and false state
-                        underlineColorAndroid="transparent"
-                        //To remove the underline from the android input
-                    />
+                <SearchableDropdown
+                    onTextChange={(text) => console.log(text)}
+                    onItemSelect={(item) => alert(JSON.stringify(item))}
+                    containerStyle={{padding: 5}}
+                    textInputStyle={{
+                        padding: 12,
+                        borderWidth: 1,
+                        borderColor: '#ccc',
+                        backgroundColor: '#FAF7F6',
+                    }}
+                    itemStyle={{
+                        padding: 10,
+                        marginTop: 2,
+                        backgroundColor: '#FAF9F8',
+                        borderColor: '#bbb',
+                        borderWidth: 1,
+                    }}
+                    itemTextStyle={{
+                        color: '#222',
+                    }}
+                    itemsContainerStyle={{
+                        maxHeight: '60%',
+                    }}
+                    items={items}
+                    defaultIndex={2}
+                    placeholder="placeholder"
+                    resetValue={false}
+                    underlineColorAndroid="transparent"
+                />
 
             </View>
         </SafeAreaView>
