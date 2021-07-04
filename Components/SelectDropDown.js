@@ -1,22 +1,27 @@
 import React from 'react';
 
 
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import SearchableDropdown from 'react-native-searchable-dropdown';
+import {Colors} from "./Styles";
 
 //Item array for the dropdown
 const items = [
     //name key is must.It is to show the text in front
-    {id: 1, name: 'angellist'},
-    {id: 2, name: 'codepen'},
-    {id: 3, name: 'envelope'},
-    {id: 4, name: 'etsy'},
-    {id: 5, name: 'facebook'},
-    {id: 6, name: 'foursquare'},
-    {id: 7, name: 'github-alt'},
-    {id: 8, name: 'github'},
-    {id: 9, name: 'gitlab'},
-    {id: 10, name: 'instagram'},
+    {id: 1, name: 'بند 1'},
+    {id: 2, name: 'بند 1'},
+    {id: 3, name: 'بند 1'},
+    {id: 4, name: 'بند 1'},
+    {id: 5, name: 'بند 1'},
+    {id: 6, name: 'بند 1'},
+    {id: 7, name: 'بند 1'},
+    {id: 8, name: 'بند 1'},
+    {id: 9, name: 'بند 1'},
+    {id: 10, name: 'بند 1'},
+    {id: 9, name: 'بند 1'},
+    {id: 10, name: 'بند 1'},
+    {id: 11, name: 'بند 11'},
+    {id: 12, name: 'بند 112'},
 ];
 
 const SelectDropDown = () => {
@@ -25,33 +30,38 @@ const SelectDropDown = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <SearchableDropdown
+                    Icon='email'
                     onTextChange={(text) => console.log(text)}
+                    //On text change listener on the searchable input
                     onItemSelect={(item) => alert(JSON.stringify(item))}
+                    //onItemSelect called after the selection from the dropdown
                     containerStyle={{padding: 5}}
-                    textInputStyle={{
-                        padding: 12,
-                        borderWidth: 1,
-                        borderColor: '#ccc',
-                        backgroundColor: '#FAF7F6',
-                    }}
-                    itemStyle={{
-                        padding: 10,
-                        marginTop: 2,
-                        backgroundColor: '#FAF9F8',
-                        borderColor: '#bbb',
-                        borderWidth: 1,
-                    }}
+                    //suggestion container style
+                    textInputStyle={styles.styledInputSearch}
+                    chip={true}
+                    itemStyle={
+                        //single dropdown item style
+                        styles.styledItemSearch
+                    }
                     itemTextStyle={{
+                        //text style of a single dropdown item
                         color: '#222',
                     }}
-                    itemsContainerStyle={{
-                        maxHeight: '60%',
-                    }}
+                    itemsContainerStyle={
+                        //items container style you can pass maxHeight
+                        //to restrict the items dropdown height
+                        styles.itemsContainerStyle
+                    }
                     items={items}
+                    //mapping of item array
                     defaultIndex={2}
-                    placeholder="placeholder"
+                    //default selected item index
+                    placeholder="البند"
+                    //place holder for the search input
                     resetValue={false}
+                    //reset textInput Value with true and false state
                     underlineColorAndroid="transparent"
+                    //To remove the underline from the android input
                 />
 
             </View>
@@ -62,18 +72,36 @@ const SelectDropDown = () => {
 export default SelectDropDown;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white',
-        padding: 10,
-    },
-    titleText: {
-        padding: 8,
+
+    styledInputSearch : {
+        backgroundColor: Colors.secondary,
+        paddingVertical: 15 ,
+        paddingHorizontal:20,
+        height: 50,
+        borderRadius:5,
         fontSize: 16,
-        textAlign: 'center',
-        fontWeight: 'bold',
+        marginTop:3,
+        marginBottom: 5,
+        color: Colors.darkgray,
+        textAlign: 'right',
     },
-    headingText: {
-        padding: 8,
+    itemsContainerStyle:{
+        borderWidth: 1,
+        borderColor:Colors.secondary,
+        borderRadius:5,
+        maxHeight:150,
+
+    },
+    styledItemSearch : {
+        backgroundColor: Colors.white,
+        paddingVertical: 15 ,
+        paddingHorizontal:20,
+        height: 50,
+        borderRadius:5,
+        fontSize: 16,
+        color: Colors.darkgray,
+        textAlign: 'right',
+        borderBottomWidth:1,
+        borderBottomColor:Colors.secondary
     },
 });
