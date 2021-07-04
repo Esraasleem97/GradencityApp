@@ -16,6 +16,7 @@ import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
 import {TouchableOpacity} from "react-native";
 import RefreshHandler from "../Components/RefreshHandler";
+import Header from "../Components/Header";
 
 
 const Login = ({navigation}) => {
@@ -27,7 +28,8 @@ const Login = ({navigation}) => {
 
             <Layout>
                 <StatusBar style='light'/>
-                <ImageBackground source={require('../assets/bg-plants3.jpg')}>
+                {/*<ImageBackground source={require('../assets/bg-plants3.jpg')}>*/}
+                    <Header title='تسجيل الدخول'/>
                     <RefreshHandler>
                     <Container>
 
@@ -76,7 +78,7 @@ const Login = ({navigation}) => {
                         </Content>
                     </Container>
                     </RefreshHandler>
-                </ImageBackground>
+                {/*</ImageBackground>*/}
             </Layout>
 
     );

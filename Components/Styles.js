@@ -48,23 +48,26 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
-  overflow: hidden;
+ 
+ 
   
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
+  justify-content: center;
+
 `;
 export const HeaderOpacityStyle = styled.View`
   width: 100%;
-  height: 110px;
+  height: 90px;
   background-color: ${greenLight2};
   border-bottom-right-radius: 200px;
 `;
 
 
 export const HeaderStyle = styled.View`
-  height: 100px;
+  height: 80px;
   background-color: ${green3};
   ${shadow}
   justify-content: center;
@@ -73,10 +76,11 @@ export const HeaderStyle = styled.View`
 `;
 export const TitleStyle = styled.Text`
   color: ${white};
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
 `;
 export const HeaderLogin = styled.View`
+  margin-top: 10px;
   width: 100%;
   height: 200px;
   justify-content: center;
@@ -111,7 +115,6 @@ export const Logo = styled.Image`
 export const Content = styled.View`
   width: 80%;
   height: 100%;
-  flex: 1;
   align-items: center;
   justify-content: center;
 

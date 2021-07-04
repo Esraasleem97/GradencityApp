@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from "react";
 import {RefreshControl, ScrollView} from "react-native";
+import {Container} from "./Styles";
 
 
 const RefreshHandler = ({children}) => {
@@ -19,11 +20,13 @@ const RefreshHandler = ({children}) => {
     }, []);
 
     return (
-        <ScrollView
+
+        <ScrollView style={{height:'100%'}}
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']} />}>
             {children}
         </ScrollView>
+
     )
 
 }

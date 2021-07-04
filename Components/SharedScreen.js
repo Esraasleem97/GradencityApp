@@ -1,60 +1,73 @@
-import React from "react";
-import {Button, ButtonText, Container, Content, FormArea} from "./Styles";
+import React, {useState} from "react";
+import {Button, ButtonText, Container, Content, FormArea, Label} from "./Styles";
 import Input from "./Input";
-import {Formik} from "formik";
+import RefreshHandler from "./RefreshHandler";
+
+import Select from 'react-select';
 
 
 const SharedScreens = () => {
+    const options = [
+        {value: 'chocolate', label: 'Chocolate'},
+        {value: 'strawberry', label: 'Strawberry'},
+        {value: 'vanilla', label: 'Vanilla'},
+    ];
 
-
-    const submitHandler = (values) => {
-        console.log(values)
-    }
+    const handleChange = (selectedOption) => {
+        console.log(`Option selected:`, selectedOption);
+    };
 
     return (
-        <Container>
-            <Content>
-                <Formik
-                    initialValues={{
-                        clause: '',
-                        quantity: '',
-                        time: '',
-                        daily_achievement: '',
-                        monthly_achievement: ''
-                    }}
-                    onSubmit={submitHandler}
+        <RefreshHandler>
+            <Container>
 
-                >
-                    {
-                        ({handleChange, handleBlur, handleSubmit, values}) =>
-                            <FormArea>
-                                <Input
-                                    label='اسم المستخدم'
-                                    icon='user'
-                                    placeholder='اسم المستخدم'
-                                    onChangeText={handleChange('username')}
-                                    onBlur={handleBlur('username')}
-                                    value={values.username}
-                                />
+                <Content>
 
-                                <Input
-                                    label='كلمة المرور'
-                                    icon='lock'
-                                    placeholder='* * * * * * * *'
-                                    onChangeText={handleChange('password')}
-                                    onBlur={handleBlur('password')}
-                                    value={values.password}
-                                />
+                    <FormArea>
+                        <Label>البند</Label>
+                        <Select
+                            value=''
+                            onChange={handleChange}
+                            options={options}
+                        />
+                        <Input
+                            label='الكمية'
+                            icon='form'
+                            placeholder='ادخل الرقم هنا'
 
-                                <Button type='submit' onPress={handleSubmit}>
-                                    <ButtonText>حفظ</ButtonText>
-                                </Button>
+                        />
+                        <Input
+                            label='الوقت المستغرق'
+                            icon='dashboard'
+                            placeholder='00:00:00'
 
-                            </FormArea>
-                    }
-                </Formik>
-            </Content>
-        </Container>
+                        />
+                        <Input
+                            label='الإنجاز اليومي'
+                            icon='form'
+                            placeholder='رقم الإنجاز اليومي'
+
+                        />
+                        <Input
+                            label='الإنجاز الشهري'
+                            icon='form'
+                            placeholder='رقم الإنجاز الشهري'
+
+
+                        />
+
+
+                        <Button>
+                            <ButtonText>حفظ</ButtonText>
+                        </Button>
+                    </FormArea>
+
+                </Content>
+
+            </Container>
+        </RefreshHandler>
+
+
     )
 }
 
