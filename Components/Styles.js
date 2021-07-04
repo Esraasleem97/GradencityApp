@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 import {Platform} from "react-native";
 
 const StatusBarHeight = Constants.statusBarHeight;
-// colors
+
 export const Colors = {
     primary: '#1960d8',
     secondary: '#f1f5f5',
@@ -56,15 +56,14 @@ export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
   justify-content: center;
-
 `;
+
 export const HeaderOpacityStyle = styled.View`
   width: 100%;
   height: 90px;
   background-color: ${greenLight2};
   border-bottom-right-radius: 200px;
 `;
-
 
 export const HeaderStyle = styled.View`
   padding-top: 10px;
