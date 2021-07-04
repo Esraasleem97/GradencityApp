@@ -67,16 +67,15 @@ export const HeaderOpacityStyle = styled.View`
 
 
 export const HeaderStyle = styled.View`
-  padding-top: 10px;
   flex-direction: row;
   height: 80px;
   background-color: ${green3};
-  ${shadow}
+  ${shadow};
   align-items: center;
   border-bottom-right-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
-  margin-left: ${Platform.OS === 'ios' ? '130px' : '140px'};
+  width: 75%;
   color: ${white};
   font-size: 30px;
   font-weight: bold;
@@ -191,7 +190,7 @@ export const ButtonText = styled.Text`
 export const TitleContainer = styled.View`
   width: 100%;
   background-color: #ACD876;
-  ${shadow}
+  ${shadow};
   height: ${90}px;
   border-bottom-left-radius: ${30}px;
   border-bottom-right-radius: ${30}px;

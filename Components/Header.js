@@ -9,7 +9,6 @@ const Header = ({title, navigation}) => {
     return (
         <HeaderOpacityStyle>
             <HeaderStyle>
-
                 {
                     navigation &&
                     <TouchableOpacity>
@@ -17,7 +16,7 @@ const Header = ({title, navigation}) => {
                                   size={40}
                                   color="white"
                                   onPress={() => navigation.navigate('Home')}
-                                  style={{marginLeft: 15}}
+                                  style={{marginLeft: 10}}
                         />
                     </TouchableOpacity>
                 }
