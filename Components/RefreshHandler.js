@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
-import {FlatList, RefreshControl} from "react-native";
+import {RefreshControl} from "react-native";
 
+import { FlatList } from 'react-native-gesture-handler'
 
 const RefreshHandler = ({children}) => {
 
@@ -20,12 +21,12 @@ const RefreshHandler = ({children}) => {
 
     return (
 
-        <FlatList style={{height: '100%'}}
+        <FlatList style={{height: '100%'  , width: '100%' }}
                   showsVerticalScrollIndicator={false}
                   refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']}/>}
                   nestedScrollEnabled={true}
                   keyboardShouldPersistTaps='always'
-                  ListHeaderComponent={() => (children)}
+                  ListEmptyComponent={() => (children)}
                   data={[]}
                   renderItem={null}
                   keyExtractor={() => "App-Init"}

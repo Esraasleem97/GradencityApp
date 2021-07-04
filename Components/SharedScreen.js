@@ -9,7 +9,7 @@ import SelectDropDown from "./SelectDropDown";
 const SharedScreens = () => {
 
     return (
-        // <RefreshHandler>
+         <RefreshHandler>
             <Container>
                 <Content>
                     <FormArea>
@@ -42,7 +42,7 @@ const SharedScreens = () => {
                     </FormArea>
                 </Content>
             </Container>
-        // </RefreshHandler>
+         </RefreshHandler>
     )
 }
 
