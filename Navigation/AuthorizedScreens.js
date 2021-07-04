@@ -40,6 +40,7 @@ const AuthorizedScreens = () => {
                     activeTintColor: '#094414',
                     inactiveTintColor: '#000000',
                     style: {backgroundColor: 'white'},
+                    keyboardHidesTabBar:'false'
                 }}
                 initialRouteName='Home'
             >
