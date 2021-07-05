@@ -48,6 +48,7 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
+  
 
 
 
@@ -68,6 +69,7 @@ export const HeaderOpacityStyle = styled.View`
 
 export const HeaderStyle = styled.View`
   flex-direction: row;
+
   justify-content: space-between;
   padding:0 30px ;
   height: 80px;
@@ -77,11 +79,11 @@ export const HeaderStyle = styled.View`
   border-bottom-right-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
-  margin-left: ${Platform.OS === 'ios' ? '130px' : '35%'};
+
   color: ${white};
   font-size: 30px;
-  text-align: center;
   font-weight: bold;
+
 `;
 export const HeaderLogin = styled.View`
   margin-top: 10px;
@@ -153,7 +155,7 @@ export const TextInputStyled = styled.TextInput`
 export const Label = styled.Text`
   color: ${darkLight};
   font-size: ${13}px;
-  text-align: right;
+
 `;
 
 export const LeftIcon = styled.TouchableOpacity`
@@ -168,6 +170,7 @@ export const RightIcon = styled.TouchableOpacity`
   top: ${33}px;
   position: absolute;
   z-index: 1;
+
 `;
 
 export const ForgetPassword = styled.Text`
@@ -219,7 +222,6 @@ if (Platform.OS === 'ios') {
 } else {
     CheckPlatFormForCardDesign = `elevation: 5`;
 }
-
 export const Card = styled.TouchableOpacity`
   border-radius: ${5}px;
   padding: ${15}px;
@@ -229,17 +231,12 @@ export const Card = styled.TouchableOpacity`
   align-items: center;
   ${CheckPlatFormForCardDesign}
 `;
-
-
 export const CardText = styled.Text`
   font-size: ${15}px;
   color: ${tertiary};
-
 `;
 export const CardImage = styled.Image`
   width: ${90}px;
   height: ${90}px;
-
-
 `;
 
