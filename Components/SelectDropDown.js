@@ -4,12 +4,12 @@ import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
-const SelectDropDown = ({items, title = 'البند'}) => {
+const SelectDropDown = ({items, title = 'البند' , style}) => {
 
 
     return (
         <View style={{marginTop: 10}}>
-            <Label>{title}</Label>
+            <Label style={style}>{title}</Label>
             <SearchableDropDownScroll
                 Icon='email'
                 onTextChange={(text) => console.log(text)}

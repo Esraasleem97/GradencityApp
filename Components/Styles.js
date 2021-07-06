@@ -243,7 +243,7 @@ export const CardImage = styled.Image`
 export const Line = styled.View`
   width: 100%;
   height: 1px;
-  background-color: ${greenLight2};
+  background-color: ${darkLight};
 
 `;
 export const FlexStyled = styled.View`

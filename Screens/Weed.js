@@ -14,7 +14,6 @@ const Weed = ({navigation}) => {
                 <SelectDropDown items={items}/>
             </SharedScreens>
         </Layout>
-
     )
 }
 
