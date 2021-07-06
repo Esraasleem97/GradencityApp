@@ -2,7 +2,7 @@ import React from "react";
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
-import {Card, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
+import {Button, ButtonText, Card, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
 import {View} from "react-native";
@@ -75,6 +75,9 @@ const Rotate = ({navigation}) => {
                                 icon='dashboard'
                                 placeholder='00:00:00'
                             />
+                            <Button>
+                                <ButtonText>حفظ</ButtonText>
+                            </Button>
                         </FormArea>
                     </Content>
                 </Container>

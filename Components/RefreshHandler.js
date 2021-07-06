@@ -1,7 +1,5 @@
 import React, {useCallback, useState} from "react";
 import {RefreshControl, View} from "react-native";
-
-
 import {FlatList} from 'react-native-gesture-handler'
 
 const RefreshHandler = ({children}) => {
