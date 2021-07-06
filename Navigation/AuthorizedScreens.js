@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import Home from './../Screens/Home';
@@ -10,7 +10,6 @@ import Taeqil from "../Screens/Taeqil";
 import TransferBetweenPlants from "../Screens/TransferBetweenPlants";
 import TrimMove from "../Screens/TrimMove";
 import Achievement from '../Screens/Achievement';
-import {Animated, Dimensions, View,StyleSheet} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -61,7 +60,7 @@ const tabBarOptions = ({
  *  used / present  for authenticated user
  */
 const AuthorizedScreens = () => {
-    const tabOffsetValue = useRef(new Animated.Value(0)).current;
+
     return (
         <NavigationContainer>
             <Tab.Navigator
