@@ -20,7 +20,6 @@ const Header = ({title, navigation}) => {
                                   size={40}
                                   color="white"
                                   onPress={() => navigation.navigate('Home')}
-
                         />
                     </TouchableOpacity>
                 }

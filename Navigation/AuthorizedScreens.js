@@ -9,6 +9,7 @@ import Seed from "../Screens/Seed";
 import Taeqil from "../Screens/Taeqil";
 import TransferBetweenPlants from "../Screens/TransferBetweenPlants";
 import TrimMove from "../Screens/TrimMove";
+import Achievement from '../Screens/Achievement';
 import {Animated, Dimensions, View,StyleSheet} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 
@@ -26,6 +27,7 @@ const HomeScreensContainer = () => {
             <Stack.Screen name='Taeqil' component={Taeqil}/>
             <Stack.Screen name='TrimMove' component={TrimMove}/>
             <Stack.Screen name='Transfer' component={TransferBetweenPlants}/>
+            <Stack.Screen name='Achievement' component={Achievement}/>
 
         </Stack.Navigator>
     )
@@ -35,14 +37,21 @@ const HomeScreensContainer = () => {
 
 const tabBarOptions = ({
     labelStyle: {fontSize: 14},
-    tabStyle: {flex: 1, justifyContent: 'center'},
+    tabStyle: {flex: 1, justifyContent: 'center',marginBottom:8},
     indicatorStyle: {
         marginHorizontal: '5%',
         width: '40%'
     },
-    activeTintColor: '#107122',
-    inactiveTintColor: '#424242',
-    style: {backgroundColor: '#ffffff', paddingBottom: 4},
+    activeTintColor: '#FF7E68',
+    inactiveTintColor: '#999696',
+    style: {
+        height: 60,
+        backgroundColor: "white",
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        position: "absolute",
+        bottom: 0,
+    },
     keyboardHidesTabBar: 'false'
 })
 
@@ -105,30 +114,3 @@ const AuthorizedScreens = () => {
 
 export default AuthorizedScreens
 
-const styles = StyleSheet.create({
-    tabContainer: {
-        height: 55,
-        shadowOffset: {
-            width: 0,
-            height: -1,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 4.0,
-        backgroundColor: "white",
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        elevation: 10,
-        position: "absolute",
-        bottom: 0,
-
-    },
-    slider: {
-        height: 5,
-        position: "absolute",
-        top: 0,
-        left: 10,
-        backgroundColor: '#FF7E68',
-        borderRadius: 10,
-        width: 50
-    },
-});
