@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
-import {Platform} from "react-native";
-
+import {I18nManager, Platform} from "react-native";
+const IS_RTL = I18nManager.isRTL;
 const StatusBarHeight = Constants.statusBarHeight;
 // colors
 export const Colors = {
@@ -63,20 +63,19 @@ export const HeaderOpacityStyle = styled.View`
   width: 100%;
   height: 90px;
   background-color: ${greenLight2};
-  border-bottom-right-radius: 200px;
+  border-bottom-left-radius: 200px;
 `;
 
 
 export const HeaderStyle = styled.View`
   flex-direction: row;
-
   justify-content: space-between;
   padding:0 30px ;
   height: 80px;
   background-color: ${green3};
   ${shadow};
   align-items: center;
-  border-bottom-right-radius: 200px;
+  border-bottom-left-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
 

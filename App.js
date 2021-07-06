@@ -9,8 +9,6 @@ import AuthorizedScreens from './Navigation/AuthorizedScreens'
 import UnAuthorizedScreens from './Navigation/UnAuthorizedScreens'
 import {Asset} from "expo-asset";
 
-
-
 if (!__DEV__) {
     console.log = () => {
     };

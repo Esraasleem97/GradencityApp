@@ -9,8 +9,12 @@ const Header = ({title, navigation}) => {
     return (
         <HeaderOpacityStyle>
             <HeaderStyle>
+                <TitleStyle>
+                    {title}
+                </TitleStyle>
                 {
                     navigation &&
+
                     <TouchableOpacity>
                         <Ionicons name="arrow-back-circle"
                                   size={40}
@@ -20,9 +24,7 @@ const Header = ({title, navigation}) => {
                         />
                     </TouchableOpacity>
                 }
-                <TitleStyle>
-                    {title}
-                </TitleStyle>
+
             </HeaderStyle>
         </HeaderOpacityStyle>
     )
