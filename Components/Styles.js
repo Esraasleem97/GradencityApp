@@ -79,7 +79,7 @@ export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '40%'};
 
   color: ${white};
-  font-size: 30px;
+  font-size: ${Platform.OS === 'ios' ? '22px' : '30px'}; ;
   font-weight: bold;
 
 `;

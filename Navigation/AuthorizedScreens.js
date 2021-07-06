@@ -9,8 +9,10 @@ import Profile from "../Screens/Profile";
 import Seed from "../Screens/Seed";
 import Taeqil from "../Screens/Taeqil";
 import TrimMove from "../Screens/TrimMove";
+import {Ionicons} from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
+
 const Stack = createStackNavigator();
 
 
@@ -32,10 +34,31 @@ const HomeScreensContainer = () => {
  * @constructor
  *  used / present  for authenticated user
  */
+
+
 const AuthorizedScreens = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator
+
+
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({  color, size}) => {
+                        let iconName;
+
+                        if (route.name === 'Home') {
+                            iconName = 'home'
+                        } else if (route.name === 'Profile') {
+                            iconName = 'person';
+                        }else if (route.name === 'Logout') {
+                            iconName = 'exit';
+                        }
+
+                        // You can return any component that you like here!
+                        return <Ionicons name={iconName} size={size} color={color} />;
+                    },
+                })}
+
                 tabBarOptions={{
                     labelStyle: {fontSize: 14},
                     tabStyle: {flex: 1, justifyContent: 'center'},
@@ -43,14 +66,15 @@ const AuthorizedScreens = () => {
                         marginHorizontal: '5%',
                         width: '40%'
                     },
-                    activeTintColor: '#094414',
-                    inactiveTintColor: '#000000',
-                    style: {backgroundColor: 'white'},
-                    keyboardHidesTabBar:'false'
+                    activeTintColor: '#107122',
+                    inactiveTintColor: '#424242',
+                    style: {backgroundColor: '#ffffff'  , paddingBottom:4},
+                    keyboardHidesTabBar: 'false'
                 }}
+
                 initialRouteName='Home'
             >
-                <Tab.Screen name="Home" component={HomeScreensContainer}/>
+                <Tab.Screen name="Home" component={HomeScreensContainer} />
                 <Tab.Screen name="Profile" component={Profile}/>
                 <Tab.Screen name="Logout" component={Profile}/>
 
