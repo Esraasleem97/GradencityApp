@@ -28,7 +28,6 @@ const Home = ({navigation}) => {
         <Layout>
             <ImageBackground source={require('../assets/bg-plants6.jpg')}>
                 <Header title='الصفحة الرئيسية'/>
-
                 <RefreshHandler>
                     <Container>
                         <Grid>

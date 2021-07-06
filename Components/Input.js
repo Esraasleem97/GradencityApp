@@ -9,16 +9,16 @@ const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props
 
     return (
         <View>
-            <RightIcon>
+            <LeftIcon>
                 <AntDesign name={icon} size={20} color={green1}/>
-            </RightIcon>
+            </LeftIcon>
 
             <Label>{label}</Label>
             <TextInputStyled {...props} placeholderTextColor={darkLight}/>
             {isPassword && (
-                <LeftIcon onPress={() => setHidePassword(!hidePassword)}>
+                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
                     <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} color={darkLight} size={20}/>
-                </LeftIcon>
+                </RightIcon>
             )}
         </View>
     )
