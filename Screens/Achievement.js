@@ -1,7 +1,5 @@
 import React from "react";
-import {Container, Content} from "../Components/Styles";
 import {Layout} from "@ui-kitten/components";
-import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
 import SharedScreens from "../Components/SharedScreen";
 import SelectDropDown from "../Components/SelectDropDown";
@@ -27,7 +25,6 @@ const Achievement = ({navigation}) => {
             <Header title='الإنجازات' navigation={navigation}/>
             <SharedScreens onTop={true}>
                 <SelectDropDown items={items} title='مشاريع'/>
-
             </SharedScreens>
         </Layout>
     )

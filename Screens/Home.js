@@ -21,7 +21,7 @@ const Home = ({navigation}) => {
         {id: 4, title: 'التعقيل', img: require('../assets/plants5.jpg'), nav: 'Taeqil'},
         {id: 5, title: 'التعشيب', img: require('../assets/plants6.png'), nav: 'Weed'},
         {id: 6, title: 'تقليم أو نقل', img: require('../assets/plants7.png'), nav: 'TrimMove'},
-        {id: 7, title: 'التدوير', img: require('../assets/plants8.png'), nav: 'Checkin'},
+        {id: 7, title: 'التدوير', img: require('../assets/plants8.png'), nav: 'Rotate'},
         {id: 8, title: 'النقل بين المشاتل', img: require('../assets/plants8.png'), nav: 'Transfer'},
 
     ]

@@ -152,7 +152,7 @@ export const TextInputStyled = styled.TextInput`
   padding: ${15}px ${40}px;
   height: ${50}px;
   border-radius: ${5}px;
-  font-size: ${16}px;
+  font-size: ${15}px;
   margin-top: ${3}px;
   margin-bottom: ${10}px;
   color: ${darkgray};
@@ -240,4 +240,15 @@ export const CardImage = styled.Image`
   width: ${90}px;
   height: ${90}px;
 `;
+export const Line = styled.View`
+  width: 100%;
+  height: 1px;
+  background-color: ${greenLight2};
 
+`;
+export const FlexStyled = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+`;

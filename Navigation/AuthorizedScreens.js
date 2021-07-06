@@ -12,6 +12,7 @@ import TrimMove from "../Screens/TrimMove";
 import Achievement from '../Screens/Achievement';
 import {Animated, Dimensions, View,StyleSheet} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import Rotate from "../Screens/Rotate";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,7 @@ const HomeScreensContainer = () => {
             <Stack.Screen name='TrimMove' component={TrimMove}/>
             <Stack.Screen name='Transfer' component={TransferBetweenPlants}/>
             <Stack.Screen name='Achievement' component={Achievement}/>
+            <Stack.Screen name='Rotate' component={Rotate}/>
 
         </Stack.Navigator>
     )

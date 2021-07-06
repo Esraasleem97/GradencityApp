@@ -8,7 +8,7 @@ const SelectDropDown = ({items, title = 'البند'}) => {
 
 
     return (
-        <View style={{marginTop: 20}}>
+        <View style={{marginTop: 10}}>
             <Label>{title}</Label>
             <SearchableDropDownScroll
                 Icon='email'
