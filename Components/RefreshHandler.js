@@ -1,5 +1,8 @@
 import React, {useCallback, useState} from "react";
-import {RefreshControl, SectionList} from "react-native";
+import {RefreshControl, View} from "react-native";
+
+
+import {FlatList} from 'react-native-gesture-handler'
 
 const RefreshHandler = ({children}) => {
 
@@ -17,21 +20,36 @@ const RefreshHandler = ({children}) => {
         wait(2000).then(() => setRefreshing(false));
     }, []);
 
+
     return (
 
-        <SectionList style={{height: '100%'  , width: '100%' }}
-                  showsVerticalScrollIndicator={false}
-                  refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']}/>}
-                  nestedScrollEnabled={true}
-                  keyboardShouldPersistTaps='always'
-                  ListEmptyComponent={() => ( children )}
-                  data={[]}
-                  renderItem={null}
-                  keyExtractor={() => "App-Init"}
-         sections={[]}/>
+
+        <FlatList
+            style={{width: '100%', height: '100%'}}
+            removeClippedSubviews={false}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                    colors={['#36970c']}
+                />
+            }
+            nestedScrollEnabled={true}
+            keyboardShouldPersistTaps='always'
+            data={[]}
+            renderItem={null}
+            ListEmptyComponent={() =>
+                <View
+                    style={{width: '99%', height: '99%'}}>
+                    {children}
+                </View>
+
+            }
+        />
+
 
     )
-
 }
 
 

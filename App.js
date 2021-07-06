@@ -30,7 +30,6 @@ const images = [
     require("./assets/bg-plants5.jpg"),
     require("./assets/bg-plants6.jpg"),
     require("./assets/favicon.png"),
-    require("./assets/gardenCitySplash.png"),
     require("./assets/icon.png"),
     require("./assets/plant-logo.png"),
     require("./assets/plants-logo.jpg"),
@@ -43,7 +42,9 @@ const images = [
     require("./assets/plants6.png"),
     require("./assets/plants7.png"),
     require("./assets/plants8.png"),
-    require("./assets/splash.png")
+    require("./assets/splash.png") ,
+    require("./assets/splash-s.png")
+
 ];
 
 const App = () => {

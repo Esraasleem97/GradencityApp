@@ -47,7 +47,7 @@ const SharedScreens = () => {
                     </FormArea>
                 </Content>
             </Container>
-         </RefreshHandler>
+          </RefreshHandler>
     )
 }
 

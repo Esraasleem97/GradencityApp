@@ -2,12 +2,10 @@ import React from 'react';
 
 
 import {StyleSheet} from 'react-native';
-import SearchableDropdown from 'react-native-searchable-dropdown';
 import {Colors} from "./Styles";
+import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
-//Item array for the dropdown
 const items = [
-    //name key is must.It is to show the text in front
     {id: 1, name: 'بند 1'},
     {id: 2, name: 'بند 2'},
     {id: 3, name: 'بند 3'},
@@ -24,10 +22,11 @@ const items = [
     {id: 14, name: 'بند 14'},
 ];
 
+
 const SelectDropDown = () => {
 
     return (
-        <SearchableDropdown
+        <SearchableDropDownScroll
             Icon='email'
             onTextChange={(text) => console.log(text)}
             //On text change listener on the searchable input

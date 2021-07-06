@@ -7,6 +7,8 @@ import {createStackNavigator} from "@react-navigation/stack";
 import Weed from "../Screens/Weed";
 import Profile from "../Screens/Profile";
 import Seed from "../Screens/Seed";
+import Taeqil from "../Screens/Taeqil";
+import TrimMove from "../Screens/TrimMove";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,6 +21,8 @@ const HomeScreensContainer = () => {
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='Weed' component={Weed}/>
             <Stack.Screen name='Seed' component={Seed}/>
+            <Stack.Screen name='Taeqil' component={Taeqil}/>
+            <Stack.Screen name='TrimMove' component={TrimMove}/>
         </Stack.Navigator>
     )
 }
