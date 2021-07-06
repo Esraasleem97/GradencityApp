@@ -10,7 +10,6 @@ const Seed = ({navigation}) => {
             <Header title='زراعة البذور' navigation={navigation} />
             <SharedScreens />
         </Layout>
-
     )
 }
 

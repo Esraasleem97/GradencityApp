@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useRef} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -35,6 +35,7 @@ const HomeScreensContainer = () => {
  *  used / present  for authenticated user
  */
 const AuthorizedScreens = () => {
+    const tabOffsetValue = useRef(new Animated.Value(0)).current;
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -48,15 +49,22 @@ const AuthorizedScreens = () => {
                     activeTintColor: '#FF7E68',
                     // inactiveTintColor: '#000000',
                     style: {
-                        backgroundColor: 'white' ,
-                        height:55,
-                        position : 'absolute',
-                        bottom:10,
-                        marginHorizontal:10,
-                        borderRadius:10
+                        height: 60,
+                        shadowOffset: {
+                            width: 0,
+                            height: -1,
+                        },
+                        shadowOpacity: 0.1,
+                        shadowRadius: 4.0,
+                        backgroundColor: "white",
+                        borderTopRightRadius: 20,
+                        borderTopLeftRadius: 20,
+                        elevation: 10,
+                        position: "absolute",
+                        bottom: 0,
 
                     },
-                    keyboardHidesTabBar: 'false',
+                    // keyboardHidesTabBar: 'false',
 
                 }}
                 initialRouteName='Home'
@@ -67,14 +75,14 @@ const AuthorizedScreens = () => {
                                     return (<Octicons name='home' size={20} color={focused ? '#FF7E68' : '#999'}/>)
                                 },
                                 tabBarLabel: 'الرئيسية'
-                            }} listeners={({navigation,route}) => {
-                                tapPress: e => {
-                                    Animated.spring(tabOffsetValue,{
-                                        toValue:0,
-                                        useNativeDriver:true,
+                            }} listeners={() => ({
+                                tabPress: e => {
+                                    Animated.spring(tabOffsetValue, {
+                                        toValue: 0,
+                                        useNativeDriver: true,
                                     }).start();
                                 }
-                }}
+                            })}
                 />
                 <Tab.Screen name="Profile" component={Profile}
                             options={{
@@ -83,14 +91,14 @@ const AuthorizedScreens = () => {
                                 },
                                 tabBarLabel: 'حسابي'
                             }}
-                            listeners={({navigation,route}) => {
-                                tapPress: e => {
-                                    Animated.spring(tabOffsetValue,{
-                                        toValue:getWidth() * 3,
-                                        useNativeDriver:true,
+                            listeners={() => ({
+                                tabPress: e => {
+                                    Animated.spring(tabOffsetValue, {
+                                        toValue: getWidth() * 3,
+                                        useNativeDriver: true,
                                     }).start();
                                 }
-                            }}
+                            })}
                 />
                 <Tab.Screen name="Logout" component={Profile}
                             options={{
@@ -100,32 +108,28 @@ const AuthorizedScreens = () => {
                                 },
                                 tabBarLabel: 'تسجيل الخروج'
                             }}
-                            listeners={({navigation,route}) => {
-                                tapPress: e => {
-                                    Animated.spring(tabOffsetValue,{
-                                        toValue:getWidth() * 4,
-                                        useNativeDriver:true,
+                            listeners={() => ({
+                                tabPress: e => {
+                                    Animated.spring(tabOffsetValue, {
+                                        toValue: getWidth() * 4,
+                                        useNativeDriver: true,
                                     }).start();
                                 }
-                            }}
+                            })}
                 />
 
             </Tab.Navigator>
 
             <Animated.View style={{
-                width: getWidth() - 20,
-                height: 2,
+                height: 3,
+                position: "absolute",
+                bottom: 0,
+                left: 25,
                 backgroundColor: '#FF7E68',
-                position: 'absolute',
-                bottom: 63,
-                left: 30,
-                transform:[
-                    { translateX : tabOffsetValue }
-                ]
-
-            }}>
-
-            </Animated.View>
+                borderRadius: 10,
+                transform: [{translateX: tabOffsetValue}],
+                width: getWidth() - 15,
+            }}/>
         </NavigationContainer>
     );
 }
@@ -137,4 +141,5 @@ function getWidth() {
 
     return width / 4
 }
+
 export default AuthorizedScreens

@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 import {I18nManager, Platform} from "react-native";
 const IS_RTL = I18nManager.isRTL;
 const StatusBarHeight = Constants.statusBarHeight;
-// colors
+
 export const Colors = {
     primary: '#1960d8',
     secondary: '#f1f5f5',
@@ -48,17 +48,14 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
-  
-
-
 
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
   height: 100%;
   justify-content: center;
-
 `;
+
 export const HeaderOpacityStyle = styled.View`
   width: 100%;
   height: 90px;
@@ -66,11 +63,10 @@ export const HeaderOpacityStyle = styled.View`
   border-bottom-left-radius: 200px;
 `;
 
-
 export const HeaderStyle = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding:0 30px ;
+  padding:0 30px;
   height: 80px;
   background-color: ${green3};
   ${shadow};
@@ -78,6 +74,8 @@ export const HeaderStyle = styled.View`
   border-bottom-left-radius: 200px;
 `;
 export const TitleStyle = styled.Text`
+
+  margin-left: ${Platform.OS === 'ios' ? '150px' : '40%'};
 
   color: ${white};
   font-size: 30px;
