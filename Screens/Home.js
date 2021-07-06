@@ -16,7 +16,7 @@ const Home = ({navigation}) => {
     const data = [
         {id: 0, title: 'الإدخال', img: require('../assets/plants1.png'), nav: 'Checkin'},
         {id: 1, title: 'الإخراج', img: require('../assets/plants2.jpg'), nav: 'Checkin'},
-        {id: 2, title: 'الإنجازات', img: require('../assets/plants3.png'), nav: 'Checkin'},
+        {id: 2, title: 'الإنجازات', img: require('../assets/plants3.png'), nav: 'Achievement'},
         {id: 3, title: 'زراعة البذور', img: require('../assets/plants4.jpg'), nav: 'Seed'},
         {id: 4, title: 'التعقيل', img: require('../assets/plants5.jpg'), nav: 'Taeqil'},
         {id: 5, title: 'التعشيب', img: require('../assets/plants6.png'), nav: 'Weed'},
