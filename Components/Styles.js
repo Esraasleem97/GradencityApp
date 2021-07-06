@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
-import {I18nManager, Platform} from "react-native";
+import {Dimensions, I18nManager, Platform} from "react-native";
 const IS_RTL = I18nManager.isRTL;
 const StatusBarHeight = Constants.statusBarHeight;
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 export const Colors = {
     primary: '#1960d8',
@@ -48,6 +51,7 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
+  margin-bottom: ${StatusBarHeight + 30}px;
 
 `;
 export const ImageBackground = styled.ImageBackground`
@@ -75,10 +79,10 @@ export const HeaderStyle = styled.View`
 `;
 export const TitleStyle = styled.Text`
 
-  margin-left: ${Platform.OS === 'ios' ? '150px' : '40%'};
+  margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
 
   color: ${white};
-  font-size: 30px;
+  font-size: ${Platform.OS === 'ios' ? '22px' : '30px'}; ;
   font-weight: bold;
 
 `;
@@ -120,6 +124,7 @@ export const Content = styled.View`
   height: 100%;
   align-items: center;
   justify-content: center;
+  margin-bottom: ${StatusBarHeight + 70}px;
 
 `;
 

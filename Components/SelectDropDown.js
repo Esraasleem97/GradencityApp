@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-import {StyleSheet} from 'react-native';
-import {Colors} from "./Styles";
+import {StyleSheet, View} from 'react-native';
+import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
@@ -25,40 +25,44 @@ const items = [
 ];
 
 
-const SelectDropDown = () => {
+const SelectDropDown = ({items}) => {
 
     return (
-        <SearchableDropDownScroll
-            Icon='email'
-            onTextChange={(text) => console.log(text)}
-            //On text change listener on the searchable input
-            onItemSelect={(item) => alert(JSON.stringify(item))}
-            //onItemSelect called after the selection from the dropdown
-            textInputStyle={styles.styledInputSearch}
-            chip={true}
-            itemStyle={
-                //single dropdown item style
-                styles.styledItemSearch
-            }
-            itemTextStyle={{
-                //text style of a single dropdown item
-                color: '#222',
-            }}
-            itemsContainerStyle={
-                //items container style you can pass maxHeight
-                //to restrict the items dropdown height
-                styles.itemsContainerStyle
-            }
-            items={items}
-            //mapping of item array
-            defaultIndex={2}
-            //default selected item index
-            placeholder="البند"
-            //place holder for the search input
-            resetValue={false}
-            //reset textInput Value with true and false state
-            underlineColorAndroid="transparent"
-        />
+        <View style={{marginTop: 20}}>
+            <Label>البند</Label>
+            <SearchableDropDownScroll
+                Icon='email'
+                onTextChange={(text) => console.log(text)}
+                //On text change listener on the searchable input
+                onItemSelect={(item) => alert(JSON.stringify(item))}
+                //onItemSelect called after the selection from the dropdown
+                textInputStyle={styles.styledInputSearch}
+                chip={true}
+                itemStyle={
+                    //single dropdown item style
+                    styles.styledItemSearch
+                }
+                itemTextStyle={{
+                    //text style of a single dropdown item
+                    color: '#222',
+                }}
+                itemsContainerStyle={
+                    //items container style you can pass maxHeight
+                    //to restrict the items dropdown height
+                    styles.itemsContainerStyle
+                }
+                items={items}
+                //mapping of item array
+                defaultIndex={0}
+                //default selected item index
+                placeholder="البند"
+                //place holder for the search input
+                resetValue={false}
+                //reset textInput Value with true and false state
+                underlineColorAndroid="transparent"
+            />
+        </View>
+
     );
 };
 
