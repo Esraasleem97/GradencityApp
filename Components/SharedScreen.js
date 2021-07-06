@@ -22,15 +22,15 @@ const items = [
 ];
 
 
-const SharedScreens = () => {
+const SharedScreens = ({children, onTop, onBottom}) => {
 
     return (
 
-         <RefreshHandler>
+        <RefreshHandler>
             <Container>
                 <Content>
                     <FormArea>
-
+                        {children && onTop  ?  children : null}
                         <SelectDropDown items={items}/>
                         <Input
                             label='الكمية'
@@ -55,6 +55,8 @@ const SharedScreens = () => {
                             icon='form'
                             placeholder='رقم الإنجاز الشهري'
                         />
+                        {children && onBottom  ?  children : null}
+
 
                         <Button>
                             <ButtonText>حفظ</ButtonText>
@@ -63,7 +65,7 @@ const SharedScreens = () => {
                     </FormArea>
                 </Content>
             </Container>
-          </RefreshHandler>
+        </RefreshHandler>
     )
 }
 

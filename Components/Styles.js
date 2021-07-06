@@ -43,6 +43,14 @@ let shadow = Platform.OS === 'ios'
   shadow-opacity: 0.3;`
     : `elevation: 15;`;
 
+let CheckPlatFormForCardDesign;
+
+if (Platform.OS === 'ios') {
+    CheckPlatFormForCardDesign = ` 
+  shadow-opacity: 0.3;`;
+} else {
+    CheckPlatFormForCardDesign = `elevation: 5`;
+}
 
 export const Container = styled.View`
   width: 100%;
@@ -67,7 +75,7 @@ export const HeaderStyle = styled.View`
   flex-direction: row;
 
   justify-content: space-between;
-  padding:0 30px;
+  padding: 0 30px;
   height: 80px;
   background-color: ${green3};
   ${shadow};
@@ -77,9 +85,9 @@ export const HeaderStyle = styled.View`
 export const TitleStyle = styled.Text`
 
   margin-left: ${Platform.OS === 'ios' ? '150px' : '40%'};
-
+  margin-right: 8px;
   color: ${white};
-  font-size: ${Platform.OS === 'ios' ? '22px' : '30px'}; ;
+  font-size: 22px;
   font-weight: bold;
 
 `;
@@ -212,14 +220,7 @@ export const Grid = styled.View`
   flex-wrap: wrap;
   justify-content: center;
 `;
-let CheckPlatFormForCardDesign;
 
-if (Platform.OS === 'ios') {
-    CheckPlatFormForCardDesign = ` 
-  shadow-opacity: 0.3;`;
-} else {
-    CheckPlatFormForCardDesign = `elevation: 5`;
-}
 export const Card = styled.TouchableOpacity`
   border-radius: ${5}px;
   padding: ${15}px;

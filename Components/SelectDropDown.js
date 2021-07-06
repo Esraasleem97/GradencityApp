@@ -6,11 +6,11 @@ import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
-const SelectDropDown = ({items}) => {
+const SelectDropDown = ({items, title = 'البند'}) => {
 
     return (
         <View style={{marginTop: 20}}>
-            <Label>البند</Label>
+            <Label>{title}</Label>
             <SearchableDropDownScroll
                 Icon='email'
                 onTextChange={(text) => console.log(text)}
@@ -36,7 +36,7 @@ const SelectDropDown = ({items}) => {
                 //mapping of item array
                 defaultIndex={0}
                 //default selected item index
-                placeholder="البند"
+                placeholder={title}
                 //place holder for the search input
                 resetValue={false}
                 //reset textInput Value with true and false state
