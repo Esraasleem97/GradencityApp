@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React, {useRef} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-
 import Home from './../Screens/Home';
 import {createStackNavigator} from "@react-navigation/stack";
 import Weed from "../Screens/Weed";
@@ -10,7 +9,7 @@ import Seed from "../Screens/Seed";
 import Taeqil from "../Screens/Taeqil";
 import TransferBetweenPlants from "../Screens/TransferBetweenPlants";
 import TrimMove from "../Screens/TrimMove";
-
+import {Animated, Dimensions, View,StyleSheet} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -53,32 +52,48 @@ const tabBarOptions = ({
  *  used / present  for authenticated user
  */
 const AuthorizedScreens = () => {
+    const tabOffsetValue = useRef(new Animated.Value(0)).current;
     return (
         <NavigationContainer>
             <Tab.Navigator
-                screenOptions={
-                    ({route}) => ({
-                        tabBarIcon: ({color, size}) => {
-                            let iconName;
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({  color, size}) => {
+                        let iconName;
 
-                            if (route.name === 'Home') {
-                                iconName = 'home'
-                            } else if (route.name === 'Profile') {
-                                iconName = 'person';
-                            } else if (route.name === 'Logout') {
-                                iconName = 'exit';
-                            }
-                            return <Ionicons name={iconName} size={size} color={color}/>;
+                        if (route.name === 'Home') {
+                            iconName = 'home'
+                            size = 20
+                        } else if (route.name === 'Profile') {
+                            iconName = 'person';
+                            size = 20
+                        } else if (route.name === 'Logout') {
+                            iconName = 'exit';
+                            size = 20
                         }
-                    })
+                        return <Ionicons name={iconName} size={size} color={color}/>;
+                    }})
                 }
-
                 tabBarOptions={tabBarOptions}
                 initialRouteName='Home'
             >
-                <Tab.Screen name="Home" component={HomeScreensContainer}/>
-                <Tab.Screen name="Profile" component={Profile}/>
-                <Tab.Screen name="Logout" component={Profile}/>
+
+
+                <Tab.Screen name="Home" component={HomeScreensContainer}
+                options={{
+                    tabBarLabel:'الرئيسية',
+                }}
+                />
+                <Tab.Screen name="Profile" component={Profile}
+                            options={{
+                                tabBarLabel:'حسابي'
+                            }}
+                />
+                <Tab.Screen name="Logout" component={Profile}
+                            options={{
+                                tabBarLabel:'تسجيل الخروج'
+                            }}
+                />
+
 
             </Tab.Navigator>
 
@@ -89,3 +104,31 @@ const AuthorizedScreens = () => {
 
 
 export default AuthorizedScreens
+
+const styles = StyleSheet.create({
+    tabContainer: {
+        height: 55,
+        shadowOffset: {
+            width: 0,
+            height: -1,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 4.0,
+        backgroundColor: "white",
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        elevation: 10,
+        position: "absolute",
+        bottom: 0,
+
+    },
+    slider: {
+        height: 5,
+        position: "absolute",
+        top: 0,
+        left: 10,
+        backgroundColor: '#FF7E68',
+        borderRadius: 10,
+        width: 50
+    },
+});

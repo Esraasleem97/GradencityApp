@@ -3,6 +3,7 @@ import {Button, ButtonText, Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
 import SelectDropDown from "./SelectDropDown";
+import {ScrollView} from "react-native";
 
 const items = [
     {id: 1, name: 'بند 1'},
@@ -49,7 +50,6 @@ const SharedScreens = ({children, onTop, onBottom}) => {
                             icon='form'
                             placeholder='رقم الإنجاز اليومي'
                         />
-
                         <Input
                             label='الإنجاز الشهري'
                             icon='form'

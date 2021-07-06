@@ -1,12 +1,11 @@
 import React from 'react';
-
-
 import {StyleSheet, View} from 'react-native';
 import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
 const SelectDropDown = ({items, title = 'البند'}) => {
+
 
     return (
         <View style={{marginTop: 20}}>
