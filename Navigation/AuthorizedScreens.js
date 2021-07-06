@@ -6,6 +6,7 @@ import Home from './../Screens/Home';
 import {createStackNavigator} from "@react-navigation/stack";
 import Weed from "../Screens/Weed";
 import Profile from "../Screens/Profile";
+import Seed from "../Screens/Seed";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ const HomeScreensContainer = () => {
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='Weed' component={Weed}/>
+            <Stack.Screen name='Seed' component={Seed}/>
         </Stack.Navigator>
     )
 }

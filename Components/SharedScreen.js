@@ -9,6 +9,7 @@ import SelectDropDown from "./SelectDropDown";
 const SharedScreens = () => {
 
     return (
+
          <RefreshHandler>
             <Container>
                 <Content>
@@ -20,16 +21,19 @@ const SharedScreens = () => {
                             icon='form'
                             placeholder='ادخل الرقم هنا'
                         />
+
                         <Input
                             label='الوقت المستغرق'
                             icon='dashboard'
                             placeholder='00:00:00'
                         />
+
                         <Input
                             label='الإنجاز اليومي'
                             icon='form'
                             placeholder='رقم الإنجاز اليومي'
                         />
+
                         <Input
                             label='الإنجاز الشهري'
                             icon='form'
@@ -39,6 +43,7 @@ const SharedScreens = () => {
                         <Button>
                             <ButtonText>حفظ</ButtonText>
                         </Button>
+
                     </FormArea>
                 </Content>
             </Container>

@@ -1,7 +1,5 @@
 import React, {useCallback, useState} from "react";
-import {RefreshControl} from "react-native";
-
-import { FlatList } from 'react-native-gesture-handler'
+import {RefreshControl, SectionList} from "react-native";
 
 const RefreshHandler = ({children}) => {
 
@@ -21,7 +19,7 @@ const RefreshHandler = ({children}) => {
 
     return (
 
-        <FlatList style={{height: '100%'  , width: '100%' }}
+        <SectionList style={{height: '100%'  , width: '100%' }}
                   showsVerticalScrollIndicator={false}
                   refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#36970c']}/>}
                   nestedScrollEnabled={true}
@@ -30,7 +28,7 @@ const RefreshHandler = ({children}) => {
                   data={[]}
                   renderItem={null}
                   keyExtractor={() => "App-Init"}
-        />
+         sections={[]}/>
 
     )
 
