@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Layout} from "@ui-kitten/components";
-import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {DataTable} from "../Components/DataTable";
