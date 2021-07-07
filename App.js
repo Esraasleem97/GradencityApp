@@ -24,25 +24,19 @@ if (!__DEV__) {
 
 const images = [
     require("./assets/adaptive-icon.png"),
-    require("./assets/bg-plants3.jpg"),
-    require("./assets/bg-plants5.jpg"),
     require("./assets/bg-plants6.jpg"),
     require("./assets/favicon.png"),
     require("./assets/icon.png"),
-    require("./assets/plant-logo.png"),
-    require("./assets/plants-logo.jpg"),
-    require("./assets/plants.jpg"),
-    require("./assets/plants1.png"),
-    require("./assets/plants2.jpg"),
-    require("./assets/plants3.png"),
-    require("./assets/plants4.jpg"),
-    require("./assets/plants5.jpg"),
-    require("./assets/plants6.png"),
-    require("./assets/plants7.png"),
-    require("./assets/plants8.png"),
-    require("./assets/splash.png") ,
-    require("./assets/splash-s.png")
-
+    require("./assets/ta3sheeb.png"),
+    require("./assets/splash-s.png") ,
+    require("./assets/plant.png"),
+    require("./assets/checkin.png"),
+    require("./assets/seeding.png"),
+    require("./assets/transform.png"),
+    require("./assets/checkout.png"),
+    require("./assets/ach.png"),
+    require("./assets/taq.png"),
+    require("./assets/rotate.png"),
 ];
 
 const App = () => {
@@ -56,7 +50,8 @@ const App = () => {
             const cacheImages = images.map(image => {
                 return Asset.fromModule(image).downloadAsync();
             });
-            return Promise.all(cacheImages);
+
+            await Promise.all(cacheImages);
         } catch (e) {
             console.warn(e)
         }

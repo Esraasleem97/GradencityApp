@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React from 'react';
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import SharedScreens from "../Components/SharedScreen";

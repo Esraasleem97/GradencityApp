@@ -34,7 +34,7 @@ const Login = ({navigation}) => {
                     <Container>
 
                         <HeaderLogin>
-                            <Logo source={require('../assets/plants-logo.jpg')}/>
+                            <Logo source={require('../assets/seeding.png')}/>
                         </HeaderLogin>
 
                         <Content>
