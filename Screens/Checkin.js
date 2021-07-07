@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Layout} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
@@ -7,19 +7,19 @@ import {DataTable} from "../Components/DataTable";
 import {Button, ButtonAdd, ButtonText, Colors, Container, Content, FlexEnd, FormArea} from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
-import {Feather} from "@expo/vector-icons";
+import {Feather,FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
 
-const {white} = Colors
+const {white,red} = Colors
 
 const Checkin = ({navigation}) => {
-    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة'];
-    const tableData = [
-        ['1', '2', '3', '4'],
-        ['a', 'b', 'c', 'd'],
-        ['1', '2', '3', '45789'],
-        ['a', 'b', 'c', 'd']
-    ]
+    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة',''];
+    const [tableData ,setTableData] = useState( [
+        ['1', '2', '3', '4',<FontAwesome onPress={()=>alert('1')} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('2')} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['1', '2', '3', '45789',<FontAwesome onPress={()=>alert('3')} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('4')} name='times' color={red} style={{textAlign:'center'}}/>]
+    ])
     return (
         <Layout>
             <Header title='الإدخال' navigation={navigation}/>
@@ -35,7 +35,7 @@ const Checkin = ({navigation}) => {
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
-                            <DataTable tableHead={tableHead} tableData={tableData}/>
+                            <DataTable tableHead={tableHead} tableData={tableData}   />
                             <Input
                                 label='الوقت المستغرق'
                                 icon='dashboard'

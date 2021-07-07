@@ -7,8 +7,8 @@ const {secondary,darkLight} = Colors;
 export const DataTable = ({tableHead,tableData , ...props}) => {
     return (
             <Table borderStyle={{borderWidth: 1, borderColor: '#eee' , width:'100%'}} style={{marginBottom:15 }} >
-                <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
-                <Rows data={tableData} textStyle={styles.text}/>
+                <Row data={tableHead} style={styles.head} textStyle={styles.text} {...props} />
+                <Rows data={tableData} textStyle={styles.text} {...props} />
             </Table>
     )
 }
