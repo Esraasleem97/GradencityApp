@@ -15,7 +15,7 @@ const {white,red} = Colors
 const Checkin = ({navigation}) => {
     const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة',''];
     const [tableData ,setTableData] = useState( [
-        ['1', '2', '3', '4',<FontAwesome onPress={()=>alert('1')} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['البندالبندالبندالالالالالالا', '2', '3', '4',<FontAwesome onPress={()=>alert('1')} name='times' color={red} style={{textAlign:'center'}}/>],
         ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('2')} name='times' color={red} style={{textAlign:'center'}}/>],
         ['1', '2', '3', '45789',<FontAwesome onPress={()=>alert('3')} name='times' color={red} style={{textAlign:'center'}}/>],
         ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('4')} name='times' color={red} style={{textAlign:'center'}}/>]
