@@ -6,21 +6,33 @@ import {DataTable} from "../Components/DataTable";
 import {Button, ButtonAdd, ButtonText, Colors, Container, Content, FlexEnd, FormArea} from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
-import {Feather,FontAwesome} from "@expo/vector-icons";
+import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
 
-const {white,red} = Colors
+const {white, red} = Colors
 
 const Checkin = ({navigation}) => {
-    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة',''];
-    const [tableData ,setTableData] = useState( [
-        ['1', '2', '3', '4',<FontAwesome onPress={()=>removeRow(1)} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['2', 'b', 'c', 'd',<FontAwesome onPress={()=>removeRow(2)} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['3', '2', '3', '45789',<FontAwesome onPress={()=>removeRow(3)} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['4', 'b', 'c', 'd',<FontAwesome onPress={()=>removeRow(4)} name='times' color={red} style={{textAlign:'center'}}/>]
+    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', ''];
+    const [tableData, setTableData] = useState([
+        ['1', '2', '3', '4',
+            <FontAwesome onPress={() => removeRow(0)} name='times' color={red} style={{textAlign: 'center'}}/>],
+        ['2', 'b', 'c', 'd',
+            <FontAwesome onPress={() => removeRow(1)} name='times' color={red} style={{textAlign: 'center'}}/>],
+        ['3', '2', '3', '45789',
+            <FontAwesome onPress={() => removeRow(2)} name='times' color={red} style={{textAlign: 'center'}}/>],
+        ['4', 'b', 'c', 'd',
+            <FontAwesome onPress={() => removeRow(3)} name='times' color={red} style={{textAlign: 'center'}}/>]
     ]);
-    const removeRow=(id)=> {
-        setTableData(tableData.splice(id, 1));
+    const removeRow = (id) => {
+        // setTableData(tableData.filter((rows) => {
+        //     console.log(rows)
+        //     return rows[id] != id;
+        // })
+        // );
+        const item = tableData.splice((0,id),1); // should slice first array out of items array
+
+        const arr = [].concat.apply([], item);
+        setTableData(tableData.splice((0,id),1))
         console.log(id)
     }
     return (
@@ -38,7 +50,7 @@ const Checkin = ({navigation}) => {
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
-                            <DataTable tableHead={tableHead} tableData={tableData}   />
+                            <DataTable tableHead={tableHead} tableData={tableData}/>
                             <Input
                                 label='الوقت المستغرق'
                                 icon='dashboard'
