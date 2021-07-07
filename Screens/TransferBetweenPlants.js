@@ -16,11 +16,8 @@ const TransferBetweenPlants = ({navigation}) => {
                 <SelectDropDown items={items} title='الى المشتل'/>
                 <SelectDropDown items={items}/>
             </SharedScreens>
-
-
         </Layout>
     );
-
 }
 
 export default TransferBetweenPlants;
