@@ -14,11 +14,15 @@ const {white,red} = Colors
 const Checkin = ({navigation}) => {
     const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة',''];
     const [tableData ,setTableData] = useState( [
-        ['البندالبندالبندالالالالالالا', '2', '3', '4',<FontAwesome onPress={()=>alert('1')} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('2')} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['1', '2', '3', '45789',<FontAwesome onPress={()=>alert('3')} name='times' color={red} style={{textAlign:'center'}}/>],
-        ['a', 'b', 'c', 'd',<FontAwesome onPress={()=>alert('4')} name='times' color={red} style={{textAlign:'center'}}/>]
-    ])
+        ['1', '2', '3', '4',<FontAwesome onPress={()=>removeRow(1)} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['2', 'b', 'c', 'd',<FontAwesome onPress={()=>removeRow(2)} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['3', '2', '3', '45789',<FontAwesome onPress={()=>removeRow(3)} name='times' color={red} style={{textAlign:'center'}}/>],
+        ['4', 'b', 'c', 'd',<FontAwesome onPress={()=>removeRow(4)} name='times' color={red} style={{textAlign:'center'}}/>]
+    ]);
+    const removeRow=(id)=> {
+        setTableData(tableData.splice(id, 1));
+        console.log(id)
+    }
     return (
         <Layout>
             <Header title='الإدخال' navigation={navigation}/>
