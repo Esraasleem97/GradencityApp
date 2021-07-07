@@ -2,14 +2,15 @@ import React, {useState} from "react";
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {DataTable} from "../Components/DataTable";
 import {Button, ButtonAdd, ButtonText, Colors, Container, Content, FlexEnd, FormArea} from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
 import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
+import {Row, Table} from "react-native-table-component";
+import {StyleSheet} from "react-native";
 
-const {white, red} = Colors
+const {white, red, secondary} = Colors
 
 const Checkin = ({navigation}) => {
 
@@ -27,7 +28,9 @@ const Checkin = ({navigation}) => {
     ]);
 
     const removeRow = (id) => {
+
         const newDataTableFields = tableData.filter((rows, i) => i !== id);
+
         return setTableData(newDataTableFields)
     };
 
@@ -49,7 +52,15 @@ const Checkin = ({navigation}) => {
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
-                            <DataTable tableHead={tableHead} tableData={tableData}/>
+
+
+                            <Table borderStyle={{borderWidth: 1, borderColor: '#eee', width: '100%'}}
+                                   style={{marginBottom: 15}}>
+                                <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
+
+
+                                <Row data={tableData} textStyle={styles.text}/>
+                            </Table>
                             <Input
                                 label='الوقت المستغرق'
                                 icon='dashboard'
@@ -67,5 +78,10 @@ const Checkin = ({navigation}) => {
         </Layout>
     )
 }
+
+const styles = StyleSheet.create({
+    head: {height: 40, backgroundColor: secondary},
+    text: {margin: 6, textAlign: 'center'}
+});
 
 export default Checkin;
