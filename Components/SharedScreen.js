@@ -2,6 +2,7 @@ import React from "react";
 import {Button, ButtonText, Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
+import Message from "./Messages";
 
 
 
@@ -19,7 +20,6 @@ const SharedScreens = ({children, onTop, onBottom}) => {
                             icon='form'
                             placeholder='ادخل الرقم هنا'
                         />
-
                         <Input
                             label='الوقت المستغرق'
                             icon='dashboard'

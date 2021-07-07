@@ -1,8 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import Home from './../Screens/Home';
 import {createStackNavigator} from "@react-navigation/stack";
+import {Ionicons} from "@expo/vector-icons";
+import Home from './../Screens/Home';
 import Weed from "../Screens/Weed";
 import Profile from "../Screens/Profile";
 import Seed from "../Screens/Seed";
@@ -10,18 +11,19 @@ import Taeqil from "../Screens/Taeqil";
 import TransferBetweenPlants from "../Screens/TransferBetweenPlants";
 import TrimMove from "../Screens/TrimMove";
 import Achievement from '../Screens/Achievement';
-import {Ionicons} from "@expo/vector-icons";
 import Rotate from "../Screens/Rotate";
+import Checkin from "../Screens/Checkin";
+import Checkout from "../Screens/Checkout";
 
 const Tab = createBottomTabNavigator();
-
 const Stack = createStackNavigator();
-
 
 const HomeScreensContainer = () => {
     return (
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
             <Stack.Screen name='Home' component={Home}/>
+            <Stack.Screen name='Checkin' component={Checkin}/>
+            <Stack.Screen name='Checkout' component={Checkout}/>
             <Stack.Screen name='Weed' component={Weed}/>
             <Stack.Screen name='Seed' component={Seed}/>
             <Stack.Screen name='Taeqil' component={Taeqil}/>
@@ -29,7 +31,6 @@ const HomeScreensContainer = () => {
             <Stack.Screen name='Transfer' component={TransferBetweenPlants}/>
             <Stack.Screen name='Achievement' component={Achievement}/>
             <Stack.Screen name='Rotate' component={Rotate}/>
-
         </Stack.Navigator>
     )
 }
