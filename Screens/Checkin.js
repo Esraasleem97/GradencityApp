@@ -12,7 +12,9 @@ import Input from "../Components/Input";
 const {white, red} = Colors
 
 const Checkin = ({navigation}) => {
-    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', ''];
+
+
+    const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', 'الاجراء'];
     const [tableData, setTableData] = useState([
         ['1', '2', '3', '4',
             <FontAwesome onPress={() => removeRow(0)} name='times' color={red} style={{textAlign: 'center'}}/>],
@@ -23,19 +25,20 @@ const Checkin = ({navigation}) => {
         ['4', 'b', 'c', 'd',
             <FontAwesome onPress={() => removeRow(3)} name='times' color={red} style={{textAlign: 'center'}}/>]
     ]);
-    const removeRow = (id) => {
-        // setTableData(tableData.filter((rows) => {
-        //     console.log(rows)
-        //     return rows[id] != id;
-        // })
-        // );
-        const item = tableData.splice((0,id),1); // should slice first array out of items array
 
-        const arr = [].concat.apply([], item);
-        setTableData(tableData.splice((0,id),1))
-        console.log(id)
-    }
+
+    const removeRow = (id) => {
+        // const newDataTableFields = tableData.filter((rows, i) => i !== id);
+        // return setTableData(newDataTableFields)
+
+        setTableData([...tableData,tableData.splice(id,1)])
+    };
+
+
+
     return (
+
+
         <Layout>
             <Header title='الإدخال' navigation={navigation}/>
             <RefreshHandler>

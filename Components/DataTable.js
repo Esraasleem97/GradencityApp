@@ -1,8 +1,8 @@
 import React from "react";
 import { Table, Row, Rows } from 'react-native-table-component';
-import {View,StyleSheet} from "react-native";
+import {StyleSheet} from "react-native";
 import {Colors} from "./Styles";
-const {secondary,darkLight} = Colors;
+const {secondary} = Colors;
 
 export const DataTable = ({tableHead,tableData , ...props}) => {
     return (

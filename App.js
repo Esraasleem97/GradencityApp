@@ -30,7 +30,7 @@ const images = [
     require("./assets/favicon.png"),
     require("./assets/icon.png"),
     require("./assets/ta3sheeb.png"),
-    require("./assets/splash-s.png") ,
+    // require("./assets/splash-s.png") ,
     require("./assets/plant.png"),
     require("./assets/checkin.png"),
     require("./assets/seeding.png"),
