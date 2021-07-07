@@ -29,9 +29,8 @@ const Checkin = ({navigation}) => {
 
     const removeRow = (id) => {
         // const newDataTableFields = tableData.filter((rows, i) => i !== id);
-        // return setTableData(newDataTableFields)
-
-        setTableData([...tableData,tableData.splice(id,1)])
+        //  setTableData(newDataTableFields)
+        setTableData([...tableData,tableData.splice(id,1)[1]])
     };
 
 
