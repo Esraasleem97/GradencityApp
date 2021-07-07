@@ -23,6 +23,8 @@ if (!__DEV__) {
 }
 
 const images = [
+
+    // start cache main system images
     require("./assets/adaptive-icon.png"),
     require("./assets/bg-plants6.jpg"),
     require("./assets/favicon.png"),
@@ -37,6 +39,9 @@ const images = [
     require("./assets/ach.png"),
     require("./assets/taq.png"),
     require("./assets/rotate.png"),
+
+    // end of cache main system images
+
 ];
 
 const App = () => {

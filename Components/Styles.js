@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
 import {Dimensions, I18nManager, Platform} from "react-native";
+import Message from "./Messages";
 const IS_RTL = I18nManager.isRTL;
 const StatusBarHeight = Constants.statusBarHeight;
 
@@ -21,6 +22,8 @@ export const Colors = {
     green3: '#099567',
     greenLight2: '#d5f2e3',
     red: '#EF4444',
+    orangeLight:'#FF7E68',
+    redLight:'#ffd1d1',
     darkgray: '#555555',
 };
 
@@ -36,9 +39,11 @@ const {
     greenLight1,
     greenLight2,
     red,
+    redLight,
     darkgray,
     brown,
-    brownLight
+    brownLight,
+    orangeLight
 } = Colors;
 
 let shadow = Platform.OS === 'ios'
@@ -113,7 +118,7 @@ export const Shadow = styled.View`
 export const HeaderShape = styled.View`
   width: 100%;
   height: ${100}px;
-  background-color: #FF7E68;
+  background-color: ${orangeLight};
   border-bottom-left-radius: ${0}px;
   border-bottom-right-radius: ${100}px;
 `;
@@ -128,8 +133,6 @@ export const Logo = styled.Image`
 export const Content = styled.View`
   width: 80%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
   margin-bottom: ${StatusBarHeight + 70}px;
 
 `;
@@ -189,7 +192,7 @@ export const ForgetPassword = styled.Text`
 `;
 export const Button = styled.TouchableOpacity`
   padding: ${15}px;
-  background-color: #FF7E68;
+  background-color: ${orangeLight};
   justify-content: center;
   border-radius: ${50}px;
   margin: ${5}px;
@@ -251,4 +254,17 @@ export const FlexStyled = styled.View`
   flex-wrap: wrap;
   justify-content: space-between;
   
+`;
+export const FlexEnd = styled.View`
+  width: 100%;
+align-items: flex-end;
+`;
+export const ButtonAdd = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  width: 30%;
+  padding: 10px;
+  background-color: ${orangeLight};
+  margin-vertical:10px ;
+  border-radius: 5px;
 `;
