@@ -8,12 +8,9 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
 import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
-import {StyleSheet} from "react-native";
-import {Row, Rows, Table} from "react-native-table-component";
 
 const {white, red} = Colors
 
-const {secondary} = Colors;
 const Checkin = ({navigation}) => {
 
     const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', 'الاجراء'];
@@ -31,7 +28,7 @@ const Checkin = ({navigation}) => {
 
     const removeRow = (id) => {
         const newDataTableFields = tableData.filter((rows, i) => i !== id);
-        setTableData(newDataTableFields)
+        return setTableData(newDataTableFields)
     };
 
 
@@ -52,11 +49,7 @@ const Checkin = ({navigation}) => {
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
-                            <Table borderStyle={{borderWidth: 1, borderColor: '#eee', width: '100%'}}
-                                   style={{marginBottom: 15}}>
-                                <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
-                                <Rows data={tableData} textStyle={styles.text}/>
-                            </Table>
+                            <DataTable tableHead={tableHead} tableData={tableData}/>
                             <Input
                                 label='الوقت المستغرق'
                                 icon='dashboard'
@@ -74,10 +67,5 @@ const Checkin = ({navigation}) => {
         </Layout>
     )
 }
-
-const styles = StyleSheet.create({
-    head: {height: 40, backgroundColor: secondary},
-    text: {margin: 6, textAlign: 'center'}
-});
 
 export default Checkin;
