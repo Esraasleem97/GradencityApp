@@ -7,32 +7,31 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
 import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
-import {Row, Table} from "react-native-table-component";
-import {StyleSheet} from "react-native";
+import {DataTable} from "../Components/DataTable";
 
-const {white, red, secondary} = Colors
+const {white, red} = Colors
 
+const ArrayOfTableData = [];
 const Checkin = ({navigation}) => {
 
     const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', 'الاجراء'];
 
-    const [tableData, setTableData] = useState([
-        ['1', '2', '3', '4',
-            <FontAwesome onPress={() => removeRow(0)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['2', 'b', 'c', 'd',
-            <FontAwesome onPress={() => removeRow(1)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['3', '2', '3', '45789',
-            <FontAwesome onPress={() => removeRow(2)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['4', 'b', 'c', 'd',
-            <FontAwesome onPress={() => removeRow(3)} name='times' color={red} style={{textAlign: 'center'}}/>]
-    ]);
+    const [tableData, setTableData] = useState([]);
 
     const removeRow = (id) => {
-
-        const newDataTableFields = tableData.filter((rows, i) => i !== id);
-
-        return setTableData(newDataTableFields)
+        return setTableData(tableData.filter((row, i) => i !== id))
     };
+
+
+    const AddNewRow = async () => {
+        await ArrayOfTableData.push((['4', 'b', 'c', 'd']))
+
+
+        console.log(ArrayOfTableData)
+
+        const fixed = await tableData.push(ArrayOfTableData)
+        setTableData(fixed)
+    }
 
 
     return (
@@ -47,20 +46,13 @@ const Checkin = ({navigation}) => {
                             <SelectDropDown title='المورد' items={items}/>
                             <SelectDropDown title='المستودع' items={items}/>
                             <FlexEnd>
-                                <ButtonAdd>
+                                <ButtonAdd onPress={AddNewRow}>
                                     <Feather name='plus' size={15} color={white}/>
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
 
-
-                            <Table borderStyle={{borderWidth: 1, borderColor: '#eee', width: '100%'}}
-                                   style={{marginBottom: 15}}>
-                                <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
-
-
-                                <Row data={tableData} textStyle={styles.text}/>
-                            </Table>
+                            <DataTable tableHead={tableHead} tableData={tableData}/>
                             <Input
                                 label='الوقت المستغرق'
                                 icon='dashboard'
@@ -79,9 +71,5 @@ const Checkin = ({navigation}) => {
     )
 }
 
-const styles = StyleSheet.create({
-    head: {height: 40, backgroundColor: secondary},
-    text: {margin: 6, textAlign: 'center'}
-});
 
 export default Checkin;
