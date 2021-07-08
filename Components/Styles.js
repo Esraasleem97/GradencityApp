@@ -66,6 +66,7 @@ export const Container = styled.View`
   align-items: center;
   margin-top: ${StatusBarHeight - 10}px;
   margin-bottom: ${StatusBarHeight + 30}px;
+  
 
 `;
 export const ImageBackground = styled.ImageBackground`
@@ -90,6 +91,8 @@ export const HeaderStyle = styled.View`
   ${shadow};
   align-items: center;
   border-bottom-left-radius: 200px;
+
+
 `;
 export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
@@ -161,6 +164,8 @@ export const TextInputStyled = styled.TextInput`
   margin-bottom: ${10}px;
   color: ${darkgray};
   text-align: right;
+
+
 
 `;
 
