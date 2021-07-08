@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Layout} from "@ui-kitten/components";
 import {
     Container,
@@ -11,8 +11,8 @@ import {
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
 
-const Home = ({navigation}) => {
 
+const Home = ({navigation}) => {
     const data = [
         {id: 0, title: 'الإدخال', img: require('../assets/checkin.png'), nav: 'Checkin'},
         {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout'},

@@ -44,15 +44,13 @@ const images = [
     // end of cache main system images
 
 ];
-try {
-    I18nManager.allowRTL(false);
-} catch (e) {
-    console.log(e);
-}
+
+
+
 const App = () => {
-
-
-
+    useEffect( () => {
+          I18nManager.allowRTL(false);
+    })
 
     const [appIsReady, setAppIsReady] = useState(false)
 
