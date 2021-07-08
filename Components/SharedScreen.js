@@ -19,17 +19,20 @@ const SharedScreens = ({children, onTop, onBottom}) => {
                             label='الكمية'
                             icon='form'
                             placeholder='ادخل الرقم هنا'
+                            keyboardType='numeric'
                         />
                         <Input
                             label='الوقت المستغرق'
                             icon='dashboard'
                             placeholder='00:00:00'
+                            keyboardType='numeric'
                         />
 
                         <Input
                             label='الإنجاز اليومي'
                             icon='form'
                             placeholder='رقم الإنجاز اليومي'
+
                         />
                         <Input
                             label='الإنجاز الشهري'

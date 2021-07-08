@@ -31,6 +31,7 @@ const Profile = ({navigation}) =>{
                                 label='رقم الهاتف'
                                 icon='phone'
                                 placeholder='(+962) 78 0000 00'
+                                keyboardType='numeric'
 
                             />
                             <Line/>

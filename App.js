@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider} from '@ui-kitten/components';
 import {Provider} from "react-redux";
@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthorizedScreens from './Navigation/AuthorizedScreens'
 import UnAuthorizedScreens from './Navigation/UnAuthorizedScreens'
 import {Asset} from "expo-asset";
+import {I18nManager} from 'react-native'
 
 if (!__DEV__) {
     console.log = () => {
@@ -43,8 +44,15 @@ const images = [
     // end of cache main system images
 
 ];
-
+try {
+    I18nManager.allowRTL(false);
+} catch (e) {
+    console.log(e);
+}
 const App = () => {
+
+
+
 
     const [appIsReady, setAppIsReady] = useState(false)
 

@@ -70,6 +70,7 @@ const Checkin = ({navigation}) => {
                                 label='الوقت المستغرق'
                                 icon='dashboard'
                                 placeholder='00:00:00'
+                                keyboardType='numeric'
                             />
                             <Button>
                                 <ButtonText>حفظ</ButtonText>
@@ -83,16 +84,19 @@ const Checkin = ({navigation}) => {
                                 label='الطول'
                                 icon='form'
                                 placeholder='الطول'
+                                keyboardType='numeric'
                             />
                             <Input
                                 label='الحجم'
                                 icon='form'
                                 placeholder='الحجم'
+                                keyboardType='numeric'
                             />
                             <Input
                                 label='التكلفة'
                                 icon='form'
                                 placeholder='التكلفة'
+                                keyboardType='numeric'
                             />
                             <FlexRow>
                                 <ButtonUI onPress={() => setVisible(false)} status='success' style={styles.button}>

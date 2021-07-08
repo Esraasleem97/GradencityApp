@@ -66,6 +66,7 @@ const Checkin = ({navigation}) => {
                                 label='الوقت المستغرق'
                                 icon='dashboard'
                                 placeholder='00:00:00'
+                                keyboardType='numeric'
                             />
                             <Button>
                                 <ButtonText>حفظ</ButtonText>
@@ -80,6 +81,7 @@ const Checkin = ({navigation}) => {
                                 label='الكمية'
                                 icon='form'
                                 placeholder='الكمية'
+                                keyboardType='numeric'
                             />
 
                             <FlexRow>

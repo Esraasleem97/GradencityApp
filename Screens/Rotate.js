@@ -23,12 +23,14 @@ const Rotate = ({navigation}) => {
                                 label='الكمية الموجودة'
                                 icon='form'
                                 placeholder='ادخل الرقم هنا'
+                                keyboardType='numeric'
                             />
 
                             <Input
                                 label='الكمية'
                                 icon='form'
                                 placeholder='الكمية'
+                                keyboardType='numeric'
                             />
                             <Line/>
                             <SelectDropDown items={items} title='البند الجديد' style={{fontSize:20}}/>
@@ -36,6 +38,7 @@ const Rotate = ({navigation}) => {
                                 label='الكمية'
                                 icon='form'
                                 placeholder='ادخل الرقم هنا'
+                                keyboardType='numeric'
 
                             />
                             <FlexStyled >
@@ -43,16 +46,19 @@ const Rotate = ({navigation}) => {
                                     label='الطول'
                                     icon='form'
                                     placeholder='الطول'
+                                    keyboardType='numeric'
                                 />
                                 <Input
                                     label='الحجم'
                                     icon='form'
                                     placeholder='الحجم'
+                                    keyboardType='numeric'
                                 />
                                 <Input
                                     label='القطر'
                                     icon='form'
                                     placeholder='القطر'
+                                    keyboardType='numeric'
                                 />
 
                             </FlexStyled>
@@ -60,6 +66,7 @@ const Rotate = ({navigation}) => {
                                 label='الوقت المستغرق'
                                 icon='dashboard'
                                 placeholder='00:00:00'
+                                keyboardType='numeric'
                             />
                             <Button>
                                 <ButtonText>حفظ</ButtonText>
