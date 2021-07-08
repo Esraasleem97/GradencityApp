@@ -14,7 +14,7 @@ export const Colors = {
     secondary: '#f1f5f5',
     tertiary: '#11270b',
     brown: '#9d551a',
-    greenLight1: '#f5fdf7',
+    greenLight1: '#e6e7e6',
     darkLight: '#9CA3AF',
     white: '#FFFFFF',
     green1: '#10B981',
@@ -246,7 +246,7 @@ export const CardImage = styled.Image`
 export const Line = styled.View`
   width: 100%;
   height: 1px;
-  background-color: ${darkLight};
+  background-color: ${greenLight1};
 
 `;
 export const FlexStyled = styled.View`
