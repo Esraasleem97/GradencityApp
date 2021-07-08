@@ -18,18 +18,18 @@ const Profile = ({navigation}) =>{
                         <FormArea>
                             <Input
                                 label='اسم المستخدم'
-                                icon='form'
+                                icon='user'
                                 placeholder='الاسم'
                             />
 
                             <Input
                                 label='البريد الإلكتروني'
-                                icon='form'
+                                icon='mail'
                                 placeholder='example@example.com'
                             />
                             <Input
                                 label='رقم الهاتف'
-                                icon='form'
+                                icon='phone'
                                 placeholder='(+962) 78 0000 00'
 
                             />
