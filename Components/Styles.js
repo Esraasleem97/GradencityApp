@@ -82,7 +82,7 @@ export const HeaderOpacityStyle = styled.View`
 `;
 
 export const HeaderStyle = styled.View`
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0 30px;
   height: 80px;
@@ -90,6 +90,9 @@ export const HeaderStyle = styled.View`
   ${shadow};
   align-items: center;
   border-bottom-left-radius: 200px;
+  text-align: right;
+  direction: rtl;
+
 `;
 export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
@@ -161,6 +164,8 @@ export const TextInputStyled = styled.TextInput`
   margin-bottom: ${10}px;
   color: ${darkgray};
   text-align: right;
+
+
 
 `;
 

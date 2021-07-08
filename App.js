@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthorizedScreens from './Navigation/AuthorizedScreens'
 import UnAuthorizedScreens from './Navigation/UnAuthorizedScreens'
 import {Asset} from "expo-asset";
-import {I18nManager} from 'react-native'
+import {I18nManager, LayoutAnimation, UIManager, View} from 'react-native'
 
 if (!__DEV__) {
     console.log = () => {
@@ -31,7 +31,7 @@ const images = [
     require("./assets/favicon.png"),
     require("./assets/icon.png"),
     require("./assets/ta3sheeb.png"),
-    require("./assets/splash-s.png") ,
+    require("./assets/splash-s.png"),
     require("./assets/plant.png"),
     require("./assets/checkin.png"),
     require("./assets/seeding.png"),
@@ -44,14 +44,8 @@ const images = [
     // end of cache main system images
 
 ];
-try {
-    I18nManager.allowRTL(false);
-} catch (e) {
-    console.log(e);
-}
+
 const App = () => {
-
-
 
 
     const [appIsReady, setAppIsReady] = useState(false)
@@ -71,7 +65,6 @@ const App = () => {
     };
 
     const checkUserIsSet = async () => {
-
         let user = await AsyncStorage.getItem('user')
 
         if (user) {
@@ -86,6 +79,12 @@ const App = () => {
         await handleResourcesAsync;
     }
 
+    useEffect(() => {
+        if (UIManager.setLayoutAnimationEnabledExperimental)
+            UIManager.setLayoutAnimationEnabledExperimental(true);
+
+        LayoutAnimation.spring();
+    })
 
     if (!appIsReady) {
         return (
@@ -101,12 +100,14 @@ const App = () => {
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
-                {/*<UnAuthorizedScreens/>*/}
-                <AuthorizedScreens/>
-                {/*{isAuthenticated*/}
-                {/*    ? <AuthorizedScreens/>*/}
-                {/*    : <UnAuthorizedScreens/>*/}
-                {/*}*/}
+
+                    {/*<UnAuthorizedScreens/>*/}
+                    <AuthorizedScreens/>
+                    {/*{isAuthenticated*/}
+                    {/*    ? <AuthorizedScreens/>*/}
+                    {/*    : <UnAuthorizedScreens/>*/}
+                    {/*}*/}
+
             </ApplicationProvider>
         </Provider>
     );
