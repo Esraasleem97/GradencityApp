@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Layout, Button as ButtonUI} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
+
 import {DataTable} from "../Components/DataTable";
 import {
     Button,
@@ -18,15 +19,18 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {items} from "../DummyData";
 import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
+
 import {Modals} from "../Components/Modals";
 import {StyleSheet} from "react-native";
 
 const {white, red} = Colors
 
+
 const Checkin = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
 
     const tableHead = ['البند', 'الطول', 'حجم العبوة', 'التكلفة', 'الاجراء'];
+
     const [tableData, setTableData] = useState([
         ['1', '2', '3', '4',
             <FontAwesome onPress={() => removeRow(0)} name='times' color={red} style={{textAlign: 'center'}}/>],
@@ -40,15 +44,11 @@ const Checkin = ({navigation}) => {
 
 
     const removeRow = (id) => {
-        // const newDataTableFields = tableData.filter((rows, i) => i !== id);
-        //  setTableData(newDataTableFields)
         setTableData([...tableData, tableData.splice(id, 1)[1]])
     };
 
 
     return (
-
-
         <Layout>
             <Header title='الإدخال' navigation={navigation}/>
             <RefreshHandler>
@@ -58,11 +58,13 @@ const Checkin = ({navigation}) => {
                             <SelectDropDown title='المورد' items={items}/>
                             <SelectDropDown title='المستودع' items={items}/>
                             <FlexEnd>
+
                                 <ButtonAdd onPress={() => setVisible(true)}>
                                     <Feather name='plus' size={15} color={white}/>
                                     <ButtonText>إضافة</ButtonText>
                                 </ButtonAdd>
                             </FlexEnd>
+
                             <DataTable tableHead={tableHead} tableData={tableData}/>
                             <Input
                                 label='الوقت المستغرق'
@@ -75,8 +77,7 @@ const Checkin = ({navigation}) => {
                         </FormArea>
                         <Modals
                             visible={visible}
-                            setVisible={setVisible}
-                        >
+                            setVisible={setVisible}>
                             <SelectDropDown title='البند' items={items}/>
                             <Input
                                 label='الطول'
@@ -94,23 +95,21 @@ const Checkin = ({navigation}) => {
                                 placeholder='التكلفة'
                             />
                             <FlexRow>
-                                <ButtonUI onPress={() => setVisible(false)} status='success' style={styles.button} >
+                                <ButtonUI onPress={() => setVisible(false)} status='success' style={styles.button}>
                                     حفظ
                                 </ButtonUI>
                                 <ButtonUI onPress={() => setVisible(false)} status='basic' style={styles.button}>
                                     إلغاء
                                 </ButtonUI>
                             </FlexRow>
-
                         </Modals>
                     </Content>
                 </Container>
             </RefreshHandler>
-
-
         </Layout>
     )
 }
+
 
 export default Checkin;
 
