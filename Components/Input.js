@@ -8,7 +8,7 @@ const {green1, darkLight} = Colors
 const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props}) => {
 
     return (
-        <View style={{ flexDirection: 'row-reverse'}} >
+        <View>
             <LeftIcon>
                 <AntDesign name={icon} size={20} color={green1}/>
             </LeftIcon>

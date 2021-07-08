@@ -82,7 +82,7 @@ export const HeaderOpacityStyle = styled.View`
 `;
 
 export const HeaderStyle = styled.View`
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
   padding: 0 30px;
   height: 80px;
@@ -90,8 +90,7 @@ export const HeaderStyle = styled.View`
   ${shadow};
   align-items: center;
   border-bottom-left-radius: 200px;
-  text-align: right;
-  direction: rtl;
+
 
 `;
 export const TitleStyle = styled.Text`
