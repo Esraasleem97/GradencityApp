@@ -64,6 +64,7 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
+  margin-top: ${StatusBarHeight - 10}px;
   margin-bottom: ${StatusBarHeight + 30}px;
 
 `;
@@ -246,6 +247,7 @@ export const CardImage = styled.Image`
 export const Line = styled.View`
   width: 100%;
   height: 1px;
+  margin-vertical: 10px;
   background-color: ${greenLight1};
 
 `;
