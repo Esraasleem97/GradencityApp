@@ -1,12 +1,11 @@
 import React from "react";
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Card, Modal} from '@ui-kitten/components';
-import {Container, Button, ButtonText} from "./Styles";
+import {Container} from "./Styles";
 
 export const Modals = ({children, visible, setVisible}) => {
 
     return (
-        <Container>
             <Modal
                 style={{width:'90%'}}
                 visible={visible}
@@ -16,13 +15,9 @@ export const Modals = ({children, visible, setVisible}) => {
                     {children}
                 </Card>
             </Modal>
-        </Container>
     );
 }
 const styles = StyleSheet.create({
-    container: {
-        minHeight: 192,
-    },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
