@@ -71,7 +71,7 @@ export const userLoginHandler = (username, password) => async (dispatch) => {
 export const userLogoutHandler = () => async (dispatch) => {
 
     await AsyncStorage.removeItem('user')
-console.log('logout')
+
     dispatch({type: USER_REFRESH})
 
 }
