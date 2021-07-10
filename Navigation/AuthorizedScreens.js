@@ -14,6 +14,10 @@ import Achievement from '../Screens/Achievement';
 import Rotate from "../Screens/Rotate";
 import Checkin from "../Screens/Checkin";
 import Checkout from "../Screens/Checkout";
+import {TouchableOpacity, View} from "react-native";
+import {Text} from "@ui-kitten/components";
+import {useDispatch} from "react-redux";
+import {userLogoutHandler} from "../Redux/Actions/userActions";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -36,10 +40,9 @@ const HomeScreensContainer = () => {
 }
 
 
-
 const tabBarOptions = ({
     labelStyle: {fontSize: 14},
-    tabStyle: {flex: 1, justifyContent: 'center',marginBottom:8},
+    tabStyle: {flex: 1, justifyContent: 'center', marginBottom: 8},
     indicatorStyle: {
         marginHorizontal: '5%',
         width: '40%'
@@ -54,8 +57,10 @@ const tabBarOptions = ({
         position: "absolute",
         bottom: 0,
     },
-    keyboardHidesTabBar: 'false'
+    keyboardHidesTabBar: 'false',
+    showLabel: false
 })
+
 
 /**
  * @returns {JSX.Element}
@@ -64,46 +69,67 @@ const tabBarOptions = ({
  */
 const AuthorizedScreens = () => {
 
+
+    const dispatch = useDispatch()
+
+    const LogoutHandler = () => {
+      return  dispatch(userLogoutHandler())
+
+    }
+
+
     return (
         <NavigationContainer>
             <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({  color, size}) => {
+                screenOptions={({route}) => ({
+                    tabBarIcon: ({color, size, text, onPress, isViewer}) => {
                         let iconName;
+
 
                         if (route.name === 'Home') {
                             iconName = 'home'
                             size = 20
+                            text = 'الرئيسية'
+                            isViewer = true
                         } else if (route.name === 'Profile') {
                             iconName = 'person';
                             size = 20
+                            text = 'حسابي'
+                            isViewer = true
+
                         } else if (route.name === 'Logout') {
                             iconName = 'exit';
                             size = 20
+                            text = 'تسجيل الخروج'
+                            onPress = LogoutHandler
+                            isViewer = false
+
                         }
-                        return <Ionicons name={iconName} size={size} color={color}/>;
-                    }})
+
+                        return (
+                            isViewer ? <View>
+                                    <Ionicons style={{alignSelf: 'center', justifyContent: 'center'}}
+                                              name={iconName} size={size} color={color}/>
+                                    <Text>{text}</Text>
+                                </View>
+                                :
+                                <TouchableOpacity onPress={onPress}>
+                                    <Ionicons onPress={onPress} style={{alignSelf: 'center', justifyContent: 'center'}}
+                                              name={iconName} size={size} color={color}/>
+                                    <Text onPress={onPress}>{text}</Text>
+                                </TouchableOpacity>
+                        );
+                    }
+                })
                 }
                 tabBarOptions={tabBarOptions}
                 initialRouteName='Home'
             >
 
 
-                <Tab.Screen name="Home" component={HomeScreensContainer}
-                options={{
-                    tabBarLabel:'الرئيسية',
-                }}
-                />
-                <Tab.Screen name="Profile" component={Profile}
-                            options={{
-                                tabBarLabel:'حسابي'
-                            }}
-                />
-                <Tab.Screen name="Logout" component={Profile}
-                            options={{
-                                tabBarLabel:'تسجيل الخروج'
-                            }}
-                />
+                <Tab.Screen name="Home" component={HomeScreensContainer}/>
+                <Tab.Screen name="Profile" component={Profile}/>
+                <Tab.Screen name="Logout" component={HomeScreensContainer}/>
 
 
             </Tab.Navigator>
