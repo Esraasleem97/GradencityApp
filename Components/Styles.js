@@ -102,7 +102,7 @@ export const TitleStyle = styled.Text`
 
 `;
 export const HeaderLogin = styled.View`
-  margin-top: 10px;
+
   width: 100%;
   height: 200px;
   justify-content: center;
@@ -131,7 +131,7 @@ export const HeaderShape = styled.View`
 export const Logo = styled.Image`
   width: ${200}px;
   height: ${200}px;
-  border-radius: ${500}px;
+
 `;
 
 export const Content = styled.View`
@@ -192,8 +192,8 @@ export const RightIcon = styled.TouchableOpacity`
 
 export const ForgetPassword = styled.Text`
   color: ${darkLight};
-  text-align: right;
-  margin: ${10}px ${5}px;
+  text-align: left;
+  margin: 0 ${5}px;
   font-size: ${14}px;
 `;
 export const Button = styled.TouchableOpacity`
