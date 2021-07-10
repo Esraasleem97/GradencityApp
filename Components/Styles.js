@@ -274,6 +274,7 @@ export const FlexRow = styled.View`
 export const ButtonAdd = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: 30%;
   padding: 10px;
   background-color: ${orangeLight};

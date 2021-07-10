@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthorizedScreens from './Navigation/AuthorizedScreens'
 import UnAuthorizedScreens from './Navigation/UnAuthorizedScreens'
 import {Asset} from "expo-asset";
-import {LayoutAnimation, UIManager} from 'react-native'
+import {LayoutAnimation, UIManager,I18nManager} from 'react-native'
 
 if (!__DEV__) {
     console.log = () => {
