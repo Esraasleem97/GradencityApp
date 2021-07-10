@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider} from '@ui-kitten/components';
 import AppLoading from "expo-app-loading";
-
 import {Asset} from "expo-asset";
 import {I18nManager, LayoutAnimation, UIManager} from 'react-native'
 import {Provider} from "react-redux";
 import {store} from "./Redux";
 import NavigationHandler from "./Navigation/NavigationHandler";
+
 
 
 if (!__DEV__) {

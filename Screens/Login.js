@@ -47,7 +47,7 @@ const Login = () => {
                 <Container>
 
                     <HeaderLogin>
-                        <Logo source={require('../assets/seeding.png')}/>
+                        <Logo  source={require('../assets/icon.png')}/>
                     </HeaderLogin>
 
                     <Content>
@@ -77,7 +77,7 @@ const Login = () => {
                             <TouchableOpacity>
                                 <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
                             </TouchableOpacity>
-                            <View style={{alignSelf: 'center' , marginTop:10 }}>
+                            <View style={{alignSelf: 'center' , marginTop:10,width:'100%' }}>
                                 {
                                     loading
                                         ? <Spinner status='success' size='giant'/>
