@@ -35,7 +35,7 @@ const Login = () => {
     const {loading, error} = userLogin
 
     const SubmitHandler = () => {
-        dispatch(userLoginHandler(Number(username) , Number(password) ))
+        dispatch(userLoginHandler(username, password))
     }
 
     return (
@@ -47,11 +47,13 @@ const Login = () => {
                 <Container>
 
                     <HeaderLogin>
-                        <Logo  source={require('../assets/icon.png')}/>
+                        <Logo source={require('../assets/icon.png')}/>
                     </HeaderLogin>
 
                     <Content>
                         <FormArea>
+
+                            <Messages error={error && error.username}/>
 
                             <Input
                                 label='اسم المستخدم'
@@ -60,7 +62,8 @@ const Login = () => {
                                 onChangeText={(value) => setUsername(value)}
                                 value={username}
                             />
-                            <Messages error={error && error.username}/>
+                            <Messages error={error && error.password}/>
+
                             <Input
                                 label='كلمة المرور'
                                 icon='lock'
@@ -72,12 +75,11 @@ const Login = () => {
                                 hidePassword={hidePassword}
                                 setHidePassword={setHidePassword}
                             />
-                            <Messages error={error && error.password}/>
 
                             <TouchableOpacity>
                                 <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
                             </TouchableOpacity>
-                            <View style={{alignSelf: 'center' , marginTop:10,width:'100%' }}>
+                            <View style={{alignSelf: 'center', marginTop: 10, width: '100%'}}>
                                 {
                                     loading
                                         ? <Spinner status='success' size='giant'/>

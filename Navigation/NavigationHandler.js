@@ -1,15 +1,25 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import AuthorizedScreens from "./AuthorizedScreens";
 import UnAuthorizedScreens from "./UnAuthorizedScreens";
+import {userDetailsHandler} from "../Redux/Actions/userActions";
 
 const NavigationHandler = () => {
 
-    const {userLogin} = useSelector(state => state);
+    const {userDetails} = useSelector(state => state);
 
-    const {user} = userLogin
+    const {userInfo} = userDetails
 
-    return (user && user.username === 1 ? <AuthorizedScreens/> : <UnAuthorizedScreens/>);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+
+        dispatch(userDetailsHandler())
+
+    }, [dispatch])
+
+
+    return (userInfo && userInfo.token  ? <AuthorizedScreens/> : <UnAuthorizedScreens/>);
 }
 
 
