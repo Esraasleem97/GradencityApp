@@ -6,3 +6,11 @@ export const API = 'api/'
 
 export const LOGIN = URI + API + 'login'
 
+export const PRODUCTS = URI + API + 'products'
+
+export const PROJECTS = URI + API + 'projects'
+
+export const STOCKS = URI + API + 'stocks'
+
+
+export const SUPPLIERS = URI + API + 'suppliers'

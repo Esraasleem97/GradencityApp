@@ -13,13 +13,11 @@ const NavigationHandler = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-
         dispatch(userDetailsHandler())
-
     }, [dispatch])
 
 
-    return (userInfo && userInfo.token  ? <AuthorizedScreens/> : <UnAuthorizedScreens/>);
+    return (userInfo && userInfo.token ? <AuthorizedScreens/> : <UnAuthorizedScreens/>);
 }
 
 

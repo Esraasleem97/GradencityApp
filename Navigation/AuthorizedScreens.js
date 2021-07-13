@@ -23,6 +23,8 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const HomeScreensContainer = () => {
+
+
     return (
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
             <Stack.Screen name='Home' component={Home}/>
@@ -73,7 +75,7 @@ const AuthorizedScreens = () => {
     const dispatch = useDispatch()
 
     const LogoutHandler = () => {
-      return  dispatch(userLogoutHandler())
+        return dispatch(userLogoutHandler())
 
     }
 
@@ -127,7 +129,7 @@ const AuthorizedScreens = () => {
             >
 
 
-                <Tab.Screen name="Home" component={HomeScreensContainer}/>
+                <Tab.Screen name="Home"  component={HomeScreensContainer}/>
                 <Tab.Screen name="Profile" component={Profile}/>
                 <Tab.Screen name="Logout" component={HomeScreensContainer}/>
 
