@@ -1,15 +1,16 @@
 import React from "react";
-import {Layout } from "@ui-kitten/components";
+import {Layout} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {items} from "../DummyData";
 
-const Seed = ({navigation}) => {
+const Seed = ({navigation, route}) => {
 
+    console.log(route.params.products)
     return (
         <Layout>
-            <Header title='زراعة البذور' navigation={navigation} />
+            <Header title='زراعة البذور' navigation={navigation}/>
             <SharedScreens onTop={true}>
                 <SelectDropDown items={items}/>
             </SharedScreens>

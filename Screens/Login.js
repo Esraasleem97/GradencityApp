@@ -12,8 +12,7 @@ import {
 import {Layout, Spinner,} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
-import {KeyboardAvoidingView, Platform, TouchableOpacity, View} from "react-native";
-import RefreshHandler from "../Components/RefreshHandler";
+import {ScrollView, TouchableOpacity, View} from "react-native";
 import Header from "../Components/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {userLoginHandler} from "../Redux/Actions/userActions";
@@ -42,12 +41,13 @@ const Login = () => {
         <Layout>
             <StatusBar style='light'/>
             <Header title='تسجيل الدخول'/>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <Container>
                     <HeaderLogin>
                         <Logo source={require('../assets/icon.png')}/>
                     </HeaderLogin>
                     <Content>
-                        <FormArea >
+                        <FormArea>
                             <Messages error={error && error.username}/>
                             <Input
                                 label='اسم المستخدم'
@@ -71,20 +71,29 @@ const Login = () => {
                             />
                             <TouchableOpacity>
                                 <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
+
                             </TouchableOpacity>
-                            <View style={{alignSelf: 'center', marginTop: 10, width: '100%'}}>
+
+                            <View style={{justifyContent: 'center', marginTop: 10, width: '100%'}}>
                                 {
                                     loading
-                                        ? <Spinner status='success' size='giant'/>
+                                        ?
+                                        <ButtonText>
+                                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                        </ButtonText>
                                         : <Button onPress={SubmitHandler}>
+
                                             <ButtonText>تسجيل الدخول</ButtonText>
                                         </Button>
                                 }
                             </View>
                         </FormArea>
                     </Content>
+
                 </Container>
+            </ScrollView>
         </Layout>
+
 
     );
 }
