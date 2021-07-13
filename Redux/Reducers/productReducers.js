@@ -1,7 +1,7 @@
 import {PRODUCTS_LIST_FAILED, PRODUCTS_LIST_REQUESTS, PRODUCTS_LIST_SUCCESS} from "../Constants/productConstants";
 
 
-export const productsListReducer = (state = {productLoading: true}, action) => {
+export const productsListReducer = (state = {}, action) => {
     switch (action.type) {
 
         case PRODUCTS_LIST_REQUESTS:

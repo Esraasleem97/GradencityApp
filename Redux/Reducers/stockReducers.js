@@ -1,7 +1,7 @@
 import {STOCKS_LIST_REQUESTS, STOCKS_LIST_SUCCESS , STOCKS_LIST_FAILED} from "../Constants/stockConstants";
 
 
-export const stocksListReducer = (state = {stockLoading: true}, action) => {
+export const stocksListReducer = (state = {}, action) => {
     switch (action.type) {
 
         case STOCKS_LIST_REQUESTS:

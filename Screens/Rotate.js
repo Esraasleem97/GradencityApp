@@ -9,7 +9,10 @@ import {items} from "../DummyData";
 
 
 
-const Rotate = ({navigation}) => {
+const Rotate = ({navigation , route}) => {
+
+    const { params: { data: { products } } } = route
+
 
     return (
         <Layout>
@@ -18,7 +21,7 @@ const Rotate = ({navigation}) => {
                 <Container>
                     <Content>
                         <FormArea>
-                            <SelectDropDown items={items} title='البند القديم' style={{fontSize:20}}/>
+                            <SelectDropDown items={products} title='البند القديم' style={{fontSize:20}}/>
                             <Input
                                 label='الكمية الموجودة'
                                 icon='form'

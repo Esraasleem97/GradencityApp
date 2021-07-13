@@ -1,7 +1,7 @@
 import {PROJECTS_LIST_REQUESTS, PROJECTS_LIST_SUCCESS , PROJECTS_LIST_FAILED} from "../Constants/projectConstants";
 
 
-export const projectsListReducer = (state = {projectLoading: true}, action) => {
+export const projectsListReducer = (state = {}, action) => {
     switch (action.type) {
 
         case PROJECTS_LIST_REQUESTS:

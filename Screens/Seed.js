@@ -3,16 +3,17 @@ import {Layout} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {items} from "../DummyData";
+
 
 const Seed = ({navigation, route}) => {
 
-    console.log(route)
+    const { params: { data: { products } } } = route
+
     return (
         <Layout>
             <Header title='زراعة البذور' navigation={navigation}/>
             <SharedScreens onTop={true}>
-                <SelectDropDown items={items}/>
+                <SelectDropDown items={products}/>
             </SharedScreens>
         </Layout>
     )

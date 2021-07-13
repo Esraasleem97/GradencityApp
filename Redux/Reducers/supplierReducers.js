@@ -1,7 +1,7 @@
 import {SUPPLIERS_LIST_REQUESTS, SUPPLIERS_LIST_SUCCESS, SUPPLIERS_LIST_FAILED} from "../Constants/supplierConstants";
 
 
-export const suppliersListReducer = (state = {supplierLoading:true}, action) => {
+export const suppliersListReducer = (state = {}, action) => {
     switch (action.type) {
 
         case SUPPLIERS_LIST_REQUESTS:
