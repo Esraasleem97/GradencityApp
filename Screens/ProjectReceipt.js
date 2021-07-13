@@ -7,7 +7,7 @@ import {
 import {FontAwesome} from "@expo/vector-icons";
 import CheckoutShared from "../Components/CheckoutShared";
 const {red} = Colors
-const Checkout = ({navigation}) => {
+const ProjectsReceipt = ({navigation}) => {
     const tableHead = ['البند', 'الكمية', 'الاجراء'];
 
     const [tableData, setTableData] = useState([
@@ -25,12 +25,12 @@ const Checkout = ({navigation}) => {
 
     return (
         <Layout>
-            <Header title='الإخراج' navigation={navigation}/>
+            <Header title='إستلام المشاريع' navigation={navigation}/>
             <CheckoutShared tableHead={tableHead} tableData={tableData}/>
         </Layout>
     )
 }
 
 
-export default Checkout;
+export default ProjectsReceipt;
 

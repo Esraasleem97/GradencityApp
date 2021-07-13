@@ -18,6 +18,7 @@ import {TouchableOpacity, View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
+import ProjectsReceipt from "../Screens/ProjectReceipt";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -28,6 +29,7 @@ const HomeScreensContainer = () => {
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='Checkin' component={Checkin}/>
             <Stack.Screen name='Checkout' component={Checkout}/>
+            <Stack.Screen name='ProjectsReceipt' component={ProjectsReceipt}/>
             <Stack.Screen name='Weed' component={Weed}/>
             <Stack.Screen name='Seed' component={Seed}/>
             <Stack.Screen name='Taeqil' component={Taeqil}/>
@@ -84,19 +86,11 @@ const AuthorizedScreens = () => {
                 screenOptions={({route}) => ({
                     tabBarIcon: ({color, size, text, onPress, isViewer}) => {
                         let iconName;
-
-
                         if (route.name === 'Home') {
                             iconName = 'home'
                             size = 20
                             text = 'الرئيسية'
                             isViewer = true
-                        } else if (route.name === 'Profile') {
-                            iconName = 'person';
-                            size = 20
-                            text = 'حسابي'
-                            isViewer = true
-
                         } else if (route.name === 'Logout') {
                             iconName = 'exit';
                             size = 20
@@ -105,7 +99,6 @@ const AuthorizedScreens = () => {
                             isViewer = false
 
                         }
-
                         return (
                             isViewer ? <View>
                                     <Ionicons style={{alignSelf: 'center', justifyContent: 'center'}}
@@ -125,13 +118,8 @@ const AuthorizedScreens = () => {
                 tabBarOptions={tabBarOptions}
                 initialRouteName='Home'
             >
-
-
                 <Tab.Screen name="Home" component={HomeScreensContainer}/>
-                <Tab.Screen name="Profile" component={Profile}/>
                 <Tab.Screen name="Logout" component={HomeScreensContainer}/>
-
-
             </Tab.Navigator>
 
 

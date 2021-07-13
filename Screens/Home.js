@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Layout} from "@ui-kitten/components";
 import {
     Container,
@@ -14,8 +14,9 @@ import Header from "../Components/Header";
 
 const Home = ({navigation}) => {
     const data = [
-        {id: 0, title: 'الإدخال', img: require('../assets/checkin.png'), nav: 'Checkin'},
-        {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout'},
+        // {id: 0, title: 'الإدخال', img: require('../assets/checkin.png'), nav: 'Checkin'},
+        {id: 0, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout'},
+        {id: 1, title: 'إستلام المشاريع', img: require('../assets/checkout.png'), nav: 'ProjectsReceipt'},
         {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement'},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed'},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil'},
