@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet} from 'react-native';
 import {Card, Modal} from '@ui-kitten/components';
-import {Container} from "./Styles";
+
 
 export const Modals = ({children, visible, setVisible}) => {
 

@@ -7,13 +7,12 @@ import {
     ForgetPassword,
     Button,
     ButtonText,
-
     Logo
 } from "../Components/Styles";
 import {Layout, Spinner,} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
-import {TouchableOpacity, View} from "react-native";
+import {KeyboardAvoidingView, Platform, TouchableOpacity, View} from "react-native";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,18 +42,13 @@ const Login = () => {
         <Layout>
             <StatusBar style='light'/>
             <Header title='تسجيل الدخول'/>
-            <RefreshHandler>
                 <Container>
-
                     <HeaderLogin>
                         <Logo source={require('../assets/icon.png')}/>
                     </HeaderLogin>
-
                     <Content>
-                        <FormArea>
-
+                        <FormArea >
                             <Messages error={error && error.username}/>
-
                             <Input
                                 label='اسم المستخدم'
                                 icon='user'
@@ -62,8 +56,8 @@ const Login = () => {
                                 onChangeText={(value) => setUsername(value)}
                                 value={username}
                             />
-                            <Messages error={error && error.password}/>
 
+                            <Messages error={error && error.password}/>
                             <Input
                                 label='كلمة المرور'
                                 icon='lock'
@@ -75,7 +69,6 @@ const Login = () => {
                                 hidePassword={hidePassword}
                                 setHidePassword={setHidePassword}
                             />
-
                             <TouchableOpacity>
                                 <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
                             </TouchableOpacity>
@@ -89,10 +82,8 @@ const Login = () => {
                                 }
                             </View>
                         </FormArea>
-
                     </Content>
                 </Container>
-            </RefreshHandler>
         </Layout>
 
     );
