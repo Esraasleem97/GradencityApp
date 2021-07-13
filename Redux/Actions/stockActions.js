@@ -24,11 +24,11 @@ export const stocksListHandler = () => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.get(`${STOCKS}`, config)
+        const {data: stocksData} = await axios.get(`${STOCKS}`, config)
 
         dispatch({
             type: STOCKS_LIST_SUCCESS,
-            payload: data
+            payload: stocksData
         })
 
 

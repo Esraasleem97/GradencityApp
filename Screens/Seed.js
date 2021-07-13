@@ -7,7 +7,7 @@ import {items} from "../DummyData";
 
 const Seed = ({navigation, route}) => {
 
-    console.log(route.params.products)
+    console.log(route)
     return (
         <Layout>
             <Header title='زراعة البذور' navigation={navigation}/>

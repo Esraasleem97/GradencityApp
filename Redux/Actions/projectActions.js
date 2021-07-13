@@ -24,11 +24,11 @@ export const projectsListHandler = () => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.get(`${PROJECTS}`, config)
+        const {data: projectsData} = await axios.get(`${PROJECTS}`, config)
 
         dispatch({
             type: PROJECTS_LIST_SUCCESS,
-            payload: data
+            payload: projectsData
         })
 
 
