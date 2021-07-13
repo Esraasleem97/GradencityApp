@@ -6,17 +6,20 @@ import {
     ImageBackground,
     Card,
     CardImage,
-    CardText
+    CardText, Label, Colors
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
+import {View} from "react-native";
+import {Text} from "@ui-kitten/components";
+
 
 
 const Home = ({navigation}) => {
     const data = [
         // {id: 0, title: 'الإدخال', img: require('../assets/checkin.png'), nav: 'Checkin'},
-        {id: 0, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout'},
-        {id: 1, title: 'إستلام المشاريع', img: require('../assets/checkout.png'), nav: 'ProjectsReceipt'},
+        {id: 0, title: 'إستلام من المشاريع', img: require('../assets/checkin.png'), nav: 'ProjectsReceipt'},
+        {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout'},
         {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement'},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed'},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil'},
@@ -25,7 +28,8 @@ const Home = ({navigation}) => {
         {id: 7, title: 'التدوير', img: require('../assets/rotate.png'), nav: 'Rotate'},
         {id: 8, title: 'النقل بين المشاتل', img: require('../assets/plant.png'), nav: 'Transfer'},
 
-    ]
+    ];
+    const {orangeLight} = Colors;
     return (
 
         <Layout>
@@ -33,6 +37,10 @@ const Home = ({navigation}) => {
                 <Header title='الصفحة الرئيسية'/>
                 <RefreshHandler>
                     <Container>
+                        <View style={{flexDirection:'row' , justifyContent:'space-around',width:'90%',marginBottom:20}}>
+                            <Text>الإنجاز اليومي : 00</Text>
+                            <Text>الإنجاز الشهري : 00</Text>
+                        </View>
                         <Grid>
                             {
                                 data.map((item) => {

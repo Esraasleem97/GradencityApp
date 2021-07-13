@@ -25,7 +25,7 @@ const ProjectsReceipt = ({navigation}) => {
 
     return (
         <Layout>
-            <Header title='إستلام المشاريع' navigation={navigation}/>
+            <Header title='إستلام من المشاريع' navigation={navigation}/>
             <CheckoutShared tableHead={tableHead} tableData={tableData}/>
         </Layout>
     )
