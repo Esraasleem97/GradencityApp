@@ -6,7 +6,7 @@ import {
     ImageBackground,
     Card,
     CardImage,
-    CardText, Label, Colors
+    CardText
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
@@ -29,7 +29,7 @@ const Home = ({navigation}) => {
         {id: 8, title: 'النقل بين المشاتل', img: require('../assets/plant.png'), nav: 'Transfer'},
 
     ];
-    const {orangeLight} = Colors;
+
     return (
 
         <Layout>
