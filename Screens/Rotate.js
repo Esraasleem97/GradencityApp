@@ -40,11 +40,11 @@ const Rotate = ({navigation , route}) => {
                             <Input
                                 label='الكمية'
                                 icon='form'
-                                placeholder='ادخل الرقم هنا'
+                                placeholder='ادخل الكمية هنا'
                                 keyboardType='numeric'
 
                             />
-                            <FlexStyled >
+                            <FlexStyled>
                                 <Input
                                     label='الطول'
                                     icon='form'
@@ -64,13 +64,15 @@ const Rotate = ({navigation , route}) => {
                                     keyboardType='numeric'
                                 />
 
+                                <Input
+                                    label='الوقت المستغرق'
+                                    icon='dashboard'
+                                    placeholder='00:00'
+                                    keyboardType='numeric'
+                                />
+
                             </FlexStyled>
-                            <Input
-                                label='الوقت المستغرق'
-                                icon='dashboard'
-                                placeholder='00:00:00'
-                                keyboardType='numeric'
-                            />
+
                             <Button>
                                 <ButtonText>حفظ</ButtonText>
                             </Button>

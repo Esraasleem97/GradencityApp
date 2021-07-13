@@ -6,7 +6,7 @@ import {
 import Header from "../Components/Header";
 import SharedScreens from "../Components/SharedScreen";
 import SelectDropDown from "../Components/SelectDropDown";
-import {ScrollView, View} from "react-native";
+import {View} from "react-native";
 import Input from "../Components/Input";
 import {items} from "../DummyData";
 

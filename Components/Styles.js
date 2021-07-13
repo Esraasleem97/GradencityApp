@@ -242,7 +242,7 @@ export const Card = styled.TouchableOpacity`
   ${CheckPlatFormForCardDesign}
 `;
 export const CardText = styled.Text`
-  font-size: ${15}px;
+  font-size: ${12}px;
   color: ${tertiary};
 `;
 export const CardImage = styled.Image`

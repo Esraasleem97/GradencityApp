@@ -88,7 +88,7 @@ const Home = ({navigation}) => {
                                             navigation.navigate(`${item.nav}`, item)
                                         }}>
                                             <CardImage resizeMode='contain' source={item.img}/>
-                                            <CardText>{item.title}</CardText>
+                                            <CardText >{item.title}</CardText>
                                         </Card>
                                     )
                                 })

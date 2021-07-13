@@ -9,7 +9,7 @@ const Header = ({title, navigation}) => {
     return (
         <HeaderOpacityStyle>
             <HeaderStyle>
-                <TitleStyle>
+                <TitleStyle >
                     {title}
                 </TitleStyle>
                 {

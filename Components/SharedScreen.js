@@ -1,12 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button, ButtonText, Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
 
 
+const SharedScreens = ({children, onTop, onBottom , onSelectQty,onSelectTakenTime}) => {
 
 
-const SharedScreens = ({children, onTop, onBottom}) => {
+    const [qty, setQty] = useState(null);
+
+    const [takeTime, seTakenTime] = useState(null);
+
+    const handleQtyOnChange = (value) => {
+        onSelectQty(value)
+        return setQty(value);
+    }
+
+    const handleTakenTimeOnChange = (value) => {
+        onSelectTakenTime(value)
+        return seTakenTime(value);
+    }
 
     return (
 
@@ -14,32 +27,27 @@ const SharedScreens = ({children, onTop, onBottom}) => {
             <Container>
                 <Content>
                     <FormArea>
-                        {children && onTop  ?  children : null}
+                        {children && onTop ? children : null}
                         <Input
                             label='الكمية'
                             icon='form'
-                            placeholder='ادخل الرقم هنا'
+                            placeholder='ادخل الكمية هنا'
                             keyboardType='numeric'
+                            value={qty}
+                            onChangeText={handleQtyOnChange}
+
                         />
                         <Input
                             label='الوقت المستغرق'
                             icon='dashboard'
                             placeholder='00:00:00'
                             keyboardType='numeric'
-                        />
-
-                        <Input
-                            label='الإنجاز اليومي'
-                            icon='form'
-                            placeholder='رقم الإنجاز اليومي'
+                            value={takeTime}
+                            onChangeText={handleTakenTimeOnChange}
 
                         />
-                        <Input
-                            label='الإنجاز الشهري'
-                            icon='form'
-                            placeholder='رقم الإنجاز الشهري'
-                        />
-                        {children && onBottom  ?  children : null}
+
+                        {children && onBottom ? children : null}
 
 
                         <Button>
