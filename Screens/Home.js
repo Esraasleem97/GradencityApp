@@ -19,17 +19,20 @@ import {stocksListHandler} from "../Redux/Actions/stockActions";
 
 import {View} from "react-native";
 import {Text} from "@ui-kitten/components";
+import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 
 
 const Home = ({navigation}) => {
 
-    const {productsList, projectsList, stocksList} = useSelector(state => state);
+    const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
     const {products, productLoading} = productsList
 
     const {projects, projectLoading} = projectsList
 
     const {stocks, stockLoading} = stocksList
+
+    const {myTransactionsList} = myTransactions
 
     const dispatch = useDispatch()
 
@@ -38,6 +41,7 @@ const Home = ({navigation}) => {
         dispatch(productsListHandler())
         dispatch(stocksListHandler())
         dispatch(projectsListHandler())
+        dispatch(MyTransactionsHandler())
 
     }, [dispatch])
 
@@ -76,8 +80,8 @@ const Home = ({navigation}) => {
                             width: '90%',
                             marginBottom: 20
                         }}>
-                            <Text>الإنجاز اليومي : 00</Text>
-                            <Text>الإنجاز الشهري : 00</Text>
+                            <Text>الإنجاز اليومي :  <Text style={{color:'#16890a'}}>{myTransactionsList && myTransactionsList.today_total_achievements}</Text> </Text>
+                            <Text>الإنجاز الشهري :  <Text style={{color:'#16890a'}}>{myTransactionsList && myTransactionsList.monthly_total_achievements}</Text> </Text>
                         </View>
                         <Grid>
 
@@ -88,7 +92,7 @@ const Home = ({navigation}) => {
                                             navigation.navigate(`${item.nav}`, item)
                                         }}>
                                             <CardImage resizeMode='contain' source={item.img}/>
-                                            <CardText >{item.title}</CardText>
+                                            <CardText>{item.title}</CardText>
                                         </Card>
                                     )
                                 })

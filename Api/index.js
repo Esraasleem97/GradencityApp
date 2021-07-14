@@ -14,4 +14,6 @@ export const STOCKS = URI + API + 'stocks'
 
 export const SUPPLIERS = URI + API + 'suppliers'
 
-export const TRANSACTION = URI + API +  'transactions/store'
+export const TRANSACTION = URI + API + 'transactions/store'
+
+export const MY_TRANSACTIONS = URI + API + 'transactions'
