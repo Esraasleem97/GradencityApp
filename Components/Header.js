@@ -15,11 +15,11 @@ const Header = ({title, navigation}) => {
                 {
                     navigation &&
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                         <Ionicons name="arrow-back-circle"
                                   size={40}
                                   color="white"
-                                  onPress={() => navigation.navigate('Home')}
+
                         />
                     </TouchableOpacity>
                 }

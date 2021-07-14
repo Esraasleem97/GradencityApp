@@ -7,6 +7,7 @@ import {productsListReducer} from "./Reducers/productReducers";
 import {projectsListReducer} from "./Reducers/projectReducers";
 import {stocksListReducer} from "./Reducers/stockReducers";
 import {suppliersListReducer} from "./Reducers/supplierReducers";
+import {transactionReducer} from "./Reducers/transactionReducers";
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     productsList: productsListReducer,
     projectsList: projectsListReducer,
     stocksList: stocksListReducer,
-    suppliersList: suppliersListReducer
+    suppliersList: suppliersListReducer,
+    transaction: transactionReducer
 
 });
 

@@ -9,7 +9,6 @@ import {store} from "./Redux";
 import NavigationHandler from "./Navigation/NavigationHandler";
 
 
-
 if (!__DEV__) {
     console.log = () => {
     };
@@ -41,6 +40,7 @@ const images = [
     require("./assets/ach.png"),
     require("./assets/taq.png"),
     require("./assets/rotate.png"),
+    require("./assets/recipition.png"),
 
     // end of cache main system images
 

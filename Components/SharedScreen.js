@@ -1,63 +1,59 @@
-import React, {useState} from "react";
-import {Button, ButtonText, Container, Content, FormArea} from "./Styles";
+import React from "react";
+import {Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
+import {Keyboard, KeyboardAvoidingView} from "react-native";
+import {TouchableWithoutFeedback} from "@ui-kitten/components/devsupport";
 
 
-const SharedScreens = ({children, onTop, onBottom , onSelectQty,onSelectTakenTime}) => {
+const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTime, qty, takeTime}) => {
 
-
-    const [qty, setQty] = useState(null);
-
-    const [takeTime, seTakenTime] = useState(null);
-
-    const handleQtyOnChange = (value) => {
-        onSelectQty(value)
-        return setQty(value);
-    }
-
-    const handleTakenTimeOnChange = (value) => {
-        onSelectTakenTime(value)
-        return seTakenTime(value);
-    }
 
     return (
 
         <RefreshHandler>
+
             <Container>
                 <Content>
-                    <FormArea>
-                        {children && onTop ? children : null}
-                        <Input
-                            label='الكمية'
-                            icon='form'
-                            placeholder='ادخل الكمية هنا'
-                            keyboardType='numeric'
-                            value={qty}
-                            onChangeText={handleQtyOnChange}
+                    <KeyboardAvoidingView>
+                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                            <FormArea>
+                                {children && onTop ? children : null}
+                                <Input
 
-                        />
-                        <Input
-                            label='الوقت المستغرق'
-                            icon='dashboard'
-                            placeholder='00:00:00'
-                            keyboardType='numeric'
-                            value={takeTime}
-                            onChangeText={handleTakenTimeOnChange}
-
-                        />
-
-                        {children && onBottom ? children : null}
+                                    label='الكمية'
+                                    icon='form'
+                                    placeholder='ادخل الكمية هنا'
+                                    keyboardType='number-pad'
+                                    value={qty}
+                                    onChangeText={onSelectQty}
 
 
-                        <Button>
-                            <ButtonText>حفظ</ButtonText>
-                        </Button>
+                                />
+                                <Input
 
-                    </FormArea>
+
+                                    label='الوقت المستغرق'
+                                    icon='dashboard'
+                                    placeholder='00:00:00'
+                                    keyboardType='number-pad'
+                                    value={takeTime}
+                                    onChangeText={onSelectTakenTime}
+                                />
+
+                                {children && onBottom ? onBottom : null}
+
+                            </FormArea>
+                        </TouchableWithoutFeedback>
+                    </KeyboardAvoidingView>
+
                 </Content>
             </Container>
+
+
         </RefreshHandler>
+
+
     )
 }
 

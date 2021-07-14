@@ -79,7 +79,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
             setSort = (item, searchedText) => {
                 return item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1
                     ? item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1
-                    : item.id.indexOf(searchedText.toLowerCase()) > -1
+                    : item.code.indexOf(searchedText.toLowerCase()) > -1
             };
         }
         var ac = this.props.items.filter((item) => {

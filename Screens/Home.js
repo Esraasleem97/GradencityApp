@@ -44,7 +44,7 @@ const Home = ({navigation}) => {
     const data = [
         {
             id: 0, title: 'إستلام من المشاريع',
-            img: require('../assets/checkout.png'),
+            img: require('../assets/recipition.png'),
             nav: 'ProjectsReceipt',
             data: {projects, stocks}
         },

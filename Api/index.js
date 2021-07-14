@@ -13,3 +13,5 @@ export const PROJECTS = URI + API + 'projects'
 export const STOCKS = URI + API + 'stocks'
 
 export const SUPPLIERS = URI + API + 'suppliers'
+
+export const TRANSACTION = URI + API +  'transactions/store'

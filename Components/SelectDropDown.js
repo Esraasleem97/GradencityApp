@@ -4,17 +4,18 @@ import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
-const SelectDropDown = ({items, title = 'البند' , style}) => {
+const SelectDropDown = ({items, title = 'البند', style, onSelectItem , selectedItem}) => {
+
 
 
     return (
         <View style={{marginTop: 5}}>
             <Label style={style}>{title}</Label>
             <SearchableDropDownScroll
-                Icon='email'
                 onTextChange={(text) => console.log(text)}
+                Icon='email'
                 //On text change listener on the searchable input
-                onItemSelect={(item) => alert(JSON.stringify(item))}
+                onItemSelect={onSelectItem}
                 //onItemSelect called after the selection from the dropdown
                 textInputStyle={styles.styledInputSearch}
                 chip={true}
@@ -35,7 +36,7 @@ const SelectDropDown = ({items, title = 'البند' , style}) => {
                 //mapping of item array
                 defaultIndex={0}
                 //default selected item index
-                placeholder={title}
+                placeholder={selectedItem && selectedItem.name ? selectedItem.name.toString() : 'الرجاء أختيار ' + title}
                 //place holder for the search input
                 resetValue={false}
                 //reset textInput Value with true and false state
