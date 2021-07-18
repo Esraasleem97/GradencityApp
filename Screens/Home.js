@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useFocusEffect} from '@react-navigation/native'
+
 import {Layout, Spinner} from "@ui-kitten/components";
 
 import {
@@ -24,35 +26,52 @@ import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 
 const Home = ({navigation}) => {
 
+    const [refresh, setRefresh] = useState(false)
+
+    const handlePullToRefresh = () => {
+        return setRefresh(true)
+    }
+
     const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
-    const {products, productLoading} = productsList
+    const {products} = productsList
 
     const {projects, projectLoading} = projectsList
 
-    const {stocks, stockLoading} = stocksList
+    const {stocks} = stocksList
 
     const {myTransactionsList} = myTransactions
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (refresh) {
+            setRefresh(!refresh)
+        }
 
         dispatch(productsListHandler())
         dispatch(stocksListHandler())
         dispatch(projectsListHandler())
         dispatch(MyTransactionsHandler())
 
-    }, [dispatch])
+    }, [dispatch, refresh])
+
+    useFocusEffect(
+        useCallback(() => {
+
+
+            dispatch(MyTransactionsHandler())
+        }, [dispatch])
+    )
 
     const data = [
         {
             id: 0, title: 'إستلام من المشاريع',
             img: require('../assets/recipition.png'),
             nav: 'ProjectsReceipt',
-            data: {projects, stocks}
+            data: {projects, stocks , products}
         },
-        {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout', data: {projects, stocks}},
+        {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout', data: {projects, stocks , products}},
         {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
@@ -72,7 +91,7 @@ const Home = ({navigation}) => {
         <Layout>
             <ImageBackground source={require('../assets/bg-plants6.jpg')}>
                 <Header title='الصفحة الرئيسية'/>
-                <RefreshHandler>
+                <RefreshHandler pullToRefresh={handlePullToRefresh}>
                     <Container>
                         <View style={{
                             flexDirection: 'row',
@@ -80,13 +99,23 @@ const Home = ({navigation}) => {
                             width: '90%',
                             marginBottom: 20
                         }}>
-                            <Text>الإنجاز اليومي :  <Text style={{color:'#16890a'}}>{myTransactionsList && myTransactionsList.today_total_achievements}</Text> </Text>
-                            <Text>الإنجاز الشهري :  <Text style={{color:'#16890a'}}>{myTransactionsList && myTransactionsList.monthly_total_achievements}</Text> </Text>
+                            <Text>الإنجاز اليومي : <Text style={{color: '#16890a'}}>
+                                {
+                                    myTransactionsList && myTransactionsList.today_total_achievements || '00:00'
+                                }
+                            </Text>
+                            </Text>
+                            <Text>الإنجاز الشهري : <Text style={{color: '#16890a'}}>
+                                {
+                                    myTransactionsList && myTransactionsList.monthly_total_achievements || '00:00'
+                                }
+                            </Text>
+                            </Text>
                         </View>
                         <Grid>
 
-                            {!productLoading && !projectLoading && !stockLoading
-                                ? data.map((item) => {
+                            {!projectLoading ?
+                                data.map((item) => {
                                     return (
                                         <Card key={item.id} onPress={() => {
                                             navigation.navigate(`${item.nav}`, item)

@@ -5,7 +5,6 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {items} from "../DummyData";
 
 
 
@@ -36,7 +35,7 @@ const Rotate = ({navigation , route}) => {
                                 keyboardType='numeric'
                             />
                             <Line/>
-                            <SelectDropDown items={items} title='البند الجديد' style={{fontSize:20}}/>
+                            <SelectDropDown items={products} title='البند الجديد' style={{fontSize:20}}/>
                             <Input
                                 label='الكمية'
                                 icon='form'

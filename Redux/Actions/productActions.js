@@ -13,7 +13,6 @@ export const productsListHandler = () => async (dispatch) => {
 
         let User = await AsyncStorage.getItem('user')
 
-
         const {token} = JSON.parse(User)
 
         const config = {

@@ -2,9 +2,10 @@ import React, {useCallback, useState} from "react";
 import {RefreshControl, View} from "react-native";
 import {FlatList} from 'react-native-gesture-handler'
 
-const RefreshHandler = ({children}) => {
+const RefreshHandler = ({children, pullToRefresh}) => {
 
     const wait = timeout => {
+
         return new Promise(resolve => {
             setTimeout(resolve, timeout);
         });
@@ -15,13 +16,14 @@ const RefreshHandler = ({children}) => {
     const onRefresh = useCallback(() => {
         setRefreshing(true);
 
-        wait(2000).then(() => setRefreshing(false));
+        wait(2000).then(() => {
+            setRefreshing(false)
+           return pullToRefresh ?   pullToRefresh(true) : null ;
+        });
     }, []);
 
 
     return (
-
-
         <FlatList
             keyExtractor={() => 'App-Init'}
             style={{width: '100%', height: '100%'}}

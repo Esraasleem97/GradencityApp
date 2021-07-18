@@ -127,9 +127,11 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                     <TouchableOpacity
                         onPress={() => {
                             this.setState({item: item});
-                            setTimeout(() => {
+                            try {
                                 this.props.onItemSelect(item);
-                            }, 0);
+                            } catch (e) {
+                                console.log(e)
+                            }
                         }}
                         style={{...this.props.itemStyle, flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start'}}>

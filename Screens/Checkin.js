@@ -16,7 +16,6 @@ import {
     FlexRow
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
-import {items} from "../DummyData";
 import {Feather, FontAwesome} from "@expo/vector-icons";
 import Input from "../Components/Input";
 
@@ -55,8 +54,8 @@ const Checkin = ({navigation}) => {
                 <Container>
                     <Content>
                         <FormArea>
-                            <SelectDropDown title='المورد' items={items}/>
-                            <SelectDropDown title='المستودع' items={items}/>
+                            <SelectDropDown title='المورد' items={[]}/>
+                            <SelectDropDown title='المستودع' items={[]}/>
                             <FlexEnd>
 
                                 <ButtonAdd onPress={() => setVisible(true)}>
@@ -79,7 +78,7 @@ const Checkin = ({navigation}) => {
                         <Modals
                             visible={visible}
                             setVisible={setVisible}>
-                            <SelectDropDown title='البند' items={items}/>
+                            <SelectDropDown title='البند' items={[]}/>
                             <Input
                                 label='الطول'
                                 icon='form'

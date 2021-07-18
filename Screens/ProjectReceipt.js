@@ -10,7 +10,6 @@ import CheckoutShared from "../Components/CheckoutShared";
 const {red} = Colors
 const ProjectsReceipt = ({navigation, route}) => {
 
-    console.log(route)
     const tableHead = ['البند', 'الكمية', 'الاجراء'];
 
     const [tableData, setTableData] = useState([
@@ -25,11 +24,12 @@ const ProjectsReceipt = ({navigation, route}) => {
         setTableData([...tableData, tableData.splice(id, 1)[1]])
     };
 
-
+    const {params: {data: {stocks, projects, products}}} = route
     return (
         <Layout>
             <Header title='إستلام من المشاريع'  navigation={navigation}/>
-            <CheckoutShared tableHead={tableHead} tableData={tableData}/>
+            <CheckoutShared stocks={stocks} projects={projects} products={products} tableHead={tableHead}
+                            tableData={tableData}/>
         </Layout>
     )
 }

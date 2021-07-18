@@ -13,9 +13,10 @@ const SelectDropDown = ({items, title = 'البند', style, onSelectItem , sele
             <Label style={style}>{title}</Label>
             <SearchableDropDownScroll
                 onTextChange={(text) => console.log(text)}
+
                 Icon='email'
                 //On text change listener on the searchable input
-                onItemSelect={onSelectItem}
+                onItemSelect={(val) => onSelectItem(val) || null}
                 //onItemSelect called after the selection from the dropdown
                 textInputStyle={styles.styledInputSearch}
                 chip={true}
