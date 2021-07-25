@@ -27,18 +27,15 @@ export const DataTable = ({tableHead, tableData, setTableData, ...props}) => {
                 tableData.map((item, index) => {
 
                     return (
-                        <>
-
-                            <TableWrapper style={[styles.wrapper, styles.row]}>
-                                {
-                                    item.map((cellData, cellIndex) =>
-                                        <Cell key={cellIndex}
-                                              data={cellIndex === 3 ? element(cellData, index) : cellData}
-                                              textStyle={styles.text}/>
-                                    )
-                                }
-                            </TableWrapper>
-                        </>
+                        <TableWrapper style={[styles.wrapper, styles.row]} key={`item_${index}`}>
+                            {
+                                item.map((cellData, cellIndex) =>
+                                    <Cell key={`cell_${cellIndex}`}
+                                          data={cellIndex === 3 ? element(cellData, index) : cellData}
+                                          textStyle={styles.text}/>
+                                )
+                            }
+                        </TableWrapper>
                     )
                 })
             }

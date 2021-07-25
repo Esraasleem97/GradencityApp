@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
@@ -11,6 +11,10 @@ import {Feather} from "@expo/vector-icons";
 import CheckoutShared from "../Components/CheckoutShared";
 import SelectDropDown from "../Components/SelectDropDown";
 import ProductModals from "../Components/ProductModals";
+import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import {useDispatch, useSelector} from "react-redux";
+import {CHECK_OUT} from "../Api";
+import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
 const {white} = Colors
 
@@ -32,6 +36,12 @@ const Checkout = ({navigation, route}) => {
 
     const [tableData, setTableData] = useState([]);
 
+    const dispatch = useDispatch();
+
+    const {transaction} = useSelector(state => state)
+
+    const {loading, data, error} = transaction
+
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
     }
@@ -47,9 +57,25 @@ const Checkout = ({navigation, route}) => {
         return setTakeTime(val)
     }
 
+    const handleSetTableData = (val) => {
+        return setTableData(val)
+    }
+
     const handleOnSelectModalQty = (val) => {
         return setModalQty(val)
     }
+
+    useEffect(() => {
+
+        if (data && data.success) {
+            setProduct(null)
+            setStock(null)
+            setProject(null)
+            setTakeTime(null)
+            setModalQty(null)
+            setTableData([])
+        }
+    }, [data])
 
     const modalSubmitHandler = async () => {
         if (product && modalQty) {
@@ -59,7 +85,7 @@ const Checkout = ({navigation, route}) => {
                     product.id,
                     product.name,
                     modalQty,
-                    ''
+                    product
                 ]
             )
             setProduct(null)
@@ -68,16 +94,36 @@ const Checkout = ({navigation, route}) => {
         }
     }
 
-    const handleSetTableData = (val) => {
-        return setTableData(val)
-    }
 
+    const submitHandler = () => {
+
+        const products = tableData.map(item => Object.assign({
+            id: item[0],
+            name: item[1],
+            quantity: item[2],
+            guid: item[3].guid,
+            code: item[3].code
+        }))
+
+        dispatch(TransactionsHandler({
+            products: products,
+            take_time: takeTime,
+            stock: stock ? stock.guid : '',
+            project: project ? project.guid : '',
+            type: CHECKOUT
+        }, CHECK_OUT))
+
+    }
 
     const {params: {data: {stocks, projects, products}}} = route
 
     return (
         <Layout>
             <Header title='الإخراج' navigation={navigation}/>
+
+            <TransactionMessagesHandlerComponent data={data} error={error}/>
+
+
             {
                 visible && <ProductModals
                     setVisible={setVisible}
@@ -88,6 +134,7 @@ const Checkout = ({navigation, route}) => {
                     modalQty={modalQty}
                     handleOnSelectModalQty={handleOnSelectModalQty}
                     modalSubmitHandler={modalSubmitHandler}
+
                 />
             }
 
@@ -97,6 +144,8 @@ const Checkout = ({navigation, route}) => {
                             takeTime={takeTime}
                             onSelectTakeTime={handleOnSelectTakeTime}
                             setTableData={handleSetTableData}
+                            submit={submitHandler}
+                            loading={loading}
             >
 
 

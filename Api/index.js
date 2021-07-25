@@ -16,4 +16,6 @@ export const SUPPLIERS = URI + API + 'suppliers'
 
 export const TRANSACTION = URI + API + 'transactions/store'
 
+export const CHECK_OUT = URI + API + 'checkout'
+
 export const MY_TRANSACTIONS = URI + API + 'transactions'

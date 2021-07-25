@@ -1,16 +1,14 @@
 import React from "react";
 import {DataTable} from "./DataTable";
 import {
-    Button,
-    ButtonText,
-
+    Button, ButtonText,
     Container,
     Content,
-
     FormArea,
 } from "./Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Input from "../Components/Input";
+import {Spinner} from "@ui-kitten/components";
 
 
 const CheckoutShared = ({
@@ -20,6 +18,8 @@ const CheckoutShared = ({
                             takeTime,
                             onSelectTakeTime,
                             setTableData,
+                            submit,
+                            loading,
                             ...props
                         }) => {
 
@@ -41,9 +41,18 @@ const CheckoutShared = ({
                             value={takeTime}
                             onChangeText={onSelectTakeTime}
                         />
-                        <Button>
-                            <ButtonText>حفظ</ButtonText>
-                        </Button>
+                        {
+                            loading
+                                ?
+                                <ButtonText>
+                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                </ButtonText>
+                                :
+                                <Button onPress={submit}>
+                                    <ButtonText>حفظ</ButtonText>
+                                </Button>
+                        }
+
                     </FormArea>
                 </Content>
             </Container>

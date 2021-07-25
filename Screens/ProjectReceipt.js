@@ -1,37 +1,182 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
-    Colors
+    ButtonAdd, ButtonText, Colors, FlexEnd
 } from "../Components/Styles";
-import {FontAwesome} from "@expo/vector-icons";
+import {Feather} from "@expo/vector-icons";
 import CheckoutShared from "../Components/CheckoutShared";
+import {useDispatch, useSelector} from "react-redux";
+import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import {CHECK_OUT} from "../Api";
+import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import ProductModals from "../Components/ProductModals";
+import SelectDropDown from "../Components/SelectDropDown";
+const {white} = Colors
 
-const {red} = Colors
 const ProjectsReceipt = ({navigation, route}) => {
 
-    const tableHead = ['البند', 'الكمية', 'الاجراء'];
 
-    const [tableData, setTableData] = useState([
-        ['1', '2', <FontAwesome onPress={() => removeRow(0)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['2', 'b', <FontAwesome onPress={() => removeRow(1)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['3', '2', <FontAwesome onPress={() => removeRow(2)} name='times' color={red} style={{textAlign: 'center'}}/>],
-        ['4', 'b', <FontAwesome onPress={() => removeRow(3)} name='times' color={red} style={{textAlign: 'center'}}/>]
-    ]);
+    const [product, setProduct] = useState(null);
+
+    const tableHead = ['الرقم', 'البند', 'الكمية', 'الاجراء'];
+
+    const [tableData, setTableData] = useState([]);
+
+    const [stock, setStock] = useState(null);
+
+    const [project, setProject] = useState(null);
+
+    const [takeTime, setTakeTime] = useState(null);
+
+    const [visible, setVisible] = useState(false);
+
+    const [modalQty, setModalQty] = useState(null);
+
+    const dispatch = useDispatch();
+
+    const {transaction} = useSelector(state => state)
+
+    const {loading, data, error} = transaction
 
 
-    const removeRow = (id) => {
-        setTableData([...tableData, tableData.splice(id, 1)[1]])
-    };
+
+    const handleOnSelectProject = (val) => {
+        return setProject(val)
+    }
+    const handleOnSelectStock = (val) => {
+        return setStock(val)
+    }
+
+    const handleOnSelectProduct = (val) => {
+        return setProduct(val)
+    }
+
+    const handleOnSelectModalQty = (val) => {
+        return setModalQty(val)
+    }
+
+    const handleOnSelectTakeTime = (val) => {
+        return setTakeTime(val)
+    }
+
+    const handleSetTableData = (val) => {
+        return setTableData(val)
+    }
+
+
+    const modalSubmitHandler = async () => {
+        if (product && modalQty) {
+            await tableData.push
+            (
+                [
+                    product.id,
+                    product.name,
+                    modalQty,
+                    product
+                ]
+            )
+            setProduct(null)
+            setModalQty(null)
+            setVisible(false)
+        }
+    }
+
+
+
+    const submitHandler = () => {
+
+        const products = tableData.map(item => Object.assign({
+            id: item[0],
+            name: item[1],
+            quantity: item[2],
+            guid: item[3].guid,
+            code: item[3].code
+        }))
+
+        dispatch(TransactionsHandler({
+            products: products,
+            take_time: takeTime,
+            stock: stock ? stock.guid : '',
+            project: project ? project.guid : '',
+            type: CHECKOUT
+        }, CHECK_OUT))
+
+    }
+
+
+    useEffect(() => {
+
+        if (data && data.success) {
+            setProduct(null)
+            setStock(null)
+            setProject(null)
+            setTakeTime(null)
+            setModalQty(null)
+            setTableData([])
+        }
+    }, [data])
+
 
     const {params: {data: {stocks, projects, products}}} = route
+
     return (
         <Layout>
             <Header title='إستلام من المشاريع'  navigation={navigation}/>
-            <CheckoutShared stocks={stocks} projects={projects} products={products} tableHead={tableHead}
-                            tableData={tableData}/>
+            <TransactionMessagesHandlerComponent data={data} error={error}/>
+
+
+            {
+                visible && <ProductModals
+                    setVisible={setVisible}
+                    visible={visible}
+                    products={products}
+                    handleOnSelectProduct={handleOnSelectProduct}
+                    product={product}
+                    modalQty={modalQty}
+                    handleOnSelectModalQty={handleOnSelectModalQty}
+                    modalSubmitHandler={modalSubmitHandler}
+
+                />
+            }
+
+
+            <CheckoutShared tableHead={tableHead}
+                            tableData={tableData}
+                            takeTime={takeTime}
+                            onSelectTakeTime={handleOnSelectTakeTime}
+                            setTableData={handleSetTableData}
+                            submit={submitHandler}
+                            loading={loading}
+            >
+
+
+                <SelectDropDown title='أسم المشروع'
+                                items={projects}
+                                onSelectItem={handleOnSelectProject}
+                                selectedItem={project}
+                />
+
+                <SelectDropDown title='المستودع'
+                                items={stocks}
+                                onSelectItem={handleOnSelectStock}
+                                selectedItem={stock}
+                />
+
+                <FlexEnd>
+
+                    <ButtonAdd onPress={() => setVisible(true)}>
+                        <Feather name='plus' size={15} color={white}/>
+                        <ButtonText>إضافة</ButtonText>
+                    </ButtonAdd>
+                </FlexEnd>
+
+
+            </CheckoutShared>
+
         </Layout>
     )
+
 }
 
 

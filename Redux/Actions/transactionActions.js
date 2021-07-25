@@ -8,14 +8,14 @@ import {
 import axios from "axios";
 import {API_PROTECTION, MY_TRANSACTIONS, TRANSACTION} from "../../Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-
 export const SEEDING = 4
 export const IMPACT = 5
 export const WEEDING = 6
 export const TRIM = 7
+export const CHECKOUT = 2
 
-export const TransactionsHandler = (Data = {}) => async (dispatch) => {
+
+export const TransactionsHandler = (Data = {} , Url= TRANSACTION) => async (dispatch) => {
 
 
     try {
@@ -35,7 +35,7 @@ export const TransactionsHandler = (Data = {}) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post(`${TRANSACTION}`, Data, config)
+        const {data} = await axios.post(`${Url}`, Data, config)
 
         dispatch({
             type: TRANSACTIONS_SUCCESS,
