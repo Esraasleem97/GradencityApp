@@ -22,6 +22,7 @@ import {stocksListHandler} from "../Redux/Actions/stockActions";
 import {View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
+import {groupsListHandler} from "../Redux/Actions/groupActions";
 
 
 const Home = ({navigation}) => {
@@ -32,13 +33,16 @@ const Home = ({navigation}) => {
         return setRefresh(true)
     }
 
-    const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
+    const {productsList, projectsList, stocksList, myTransactions , groupsList} = useSelector(state => state);
 
     const {products} = productsList
 
     const {projects, projectLoading} = projectsList
 
     const {stocks} = stocksList
+
+    const {groups} = groupsList
+
 
     const {myTransactionsList} = myTransactions
 
@@ -53,6 +57,8 @@ const Home = ({navigation}) => {
         dispatch(stocksListHandler())
         dispatch(projectsListHandler())
         dispatch(MyTransactionsHandler())
+        dispatch(groupsListHandler())
+
 
     }, [dispatch, refresh])
 
@@ -69,15 +75,21 @@ const Home = ({navigation}) => {
             id: 0, title: 'إستلام من المشاريع',
             img: require('../assets/recipition.png'),
             nav: 'ProjectsReceipt',
-            data: {projects, stocks , products}
+            data: {projects, stocks, products}
         },
-        {id: 1, title: 'الإخراج', img: require('../assets/checkout.png'), nav: 'Checkout', data: {projects, stocks , products}},
-        {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
+        {
+            id: 1,
+            title: 'الإخراج',
+            img: require('../assets/checkout.png'),
+            nav: 'Checkout',
+            data: {projects, stocks, products}
+        },
+        {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 5, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
         {id: 6, title: 'تقليم أو نقل', img: require('../assets/transform.png'), nav: 'TrimMove', data: {products}},
-        {id: 7, title: 'التدوير', img: require('../assets/rotate.png'), nav: 'Rotate', data: {products}},
+        {id: 7, title: 'التدوير', img: require('../assets/rotate.png'), nav: 'Rotate', data: {products, stocks}},
         {
             id: 8,
             title: 'النقل بين المشاتل',

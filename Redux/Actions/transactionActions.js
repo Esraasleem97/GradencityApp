@@ -8,14 +8,17 @@ import {
 import axios from "axios";
 import {API_PROTECTION, MY_TRANSACTIONS, TRANSACTION} from "../../Api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
+export const CHECKIN = 1
+export const CHECKOUT = 2
 export const SEEDING = 4
 export const IMPACT = 5
 export const WEEDING = 6
 export const TRIM = 7
-export const CHECKOUT = 2
-
-
-export const TransactionsHandler = (Data = {} , Url= TRANSACTION) => async (dispatch) => {
+export const TRANSFER_PLANTS = 8
+export const ROTATE_TYPE = 9
+export const TransactionsHandler = (Data = {}, Url = TRANSACTION) => async (dispatch) => {
 
 
     try {
@@ -96,7 +99,7 @@ export const MyTransactionsHandler = () => async (dispatch) => {
 
 
     } catch (e) {
-console.log(e)
+        console.log(e)
         dispatch({
             type: MY_TRANSACTIONS_FAILED,
             payload: e.response && e.response.data.errors

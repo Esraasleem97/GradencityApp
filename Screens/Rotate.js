@@ -1,80 +1,206 @@
-import React from "react";
-import {Layout} from "@ui-kitten/components";
+import React, {useEffect, useState} from "react";
+import {Layout, Spinner, Text} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
+import {Alert, View} from "react-native";
+import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import {ROTATE} from "../Api";
+import {useDispatch, useSelector} from "react-redux";
+import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
 
+const Rotate = ({navigation, route}) => {
 
-const Rotate = ({navigation , route}) => {
+    const {params: {data: {products, stocks}}} = route
 
-    const { params: { data: { products } } } = route
+    const dispatch = useDispatch();
 
+    const {transaction} = useSelector(state => state)
+
+    const {loading, data, error} = transaction
+
+    const [product, setProduct] = useState(null)
+
+    const [takeTime, setTakeTime] = useState(null)
+
+    const [name, setName] = useState(null)
+
+    const [qty, setQty] = useState(null)
+
+    const [height, setHeight] = useState(null)
+
+    const [size, setSize] = useState(null)
+
+    const [diameter, setDiameter] = useState(null)
+
+    const [stock, setStock] = useState(null);
+
+    const handleOnSelectProduct = (val) => {
+        return setProduct(val)
+    }
+
+    const handleOnSelectStock = (val) => {
+        return setStock(val)
+    }
+
+    const submitHandler = () => {
+
+        if (qty > Number(product.qty)) {
+            return Alert.alert('تنبيه !', 'لا يمكن لكمية البند الجديد ان تكون أكبر من الكمية الحالية. ')
+        }
+
+
+        if (stock && products) {
+
+            const products = []
+            product.quantity = qty ; // for backend
+            product.GUID = product.guid ;  // for backend
+            products.push(product)
+
+
+            dispatch(TransactionsHandler({
+                products,
+                take_time: takeTime,
+                name,
+                qty,
+                height,
+                size,
+                diameter,
+                stock: stock.guid,
+                type: ROTATE_TYPE
+            }, ROTATE))
+        }
+
+
+    }
+
+    useEffect(() => {
+
+        if (data && data.success) {
+            setProduct(null)
+            setStock(null)
+            setHeight(null)
+            setSize(null)
+            setDiameter(null)
+            setTakeTime(null)
+            setName(null)
+            setQty(null)
+        }
+    }, [data])
 
     return (
         <Layout>
             <Header title='التدوير' navigation={navigation}/>
+            <TransactionMessagesHandlerComponent data={data} error={error}/>
+
             <RefreshHandler>
                 <Container>
                     <Content>
                         <FormArea>
-                            <SelectDropDown items={products} title='البند القديم' style={{fontSize:20}}/>
-                            <Input
-                                label='الكمية الموجودة'
-                                icon='form'
-                                placeholder='ادخل الرقم هنا'
-                                keyboardType='numeric'
+
+                            <SelectDropDown title='المستودع'
+                                            items={stocks}
+                                            onSelectItem={handleOnSelectStock}
+                                            selectedItem={stock}
+                                            style={{fontSize: 20, marginRight: 50, flex: 1}}
                             />
 
-                            <Input
-                                label='الكمية'
-                                icon='form'
-                                placeholder='الكمية'
-                                keyboardType='numeric'
-                            />
+                            <SelectDropDown items={products}
+                                            onSelectItem={(val) => handleOnSelectProduct(val)}
+                                            selectedItem={product}
+                                            title='البند القديم'
+                                            style={{fontSize: 20, marginRight: 50, flex: 1}}>
+                            </SelectDropDown>
+
+                            {
+                                product &&
+                                <View>
+                                    <Text style={{marginTop: 12, flex: 1}}>الكمية الحالية : {product.qty}</Text>
+                                </View>
+
+                            }
+
+
                             <Line/>
-                            <SelectDropDown items={products} title='البند الجديد' style={{fontSize:20}}/>
-                            <Input
-                                label='الكمية'
-                                icon='form'
-                                placeholder='ادخل الكمية هنا'
-                                keyboardType='numeric'
+                            {
+                                product && Number(product.qty) > 0
 
-                            />
-                            <FlexStyled>
-                                <Input
-                                    label='الطول'
-                                    icon='form'
-                                    placeholder='الطول'
-                                    keyboardType='numeric'
-                                />
-                                <Input
-                                    label='الحجم'
-                                    icon='form'
-                                    placeholder='الحجم'
-                                    keyboardType='numeric'
-                                />
-                                <Input
-                                    label='القطر'
-                                    icon='form'
-                                    placeholder='القطر'
-                                    keyboardType='numeric'
-                                />
+                                    ? <View>
+                                        <Input
+                                            label='أسم البند الجديد'
+                                            icon='form'
+                                            placeholder='ادخل أسم البند الجديد هنا'
+                                            onChangeText={(val) => setName(val)}
+                                            value={name}
+                                        />
+                                        <Input
+                                            label='الكمية'
+                                            icon='form'
+                                            placeholder='ادخل الكمية هنا'
+                                            keyboardType='numeric'
+                                            onChangeText={(val) => setQty(val)}
+                                            value={qty}
 
-                                <Input
-                                    label='الوقت المستغرق'
-                                    icon='dashboard'
-                                    placeholder='00:00'
-                                    keyboardType='numeric'
-                                />
+                                        />
+                                        <FlexStyled>
+                                            <Input
+                                                label='الطول'
+                                                icon='form'
+                                                placeholder='الطول'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setHeight(val)}
+                                                value={height}
+                                            />
+                                            <Input
+                                                label='الحجم'
+                                                icon='form'
+                                                placeholder='الحجم'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setSize(val)}
+                                                value={size}
+                                            />
+                                            <Input
+                                                label='القطر'
+                                                icon='form'
+                                                placeholder='القطر'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setDiameter(val)}
+                                                value={diameter}
+                                            />
 
-                            </FlexStyled>
+                                            <Input
+                                                label='الوقت المستغرق'
+                                                icon='dashboard'
+                                                placeholder='00:00'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setTakeTime(val)}
+                                                value={takeTime}
+                                            />
 
-                            <Button>
-                                <ButtonText>حفظ</ButtonText>
-                            </Button>
+                                        </FlexStyled>
+                                        {
+                                            loading
+                                                ?
+                                                <ButtonText>
+                                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                                </ButtonText>
+                                                :
+                                                <Button onPress={submitHandler}>
+                                                    <ButtonText>حفظ</ButtonText>
+                                                </Button>
+                                        }
+
+                                    </View>
+                                    : product && Number(product.qty) === 0
+                                    ? <Text style={{color: '#dc3838'}}>
+                                        يجب ان تكون الكمية الحالية للبند أكبر من صفر
+                                        لأتمام العملية</Text>
+                                    : null
+                            }
+
                         </FormArea>
                     </Content>
                 </Container>

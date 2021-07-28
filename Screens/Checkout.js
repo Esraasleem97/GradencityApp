@@ -8,7 +8,7 @@ import {
     FlexEnd
 } from "../Components/Styles";
 import {Feather} from "@expo/vector-icons";
-import CheckoutShared from "../Components/CheckoutShared";
+import Transactions from "../Components/Transactions";
 import SelectDropDown from "../Components/SelectDropDown";
 import ProductModals from "../Components/ProductModals";
 import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions";
@@ -139,13 +139,13 @@ const Checkout = ({navigation, route}) => {
             }
 
 
-            <CheckoutShared tableHead={tableHead}
-                            tableData={tableData}
-                            takeTime={takeTime}
-                            onSelectTakeTime={handleOnSelectTakeTime}
-                            setTableData={handleSetTableData}
-                            submit={submitHandler}
-                            loading={loading}
+            <Transactions tableHead={tableHead}
+                          tableData={tableData}
+                          takeTime={takeTime}
+                          onSelectTakeTime={handleOnSelectTakeTime}
+                          setTableData={handleSetTableData}
+                          submit={submitHandler}
+                          loading={loading}
             >
 
 
@@ -170,7 +170,7 @@ const Checkout = ({navigation, route}) => {
                 </FlexEnd>
 
 
-            </CheckoutShared>
+            </Transactions>
 
         </Layout>
     )

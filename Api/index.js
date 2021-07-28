@@ -8,14 +8,22 @@ export const LOGIN = URI + API + 'login'
 
 export const PRODUCTS = URI + API + 'products'
 
+export const GROUPS = URI + API + 'groups'
+
 export const PROJECTS = URI + API + 'projects'
 
 export const STOCKS = URI + API + 'stocks'
 
 export const SUPPLIERS = URI + API + 'suppliers'
 
-export const TRANSACTION = URI + API + 'transactions/store'
+export const TRANSACTION = URI + API + 'transactions'
 
 export const CHECK_OUT = URI + API + 'checkout'
+
+export const CHECK_IN = URI + API + 'checkin'
+
+export const TRANSFER = URI + API + 'transfer'
+
+export const ROTATE = URI + API + 'rotate'
 
 export const MY_TRANSACTIONS = URI + API + 'transactions'

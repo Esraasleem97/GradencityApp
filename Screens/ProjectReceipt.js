@@ -2,13 +2,16 @@ import React, {useEffect, useState} from "react";
 import {Layout} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
-    ButtonAdd, ButtonText, Colors, FlexEnd
+    ButtonAdd,
+    ButtonText,
+    Colors,
+    FlexEnd
 } from "../Components/Styles";
 import {Feather} from "@expo/vector-icons";
-import CheckoutShared from "../Components/CheckoutShared";
+import Transactions from "../Components/Transactions";
 import {useDispatch, useSelector} from "react-redux";
-import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions";
-import {CHECK_OUT} from "../Api";
+import {CHECKIN, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import {CHECK_IN} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import ProductModals from "../Components/ProductModals";
 import SelectDropDown from "../Components/SelectDropDown";
@@ -99,8 +102,8 @@ const ProjectsReceipt = ({navigation, route}) => {
             take_time: takeTime,
             stock: stock ? stock.guid : '',
             project: project ? project.guid : '',
-            type: CHECKOUT
-        }, CHECK_OUT))
+            type: CHECKIN
+        }, CHECK_IN))
 
     }
 
@@ -141,13 +144,13 @@ const ProjectsReceipt = ({navigation, route}) => {
             }
 
 
-            <CheckoutShared tableHead={tableHead}
-                            tableData={tableData}
-                            takeTime={takeTime}
-                            onSelectTakeTime={handleOnSelectTakeTime}
-                            setTableData={handleSetTableData}
-                            submit={submitHandler}
-                            loading={loading}
+            <Transactions tableHead={tableHead}
+                          tableData={tableData}
+                          takeTime={takeTime}
+                          onSelectTakeTime={handleOnSelectTakeTime}
+                          setTableData={handleSetTableData}
+                          submit={submitHandler}
+                          loading={loading}
             >
 
 
@@ -172,7 +175,7 @@ const ProjectsReceipt = ({navigation, route}) => {
                 </FlexEnd>
 
 
-            </CheckoutShared>
+            </Transactions>
 
         </Layout>
     )

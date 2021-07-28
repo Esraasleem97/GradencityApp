@@ -11,7 +11,7 @@ import Input from "../Components/Input";
 import {Spinner} from "@ui-kitten/components";
 
 
-const CheckoutShared = ({
+const Transactions = ({
                             children,
                             tableHead,
                             tableData,
@@ -62,5 +62,5 @@ const CheckoutShared = ({
 }
 
 
-export default CheckoutShared;
+export default Transactions;
 

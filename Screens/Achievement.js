@@ -17,22 +17,15 @@ const Achievement = ({navigation, route}) => {
     const [isChooseNewProduct, setIsChooseNewProduct] = useState(false);
 
     const chooseProjectHandler = () => {
-        console.log('isChooseNewProject', isChooseNewProject)
         setIsChooseNewProject(!isChooseNewProject)
-
-        console.log('isChooseNewProject', isChooseNewProject)
-
     }
 
     const chooseProductHandler = () => {
-        console.log('isChooseNewProduct', isChooseNewProduct)
-
         setIsChooseNewProduct(!isChooseNewProduct)
-        console.log('isChooseNewProduct', isChooseNewProduct)
     }
 
 
-    const {params: {data: {projects, products}}} = route
+    const {params: {data: {projects, products , groups}}} = route
 
     return (
         <Layout>
@@ -72,7 +65,10 @@ const Achievement = ({navigation, route}) => {
                         : isChooseNewProduct && !isChooseNewProject
                         ?
                         <View>
-                            <SelectDropDown items={projects} title='مشاريع'/>
+                            <SelectDropDown items={projects} title='المشروع'/>
+
+                            <SelectDropDown items={groups} title='المجموعة'/>
+
                             <Input
                                 label='أضافة بند جديد'
                                 icon='form'
@@ -95,7 +91,7 @@ const Achievement = ({navigation, route}) => {
                             </View>
 
                             : <View>
-                                <SelectDropDown items={projects} title='مشاريع'/>
+                                <SelectDropDown items={projects} title='المشروع'/>
                                 <SelectDropDown items={products}/>
                             </View>
 
