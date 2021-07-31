@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {useFocusEffect} from '@react-navigation/native'
+import {DrawerActions, useFocusEffect} from '@react-navigation/native'
 
 import {Layout, Spinner} from "@ui-kitten/components";
 
@@ -9,7 +9,7 @@ import {
     ImageBackground,
     Card,
     CardImage,
-    CardText
+    CardText, ContainerAddIcon, AddIcon
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
@@ -23,6 +23,7 @@ import {View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 import {groupsListHandler} from "../Redux/Actions/groupActions";
+import {AntDesign} from "@expo/vector-icons";
 
 
 const Home = ({navigation}) => {
@@ -141,7 +142,15 @@ const Home = ({navigation}) => {
                             }
                         </Grid>
                     </Container>
+
                 </RefreshHandler>
+                <ContainerAddIcon>
+                    <AddIcon onPress={() =>{
+                        navigation.dispatch(DrawerActions.openDrawer())
+                    }}>
+                        <AntDesign name='plus' color='#fff' size={20}/>
+                    </AddIcon>
+                </ContainerAddIcon>
             </ImageBackground>
         </Layout>
 

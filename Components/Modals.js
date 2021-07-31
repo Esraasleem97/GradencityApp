@@ -1,6 +1,6 @@
 import React from "react";
-import {StyleSheet, View} from 'react-native';
-import {Card, Modal} from '@ui-kitten/components';
+import {StyleSheet, View, Modal, Alert} from 'react-native';
+import {Card} from '@ui-kitten/components';
 
 
 export const Modals = ({setVisible, visible, children }) => {
@@ -8,8 +8,12 @@ export const Modals = ({setVisible, visible, children }) => {
     return (<Modal
         style={{width: '90%'}}
         visible={visible}
-        backdropStyle={styles.backdrop}
-        onBackdropPress={() => setVisible(false)}>
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setVisible(!visible);
+        }}>
         <Card disabled={true}>
             <View>
                 {children}

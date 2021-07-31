@@ -136,23 +136,19 @@ export const Logo = styled.Image`
 
 export const Content = styled.View`
   width: 80%;
-  height: 100%;
-  margin-bottom: ${StatusBarHeight + 70}px;
+
+  flex: 1;
+  justify-content: center;
+
+
 
 `;
-
-export const Title = styled.Text`
-  margin-vertical: ${StatusBarHeight + 5}px;
-  font-size: ${32}px;
-  font-weight: 800;
-  color: ${white};
-
-`;
-
 
 export const FormArea = styled.View`
   width: 100%;
   height: 100%;
+
+
 `;
 export const TextInputStyled = styled.TextInput`
   background-color: ${secondary};
@@ -280,4 +276,17 @@ export const ButtonAdd = styled.TouchableOpacity`
   background-color: ${orangeLight};
   margin-vertical:10px ;
   border-radius: 5px;
+`;
+export const ContainerAddIcon = styled.View`
+  position: absolute;
+  bottom: ${StatusBarHeight + 50}px;
+  right: 10px;
+`;
+export const AddIcon = styled.TouchableOpacity`
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  background-color: ${green3};
+  justify-content: center;
+  align-items: center;
 `;

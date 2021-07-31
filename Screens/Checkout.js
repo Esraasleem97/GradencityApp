@@ -80,14 +80,12 @@ const Checkout = ({navigation, route}) => {
     const modalSubmitHandler = async () => {
         if (product && modalQty) {
             await tableData.push
-            (
-                [
+            ([
                     product.id,
                     product.name,
                     modalQty,
                     product
-                ]
-            )
+                ])
             setProduct(null)
             setModalQty(null)
             setVisible(false)
