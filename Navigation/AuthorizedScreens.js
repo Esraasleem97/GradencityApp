@@ -20,12 +20,22 @@ import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
+
 import AddClause from "../Screens/AddClause";
-import {AddsText, Colors, Line} from "../Components/Styles";
+import {Colors, Line} from "../Components/Styles";
+
+import AddProduct from "../Screens/AddProduct";
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ * Stack Navigator Screens
+ */
 export const HomeScreensContainer = () => {
     return (
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
@@ -41,22 +51,25 @@ export const HomeScreensContainer = () => {
             <Stack.Screen name='Achievement' component={Achievement}/>
             <Stack.Screen name='Rotate' component={Rotate}/>
             <Stack.Screen name='AddProject' component={AddProject}/>
-            <Stack.Screen name='AddClause' component={AddClause}/>
+            <Stack.Screen name='AddProduct' component={AddProduct}/>
         </Stack.Navigator>
     )
 }
 
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ * Tab Bottom Navigator
+ */
 const TabNavigator = () => {
+
     const dispatch = useDispatch()
 
     const LogoutHandler = () => {
         return dispatch(userLogoutHandler())
-
     }
-
-
     return (
-
         <Tab.Navigator
             screenOptions={({route}) => ({
                 tabBarIcon: ({color, size, text, onPress, isViewer}) => {
@@ -74,7 +87,6 @@ const TabNavigator = () => {
                         isViewer = false
 
                     }
-
                     return (
                         isViewer ? <View>
                                 <Ionicons style={{alignSelf: 'center', justifyContent: 'center'}}
@@ -103,6 +115,23 @@ const TabNavigator = () => {
 
     );
 }
+
+/**
+ * Tab Navigator Option & Style
+ * @type {{keyboardHidesTabBar: string,
+ * indicatorStyle:{marginHorizontal: string, width: string},
+ * labelStyle: {fontSize: number},
+ * inactiveTintColor: string,
+ * activeTintColor: string,
+ * style:{backgroundColor: string,
+ * bottom: number,
+ * borderTopRightRadius: number,
+ * position: string,
+ * height: number,
+ * borderTopLeftRadius: number},
+ * tabStyle: {flex: number, marginBottom: number, justifyContent: string},
+ * showLabel: boolean}}
+ */
 const tabBarOptions = ({
     labelStyle: {fontSize: 14},
     tabStyle: {flex: 1, justifyContent: 'center', marginBottom: 8},
@@ -123,7 +152,7 @@ const tabBarOptions = ({
     keyboardHidesTabBar: 'false',
     showLabel: false
 })
-const {greenLight2,redLight,white,orangeLight} = Colors;
+const {orangeLight} = Colors;
 
 function CustomDrawerContent(props) {
     return (
@@ -132,44 +161,37 @@ function CustomDrawerContent(props) {
                 <View style={styles.imgContainer}>
                     <Image source={require('../assets/drawer.jpg')} resizeMode='cover' style={styles.img}/>
                 </View>
-
-
-<View style={{marginTop:10}}>
-                <DrawerItem
-                    label='إضافة مشروع'
-                    onPress={() => {
-                        props.navigation.navigate('AddProject')
-                    }}
-                    labelStyle={styles.item}
-                    icon={() => (
-                        <EvilIcons
-                            name="plus"
-                            color={orangeLight}
-                            size={30}
-                        />
-                    )}
-                    activeBackgroundColor={redLight}
-                    activeTintColor={white}
-
-
-                />
-
-<Line/>
-                <DrawerItem
-                    label="إضافة بند"
-                    onPress={() => {
-                        props.navigation.navigate('AddClause')
-                    }}
-                    labelStyle={styles.item}
-                    icon={() => (
-                        <EvilIcons
-                            name="plus"
-                            color={orangeLight}
-                            size={30}
-                        />
-                    )}
-                />
-</View>
+                <View style={{marginTop: 10}}>
+                    <DrawerItem
+                        label='إضافة مشروع'
+                        onPress={() => {
+                            props.navigation.navigate('AddProject')
+                        }}
+                        labelStyle={styles.item}
+                        icon={() => (
+                            <EvilIcons
+                                name="plus"
+                                color={orangeLight}
+                                size={30}
+                            />
+                        )}
+                    />
+                    <Line/>
+                    <DrawerItem
+                        label="إضافة بند"
+                        onPress={() => {
+                            props.navigation.navigate('AddClause')
+                        }}
+                        labelStyle={styles.item}
+                        icon={() => (
+                            <EvilIcons
+                                name="plus"
+                                color={orangeLight}
+                                size={30}
+                            />
+                        )}
+                    />
+                </View>
                 <Line/>
 
             </DrawerContentScrollView>
@@ -184,18 +206,13 @@ function CustomDrawerContent(props) {
  */
 const AuthorizedScreens = () => {
 
-    const Drawer = createDrawerNavigator();
-
     return (
         <NavigationContainer>
             <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Home" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>
-
-
     );
-
 }
 
 export default AuthorizedScreens
@@ -206,18 +223,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     item: {
-
         fontSize: 17,
-
     },
-    imgContainer : {
-        flex:1,
+    imgContainer: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
-    img : {
+    img: {
         width: '100%',
         height: 300,
 
     }
 })
+
