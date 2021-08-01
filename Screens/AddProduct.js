@@ -5,10 +5,10 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea} from "../Components/Styles";
 import Input from "../Components/Input";
 import {View} from "react-native";
-import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
-import {ROTATE} from "../Api";
+import {ROTATE_TYPE} from "../Redux/Actions/transactionActions";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {productCreateHandler} from "../Redux/Actions/productActions";
 
 
 const AddProduct = ({navigation}) => {
@@ -33,7 +33,7 @@ const AddProduct = ({navigation}) => {
 
 
     const submitHandler = () => {
-            dispatch(TransactionsHandler({
+            dispatch(productCreateHandler({
                 take_time: takeTime,
                 name,
                 qty,
@@ -41,7 +41,8 @@ const AddProduct = ({navigation}) => {
                 size,
                 diameter,
                 type: ROTATE_TYPE
-            }, ROTATE))
+            })
+            )
 
     }
 
