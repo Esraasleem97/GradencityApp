@@ -20,12 +20,8 @@ import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
-
-import AddClause from "../Screens/AddClause";
-import {Colors, Line} from "../Components/Styles";
-
 import AddProduct from "../Screens/AddProduct";
-
+import {Colors, Line} from "../Components/Styles";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -180,7 +176,7 @@ function CustomDrawerContent(props) {
                     <DrawerItem
                         label="إضافة بند"
                         onPress={() => {
-                            props.navigation.navigate('AddClause')
+                            props.navigation.navigate('AddProduct')
                         }}
                         labelStyle={styles.item}
                         icon={() => (
