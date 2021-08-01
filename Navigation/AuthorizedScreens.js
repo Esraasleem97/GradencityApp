@@ -21,7 +21,7 @@ import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
 
-import AddClause from "../Screens/AddClause";
+// import AddClause from "../Screens/AddClause";
 import {Colors, Line} from "../Components/Styles";
 
 import AddProduct from "../Screens/AddProduct";
@@ -208,7 +208,7 @@ const AuthorizedScreens = () => {
 
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Navigator initialRouteName="Home" hideStatusBar={true} drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Home" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>
