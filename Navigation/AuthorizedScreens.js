@@ -20,6 +20,7 @@ import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
+import AddClause from "../Screens/AddClause";
 
 
 const Tab = createBottomTabNavigator();
@@ -39,6 +40,7 @@ export const HomeScreensContainer = () => {
             <Stack.Screen name='Achievement' component={Achievement}/>
             <Stack.Screen name='Rotate' component={Rotate}/>
             <Stack.Screen name='AddProject' component={AddProject}/>
+            <Stack.Screen name='AddClause' component={AddClause}/>
         </Stack.Navigator>
     )
 }
@@ -136,7 +138,7 @@ function CustomDrawerContent(props) {
                 <DrawerItem
                     title="إضافة بند"
                     onPress={() => {
-                        props.navigation.navigate('Home')
+                        props.navigation.navigate('AddClause')
                     }}
                 />
 

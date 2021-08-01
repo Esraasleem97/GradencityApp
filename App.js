@@ -93,8 +93,8 @@ const App = () => {
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
-                <NavigationHandler/>
-                {/*<AuthorizedScreens/>*/}
+                {/*<NavigationHandler/>*/}
+                <AuthorizedScreens/>
             </ApplicationProvider>
         </Provider>
     );
