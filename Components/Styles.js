@@ -66,7 +66,7 @@ export const Container = styled.View`
   align-items: center;
   margin-top: ${StatusBarHeight - 10}px;
   margin-bottom: ${StatusBarHeight + 30}px;
-  
+
 
 `;
 export const ImageBackground = styled.ImageBackground`
