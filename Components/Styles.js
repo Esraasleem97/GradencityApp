@@ -290,3 +290,11 @@ export const AddIcon = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
+export const AddsText = styled.Text`
+    color: ${darkLight}; 
+ padding-horizontal : 25px;
+  font-size: 20px;
+  font-weight: bold;
+
+
+`;

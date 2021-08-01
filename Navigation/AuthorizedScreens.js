@@ -2,8 +2,8 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from "@react-navigation/stack";
-import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
-import {Ionicons} from "@expo/vector-icons";
+import {createDrawerNavigator, DrawerContentScrollView, DrawerItem} from "@react-navigation/drawer";
+import {EvilIcons, Ionicons} from "@expo/vector-icons";
 import Home from './../Screens/Home';
 import Weed from "../Screens/Weed";
 import Seed from "../Screens/Seed";
@@ -14,13 +14,14 @@ import Achievement from '../Screens/Achievement';
 import Rotate from "../Screens/Rotate";
 import Checkin from "../Screens/Checkin";
 import Checkout from "../Screens/Checkout";
-import {TouchableOpacity, View, StyleSheet} from "react-native";
-import {DrawerItem, Text} from "@ui-kitten/components";
+import {TouchableOpacity, View, StyleSheet, Image} from "react-native";
+import {Text} from "@ui-kitten/components";
 import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
 import AddClause from "../Screens/AddClause";
+import {AddsText, Colors, Line} from "../Components/Styles";
 
 
 const Tab = createBottomTabNavigator();
@@ -122,28 +123,57 @@ const tabBarOptions = ({
     keyboardHidesTabBar: 'false',
     showLabel: false
 })
-
+const {greenLight2,redLight,white,orangeLight} = Colors;
 
 function CustomDrawerContent(props) {
     return (
-
+        <View style={styles.drawerContent}>
             <DrawerContentScrollView {...props} >
+                <View style={styles.imgContainer}>
+                    <Image source={require('../assets/drawer.jpg')} resizeMode='cover' style={styles.img}/>
+                </View>
 
+
+<View style={{marginTop:10}}>
                 <DrawerItem
-                    title='إضافة مشروع'
+                    label='إضافة مشروع'
                     onPress={() => {
                         props.navigation.navigate('AddProject')
                     }}
+                    labelStyle={styles.item}
+                    icon={() => (
+                        <EvilIcons
+                            name="plus"
+                            color={orangeLight}
+                            size={30}
+                        />
+                    )}
+                    activeBackgroundColor={redLight}
+                    activeTintColor={white}
+
+
                 />
+
+<Line/>
                 <DrawerItem
-                    title="إضافة بند"
+                    label="إضافة بند"
                     onPress={() => {
                         props.navigation.navigate('AddClause')
                     }}
+                    labelStyle={styles.item}
+                    icon={() => (
+                        <EvilIcons
+                            name="plus"
+                            color={orangeLight}
+                            size={30}
+                        />
+                    )}
                 />
+</View>
+                <Line/>
 
             </DrawerContentScrollView>
-
+        </View>
     );
 }
 
@@ -172,8 +202,22 @@ export default AuthorizedScreens
 
 const styles = StyleSheet.create({
     drawerContent: {
-        padding: 20
+        marginTop: -10,
+        flex: 1
+    },
+    item: {
+
+        fontSize: 17,
 
     },
+    imgContainer : {
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    img : {
+        width: '100%',
+        height: 300,
 
+    }
 })
