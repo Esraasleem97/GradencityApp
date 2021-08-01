@@ -14,17 +14,24 @@ import Achievement from '../Screens/Achievement';
 import Rotate from "../Screens/Rotate";
 import Checkin from "../Screens/Checkin";
 import Checkout from "../Screens/Checkout";
-import {TouchableOpacity, View, StyleSheet} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {DrawerItem, Text} from "@ui-kitten/components";
 import {useDispatch} from "react-redux";
 import {userLogoutHandler} from "../Redux/Actions/userActions";
 import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
-import AddClause from "../Screens/AddClause";
+import AddProduct from "../Screens/AddProduct";
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ * Stack Navigator Screens
+ */
 export const HomeScreensContainer = () => {
     return (
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
@@ -40,12 +47,51 @@ export const HomeScreensContainer = () => {
             <Stack.Screen name='Achievement' component={Achievement}/>
             <Stack.Screen name='Rotate' component={Rotate}/>
             <Stack.Screen name='AddProject' component={AddProject}/>
-            <Stack.Screen name='AddClause' component={AddClause}/>
+            <Stack.Screen name='AddProduct' component={AddProduct}/>
         </Stack.Navigator>
     )
 }
 
+
+/**
+ *
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ *  Drawer Navigator Screens
+ */
+function CustomDrawerContent(props) {
+    return (
+
+        <DrawerContentScrollView {...props} >
+
+            <DrawerItem
+                title='إضافة مشروع'
+                onPress={() => {
+                    props.navigation.navigate('AddProject')
+                }}
+            />
+            <DrawerItem
+                title="إضافة بند"
+                onPress={() => {
+                    props.navigation.navigate('AddProduct')
+                }}
+            />
+
+        </DrawerContentScrollView>
+
+    );
+}
+
+
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ * Tab Bottom Navigator
+ */
 const TabNavigator = () => {
+
     const dispatch = useDispatch()
 
     const LogoutHandler = () => {
@@ -102,6 +148,23 @@ const TabNavigator = () => {
 
     );
 }
+
+/**
+ * Tab Navigator Option & Style
+ * @type {{keyboardHidesTabBar: string,
+ * indicatorStyle:{marginHorizontal: string, width: string},
+ * labelStyle: {fontSize: number},
+ * inactiveTintColor: string,
+ * activeTintColor: string,
+ * style:{backgroundColor: string,
+ * bottom: number,
+ * borderTopRightRadius: number,
+ * position: string,
+ * height: number,
+ * borderTopLeftRadius: number},
+ * tabStyle: {flex: number, marginBottom: number, justifyContent: string},
+ * showLabel: boolean}}
+ */
 const tabBarOptions = ({
     labelStyle: {fontSize: 14},
     tabStyle: {flex: 1, justifyContent: 'center', marginBottom: 8},
@@ -124,29 +187,6 @@ const tabBarOptions = ({
 })
 
 
-function CustomDrawerContent(props) {
-    return (
-
-            <DrawerContentScrollView {...props} >
-
-                <DrawerItem
-                    title='إضافة مشروع'
-                    onPress={() => {
-                        props.navigation.navigate('AddProject')
-                    }}
-                />
-                <DrawerItem
-                    title="إضافة بند"
-                    onPress={() => {
-                        props.navigation.navigate('AddClause')
-                    }}
-                />
-
-            </DrawerContentScrollView>
-
-    );
-}
-
 /**
  * @returns {JSX.Element}
  * @constructor
@@ -154,11 +194,11 @@ function CustomDrawerContent(props) {
  */
 const AuthorizedScreens = () => {
 
-    const Drawer = createDrawerNavigator();
-
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Navigator initialRouteName="Home"
+                              drawerContent={props => <CustomDrawerContent {...props}/>}
+            >
                 <Drawer.Screen name="Home" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>
@@ -169,11 +209,3 @@ const AuthorizedScreens = () => {
 }
 
 export default AuthorizedScreens
-
-const styles = StyleSheet.create({
-    drawerContent: {
-        padding: 20
-
-    },
-
-})

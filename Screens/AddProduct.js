@@ -1,28 +1,23 @@
 import React, {useEffect, useState} from "react";
-import {Layout, Spinner, Text} from "@ui-kitten/components";
+import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
-import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
-import SelectDropDown from "../Components/SelectDropDown";
+import {Button, ButtonText, Container, Content, FlexStyled, FormArea} from "../Components/Styles";
 import Input from "../Components/Input";
-import {Alert, View} from "react-native";
+import {View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
 
-const AddClause = ({navigation, route}) => {
-
-    // const {params: {data: {products, stocks}}} = route
+const AddProduct = ({navigation}) => {
 
     const dispatch = useDispatch();
 
     const {transaction} = useSelector(state => state)
 
     const {loading, data, error} = transaction
-
-    const [product, setProduct] = useState(null)
 
     const [takeTime, setTakeTime] = useState(null)
 
@@ -36,52 +31,23 @@ const AddClause = ({navigation, route}) => {
 
     const [diameter, setDiameter] = useState(null)
 
-    const [stock, setStock] = useState(null);
-
-    const handleOnSelectProduct = (val) => {
-        return setProduct(val)
-    }
-
-    const handleOnSelectStock = (val) => {
-        return setStock(val)
-    }
 
     const submitHandler = () => {
-
-        if (qty > Number(product.qty)) {
-            return Alert.alert('تنبيه !', 'لا يمكن لكمية البند الجديد ان تكون أكبر من الكمية الحالية. ')
-        }
-
-
-        if (stock && products) {
-
-            const products = []
-            product.quantity = qty ; // for backend
-            product.GUID = product.guid ;  // for backend
-            products.push(product)
-
-
             dispatch(TransactionsHandler({
-                products,
                 take_time: takeTime,
                 name,
                 qty,
                 height,
                 size,
                 diameter,
-                stock: stock.guid,
                 type: ROTATE_TYPE
             }, ROTATE))
-        }
-
 
     }
 
     useEffect(() => {
 
         if (data && data.success) {
-            setProduct(null)
-            setStock(null)
             setHeight(null)
             setSize(null)
             setDiameter(null)
@@ -100,24 +66,11 @@ const AddClause = ({navigation, route}) => {
                 <Container>
                     <Content>
                         <FormArea>
-                            {
-                                product &&
-                                <View>
-                                    <Text style={{marginTop: 12, flex: 1}}>الكمية الحالية : {product.qty}</Text>
-                                </View>
-
-                            }
-
-
-                            <Line/>
-                            {
-                                product && Number(product.qty) > 0
-
-                                    ? <View>
+                                   <View>
                                         <Input
-                                            label='أسم البند الجديد'
+                                            label='أسم البند '
                                             icon='form'
-                                            placeholder='ادخل أسم البند الجديد هنا'
+                                            placeholder='ادخل أسم البند  هنا'
                                             onChangeText={(val) => setName(val)}
                                             value={name}
                                         />
@@ -177,15 +130,7 @@ const AddClause = ({navigation, route}) => {
                                                     <ButtonText>حفظ</ButtonText>
                                                 </Button>
                                         }
-
                                     </View>
-                                    : product && Number(product.qty) === 0
-                                        ? <Text style={{color: '#dc3838'}}>
-                                            يجب ان تكون الكمية الحالية للبند أكبر من صفر
-                                            لأتمام العملية</Text>
-                                        : null
-                            }
-
                         </FormArea>
                     </Content>
                 </Container>
@@ -193,4 +138,4 @@ const AddClause = ({navigation, route}) => {
         </Layout>
     )
 }
-export default AddClause;
+export default AddProduct;
