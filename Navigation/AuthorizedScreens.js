@@ -204,7 +204,7 @@ const AuthorizedScreens = () => {
 
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Navigator initialRouteName="Home" hideStatusBar={true} drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Home" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>
