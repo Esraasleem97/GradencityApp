@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
-import {Layout, Spinner} from "@ui-kitten/components";
+import {Layout, Spinner, Text} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {Button, ButtonText} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
-import {Alert} from "react-native";
+import {Alert, TouchableOpacity, StyleSheet} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import Scanner from "../Components/Scanner";
 
 
 const Seed = ({navigation, route}) => {
-
 
     const {params: {data: {products}}} = route
 
@@ -22,7 +22,6 @@ const Seed = ({navigation, route}) => {
     const [product, setProduct] = useState(null);
 
     const dispatch = useDispatch()
-
 
     const {transaction} = useSelector(state => state)
 
@@ -40,11 +39,16 @@ const Seed = ({navigation, route}) => {
         return setProduct(val)
     }
 
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
 
     const SubmitHandler = () => {
+
         if (!product) {
             return Alert.alert('', 'يجب ادخال البند أولا')
         }
+
         const {guid: product_id} = product
 
         dispatch(TransactionsHandler({
@@ -62,7 +66,9 @@ const Seed = ({navigation, route}) => {
             setTakenTime(null)
             setProduct(null)
         }
+
     }, [data])
+
 
     return (
         <Layout>
@@ -90,9 +96,33 @@ const Seed = ({navigation, route}) => {
                 }>
 
                 <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+
+                <TouchableOpacity style={{marginTop: 20}}
+                                  onPress={() => navigation.navigate('Scanner', {
+                                      products,
+                                      handleOnSelectScannedProduct
+                                  })}
+                >
+                    <Text bold white center style={styles.button}>
+                        بحث
+                    </Text>
+
+                </TouchableOpacity>
             </SharedScreens>
         </Layout>
     )
 }
 
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: '#0aa195',
+        padding: 12,
+        marginHorizontal: 10,
+        borderRadius: 5,
+        color: '#fff',
+
+
+    }
+})
 export default Seed;

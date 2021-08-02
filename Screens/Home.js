@@ -33,7 +33,7 @@ const Home = ({navigation}) => {
         return setRefresh(true)
     }
 
-    const {productsList, projectsList, stocksList, myTransactions } = useSelector(state => state);
+    const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
     const {products} = productsList
 
@@ -80,7 +80,7 @@ const Home = ({navigation}) => {
             nav: 'Checkout',
             data: {projects, stocks, products}
         },
-     //   {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
+        //   {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 5, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
@@ -125,9 +125,10 @@ const Home = ({navigation}) => {
                             {!projectLoading ?
                                 data.map((item) => {
                                     return (
-                                        <Card key={item.id} onPress={() => {
-                                            navigation.navigate(`${item.nav}`, item)
-                                        }}>
+                                        <Card  key={item.id}
+                                              onPress={() => {
+                                                  navigation.navigate(`${item.nav}`, item)
+                                              }}>
                                             <CardImage resizeMode='contain' source={item.img}/>
                                             <CardText>{item.title}</CardText>
                                         </Card>
@@ -140,7 +141,7 @@ const Home = ({navigation}) => {
 
                 </RefreshHandler>
                 <ContainerAddIcon>
-                    <AddIcon onPress={() =>{
+                    <AddIcon onPress={() => {
                         navigation.dispatch(DrawerActions.openDrawer())
                     }}>
                         <AntDesign name='plus' color='#fff' size={20}/>

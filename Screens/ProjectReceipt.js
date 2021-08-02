@@ -19,7 +19,6 @@ const {white} = Colors
 
 const ProjectsReceipt = ({navigation, route}) => {
 
-
     const [product, setProduct] = useState(null);
 
     const tableHead = ['الرقم', 'البند', 'الكمية', 'الاجراء'];

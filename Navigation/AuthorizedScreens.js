@@ -22,6 +22,7 @@ import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
 import AddProduct from "../Screens/AddProduct";
 import {Colors, Line} from "../Components/Styles";
+import Scanner from "../Components/Scanner";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -48,6 +49,8 @@ export const HomeScreensContainer = () => {
             <Stack.Screen name='Rotate' component={Rotate}/>
             <Stack.Screen name='AddProject' component={AddProject}/>
             <Stack.Screen name='AddProduct' component={AddProduct}/>
+            <Stack.Screen name='Scanner' component={Scanner}/>
+
         </Stack.Navigator>
     )
 }

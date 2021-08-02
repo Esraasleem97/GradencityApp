@@ -7,9 +7,6 @@ import {I18nManager, LayoutAnimation, UIManager} from 'react-native'
 import {Provider} from "react-redux";
 import {store} from "./Redux";
 import NavigationHandler from "./Navigation/NavigationHandler";
-import AuthorizedScreens from "./Navigation/AuthorizedScreens";
-
-
 
 
 if (!__DEV__) {
@@ -93,8 +90,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
-                {/*<NavigationHandler/>*/}
-                <AuthorizedScreens/>
+                <NavigationHandler/>
             </ApplicationProvider>
         </Provider>
     );
