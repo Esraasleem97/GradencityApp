@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
@@ -18,25 +18,35 @@ const AddProject = ({navigation}) => {
 
     const dispatch = useDispatch()
 
-    const [Project , setProject] = useState(null)
+    const [Project, setProject] = useState(null)
 
 
     const SubmitHandler = () => {
         if (!Project) {
-            return Alert.alert('' , 'الرجاء أضافة اسم للمشروع ')
+            return Alert.alert('', 'الرجاء أضافة اسم للمشروع ')
         }
 
-        dispatch(projectsCreateHandler({project:Project}) )
+        dispatch(projectsCreateHandler({project: Project}))
 
+    }
+
+
+    useEffect(() => {
+
+        if (project && project.success) {
+            setProject(null)
         }
+    }, [project])
 
     return (
         <Layout>
             <Header title='إضافة مشروع' navigation={navigation}/>
+            <TransactionMessagesHandlerComponent data={project} error={error}/>
             <RefreshHandler>
                 <Container>
+
                     <Content>
-                        <TransactionMessagesHandlerComponent data={project} error={error}/>
+
 
                         <Input
                             label='اسم المشروع'
@@ -47,14 +57,14 @@ const AddProject = ({navigation}) => {
                         />
                         {
                             projectLoading
-                            ?
-                            <ButtonText>
-                                <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                            </ButtonText>
-                            :
-                            <Button onPress={SubmitHandler}>
-                                <ButtonText>حفظ</ButtonText>
-                            </Button>
+                                ?
+                                <ButtonText>
+                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                </ButtonText>
+                                :
+                                <Button onPress={SubmitHandler}>
+                                    <ButtonText>حفظ</ButtonText>
+                                </Button>
                         }
                     </Content>
                 </Container>

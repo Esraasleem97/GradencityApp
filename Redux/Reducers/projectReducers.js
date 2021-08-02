@@ -27,7 +27,7 @@ export const projectsListReducer = (state = {}, action) => {
 
             return {
                 projectLoading: false,
-                error: action.payCREATE
+                error: action.payload
             }
         default:
             return state

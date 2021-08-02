@@ -8,21 +8,20 @@ import {View} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import {productCreateHandler} from "../Redux/Actions/productActions";
+import SelectDropDown from "../Components/SelectDropDown";
+
+import {groupsListHandler} from "../Redux/Actions/groupActions";
 
 
 const AddProduct = ({navigation}) => {
 
     const dispatch = useDispatch();
 
-    const {transaction} = useSelector(state => state)
-
-    const {loading, data, error} = transaction
-
-    const [takeTime, setTakeTime] = useState(null)
-
     const [name, setName] = useState(null)
 
-    const [qty, setQty] = useState(null)
+    const [vat, setVat] = useState(null)
+
+    const [unit, setUnit] = useState(null)
 
     const [height, setHeight] = useState(null)
 
@@ -30,106 +29,135 @@ const AddProduct = ({navigation}) => {
 
     const [diameter, setDiameter] = useState(null)
 
+    const [group, setGroup] = useState(null)
 
-    const submitHandler = () => {
-            dispatch(productCreateHandler({
-                take_time: takeTime,
+
+    const {groupsList , createProduct} = useSelector(state => state);
+
+    const {product, productLoading, error} = createProduct
+
+
+    const {groups} = groupsList
+
+    const handleOnSelectGroup = (val) => {
+        return setGroup(val)
+
+    }
+    const SubmitHandler = () => {
+
+        dispatch(productCreateHandler({
                 name,
-                qty,
                 height,
                 size,
                 diameter,
+                vat,
+                unit,
+                group
             })
-            )
+        )
 
     }
 
     useEffect(() => {
 
-        if (data && data.success) {
+        if (product && product.success) {
             setHeight(null)
             setSize(null)
             setDiameter(null)
-            setTakeTime(null)
             setName(null)
-            setQty(null)
+            setVat(null)
+            setUnit(null)
+            setGroup(null)
         }
-    }, [data])
+    }, [product])
+
+    useEffect(() => {
+        dispatch(groupsListHandler())
+    }, [dispatch])
+
 
     return (
         <Layout>
             <Header title='إضافة بند جديد' navigation={navigation}/>
-            <TransactionMessagesHandlerComponent data={data} error={error}/>
-
+            <TransactionMessagesHandlerComponent data={product} error={error}/>
             <RefreshHandler>
                 <Container>
+
+
+
                     <Content>
                         <FormArea>
-                                   <View>
-                                        <Input
-                                            label='أسم البند '
-                                            icon='form'
-                                            placeholder='ادخل أسم البند  هنا'
-                                            onChangeText={(val) => setName(val)}
-                                            value={name}
-                                        />
-                                        <Input
-                                            label='الكمية'
-                                            icon='form'
-                                            placeholder='ادخل الكمية هنا'
-                                            keyboardType='numeric'
-                                            onChangeText={(val) => setQty(val)}
-                                            value={qty}
+                            <View>
 
-                                        />
-                                        <FlexStyled>
-                                            <Input
-                                                label='الطول'
-                                                icon='form'
-                                                placeholder='الطول'
-                                                keyboardType='numeric'
-                                                onChangeText={(val) => setHeight(val)}
-                                                value={height}
-                                            />
-                                            <Input
-                                                label='الحجم'
-                                                icon='form'
-                                                placeholder='الحجم'
-                                                keyboardType='numeric'
-                                                onChangeText={(val) => setSize(val)}
-                                                value={size}
-                                            />
-                                            <Input
-                                                label='القطر'
-                                                icon='form'
-                                                placeholder='القطر'
-                                                keyboardType='numeric'
-                                                onChangeText={(val) => setDiameter(val)}
-                                                value={diameter}
-                                            />
+                                <SelectDropDown items={groups} title='المجموعة'
+                                                onSelectItem={handleOnSelectGroup}
+                                                selectedItem={group}/>
 
-                                            <Input
-                                                label='الوقت المستغرق'
-                                                icon='dashboard'
-                                                placeholder='00:00'
-                                                keyboardType='numeric'
-                                                onChangeText={(val) => setTakeTime(val)}
-                                                value={takeTime}
-                                            />
+                                <Input
+                                    label='أسم البند '
+                                    icon='form'
+                                    placeholder='ادخل أسم البند  هنا'
+                                    onChangeText={(val) => setName(val)}
+                                    value={name}
+                                />
 
-                                        </FlexStyled>
-                                        {
-                                            loading
-                                                ?
-                                                <ButtonText>
-                                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                                                </ButtonText>
-                                                :
-                                                <Button onPress={submitHandler}>
-                                                    <ButtonText>حفظ</ButtonText>
-                                                </Button>
-                                        }
-                                    </View>
+
+                                <Input
+                                    label='الوحدة '
+                                    icon='form'
+                                    placeholder='ادخل الوحدة هنا'
+                                    onChangeText={(val) => setUnit(val)}
+                                    value={unit}
+                                />
+                                <FlexStyled>
+
+                                    <Input
+                                        label='نسبة الضريبة'
+                                        icon='form'
+                                        placeholder='الضريبة'
+                                        keyboardType='numeric'
+                                        onChangeText={(val) => setVat(val)}
+                                        value={vat}
+                                    />
+                                    <Input
+                                        label='الطول'
+                                        icon='form'
+                                        placeholder='الطول'
+                                        keyboardType='numeric'
+                                        onChangeText={(val) => setHeight(val)}
+                                        value={height}
+                                    />
+                                    <Input
+                                        label='الحجم'
+                                        icon='form'
+                                        placeholder='الحجم'
+                                        keyboardType='numeric'
+                                        onChangeText={(val) => setSize(val)}
+                                        value={size}
+                                    />
+                                    <Input
+                                        label='القطر'
+                                        icon='form'
+                                        placeholder='القطر'
+                                        keyboardType='numeric'
+                                        onChangeText={(val) => setDiameter(val)}
+                                        value={diameter}
+                                    />
+
+
+                                </FlexStyled>
+                                {
+                                    productLoading
+                                        ?
+                                        <ButtonText>
+                                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                        </ButtonText>
+                                        :
+                                        <Button onPress={SubmitHandler}>
+                                            <ButtonText>حفظ</ButtonText>
+                                        </Button>
+                                }
+                            </View>
                         </FormArea>
                     </Content>
                 </Container>

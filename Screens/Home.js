@@ -22,7 +22,6 @@ import {stocksListHandler} from "../Redux/Actions/stockActions";
 import {View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
-import {groupsListHandler} from "../Redux/Actions/groupActions";
 import {AntDesign} from "@expo/vector-icons";
 
 
@@ -34,7 +33,7 @@ const Home = ({navigation}) => {
         return setRefresh(true)
     }
 
-    const {productsList, projectsList, stocksList, myTransactions , groupsList} = useSelector(state => state);
+    const {productsList, projectsList, stocksList, myTransactions } = useSelector(state => state);
 
     const {products} = productsList
 
@@ -42,12 +41,10 @@ const Home = ({navigation}) => {
 
     const {stocks} = stocksList
 
-    const {groups} = groupsList
-
-
     const {myTransactionsList} = myTransactions
 
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         if (refresh) {
@@ -58,16 +55,14 @@ const Home = ({navigation}) => {
         dispatch(stocksListHandler())
         dispatch(projectsListHandler())
         dispatch(MyTransactionsHandler())
-        dispatch(groupsListHandler())
-
 
     }, [dispatch, refresh])
 
     useFocusEffect(
         useCallback(() => {
-
-
             dispatch(MyTransactionsHandler())
+            dispatch(productsListHandler())
+
         }, [dispatch])
     )
 
@@ -85,7 +80,7 @@ const Home = ({navigation}) => {
             nav: 'Checkout',
             data: {projects, stocks, products}
         },
-        {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
+     //   {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 5, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
