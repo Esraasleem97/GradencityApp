@@ -4,10 +4,11 @@ import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {Alert} from "react-native";
-import {Button, ButtonText} from "../Components/Styles";
+import {BtnScan, Button, ButtonText, Scan, width} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {IMPACT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {AntDesign} from "@expo/vector-icons";
 
 
 const Taeqil = ({navigation, route}) => {
@@ -39,6 +40,9 @@ const Taeqil = ({navigation, route}) => {
         return setProduct(val)
     }
 
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
 
     const SubmitHandler = () => {
         if (!product) {
@@ -54,6 +58,8 @@ const Taeqil = ({navigation, route}) => {
         }))
 
     }
+
+
 
     useEffect(() => {
         if (data && data.success) {
@@ -89,7 +95,22 @@ const Taeqil = ({navigation, route}) => {
                         </Button>
                 }>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+                <Scan>
+                    <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}
+                                    style={{width: width - 120}}/>
+
+                    <BtnScan style={{marginTop: 26}}
+                             onPress={() => navigation.navigate('Scanner', {
+                                 products,
+                                 handleOnSelectScannedProduct
+                             })}
+                    >
+                        <ButtonText>
+                            <AntDesign name='search1' size={20}/>
+                        </ButtonText>
+
+                    </BtnScan>
+                </Scan>
             </SharedScreens>
         </Layout>
 

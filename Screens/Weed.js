@@ -7,7 +7,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
 import {TransactionsHandler, WEEDING} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Button, ButtonText} from "../Components/Styles";
+import {BtnScan, Button, ButtonText, Scan, width} from "../Components/Styles";
+import {AntDesign} from "@expo/vector-icons";
 
 const Weed = ({navigation, route}) => {
 
@@ -35,6 +36,10 @@ const Weed = ({navigation, route}) => {
     }
 
     const handleOnSelectProduct = (val) => {
+        return setProduct(val)
+    }
+
+    const handleOnSelectScannedProduct = (val) => {
         return setProduct(val)
     }
 
@@ -87,7 +92,22 @@ const Weed = ({navigation, route}) => {
                         </Button>
                 }>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+                <Scan>
+                    <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}
+                                    style={{width: width - 120}}/>
+
+                    <BtnScan style={{marginTop: 26}}
+                             onPress={() => navigation.navigate('Scanner', {
+                                 products,
+                                 handleOnSelectScannedProduct
+                             })}
+                    >
+                        <ButtonText>
+                            <AntDesign name='search1' size={20}/>
+                        </ButtonText>
+
+                    </BtnScan>
+                </Scan>
             </SharedScreens>
         </Layout>
     )
