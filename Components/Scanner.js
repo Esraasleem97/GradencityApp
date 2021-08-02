@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import {Layout} from "@ui-kitten/components";
 import Header from "./Header";
+import {Button, ButtonText, Container, Content, FlexStyled, height, StatusBarHeight, width} from "./Styles";
 
 export default function Scanner({navigation, route}) {
 
@@ -51,42 +52,40 @@ export default function Scanner({navigation, route}) {
     }
 
     return (
-        <Layout>
+        <View>
             <Header title='بحث عن البنود' navigation={navigation} backNavigation={true}/>
-            <View style={styles.container}>
-
-
+            <Container>
+                <View style={styles.barCodeContainer}>
                 <BarCodeScanner
                     onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                    style={StyleSheet.absoluteFillObject}
-                />
+                    style={[StyleSheet.absoluteFillObject,styles.barCode]}
+               />
+                </View>
+                    {!scanned
+                        ? <Text style={{alignSelf: 'center', color: '#06278e', marginHorizontal: 100}}>
+                            يرجى المسح على
+                            الباركود </Text>
+                        : null
+                        // <Text style={{color: '#06278e', marginHorizontal: 100}}> تم المسح بنجاح </Text>
+                    }
 
-                {!scanned
-                    ? <Text style={{alignSelf: 'center', color: '#06278e', marginHorizontal: 100}}>
-                        يرجى المسح على
-                        الباركود </Text>
-                    : null
-                    // <Text style={{color: '#06278e', marginHorizontal: 100}}> تم المسح بنجاح </Text>
-                }
+                <FlexStyled>
+                    {scanned && <Button onPress={() => setScanned(false)}>
+                        <ButtonText>مسح الكود مرة أخرى</ButtonText>
+                    </Button>}
 
+                    {scanned && <Button
+                        onPress={() => {
+                            navigation.goBack()
+                            handleOnSelectScannedProduct(BarCode)
+                        }}>
+                        <ButtonText>حفظ و رجوع</ButtonText>
+                    </Button>
+                    }
+                </FlexStyled>
 
-                {scanned && <TouchableOpacity style={styles.button} onPress={() => setScanned(false)}>
-                    <Text style={styles.text}>مسح الكود مرة أخرى</Text>
-                </TouchableOpacity>}
-
-                {scanned && <TouchableOpacity style={styles.button}
-                                              onPress={() => {
-                                                  navigation.goBack()
-                                                  handleOnSelectScannedProduct(BarCode)
-                                              }}>
-                    <Text style={styles.text}>
-                        حفظ و رجوع
-                    </Text>
-                </TouchableOpacity>
-                }
-
-            </View>
-        </Layout>
+            </Container>
+        </View>
 
 
     );
@@ -109,6 +108,16 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         color: '#06278e'
+    },
+    barCodeContainer :{
+        width:width-10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems:'center',
+
+    },
+    barCode : {
+        height:height-40,
     }
 });
 

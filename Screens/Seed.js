@@ -3,12 +3,13 @@ import {Layout, Spinner, Text} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {Button, ButtonText} from "../Components/Styles";
+import {BtnScan, Button, width, ButtonText, FlexRow, Scan} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
-import {Alert, TouchableOpacity, StyleSheet} from "react-native";
+import {Alert, TouchableOpacity, StyleSheet, View} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import Scanner from "../Components/Scanner";
+import {AntDesign} from "@expo/vector-icons";
 
 
 const Seed = ({navigation, route}) => {
@@ -94,20 +95,21 @@ const Seed = ({navigation, route}) => {
                             <ButtonText>حفظ</ButtonText>
                         </Button>
                 }>
+<Scan>
+                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product} style={{width:width-120}}/>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
-
-                <TouchableOpacity style={{marginTop: 20}}
+                <BtnScan style={{marginTop: 26}}
                                   onPress={() => navigation.navigate('Scanner', {
                                       products,
                                       handleOnSelectScannedProduct
                                   })}
                 >
-                    <Text bold white center style={styles.button}>
-                        بحث
-                    </Text>
+                    <ButtonText>
+                        <AntDesign name='search1' size={20} />
+                    </ButtonText>
 
-                </TouchableOpacity>
+                </BtnScan>
+</Scan>
             </SharedScreens>
         </Layout>
     )
@@ -115,12 +117,7 @@ const Seed = ({navigation, route}) => {
 
 
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#0aa195',
-        padding: 12,
-        marginHorizontal: 10,
-        borderRadius: 5,
-        color: '#fff',
+    scan: {
 
 
     }

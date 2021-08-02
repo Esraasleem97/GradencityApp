@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
-import {Dimensions, I18nManager, Platform} from "react-native";
-import Message from "./Messages";
-const IS_RTL = I18nManager.isRTL;
-const StatusBarHeight = Constants.statusBarHeight;
+import {Dimensions, Platform} from "react-native";
+export const StatusBarHeight = Constants.statusBarHeight;
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+export const width = Dimensions.get('window').width;
+export const height = Dimensions.get('window').height;
 
 export const Colors = {
     primary: '#1960d8',
@@ -66,8 +64,6 @@ export const Container = styled.View`
   align-items: center;
   margin-top: ${StatusBarHeight - 10}px;
   margin-bottom: ${StatusBarHeight + 30}px;
-
-
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
@@ -256,6 +252,7 @@ export const FlexStyled = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+ 
   
 `;
 export const FlexEnd = styled.View`
@@ -297,4 +294,18 @@ export const AddsText = styled.Text`
   font-weight: bold;
 
 
+`;
+export const Scan = styled.View`
+ width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const BtnScan = styled.TouchableOpacity`
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: ${orangeLight};
+  justify-content: center;
+  align-items: center;
+  
 `;
