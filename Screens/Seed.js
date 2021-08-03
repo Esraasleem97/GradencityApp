@@ -8,12 +8,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {Alert} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import Scanner from "./Scanner";
+import Scanner from "../Components/Scanner";
 
 
 const Seed = ({navigation, route}) => {
-
-    const {params: {data: {products}}} = route
 
     const [qty, setQty] = useState(null);
 
@@ -69,6 +67,7 @@ const Seed = ({navigation, route}) => {
 
     }, [data])
 
+    const {params: {data: {products} } } = route
 
     return (
         <Layout>
