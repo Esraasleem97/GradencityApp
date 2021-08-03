@@ -95,21 +95,22 @@ const Seed = ({navigation, route}) => {
                             <ButtonText>حفظ</ButtonText>
                         </Button>
                 }>
-<Scan>
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product} style={{width:width-120}}/>
+                <Scan>
+                    <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}
+                                    style={{width: width - 120}}/>
 
-                <BtnScan style={{marginTop: 26}}
-                                  onPress={() => navigation.navigate('Scanner', {
-                                      products,
-                                      handleOnSelectScannedProduct
-                                  })}
-                >
-                    <ButtonText>
-                        <AntDesign name='search1' size={20} />
-                    </ButtonText>
+                    <BtnScan style={{marginTop: 28}}
+                             onPress={() => navigation.navigate('Scanner', {
+                                 products,
+                                 handleOnSelectScannedProduct
+                             })}
+                    >
+                        <ButtonText>
+                            <AntDesign name='search1' size={20}/>
+                        </ButtonText>
 
-                </BtnScan>
-</Scan>
+                    </BtnScan>
+                </Scan>
             </SharedScreens>
         </Layout>
     )
@@ -117,9 +118,6 @@ const Seed = ({navigation, route}) => {
 
 
 const styles = StyleSheet.create({
-    scan: {
-
-
-    }
+    scan: {}
 })
 export default Seed;

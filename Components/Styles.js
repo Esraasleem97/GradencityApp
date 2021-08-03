@@ -307,5 +307,6 @@ export const BtnScan = styled.TouchableOpacity`
   background-color: ${orangeLight};
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
   
 `;

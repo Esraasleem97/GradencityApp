@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
 
     },
     barCode : {
-        height:height-40,
+        height:height-50,
+        marginVertical:StatusBarHeight-60
     }
 });
 
