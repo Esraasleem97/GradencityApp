@@ -7,9 +7,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
 import {TransactionsHandler, WEEDING} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Button, ButtonText} from "../Components/Styles";
+import {Button, ButtonText, width} from "../Components/Styles";
+import Scanner from "../Components/Scanner";
 
 const Weed = ({navigation, route}) => {
+
+    const dispatch = useDispatch()
 
     const {params: {data: {products}}} = route
 
@@ -18,9 +21,6 @@ const Weed = ({navigation, route}) => {
     const [takeTime, setTakenTime] = useState(null);
 
     const [product, setProduct] = useState(null);
-
-    const dispatch = useDispatch()
-
 
     const {transaction} = useSelector(state => state)
 
@@ -35,6 +35,10 @@ const Weed = ({navigation, route}) => {
     }
 
     const handleOnSelectProduct = (val) => {
+        return setProduct(val)
+    }
+
+    const handleOnSelectScannedProduct = (val) => {
         return setProduct(val)
     }
 
@@ -87,7 +91,15 @@ const Weed = ({navigation, route}) => {
                         </Button>
                 }>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                         products={products}>
+
+                    <SelectDropDown items={products}
+                                    onSelectItem={handleOnSelectProduct}
+                                    selectedItem={product}
+                                    style={{width: width - 120}}
+                    />
+                </Scanner>
             </SharedScreens>
         </Layout>
     )

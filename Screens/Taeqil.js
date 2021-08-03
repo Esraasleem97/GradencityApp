@@ -4,10 +4,12 @@ import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {Alert} from "react-native";
-import {Button, ButtonText} from "../Components/Styles";
+import {Button, ButtonText, width} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {IMPACT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+
+import Scanner from "../Components/Scanner";
 
 
 const Taeqil = ({navigation, route}) => {
@@ -39,6 +41,9 @@ const Taeqil = ({navigation, route}) => {
         return setProduct(val)
     }
 
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
 
     const SubmitHandler = () => {
         if (!product) {
@@ -54,6 +59,7 @@ const Taeqil = ({navigation, route}) => {
         }))
 
     }
+
 
     useEffect(() => {
         if (data && data.success) {
@@ -89,7 +95,15 @@ const Taeqil = ({navigation, route}) => {
                         </Button>
                 }>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                         products={products}>
+
+                    <SelectDropDown items={products}
+                                    onSelectItem={handleOnSelectProduct}
+                                    selectedItem={product}
+                                    style={{width: width - 120}}
+                    />
+                </Scanner>
             </SharedScreens>
         </Layout>
 

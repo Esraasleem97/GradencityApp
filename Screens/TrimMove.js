@@ -7,7 +7,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
 import {TransactionsHandler, TRIM} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Button, ButtonText} from "../Components/Styles";
+import {Button, ButtonText, width} from "../Components/Styles";
+import Scanner from "../Components/Scanner";
 
 const TrimMove = ({navigation, route}) => {
 
@@ -38,6 +39,9 @@ const TrimMove = ({navigation, route}) => {
         return setProduct(val)
     }
 
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
 
     const SubmitHandler = () => {
         if (!product) {
@@ -87,7 +91,15 @@ const TrimMove = ({navigation, route}) => {
                         </Button>
                 }>
 
-                <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}/>
+                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                         products={products}>
+
+                    <SelectDropDown items={products}
+                                    onSelectItem={handleOnSelectProduct}
+                                    selectedItem={product}
+                                    style={{width: width - 120}}
+                    />
+                </Scanner>
             </SharedScreens>
         </Layout>
 
