@@ -2,7 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet, LogBox} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import Header from "../Components/Header";
-import {Button, ButtonText, Container, FlexStyled, height, StatusBarHeight, width} from "../Components/Styles";
+import {
+    BtnScan,
+    Button,
+    ButtonAdd,
+    ButtonText,
+    Container,
+    FlexStyled,
+    height,
+    StatusBarHeight,
+    width
+} from "../Components/Styles";
 
 export default function Scanner({navigation, route}) {
 
@@ -70,25 +80,25 @@ export default function Scanner({navigation, route}) {
                     />
                 </View>
                 {!scanned
-                    ? <Text style={{flex:1,alignItems: 'center', color: '#06278e'}}>
+                    ? <Text style={{alignSelf: 'center', color: '#06278e'}}>
                         يرجى المسح على
                         الباركود </Text>
                     : null
                 }
 
                 <FlexStyled>
-                    {scanned && <Button onPress={() => setScanned(false)}>
+                    {scanned && <BtnScan onPress={() => setScanned(false)}>
                         <ButtonText>مسح الكود مرة أخرى</ButtonText>
-                    </Button>}
+                    </BtnScan>}
 
-                    {scanned && <Button
+                    {scanned && <BtnScan
                         onPress={() => {
                             handler(BarCode)
                             navigation.goBack()
 
                         }}>
                         <ButtonText>حفظ و رجوع</ButtonText>
-                    </Button>
+                    </BtnScan>
                     }
                 </FlexStyled>
 
@@ -118,16 +128,17 @@ const styles = StyleSheet.create({
         color: '#06278e'
     },
     barCodeContainer :{
-        flex:1,
         width:width-10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems:'center',
+        borderRadius:10
 
     },
     barCode : {
-        height:height-50,
-        marginVertical:StatusBarHeight-80
+        height:height-90,
+        marginVertical:StatusBarHeight-30,
+
     }
 });
 

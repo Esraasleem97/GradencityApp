@@ -1,4 +1,4 @@
-import {BtnScan, ButtonText, Scan} from "./Styles";
+import {BtnScan, BtnSearch, ButtonText, Scan} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 import React from "react";
 
@@ -12,7 +12,7 @@ const Scanner = ({
     return (
         <Scan>
             {children}
-            <BtnScan style={{marginTop: 26}}
+            <BtnSearch style={{marginTop: 26}}
                      onPress={() => navigation.navigate('Scanner', {
                          products,
                          handler
@@ -23,7 +23,7 @@ const Scanner = ({
                     <AntDesign name='search1' size={20}/>
                 </ButtonText>
 
-            </BtnScan>
+            </BtnSearch>
         </Scan>
     );
 }

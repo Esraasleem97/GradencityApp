@@ -249,9 +249,11 @@ export const Line = styled.View`
 
 `;
 export const FlexStyled = styled.View`
+  width: 75%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+ 
  
   
 `;
@@ -272,6 +274,7 @@ export const ButtonAdd = styled.TouchableOpacity`
   padding: 10px;
   background-color: ${orangeLight};
   margin-vertical:10px ;
+  margin-left: 5px;
   border-radius: 5px;
 `;
 export const ContainerAddIcon = styled.View`
@@ -300,7 +303,7 @@ export const Scan = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
-export const BtnScan = styled.TouchableOpacity`
+export const BtnSearch = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   border-radius: 100px;
@@ -309,4 +312,10 @@ export const BtnScan = styled.TouchableOpacity`
   align-items: center;
   margin-left: 10px;
   
+`;
+export const BtnScan = styled.View`
+  padding: 5px 10px;
+  background-color: ${orangeLight};
+  border-radius: 3px;
+ 
 `;
