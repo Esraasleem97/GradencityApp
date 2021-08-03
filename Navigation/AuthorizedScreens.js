@@ -22,7 +22,7 @@ import ProjectsReceipt from "../Screens/ProjectReceipt";
 import AddProject from "../Screens/AddProject";
 import AddProduct from "../Screens/AddProduct";
 import {Colors, Line} from "../Components/Styles";
-import Scanner from "../Components/Scanner";
+import Scanner from "../Screens/Scanner";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

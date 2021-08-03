@@ -3,13 +3,12 @@ import {Layout, Spinner} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {BtnScan, Button, width, ButtonText, Scan} from "../Components/Styles";
+import {Button, width, ButtonText} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {Alert} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import Scanner from "../Components/Scanner";
-import {AntDesign} from "@expo/vector-icons";
+import Scanner from "./Scanner";
 
 
 const Seed = ({navigation, route}) => {
@@ -95,22 +94,15 @@ const Seed = ({navigation, route}) => {
                             <ButtonText>حفظ</ButtonText>
                         </Button>
                 }>
-                <Scan>
-                    <SelectDropDown items={products} onSelectItem={handleOnSelectProduct} selectedItem={product}
-                                    style={{width: width - 120}}/>
+                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                         products={products}>
 
-                    <BtnScan style={{marginTop: 26}}
-                             onPress={() => navigation.navigate('Scanner', {
-                                 products,
-                                 handleOnSelectScannedProduct
-                             })}
-                    >
-                        <ButtonText>
-                            <AntDesign name='search1' size={20}/>
-                        </ButtonText>
-
-                    </BtnScan>
-                </Scan>
+                    <SelectDropDown items={products}
+                                    onSelectItem={handleOnSelectProduct}
+                                    selectedItem={product}
+                                    style={{width: width - 120}}
+                    />
+                </Scanner>
             </SharedScreens>
         </Layout>
     )
