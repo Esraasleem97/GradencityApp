@@ -29,15 +29,14 @@ const Home = ({navigation}) => {
 
     const [refresh, setRefresh] = useState(false)
 
-    const handlePullToRefresh = () => {
-        return setRefresh(true)
-    }
+    const [canCreateNewProduct, setCanCreateNewProduct] = useState(false)
+
 
     const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
-    const {products} = productsList
+    const {products, productLoading} = productsList
 
-    const {projects, projectLoading} = projectsList
+    const {projects} = projectsList
 
     const {stocks} = stocksList
 
@@ -45,25 +44,34 @@ const Home = ({navigation}) => {
 
     const dispatch = useDispatch()
 
+    const handlePullToRefresh = () => {
+        return setRefresh(true)
+    }
+
 
     useEffect(() => {
         if (refresh) {
             setRefresh(!refresh)
         }
 
-        dispatch(productsListHandler())
         dispatch(stocksListHandler())
         dispatch(projectsListHandler())
         dispatch(MyTransactionsHandler())
+        dispatch(productsListHandler())
 
     }, [dispatch, refresh])
 
     useFocusEffect(
         useCallback(() => {
             dispatch(MyTransactionsHandler())
-            dispatch(productsListHandler())
 
-        }, [dispatch])
+            if (canCreateNewProduct) {
+                dispatch(productsListHandler())
+                setCanCreateNewProduct(false)
+            }
+
+
+        }, [dispatch, canCreateNewProduct])
     )
 
     const data = [
@@ -85,7 +93,7 @@ const Home = ({navigation}) => {
         {id: 3, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 4, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
         {id: 5, title: 'تقليم أو نقل', img: require('../assets/transform.png'), nav: 'TrimMove', data: {products}},
-        {id: 6, title: 'التدوير', img: require('../assets/rotate.png'), nav: 'Rotate', data: {products, stocks}},
+        {id: 6, title: 'التدوير', img: require('../assets/rotate.png'), nav: 'Rotate', data: {products, stocks , setCanCreateNewProduct}},
         {
             id: 7,
             title: 'النقل بين المشاتل',
@@ -122,13 +130,14 @@ const Home = ({navigation}) => {
                         </View>
                         <Grid>
 
-                            {!projectLoading ?
+                            {!productLoading ?
                                 data.map((item) => {
                                     return (
-                                        <Card  key={item.id}
+                                        <Card key={item.id}
                                               onPress={() => {
                                                   navigation.navigate(`${item.nav}`, item)
-                                              }}>
+                                              }}
+                                        >
                                             <CardImage resizeMode='contain' source={item.img}/>
                                             <CardText>{item.title}</CardText>
                                         </Card>

@@ -12,9 +12,9 @@ import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
 
-const Rotate = ({navigation, route}) => {
+const Rotate = ({navigation, route }) => {
 
-    const {params: {data: {products, stocks}}} = route
+    const {params: {data: {products, stocks  , setCanCreateNewProduct}}} = route
 
     const dispatch = useDispatch();
 
@@ -93,7 +93,7 @@ const Rotate = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='التدوير' navigation={navigation}/>
+            <Header title='التدوير' navigation={navigation} setCanCreateNewProduct={setCanCreateNewProduct}/>
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <RefreshHandler>

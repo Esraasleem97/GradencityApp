@@ -13,7 +13,7 @@ import SelectDropDown from "../Components/SelectDropDown";
 import {groupsListHandler} from "../Redux/Actions/groupActions";
 
 
-const AddProduct = ({navigation}) => {
+const AddProduct = ({navigation , setCanCreateNewProduct}) => {
 
     const dispatch = useDispatch();
 
@@ -78,7 +78,7 @@ const AddProduct = ({navigation}) => {
 
     return (
         <Layout>
-            <Header title='إضافة بند جديد' navigation={navigation}/>
+            <Header title='إضافة بند جديد' navigation={navigation} setCanCreateNewProduct={setCanCreateNewProduct}/>
             <TransactionMessagesHandlerComponent data={product} error={error}/>
             <RefreshHandler>
                 <Container>

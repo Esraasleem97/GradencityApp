@@ -154,6 +154,7 @@ const tabBarOptions = ({
 const {orangeLight} = Colors;
 
 function CustomDrawerContent(props) {
+    console.log(props)
     return (
         <View style={styles.drawerContent}>
             <DrawerContentScrollView {...props} >
