@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     offlineContainer: {
 
         justifyContent: 'center',
-        backgroundColor: '#d25353',
+        backgroundColor: '#a12d2d',
         height: 50,
         alignItems: 'center',
         flexDirection: 'row',

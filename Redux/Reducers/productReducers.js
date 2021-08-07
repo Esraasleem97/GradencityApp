@@ -3,7 +3,7 @@ import {
     PRODUCT_CREATE_REFRESH,
     PRODUCT_CREATE_REQUESTS,
     PRODUCT_CREATE_SUCCESS,
-    PRODUCTS_LIST_FAILED,
+    PRODUCTS_LIST_FAILED, PRODUCTS_LIST_REFRESH,
     PRODUCTS_LIST_REQUESTS,
     PRODUCTS_LIST_SUCCESS
 } from "../Constants/productConstants";
@@ -15,12 +15,14 @@ export const productsListReducer = (state = {}, action) => {
         case PRODUCTS_LIST_REQUESTS:
 
             return {
+                newProductCreated: false,
                 productLoading: true
             }
 
         case PRODUCTS_LIST_SUCCESS:
 
             return {
+                newProductCreated: false,
                 productLoading: false,
                 products: action.payload
             }
@@ -28,8 +30,15 @@ export const productsListReducer = (state = {}, action) => {
         case PRODUCTS_LIST_FAILED:
 
             return {
+                newProductCreated: false,
                 productLoading: false,
                 error: action.payload
+            }
+
+        case PRODUCTS_LIST_REFRESH:
+
+            return {
+                newProductCreated: true,
             }
         default:
             return state
@@ -59,6 +68,7 @@ export const productCreateReducer = (state = {}, action) => {
                 productLoading: false,
                 error: action.payload
             }
+
 
         case PRODUCT_CREATE_REFRESH:
             return {

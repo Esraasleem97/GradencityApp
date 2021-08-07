@@ -30,13 +30,12 @@ const Home = ({navigation}) => {
 
     const [refresh, setRefresh] = useState(false)
 
-    const [canCreateNewProduct, setCanCreateNewProduct] = useState(false)
 
     const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
-    const {products, productLoading} = productsList
+    const {products, productLoading, newProductCreated} = productsList
 
-    const {projects} = projectsList
+    const {projects, newProjectCreated} = projectsList
 
     const {stocks} = stocksList
 
@@ -65,13 +64,16 @@ const Home = ({navigation}) => {
         useCallback(() => {
             dispatch(MyTransactionsHandler())
 
-            if (canCreateNewProduct) {
+            if (newProductCreated) {
                 dispatch(productsListHandler())
-                setCanCreateNewProduct(false)
+            }
+
+            if (newProjectCreated) {
+                dispatch(projectsListHandler())
             }
 
 
-        }, [dispatch, canCreateNewProduct])
+        }, [dispatch, newProductCreated, newProjectCreated])
     )
 
     const data = [
@@ -98,7 +100,7 @@ const Home = ({navigation}) => {
             title: 'التدوير',
             img: require('../assets/rotate.png'),
             nav: 'Rotate',
-            data: {products, stocks, setCanCreateNewProduct}
+            data: {products, stocks}
         },
         {
             id: 7,

@@ -4,8 +4,6 @@ import {BarCodeScanner} from 'expo-barcode-scanner';
 import Header from "../Components/Header";
 import {
     BtnScan,
-    Button,
-    ButtonAdd,
     ButtonText,
     Container,
     FlexStyled,

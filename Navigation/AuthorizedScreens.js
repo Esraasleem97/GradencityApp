@@ -65,18 +65,22 @@ const TabNavigator = () => {
 
     const dispatch = useDispatch()
 
+
     const LogoutHandler = () => {
+
         return dispatch(userLogoutHandler())
+
     }
+
     return (
         <Tab.Navigator
             // tabBarOptions={tabBarOptions}
             screenOptions={({route}) => ({
-                headerShown: false ,
-                tabBarShowLabel:false,
-                tabBarActiveTintColor:'#FF7E68',
-                tabBarInactiveTintColor:'#999696',
-                tabBarStyle:{
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: '#FF7E68',
+                tabBarInactiveTintColor: '#999696',
+                tabBarStyle: {
                     height: 60,
                     backgroundColor: "white",
                     borderTopRightRadius: 20,
@@ -84,10 +88,10 @@ const TabNavigator = () => {
                     position: "absolute",
                     bottom: 0,
                 },
-                tabBarLabelStyle : {
-                    fontSize:16
+                tabBarLabelStyle: {
+                    fontSize: 16
                 },
-                tabBarHideOnKeyboard:true,
+                tabBarHideOnKeyboard: true,
                 tabBarIcon: ({color, size, text, onPress, isViewer}) => {
                     let iconName;
                     if (route.name === 'HomeScreens') {
@@ -141,7 +145,7 @@ const TabNavigator = () => {
 const {orangeLight} = Colors;
 
 function CustomDrawerContent(props) {
-    console.log(props)
+
     return (
         <View style={styles.drawerContent}>
             <DrawerContentScrollView {...props} >
@@ -195,7 +199,10 @@ const AuthorizedScreens = () => {
 
     return (
         <NavigationContainer>
-            <Drawer.Navigator hideStatusBar={true} screenOptions={{headerShown: false}} drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Navigator hideStatusBar={true} screenOptions={{headerShown: false}}
+                              drawerContent={props => <CustomDrawerContent {...props}
+
+                              />}>
                 <Drawer.Screen name="TabNavigator" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>

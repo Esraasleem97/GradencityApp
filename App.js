@@ -57,9 +57,10 @@ const App = () => {
 
     const [isConnected, setIsConnected] = useState(false)
 
-
     const handleResourcesAsync = async () => {
+
         // check for updates
+
         if (!__DEV__) {
             const checking = await Updates.checkForUpdateAsync()
 
@@ -85,19 +86,26 @@ const App = () => {
             console.log('Is connected ?', state.isConnected);
 
             return setIsConnected(state.isConnected)
+
         });
 
         return await Promise.all(cacheImages);
     }
 
     useEffect(() => {
+
         I18nManager.allowRTL(false);
+
         I18nManager.forceRTL(true)
+
         if (UIManager.setLayoutAnimationEnabledExperimental) {
+
             UIManager.setLayoutAnimationEnabledExperimental(true);
+
         }
 
         LayoutAnimation.spring();
+
     })
 
     if (!appIsReady) {
@@ -114,7 +122,7 @@ const App = () => {
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
                 {
-                    isConnected && <OfflineNotification/>
+                    !isConnected && <OfflineNotification/>
                 }
                 <NavigationHandler/>
             </ApplicationProvider>

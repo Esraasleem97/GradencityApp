@@ -5,16 +5,21 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, View} from "react-native";
+import {Alert, LogBox, View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
 
 
-const Rotate = ({navigation, route }) => {
+const Rotate = ({navigation, route}) => {
 
-    const {params: {data: {products, stocks  , setCanCreateNewProduct}}} = route
+    LogBox.ignoreLogs([
+        'Non-serializable values were found in the navigation state',
+    ]);
+
+    const {params: {data: {products, stocks}}} = route
 
     const dispatch = useDispatch();
 
@@ -56,10 +61,9 @@ const Rotate = ({navigation, route }) => {
         if (stock && products) {
 
             const products = []
-            product.quantity = qty ; // for backend
-            product.GUID = product.guid ;  // for backend
+            product.quantity = qty; // for backend
+            product.GUID = product.guid;  // for backend
             products.push(product)
-
 
             dispatch(TransactionsHandler({
                 products,
@@ -79,7 +83,9 @@ const Rotate = ({navigation, route }) => {
 
     useEffect(() => {
 
+
         if (data && data.success) {
+            dispatch({type: PRODUCTS_LIST_REFRESH})
             setProduct(null)
             setStock(null)
             setHeight(null)
@@ -89,11 +95,13 @@ const Rotate = ({navigation, route }) => {
             setName(null)
             setQty(null)
         }
+
+
     }, [data])
 
     return (
         <Layout>
-            <Header title='التدوير' navigation={navigation} setCanCreateNewProduct={setCanCreateNewProduct}/>
+            <Header title='التدوير' navigation={navigation}/>
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <RefreshHandler>

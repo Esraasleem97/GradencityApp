@@ -2,7 +2,7 @@ import {
     PROJECTS_LIST_REQUESTS, PROJECTS_LIST_SUCCESS, PROJECTS_LIST_FAILED,
     PROJECT_CREATE_REQUESTS,
     PROJECT_CREATE_SUCCESS,
-    PROJECT_CREATE_FAILED, PROJECT_CREATE_REFRESH
+    PROJECT_CREATE_FAILED, PROJECT_CREATE_REFRESH, PROJECTS_LIST_REFRESH
 } from "../Constants/projectConstants";
 
 
@@ -13,12 +13,14 @@ export const projectsListReducer = (state = {}, action) => {
 
 
             return {
+                newProjectCreated: false,
                 projectLoading: true
             };
 
         case PROJECTS_LIST_SUCCESS:
 
             return {
+                newProjectCreated: false,
                 projectLoading: false,
                 projects: action.payload
             }
@@ -26,8 +28,15 @@ export const projectsListReducer = (state = {}, action) => {
         case PROJECTS_LIST_FAILED:
 
             return {
+                newProjectCreated: false,
                 projectLoading: false,
                 error: action.payload
+            }
+
+        case PROJECTS_LIST_REFRESH:
+
+            return {
+                newProjectCreated: true,
             }
         default:
             return state
