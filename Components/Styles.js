@@ -132,9 +132,10 @@ export const Logo = styled.Image`
 
 export const Content = styled.View`
   width: 80%;
-
+  height: 100%;
   flex: 1;
   justify-content: center;
+  margin-bottom: ${StatusBarHeight + 70}px;
 
 
 

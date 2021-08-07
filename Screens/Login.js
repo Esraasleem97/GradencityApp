@@ -41,7 +41,7 @@ const Login = () => {
         <Layout>
             <StatusBar style='light'/>
             <Header title='تسجيل الدخول'/>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{height:'100%'}}>
                 <Container>
                     <HeaderLogin>
                         <Logo source={require('../assets/icon.png')}/>
