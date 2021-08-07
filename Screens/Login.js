@@ -9,7 +9,7 @@ import {
     ButtonText,
     Logo
 } from "../Components/Styles";
-import {Layout, Spinner,} from "@ui-kitten/components";
+import {Layout, Spinner} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
 import {ScrollView, TouchableOpacity, View} from "react-native";

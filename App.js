@@ -7,6 +7,9 @@ import {I18nManager, LayoutAnimation, UIManager} from 'react-native'
 import {Provider} from "react-redux";
 import {store} from "./Redux";
 import NavigationHandler from "./Navigation/NavigationHandler";
+import * as Updates from "expo-updates";
+import NetInfo from "@react-native-community/netinfo";
+import OfflineNotification from "./Components/offlineNotification";
 
 
 if (!__DEV__) {
@@ -52,20 +55,43 @@ const App = () => {
 
     const [appIsReady, setAppIsReady] = useState(false)
 
+    const [isConnected, setIsConnected] = useState(false)
+
+
     const handleResourcesAsync = async () => {
-        try {
+            // check for updates
+            if (!__DEV__) {
+                const checking = await Updates.checkForUpdateAsync()
+
+                if (checking.isAvailable) {
+
+                    await Updates.fetchUpdateAsync()
+
+                    await Updates.reloadAsync()
+                }
+            }
+
+
             const cacheImages = images.map(image => {
 
                 return Asset.fromModule(image).downloadAsync();
             });
 
+
             await Promise.all(cacheImages);
 
-        } catch (e) {
-            console.warn(e)
-        }
-    };
 
+
+            NetInfo.addEventListener(state => {
+
+                console.log('Connection type ', state.type);
+
+                console.log('Is connected ?', state.isConnected);
+
+                return setIsConnected(state.isConnected)
+            });
+
+    }
 
     useEffect(() => {
         I18nManager.allowRTL(false);
@@ -86,10 +112,12 @@ const App = () => {
             />
         )
     }
-
     return (
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
+                {
+                    !isConnected && <OfflineNotification/>
+                }
                 <NavigationHandler/>
             </ApplicationProvider>
         </Provider>
