@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         width,
-        position: 'absolute',
-        bottom: 0,
-        zIndex: 10,
+        position: 'relative',
+        top: 0,
+        zIndex: 100,
         opacity: .8,
     },
     offlineText: {

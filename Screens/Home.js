@@ -8,7 +8,9 @@ import {
     ImageBackground,
     Card,
     CardImage,
-    CardText, ContainerAddIcon, AddIcon
+    CardText,
+    ContainerAddIcon,
+    AddIcon
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
