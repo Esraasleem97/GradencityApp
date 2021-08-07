@@ -113,7 +113,7 @@ const App = () => {
         <Provider store={store}>
             <ApplicationProvider {...eva} theme={eva.light}>
                 {
-                    !isConnected && <OfflineNotification/>
+                    isConnected && <OfflineNotification/>
                 }
                 <NavigationHandler/>
             </ApplicationProvider>
