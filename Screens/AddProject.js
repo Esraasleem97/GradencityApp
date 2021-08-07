@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {projectsCreateHandler} from "../Redux/Actions/projectActions";
 import {Alert} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {PROJECTS_LIST_REFRESH} from "../Redux/Constants/projectConstants";
 
 
 const AddProject = ({navigation}) => {
@@ -34,6 +35,7 @@ const AddProject = ({navigation}) => {
     useEffect(() => {
 
         if (project && project.success) {
+            dispatch({type: PROJECTS_LIST_REFRESH})
             setProject(null)
         }
     }, [project])

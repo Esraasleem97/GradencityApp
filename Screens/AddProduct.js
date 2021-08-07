@@ -11,6 +11,7 @@ import {productCreateHandler} from "../Redux/Actions/productActions";
 import SelectDropDown from "../Components/SelectDropDown";
 
 import {groupsListHandler} from "../Redux/Actions/groupActions";
+import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
 
 
 const AddProduct = ({navigation}) => {
@@ -31,7 +32,7 @@ const AddProduct = ({navigation}) => {
 
     const [group, setGroup] = useState(null)
 
-    const {groupsList , createProduct} = useSelector(state => state);
+    const {groupsList, createProduct} = useSelector(state => state);
 
     const {product, productLoading, error} = createProduct
 
@@ -59,6 +60,7 @@ const AddProduct = ({navigation}) => {
     useEffect(() => {
 
         if (product && product.success) {
+            dispatch({type: PRODUCTS_LIST_REFRESH})
             setHeight(null)
             setSize(null)
             setDiameter(null)
@@ -80,7 +82,6 @@ const AddProduct = ({navigation}) => {
             <TransactionMessagesHandlerComponent data={product} error={error}/>
             <RefreshHandler>
                 <Container>
-
 
 
                     <Content>

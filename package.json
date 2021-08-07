@@ -44,6 +44,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "expo-app-loading": "^1.0.3"
+
   },
   "private": true
 }

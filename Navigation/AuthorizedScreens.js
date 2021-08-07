@@ -35,7 +35,7 @@ const Drawer = createDrawerNavigator();
  */
 export const HomeScreensContainer = () => {
     return (
-        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='Checkin' component={Checkin}/>
             <Stack.Screen name='Checkout' component={Checkout}/>
@@ -65,20 +65,41 @@ const TabNavigator = () => {
 
     const dispatch = useDispatch()
 
+
     const LogoutHandler = () => {
+
         return dispatch(userLogoutHandler())
+
     }
+
     return (
         <Tab.Navigator
+            // tabBarOptions={tabBarOptions}
             screenOptions={({route}) => ({
-               headerShown: false ,
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: '#FF7E68',
+                tabBarInactiveTintColor: '#999696',
+                tabBarStyle: {
+                    height: 60,
+                    backgroundColor: "white",
+                    borderTopRightRadius: 20,
+                    borderTopLeftRadius: 20,
+                    position: "absolute",
+                    bottom: 0,
+                },
+                tabBarLabelStyle: {
+                    fontSize: 16
+                },
+                tabBarHideOnKeyboard: true,
                 tabBarIcon: ({color, size, text, onPress, isViewer}) => {
                     let iconName;
-                    if (route.name === 'Home') {
+                    if (route.name === 'HomeScreens') {
                         iconName = 'home'
                         size = 20
                         text = 'الرئيسية'
                         isViewer = true
+
                     } else if (route.name === 'Logout') {
                         iconName = 'exit';
                         size = 20
@@ -103,10 +124,10 @@ const TabNavigator = () => {
                 }
             })
             }
-            tabBarOptions={tabBarOptions}
-            initialRouteName='Home'
+
+
         >
-            <Tab.Screen name="Home" component={HomeScreensContainer}/>
+            <Tab.Screen name="HomeScreens" component={HomeScreensContainer}/>
 
             <Tab.Screen name="Logout" component={HomeScreensContainer}/>
 
@@ -118,44 +139,13 @@ const TabNavigator = () => {
 
 /**
  * Tab Navigator Option & Style
- * @type {{keyboardHidesTabBar: string,
- * indicatorStyle:{marginHorizontal: string, width: string},
- * labelStyle: {fontSize: number},
- * inactiveTintColor: string,
- * activeTintColor: string,
- * style:{backgroundColor: string,
- * bottom: number,
- * borderTopRightRadius: number,
- * position: string,
- * height: number,
- * borderTopLeftRadius: number},
- * tabStyle: {flex: number, marginBottom: number, justifyContent: string},
- * showLabel: boolean}}
+ * @type {{tabBarStyle: {backgroundColor: string, bottom: number, borderTopRightRadius: number, position: string, height: number, borderTopLeftRadius: number}, headerShown: boolean, tabBarLabelStyle: {fontSize: number}, tabBarActiveTintColor: string, tabBarInactiveTintColor: string, tabBarShowLabel: boolean}}
  */
-const tabBarOptions = ({
-    labelStyle: {fontSize: 14},
-    tabStyle: {flex: 1, justifyContent: 'center', marginBottom: 8},
-    indicatorStyle: {
-        marginHorizontal: '5%',
-        width: '40%'
-    },
-    activeTintColor: '#FF7E68',
-    inactiveTintColor: '#999696',
-    style: {
-        height: 60,
-        backgroundColor: "white",
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        position: "absolute",
-        bottom: 0,
-    },
-    keyboardHidesTabBar: 'false',
-    showLabel: false
-})
+
 const {orangeLight} = Colors;
 
 function CustomDrawerContent(props) {
-    console.log(props)
+
     return (
         <View style={styles.drawerContent}>
             <DrawerContentScrollView {...props} >
@@ -209,11 +199,11 @@ const AuthorizedScreens = () => {
 
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home"
-                              hideStatusBar={true}
-                              screenOptions={{headerShown: false}}
-                              drawerContent={props => <CustomDrawerContent {...props}/>}>
-                <Drawer.Screen name="Home" component={TabNavigator}/>
+            <Drawer.Navigator hideStatusBar={true} screenOptions={{headerShown: false}}
+                              drawerContent={props => <CustomDrawerContent {...props}
+
+                              />}>
+                <Drawer.Screen name="TabNavigator" component={TabNavigator}/>
             </Drawer.Navigator>
         </NavigationContainer>
     );

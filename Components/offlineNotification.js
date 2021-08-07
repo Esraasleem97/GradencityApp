@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
     offlineContainer: {
 
         justifyContent: 'center',
-        backgroundColor: '#d25353',
+        backgroundColor: '#a12d2d',
         height: 50,
         alignItems: 'center',
         flexDirection: 'row',
         width,
-        position: 'absolute',
-        bottom: 0,
-        zIndex: 10,
+        position: 'relative',
+        top: 0,
+        zIndex: 100,
         opacity: .8,
     },
     offlineText: {
