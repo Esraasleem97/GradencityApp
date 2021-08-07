@@ -16,16 +16,16 @@ const Header = ({title, navigation, backNavigation, setCanCreateNewProduct}) => 
                     navigation &&
 
                     <TouchableOpacity onPress={() => {
-console.log({setCanCreateNewProduct , a:'sd'})
+
                         if (setCanCreateNewProduct) {
-                            console.log(1)
+
                             setCanCreateNewProduct(true)
                         }
 
                         if (backNavigation) {
                             return navigation.goBack()
                         }
-                        console.log(0)
+
                         return navigation.navigate('Home')
                     }}>
                         <Ionicons name="arrow-back-circle"
