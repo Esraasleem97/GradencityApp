@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {DrawerActions, useFocusEffect} from '@react-navigation/native'
-
 import {Layout, Spinner} from "@ui-kitten/components";
 
 import {
