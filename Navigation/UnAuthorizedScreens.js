@@ -16,7 +16,9 @@ const Stack = createStackNavigator();
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Login' headerMode={true}>
+            <Stack.Navigator initialRouteName='Login' screenOptions={{
+                headerMode: true
+            }} >
                 <Stack.Screen name="Login" component={Login} headerShown={false} />
             </Stack.Navigator>
         </NavigationContainer>

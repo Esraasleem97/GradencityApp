@@ -59,38 +59,35 @@ const App = () => {
 
 
     const handleResourcesAsync = async () => {
-            // check for updates
-            if (!__DEV__) {
-                const checking = await Updates.checkForUpdateAsync()
+        // check for updates
+        if (!__DEV__) {
+            const checking = await Updates.checkForUpdateAsync()
 
-                if (checking.isAvailable) {
+            if (checking.isAvailable) {
 
-                    await Updates.fetchUpdateAsync()
+                await Updates.fetchUpdateAsync()
 
-                    await Updates.reloadAsync()
-                }
+                await Updates.reloadAsync()
             }
+        }
 
 
-            const cacheImages = images.map(image => {
+        const cacheImages = images.map(image => {
 
-                return Asset.fromModule(image).downloadAsync();
-            });
-
-
-            await Promise.all(cacheImages);
+            return Asset.fromModule(image).downloadAsync();
+        });
 
 
+        NetInfo.addEventListener(state => {
 
-            NetInfo.addEventListener(state => {
+            console.log('Connection type ', state.type);
 
-                console.log('Connection type ', state.type);
+            console.log('Is connected ?', state.isConnected);
 
-                console.log('Is connected ?', state.isConnected);
+            return setIsConnected(state.isConnected)
+        });
 
-                return setIsConnected(state.isConnected)
-            });
-
+        return await Promise.all(cacheImages);
     }
 
     useEffect(() => {
