@@ -31,7 +31,6 @@ const Home = ({navigation}) => {
 
     const [canCreateNewProduct, setCanCreateNewProduct] = useState(false)
 
-
     const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
     const {products, productLoading} = productsList
