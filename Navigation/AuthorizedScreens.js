@@ -82,7 +82,6 @@ const TabNavigator = () => {
                     borderTopRightRadius: 20,
                     borderTopLeftRadius: 20,
                     position: "absolute",
-                    zIndex:-1,
                     bottom: 0,
                 },
                 tabBarLabelStyle : {
