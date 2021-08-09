@@ -30,8 +30,8 @@ const TransactionMessagesHandlerComponent = ({data, error}) => {
 
             {
                 data && data.success &&
-                <Messages Success='تمت العملية بنجاح' color='#22c929' style={{paddingHorizontal: 80}}
-                          fontSize={25}/>
+                <Messages Success='تمت العملية بنجاح' color='#22c929'
+                          fontSize={18}/>
             }
         </View>
 
