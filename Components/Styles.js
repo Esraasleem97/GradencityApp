@@ -314,8 +314,8 @@ export const BtnSearch = styled.TouchableOpacity`
   margin-left: 10px;
   
 `;
-export const BtnScan = styled.View`
-  padding: 5px 10px;
+export const BtnScan = styled.TouchableOpacity`
+  padding: 6px 10px;
   background-color: ${orangeLight};
   border-radius: 3px;
  
