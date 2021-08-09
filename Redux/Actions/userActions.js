@@ -64,7 +64,7 @@ export const userDetailsHandler = () => async (dispatch) => {
 
         let User = await AsyncStorage.getItem('user')
 
-        console.log(User)
+
         if (!User) {
             new Error('please login Again');
         }

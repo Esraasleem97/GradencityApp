@@ -30,6 +30,7 @@ const Home = ({navigation}) => {
 
     const [refresh, setRefresh] = useState(false)
 
+    const [loading, setLoading] = useState(false)
 
     const {productsList, projectsList, stocksList, myTransactions} = useSelector(state => state);
 
@@ -49,6 +50,7 @@ const Home = ({navigation}) => {
 
 
     useEffect(() => {
+        setLoading(true)
         if (refresh) {
             setRefresh(!refresh)
         }
@@ -57,6 +59,8 @@ const Home = ({navigation}) => {
         dispatch(projectsListHandler())
         dispatch(MyTransactionsHandler())
         dispatch(productsListHandler())
+
+       setTimeout(() =>  setLoading(false), 5000)
 
     }, [dispatch, refresh])
 
@@ -138,7 +142,7 @@ const Home = ({navigation}) => {
                         </View>
                         <Grid>
 
-                            {!productLoading ?
+                            {!productLoading && !loading ?
                                 data.map((item) => {
                                     return (
                                         <Card key={item.id}
