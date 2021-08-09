@@ -36,7 +36,7 @@ const AddProduct = ({navigation}) => {
 
     const {product, productLoading, error} = createProduct
 
-    const {groups} = groupsList
+    const {groups, groupLoading} = groupsList
 
     const handleOnSelectGroup = (val) => {
         return setGroup(val)
@@ -81,85 +81,91 @@ const AddProduct = ({navigation}) => {
             <Header title='إضافة بند جديد' navigation={navigation}/>
             <TransactionMessagesHandlerComponent data={product} error={error}/>
             <RefreshHandler>
-                <Container>
+
+                {
+                    !groupLoading ? <Container>
+                            <Content>
+                                <FormArea>
+                                    <View>
+
+                                        <SelectDropDown items={groups} title='المجموعة'
+                                                        onSelectItem={handleOnSelectGroup}
+                                                        selectedItem={group}/>
+
+                                        <Input
+                                            label='أسم البند '
+                                            icon='form'
+                                            placeholder='ادخل أسم البند  هنا'
+                                            onChangeText={(val) => setName(val)}
+                                            value={name}
+                                        />
 
 
-                    <Content>
-                        <FormArea>
-                            <View>
+                                        <Input
+                                            label='الوحدة '
+                                            icon='form'
+                                            placeholder='ادخل الوحدة هنا'
+                                            onChangeText={(val) => setUnit(val)}
+                                            value={unit}
+                                        />
+                                        <FlexStyled>
 
-                                <SelectDropDown items={groups} title='المجموعة'
-                                                onSelectItem={handleOnSelectGroup}
-                                                selectedItem={group}/>
-
-                                <Input
-                                    label='أسم البند '
-                                    icon='form'
-                                    placeholder='ادخل أسم البند  هنا'
-                                    onChangeText={(val) => setName(val)}
-                                    value={name}
-                                />
-
-
-                                <Input
-                                    label='الوحدة '
-                                    icon='form'
-                                    placeholder='ادخل الوحدة هنا'
-                                    onChangeText={(val) => setUnit(val)}
-                                    value={unit}
-                                />
-                                <FlexStyled>
-
-                                    <Input
-                                        label='نسبة الضريبة'
-                                        icon='form'
-                                        placeholder='الضريبة'
-                                        keyboardType='numeric'
-                                        onChangeText={(val) => setVat(val)}
-                                        value={vat}
-                                    />
-                                    <Input
-                                        label='الطول'
-                                        icon='form'
-                                        placeholder='الطول'
-                                        keyboardType='numeric'
-                                        onChangeText={(val) => setHeight(val)}
-                                        value={height}
-                                    />
-                                    <Input
-                                        label='الحجم'
-                                        icon='form'
-                                        placeholder='الحجم'
-                                        keyboardType='numeric'
-                                        onChangeText={(val) => setSize(val)}
-                                        value={size}
-                                    />
-                                    <Input
-                                        label='القطر'
-                                        icon='form'
-                                        placeholder='القطر'
-                                        keyboardType='numeric'
-                                        onChangeText={(val) => setDiameter(val)}
-                                        value={diameter}
-                                    />
+                                            <Input
+                                                label='نسبة الضريبة'
+                                                icon='form'
+                                                placeholder='الضريبة'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setVat(val)}
+                                                value={vat}
+                                            />
+                                            <Input
+                                                label='الطول'
+                                                icon='form'
+                                                placeholder='الطول'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setHeight(val)}
+                                                value={height}
+                                            />
+                                            <Input
+                                                label='الحجم'
+                                                icon='form'
+                                                placeholder='الحجم'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setSize(val)}
+                                                value={size}
+                                            />
+                                            <Input
+                                                label='القطر'
+                                                icon='form'
+                                                placeholder='القطر'
+                                                keyboardType='numeric'
+                                                onChangeText={(val) => setDiameter(val)}
+                                                value={diameter}
+                                            />
 
 
-                                </FlexStyled>
-                                {
-                                    productLoading
-                                        ?
-                                        <ButtonText>
-                                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                                        </ButtonText>
-                                        :
-                                        <Button onPress={SubmitHandler}>
-                                            <ButtonText>حفظ</ButtonText>
-                                        </Button>
-                                }
-                            </View>
-                        </FormArea>
-                    </Content>
-                </Container>
+                                        </FlexStyled>
+                                        {
+                                            productLoading
+                                                ?
+                                                <ButtonText>
+                                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                                                </ButtonText>
+                                                :
+                                                <Button onPress={SubmitHandler}>
+                                                    <ButtonText>حفظ</ButtonText>
+                                                </Button>
+                                        }
+                                    </View>
+                                </FormArea>
+                            </Content>
+                        </Container>
+                        :
+                        <ButtonText>
+                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                        </ButtonText>
+                }
+
             </RefreshHandler>
         </Layout>
     )

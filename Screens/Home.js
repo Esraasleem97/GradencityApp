@@ -60,7 +60,7 @@ const Home = ({navigation}) => {
         dispatch(MyTransactionsHandler())
         dispatch(productsListHandler())
 
-        setTimeout(() => setLoading(false), 5000)
+        setTimeout(() => setLoading(false), 3000)
 
     }, [dispatch, refresh])
 
