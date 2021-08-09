@@ -33,7 +33,7 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
                                 <Input
 
 
-                                    label='الوقت المستغرق'
+                                    label='الوقت المستغرق بالدقائق'
                                     icon='dashboard'
                                     placeholder='00:00:00'
                                     keyboardType='number-pad'
