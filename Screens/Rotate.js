@@ -180,7 +180,7 @@ const Rotate = ({navigation, route}) => {
                                             />
 
                                             <Input
-                                                label='الوقت المستغرق'
+                                                label='الوقت المستغرق بالدقائق'
                                                 icon='dashboard'
                                                 placeholder='00:00'
                                                 keyboardType='numeric'

@@ -60,7 +60,7 @@ const Home = ({navigation}) => {
         dispatch(MyTransactionsHandler())
         dispatch(productsListHandler())
 
-       setTimeout(() =>  setLoading(false), 5000)
+        setTimeout(() => setLoading(false), 5000)
 
     }, [dispatch, refresh])
 
@@ -159,13 +159,19 @@ const Home = ({navigation}) => {
                     </Container>
 
                 </RefreshHandler>
-                <ContainerAddIcon>
-                    <AddIcon onPress={() => {
-                        navigation.dispatch(DrawerActions.openDrawer())
-                    }}>
-                        <AntDesign name='plus' color='#fff' size={20}/>
-                    </AddIcon>
-                </ContainerAddIcon>
+
+                {
+                    !productLoading && !loading ?
+                        <ContainerAddIcon>
+                            <AddIcon onPress={() => {
+                                navigation.dispatch(DrawerActions.openDrawer())
+                            }}>
+                                <AntDesign name='plus' color='#fff' size={20}/>
+                            </AddIcon>
+                        </ContainerAddIcon>
+                        : null
+                }
+
             </ImageBackground>
         </Layout>
 

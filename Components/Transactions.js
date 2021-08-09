@@ -34,7 +34,7 @@ const Transactions = ({
                         <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}/>
 
                         <Input
-                            label='الوقت المستغرق'
+                            label='الوقت المستغرق بالدقائق'
                             icon='dashboard'
                             placeholder='00:00:00'
                             keyboardType='numeric'
