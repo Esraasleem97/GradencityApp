@@ -4,7 +4,6 @@ import {
     Content,
     HeaderLogin,
     FormArea,
-    ForgetPassword,
     Button,
     ButtonText,
     Logo
@@ -70,7 +69,7 @@ const Login = () => {
                                 setHidePassword={setHidePassword}
                             />
                             <TouchableOpacity>
-                                <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
+                                {/*<ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>*/}
 
                             </TouchableOpacity>
 
