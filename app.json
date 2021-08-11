@@ -26,7 +26,7 @@
       },
       "package": "com.yarubsolutions.gardencityapp"
     },
-    "description": "monitors and follow up the activity and movement of employees within the organization. - this app is for a specific party only.",
+    "description": "monitors and follow up the activity and movement of employees within the organization, this app is for a specific party only.",
     "web": {
       "favicon": "./assets/favicon.png"
     }
