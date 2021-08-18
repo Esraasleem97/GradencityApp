@@ -12,19 +12,17 @@ import {Layout, Spinner} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
 import {
-    Keyboard,
     KeyboardAvoidingView,
     Platform,
     ScrollView,
     TouchableOpacity,
     View,
-    TouchableWithoutFeedback
 } from "react-native";
 import Header from "../Components/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {userLoginHandler} from "../Redux/Actions/userActions";
 import Messages from "../Components/Messages";
-// import {TouchableWithoutFeedback} from "@ui-kitten/components/devsupport";
+
 
 
 const Login = () => {
@@ -75,7 +73,7 @@ const Login = () => {
                                     <Input
                                         label='كلمة المرور'
                                         icon='lock'
-                                        placeholder='* * * * * * * *'
+                                        placeholder='  * * * * * * * *   '
                                         onChangeText={(value) => setPassword(value)}
                                         value={password}
                                         secureTextEntry={hidePassword}

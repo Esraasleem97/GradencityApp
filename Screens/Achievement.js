@@ -1,12 +1,12 @@
+
 import React, {useState} from "react";
 import {
     Layout,
-    CheckBox, Text, Spinner
+    Spinner
 } from "@ui-kitten/components";
+
 import Header from "../Components/Header";
-import SharedScreens from "../Components/SharedScreen";
 import SelectDropDown from "../Components/SelectDropDown";
-import {View} from "react-native";
 import Input from "../Components/Input";
 import {Button, ButtonText, Container, Content, FormArea} from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
@@ -14,7 +14,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 
 const Achievement = ({navigation, route}) => {
 
-    const [isChooseNewProject, setIsChooseNewProject] = useState(false);
+
 
     const [isChooseNewProduct, setIsChooseNewProduct] = useState(false);
 
@@ -27,7 +27,9 @@ const Achievement = ({navigation, route}) => {
     }
 
 
-    const {params: {data: {projects, products, groups}}} = route
+
+    const { params: { data: { projects , products } } } = route
+
 
     return (
         <Layout>
@@ -37,15 +39,13 @@ const Achievement = ({navigation, route}) => {
                 <Content>
                     <FormArea>
                         <SelectDropDown items={projects} title='المشروع'/>
+
                         <SelectDropDown items={products} title='البند'/>
                         <Input
-
                             label='الكمية'
                             icon='form'
                             placeholder='ادخل الكمية هنا'
                             keyboardType='number-pad'
-
-
                         />
 
                                 {/*<ButtonText>*/}
@@ -60,6 +60,7 @@ const Achievement = ({navigation, route}) => {
                 </Content>
             </Container>
             </RefreshHandler>
+
         </Layout>
     )
 }

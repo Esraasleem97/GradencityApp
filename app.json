@@ -2,7 +2,7 @@
   "expo": {
     "name": "Garden City",
     "slug": "gardenCity-app",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -18,14 +18,14 @@
     ],
     "ios": {
       "supportsTablet": true
-
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yarubsolutions.gardencityapp"
+      "package": "com.yarubsolutions.gardencityapp",
+      "versionCode": 2
     },
     "description": "monitors and follow up the activity and movement of employees within the organization, this app is for a specific party only.",
     "web": {
