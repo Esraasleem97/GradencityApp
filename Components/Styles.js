@@ -94,7 +94,7 @@ export const HeaderStyle = styled.View`
 export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
   color: ${white};
-  font-size: ${PixelRatio.getFontScale() + 30}px;
+  font-size: ${PixelRatio.getFontScale() + 25}px;
   font-weight: bold;
 
 `;
