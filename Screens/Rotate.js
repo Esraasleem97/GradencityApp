@@ -134,7 +134,7 @@ const Rotate = ({navigation, route}) => {
 
                             <Line/>
                             {
-                                product && Number(product.qty) > 0
+                                product && Number(product.qty) >= 0
 
                                     ? <View>
                                         <Input
@@ -202,7 +202,7 @@ const Rotate = ({navigation, route}) => {
                                         }
 
                                     </View>
-                                    : product && Number(product.qty) === 0
+                                    : product && Number(product.qty) < 0
                                     ? <Text style={{color: '#dc3838'}}>
                                         يجب ان تكون الكمية الحالية للبند أكبر من صفر
                                         لأتمام العملية</Text>

@@ -4,7 +4,6 @@ import {
     Content,
     HeaderLogin,
     FormArea,
-    ForgetPassword,
     Button,
     ButtonText,
     Logo
@@ -53,6 +52,7 @@ const Login = () => {
 
             <Header title='تسجيل الدخول'/>
 
+
             <KeyboardAvoidingView   enabled   keyboardVerticalOffset={27}
                 behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
                 <ScrollView style={{height:'100%'}}>
@@ -84,7 +84,7 @@ const Login = () => {
                                         setHidePassword={setHidePassword}
                                     />
                                     <TouchableOpacity>
-                                        <ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>
+                                        {/*<ForgetPassword>هل نسيت كلمة المرور؟</ForgetPassword>*/}
 
                                     </TouchableOpacity>
 
@@ -108,6 +108,7 @@ const Login = () => {
                         </Container>
                 </ScrollView>
                 </KeyboardAvoidingView>
+
 
         </Layout>
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider} from '@ui-kitten/components';
 import AppLoading from "expo-app-loading";
@@ -89,11 +89,6 @@ const App = () => {
 
         });
 
-        return await Promise.all(cacheImages);
-    }
-
-    useEffect(() => {
-
         I18nManager.allowRTL(false);
 
         I18nManager.forceRTL(true)
@@ -106,7 +101,10 @@ const App = () => {
 
         LayoutAnimation.spring();
 
-    })
+        return await Promise.all(cacheImages);
+    }
+
+
 
     if (!appIsReady) {
         return (
