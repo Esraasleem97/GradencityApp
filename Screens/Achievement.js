@@ -8,6 +8,7 @@ import SharedScreens from "../Components/SharedScreen";
 import SelectDropDown from "../Components/SelectDropDown";
 import {View} from "react-native";
 import Input from "../Components/Input";
+import {Container, Content, FormArea} from "../Components/Styles";
 
 
 const Achievement = ({navigation, route}) => {
@@ -30,73 +31,24 @@ const Achievement = ({navigation, route}) => {
     return (
         <Layout>
             <Header title='الإنجازات' navigation={navigation}/>
+            <Container>
+                <Content>
+            <FormArea>
+                <SelectDropDown items={projects} title='المشروع'/>
+                <SelectDropDown items={products}/>
+                <Input
 
-            <SharedScreens onTop={true}>
-                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                    label='الكمية'
+                    icon='form'
+                    placeholder='ادخل الكمية هنا'
+                    keyboardType='number-pad'
 
-                    <CheckBox
-                        status='warning'
-                        checked={isChooseNewProject}
-                        onChange={chooseProjectHandler}>
-                        {evaProps => <Text {...evaProps} style={{fontSize: 15, margin: 15}}>تسجيل مشروع جديد</Text>}
 
-                    </CheckBox>
 
-                    <CheckBox
-                        status='warning'
-                        checked={isChooseNewProduct}
-                        onChange={chooseProductHandler}>
-                        {evaProps => <Text {...evaProps} style={{fontSize: 15, margin: 15}}>تسجيل بند جديد</Text>}
-
-                    </CheckBox>
-                </View>
-                {
-                    isChooseNewProject && !isChooseNewProduct
-                        ?
-                        <View>
-
-                            <Input
-                                label='أضافة مشروع جديد'
-                                icon='form'
-                                placeholder='ادخل أسم المشروع الجديد هنا'
-                            />
-                            <SelectDropDown items={projects}/>
-                        </View>
-                        : isChooseNewProduct && !isChooseNewProject
-                        ?
-                        <View>
-                            <SelectDropDown items={projects} title='المشروع'/>
-
-                            <SelectDropDown items={groups} title='المجموعة'/>
-
-                            <Input
-                                label='أضافة بند جديد'
-                                icon='form'
-                                placeholder='ادخل أسم البند الجديد هنا'
-                            />
-                        </View>
-
-                        : isChooseNewProduct && isChooseNewProject
-                            ? <View>
-                                <Input
-                                    label='أضافة مشروع جديد'
-                                    icon='form'
-                                    placeholder='ادخل أسم المشروع الجديد هنا'
-                                />
-                                <Input
-                                    label='أضافة بند جديد'
-                                    icon='form'
-                                    placeholder='ادخل أسم البند الجديد هنا'
-                                />
-                            </View>
-
-                            : <View>
-                                <SelectDropDown items={projects} title='المشروع'/>
-                                <SelectDropDown items={products}/>
-                            </View>
-
-                }
-            </SharedScreens>
+                />
+            </FormArea>
+                </Content>
+            </Container>
 
         </Layout>
     )

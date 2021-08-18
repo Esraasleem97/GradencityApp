@@ -94,7 +94,7 @@ const Home = ({navigation}) => {
             nav: 'Checkout',
             data: {projects, stocks, products}
         },
-        //   {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products , groups}},
+          {id: 8, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
         {id: 2, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 3, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 4, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
@@ -117,7 +117,7 @@ const Home = ({navigation}) => {
 
     return (
         <Layout>
-            <ImageBackground source={require('../assets/bg-plants6.jpg')}>
+            <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
                 <RefreshHandler pullToRefresh={handlePullToRefresh}>
                     <Container>

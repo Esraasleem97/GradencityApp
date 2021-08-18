@@ -62,8 +62,8 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-
-  
+  margin-top: ${StatusBarHeight - 10}px;
+  margin-bottom: ${StatusBarHeight + 30}px;
 `;
 export const ImageBackground = styled.ImageBackground`
   width: 100%;
@@ -126,7 +126,8 @@ export const HeaderShape = styled.View`
 
 export const Logo = styled.Image`
   width: ${200}px;
-  height: ${200}px;
+  height: ${250}px;
+ 
 
 `;
 
@@ -170,14 +171,14 @@ export const Label = styled.Text`
 
 export const LeftIcon = styled.TouchableOpacity`
   left: ${15}px;
-  top: ${33}px;
+  top: ${30}px;
   position: absolute;
   z-index: 1;
 `;
 
 export const RightIcon = styled.TouchableOpacity`
   right: ${15}px;
-  top: ${33}px;
+  top: ${30}px;
   position: absolute;
   z-index: 1;
 

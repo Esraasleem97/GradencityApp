@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import {RefreshControl, View} from "react-native";
+import {KeyboardAvoidingView, Platform, RefreshControl, View} from "react-native";
 import {FlatList} from 'react-native-gesture-handler'
 
 const RefreshHandler = ({children, pullToRefresh}) => {
@@ -24,6 +24,7 @@ const RefreshHandler = ({children, pullToRefresh}) => {
 
 
     return (
+
         <FlatList
             keyExtractor={() => 'App-Init'}
             style={{width: '100%', height: '100%'}}
@@ -41,10 +42,11 @@ const RefreshHandler = ({children, pullToRefresh}) => {
 
             data={[0]}
             renderItem={() =>
-                <View
-                    style={{width: '99%', height: '99%'}}>
+
+                    <View>
                     {children}
-                </View>
+                    </View>
+
             }
         />
 
