@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Layout, Spinner, Text} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
@@ -43,8 +43,7 @@ const Rotate = ({navigation, route}) => {
 
     const [stock, setStock] = useState(null);
 
-    let secondInput;
-    let thirdInput;
+
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
     }
@@ -146,12 +145,9 @@ const Rotate = ({navigation, route}) => {
                                             onChangeText={(val) => setName(val)}
                                             value={name}
                                             returnKeyType="next"
-                                            onSubmitEditing={() => secondInput.focus()}
                                         />
                                         <Input
-                                            ref={ref => {
-                                                secondInput = ref;
-                                            }}
+
                                             label='الكمية'
                                             icon='form'
                                             placeholder='ادخل الكمية هنا'
@@ -159,7 +155,6 @@ const Rotate = ({navigation, route}) => {
                                             onChangeText={(val) => setQty(val)}
                                             value={qty}
                                             returnKeyType="next"
-                                            onSubmitEditing={() => thirdInput.focus()}
 
                                         />
                                         <FlexStyled>
@@ -171,9 +166,7 @@ const Rotate = ({navigation, route}) => {
                                                 onChangeText={(val) => setHeight(val)}
                                                 value={height}
                                                 autoFocus = {true}
-                                                ref={ref => {
-                                                    thirdInput = ref;
-                                                }}
+
                                             />
                                             <Input
                                                 label='الحجم'
