@@ -170,14 +170,14 @@ export const Label = styled.Text`
 `;
 
 export const LeftIcon = styled.TouchableOpacity`
-  left: ${15}px;
+  left: ${12}px;
   top: ${30}px;
   position: absolute;
   z-index: 1;
 `;
 
 export const RightIcon = styled.TouchableOpacity`
-  right: ${15}px;
+  right: ${12}px;
   top: ${30}px;
   position: absolute;
   z-index: 1;
