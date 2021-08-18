@@ -15,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const CHECKIN = 1
 export const CHECKOUT = 2
+export const ACHIEVEMENT = 3
 export const SEEDING = 4
 export const IMPACT = 5
 export const WEEDING = 6

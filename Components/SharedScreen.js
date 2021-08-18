@@ -2,9 +2,6 @@ import React from "react";
 import {Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
-import {Keyboard, KeyboardAvoidingView, Platform} from "react-native";
-import {TouchableWithoutFeedback} from "@ui-kitten/components/devsupport";
-
 
 const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTime, qty, takeTime}) => {
 

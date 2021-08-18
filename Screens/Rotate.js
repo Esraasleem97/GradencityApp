@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Layout, Spinner, Text} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, KeyboardAvoidingView, LogBox, Platform, View} from "react-native";
+import {Alert, LogBox,  View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -155,7 +155,7 @@ const Rotate = ({navigation, route}) => {
                                             keyboardType='numeric'
                                             onChangeText={(val) => setQty(val)}
                                             value={qty}
-                                            returnKeyType="next"
+
 
 
                                         />
@@ -194,6 +194,7 @@ const Rotate = ({navigation, route}) => {
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setTakeTime(val)}
                                                 value={takeTime}
+                                                returnKeyType="next"
                                             />
 
                                         </FlexStyled>

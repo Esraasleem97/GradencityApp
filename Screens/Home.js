@@ -10,7 +10,7 @@ import {
     CardImage,
     CardText,
     ContainerAddIcon,
-    AddIcon
+    AddIcon, StatusBarHeight
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {projectsListHandler} from "../Redux/Actions/projectActions";
 import {stocksListHandler} from "../Redux/Actions/stockActions";
 
-import {View} from "react-native";
+import {Dimensions, View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 import {AntDesign} from "@expo/vector-icons";
@@ -115,13 +115,14 @@ const Home = ({navigation}) => {
         },
     ]
 
+    const heightScreen = Dimensions.get('window').height;
     return (
-        <Layout>
+        <Layout  style={{height:heightScreen + 90}}>
             <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
+                <RefreshHandler pullToRefresh={handlePullToRefresh}>
+                    <Container >
 
-                    <Container>
-                        <RefreshHandler pullToRefresh={handlePullToRefresh}>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'space-around',
@@ -141,7 +142,7 @@ const Home = ({navigation}) => {
                             </Text>
                             </Text>
                         </View>
-                        <Grid>
+                        <Grid style={{marginBottom:StatusBarHeight+80}}>
 
                             {!productLoading && !loading ?
                                 data.map((item) => {
@@ -158,9 +159,9 @@ const Home = ({navigation}) => {
                             }
                         </Grid>
 
-                        </RefreshHandler>
-                    </Container>
 
+                    </Container>
+            </RefreshHandler>
 
                 {
                     !productLoading && !loading ?

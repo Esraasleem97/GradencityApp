@@ -1,66 +1,128 @@
-
-import React, {useState} from "react";
-import {
-    Layout,
-    Spinner
-} from "@ui-kitten/components";
+import React, {useEffect, useState} from "react";
+import {Layout, Spinner} from "@ui-kitten/components";
 
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import Input from "../Components/Input";
-import {Button, ButtonText, Container, Content, FormArea} from "../Components/Styles";
-import RefreshHandler from "../Components/RefreshHandler";
+import {Button, ButtonText, width} from "../Components/Styles";
+import Scanner from "../Components/Scanner";
+import SharedScreens from "../Components/SharedScreen";
+import {useDispatch, useSelector} from "react-redux";
+import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {Alert} from "react-native";
+import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 
 
 const Achievement = ({navigation, route}) => {
 
+    const {params: {data: {projects, products}}} = route
 
+    const [product, setProduct] = useState(null)
 
-    const [isChooseNewProduct, setIsChooseNewProduct] = useState(false);
+    const [project, setProject] = useState(null);
 
-    const chooseProjectHandler = () => {
-        setIsChooseNewProject(!isChooseNewProject)
+    const [qty, setQty] = useState(null);
+
+    const [takeTime, setTakenTime] = useState(null);
+
+    const dispatch = useDispatch()
+
+    const {transaction} = useSelector(state => state)
+
+    const {loading, data, error} = transaction
+
+    const handleOnSelectProduct = (val) => {
+        return setProduct(val)
     }
 
-    const chooseProductHandler = () => {
-        setIsChooseNewProduct(!isChooseNewProduct)
+    const handleOnSelectProject = (val) => {
+        return setProject(val)
+    }
+
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
+
+    const handleOnSelectQty = (val) => {
+        return setQty(val)
+    }
+
+    const handleOnSelectTakenTime = (val) => {
+        return setTakenTime(val)
     }
 
 
+    const SubmitHandler = () => {
 
-    const { params: { data: { projects , products } } } = route
+        if (!product || !project) {
+            return Alert.alert('', 'يجب ادخال البند ,المشروع أولا')
+        }
 
+        const {guid: product_id} = product
+
+        const {guid: project_id} = project
+
+
+        dispatch(TransactionsHandler({
+            product_id,
+            project_id ,
+            take_time: takeTime,
+            qty,
+            type: ACHIEVEMENT
+        }))
+
+    }
+
+    useEffect(() => {
+        if (data && data.success) {
+            setQty(null)
+            setTakenTime(null)
+            setProduct(null)
+        }
+    }, [data])
 
     return (
         <Layout>
             <Header title='الإنجازات' navigation={navigation}/>
 
-            <RefreshHandler>
-            <Container>
-                <Content>
-                    <FormArea>
-                        <SelectDropDown items={projects} title='المشروع'/>
 
-                        <SelectDropDown items={products} title='البند'/>
-                        <Input
-                            label='الكمية'
-                            icon='form'
-                            placeholder='ادخل الكمية هنا'
-                            keyboardType='number-pad'
-                        />
+            <TransactionMessagesHandlerComponent data={data} error={error}/>
 
-                                {/*<ButtonText>*/}
-                                {/*    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>*/}
-                                {/*</ButtonText>*/}
+            <SharedScreens
+                onTop={true}
+                onSelectQty={handleOnSelectQty}
+                onSelectTakenTime={handleOnSelectTakenTime}
+                qty={qty}
+                takeTime={takeTime}
+                onBottom={
 
-                                <Button>
-                                    <ButtonText>حفظ</ButtonText>
-                                </Button>
+                    loading
+                        ?
+                        <ButtonText>
+                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                        </ButtonText>
+                        :
+                        <Button onPress={SubmitHandler}>
+                            <ButtonText>حفظ</ButtonText>
+                        </Button>
+                }>
 
-                    </FormArea>
-                </Content>
-            </Container>
-            </RefreshHandler>
+
+                <SelectDropDown items={projects} title='المشروع'
+                                onSelectItem={handleOnSelectProject}
+                                selectedItem={project}
+                />
+
+                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                         products={products}>
+
+                    <SelectDropDown items={products}
+                                    onSelectItem={handleOnSelectProduct}
+                                    selectedItem={product}
+                                    style={{width: width - 120}}
+                    />
+                </Scanner>
+            </SharedScreens>
+
 
         </Layout>
     )
