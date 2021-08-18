@@ -3,9 +3,11 @@ import {View} from "react-native";
 import {LeftIcon, RightIcon, Colors, Label, TextInputStyled} from "./Styles";
 import {AntDesign, Ionicons} from "@expo/vector-icons";
 
+
 const {green1, darkLight} = Colors
 
 const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props}) => {
+
 
     return (
         <View>
@@ -14,7 +16,8 @@ const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props
             </LeftIcon>
 
             <Label>{label}</Label>
-            <TextInputStyled {...props} placeholderTextColor={darkLight}/>
+          <TextInputStyled {...props} placeholderTextColor={darkLight} autoFoucs/>
+
             {isPassword && (
                 <RightIcon onPress={() => setHidePassword(!hidePassword)}>
                     <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} color={darkLight} size={25}/>
