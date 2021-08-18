@@ -119,8 +119,9 @@ const Home = ({navigation}) => {
         <Layout>
             <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
-                <RefreshHandler pullToRefresh={handlePullToRefresh}>
+
                     <Container>
+                        <RefreshHandler pullToRefresh={handlePullToRefresh}>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'space-around',
@@ -156,9 +157,10 @@ const Home = ({navigation}) => {
                                 : <Spinner size='large' status='success'/>
                             }
                         </Grid>
+
+                        </RefreshHandler>
                     </Container>
 
-                </RefreshHandler>
 
                 {
                     !productLoading && !loading ?

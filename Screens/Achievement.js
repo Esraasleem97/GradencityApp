@@ -34,6 +34,7 @@ const Achievement = ({navigation, route}) => {
     return (
         <Layout>
             <Header title='الإنجازات' navigation={navigation}/>
+
             <RefreshHandler>
             <Container>
                 <Content>

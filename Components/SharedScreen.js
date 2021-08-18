@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
-import {Keyboard, KeyboardAvoidingView} from "react-native";
+import {Keyboard, KeyboardAvoidingView, Platform} from "react-native";
 import {TouchableWithoutFeedback} from "@ui-kitten/components/devsupport";
 
 
@@ -15,8 +15,7 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
 
             <Container>
                 <Content>
-                    <KeyboardAvoidingView>
-                        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
                             <FormArea>
                                 {children && onTop ? children : null}
                                 <Input
@@ -44,8 +43,7 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
                                 {children && onBottom ? onBottom : null}
 
                             </FormArea>
-                        </TouchableWithoutFeedback>
-                    </KeyboardAvoidingView>
+
 
                 </Content>
             </Container>

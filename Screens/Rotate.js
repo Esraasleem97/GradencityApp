@@ -5,7 +5,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, LogBox, View} from "react-native";
+import {Alert, KeyboardAvoidingView, LogBox, Platform, View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,8 +43,6 @@ const Rotate = ({navigation, route}) => {
 
     const [stock, setStock] = useState(null);
 
-    let secondInput;
-    let thirdInput;
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
     }
@@ -104,6 +102,7 @@ const Rotate = ({navigation, route}) => {
     return (
         <Layout>
             <Header title='التدوير' navigation={navigation}/>
+
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <RefreshHandler>
@@ -146,12 +145,10 @@ const Rotate = ({navigation, route}) => {
                                             onChangeText={(val) => setName(val)}
                                             value={name}
                                             returnKeyType="next"
-                                            onSubmitEditing={() => secondInput.focus()}
+
                                         />
                                         <Input
-                                            ref={ref => {
-                                                secondInput = ref;
-                                            }}
+
                                             label='الكمية'
                                             icon='form'
                                             placeholder='ادخل الكمية هنا'
@@ -159,7 +156,7 @@ const Rotate = ({navigation, route}) => {
                                             onChangeText={(val) => setQty(val)}
                                             value={qty}
                                             returnKeyType="next"
-                                            onSubmitEditing={() => thirdInput.focus()}
+
 
                                         />
                                         <FlexStyled>
@@ -171,9 +168,7 @@ const Rotate = ({navigation, route}) => {
                                                 onChangeText={(val) => setHeight(val)}
                                                 value={height}
                                                 autoFocus = {true}
-                                                ref={ref => {
-                                                    thirdInput = ref;
-                                                }}
+
                                             />
                                             <Input
                                                 label='الحجم'
@@ -226,6 +221,7 @@ const Rotate = ({navigation, route}) => {
                     </Content>
                 </Container>
             </RefreshHandler>
+
         </Layout>
     )
 }

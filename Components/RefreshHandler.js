@@ -24,12 +24,14 @@ const RefreshHandler = ({children, pullToRefresh}) => {
 
 
     return (
+        <KeyboardAvoidingView   enabled   keyboardVerticalOffset={27}
+                                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
         <FlatList
             keyExtractor={() => 'App-Init'}
-            style={{width: '100%', height: '100%'}}
+            style={{ height: '100%'}}
             removeClippedSubviews={false}
-            showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={true}
             refreshControl={
                 <RefreshControl
                     refreshing={refreshing}
@@ -50,7 +52,7 @@ const RefreshHandler = ({children, pullToRefresh}) => {
             }
         />
 
-
+        </KeyboardAvoidingView>
     )
 }
 
