@@ -17,7 +17,7 @@ const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props
             <TextInputStyled {...props} placeholderTextColor={darkLight}/>
             {isPassword && (
                 <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-                    <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} color={darkLight} size={20}/>
+                    <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} color={darkLight} size={25}/>
                 </RightIcon>
             )}
         </View>
