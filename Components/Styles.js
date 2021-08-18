@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
-import {Dimensions, Platform} from "react-native";
+import {Dimensions, PixelRatio, Platform} from "react-native";
 export const StatusBarHeight = Constants.statusBarHeight;
 
 export const width = Dimensions.get('window').width;
@@ -59,6 +59,7 @@ if (Platform.OS === 'ios') {
 }
 
 export const Container = styled.View`
+  height: 100%;
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -93,7 +94,7 @@ export const HeaderStyle = styled.View`
 export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
   color: ${white};
-  font-size: 22px;
+  font-size: ${PixelRatio.getFontScale() + 30}px;
   font-weight: bold;
 
 `;
@@ -165,7 +166,7 @@ export const TextInputStyled = styled.TextInput`
 
 export const Label = styled.Text`
   color: ${darkLight};
-  font-size: ${13}px;
+  font-size: ${PixelRatio.getFontScale() + 14}px;
 
 `;
 
@@ -200,7 +201,7 @@ export const Button = styled.TouchableOpacity`
 `;
 export const ButtonText = styled.Text`
   color: ${white};
-  font-size: ${18}px;
+  font-size: ${PixelRatio.getFontScale() + 20}px;
   text-align: center;
 
 `;

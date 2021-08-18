@@ -6,7 +6,7 @@ import {AntDesign, Ionicons} from "@expo/vector-icons";
 const {green1, darkLight} = Colors
 
 const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props}) => {
-    const Next = useRef();
+
     return (
         <View>
             <LeftIcon>
@@ -14,7 +14,7 @@ const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props
             </LeftIcon>
 
             <Label>{label}</Label>
-            <TextInputStyled {...props} placeholderTextColor={darkLight} returnKeyType="next"
+            <TextInputStyled {...props} placeholderTextColor={darkLight} returnKeyType="go"
             autoFocus={true}
             />
             {isPassword && (

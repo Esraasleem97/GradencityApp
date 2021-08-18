@@ -58,7 +58,7 @@ const Login = () => {
                 <ScrollView style={{height:'100%'}}>
                         <Container>
                             <HeaderLogin>
-                                <Logo source={require('../assets/icon.png') }  resizeMode='center'/>
+                                <Logo source={require('../assets/icon.png') }  resizeMode='center' />
                             </HeaderLogin>
                             <Content>
                                 <FormArea>
