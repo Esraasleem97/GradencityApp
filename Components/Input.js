@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import {View} from "react-native";
 import {LeftIcon, RightIcon, Colors, Label, TextInputStyled} from "./Styles";
 import {AntDesign, Ionicons} from "@expo/vector-icons";
@@ -7,7 +7,6 @@ const {green1, darkLight} = Colors
 
 const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props}) => {
 
-
     return (
         <View>
             <LeftIcon>
@@ -15,10 +14,8 @@ const Input = ({label, icon, isPassword, hidePassword, setHidePassword, ...props
             </LeftIcon>
 
             <Label>{label}</Label>
-            <TextInputStyled {...props}
-                             placeholderTextColor={darkLight}
-
-
+            <TextInputStyled {...props} placeholderTextColor={darkLight} returnKeyType="go"
+            autoFocus={true}
             />
             {isPassword && (
                 <RightIcon onPress={() => setHidePassword(!hidePassword)}>
