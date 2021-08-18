@@ -73,7 +73,7 @@ const Login = () => {
                                     <Input
                                         label='كلمة المرور'
                                         icon='lock'
-                                        placeholder='* * * * * * * *'
+                                        placeholder='  * * * * * * * *   '
                                         onChangeText={(value) => setPassword(value)}
                                         value={password}
                                         secureTextEntry={hidePassword}
