@@ -1,9 +1,8 @@
 import React from "react";
 import {Ionicons} from '@expo/vector-icons';
-
 import {HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
 import {TouchableOpacity} from "react-native";
-import OfflineNotification from "./offlineNotification";
+
 
 const Header = ({title, navigation, backNavigation}) => {
 
