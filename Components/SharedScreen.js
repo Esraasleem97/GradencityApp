@@ -2,6 +2,7 @@ import React from "react";
 import {Container, Content, FormArea} from "./Styles";
 import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
+import TakePicture from "./Camera";
 
 const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTime, qty, takeTime}) => {
 
@@ -36,7 +37,7 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
                                     value={takeTime}
                                     onChangeText={onSelectTakenTime}
                                 />
-
+                                <TakePicture/>
                                 {children && onBottom ? onBottom : null}
 
                             </FormArea>
