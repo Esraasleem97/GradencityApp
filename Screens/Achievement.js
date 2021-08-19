@@ -84,6 +84,7 @@ const Achievement = ({navigation, route}) => {
         <Layout>
             <Header title='الإنجازات' navigation={navigation}/>
 
+
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <SharedScreens
@@ -121,6 +122,7 @@ const Achievement = ({navigation, route}) => {
                     />
                 </Scanner>
             </SharedScreens>
+
 
         </Layout>
     )

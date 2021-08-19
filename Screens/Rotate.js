@@ -5,7 +5,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, LogBox, View} from "react-native";
+import {Alert, LogBox,  View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -42,7 +42,6 @@ const Rotate = ({navigation, route}) => {
     const [diameter, setDiameter] = useState(null)
 
     const [stock, setStock] = useState(null);
-
 
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
@@ -103,6 +102,7 @@ const Rotate = ({navigation, route}) => {
     return (
         <Layout>
             <Header title='التدوير' navigation={navigation}/>
+
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <RefreshHandler>
@@ -145,6 +145,7 @@ const Rotate = ({navigation, route}) => {
                                             onChangeText={(val) => setName(val)}
                                             value={name}
                                             returnKeyType="next"
+
                                         />
                                         <Input
 
@@ -154,7 +155,8 @@ const Rotate = ({navigation, route}) => {
                                             keyboardType='numeric'
                                             onChangeText={(val) => setQty(val)}
                                             value={qty}
-                                            returnKeyType="next"
+
+
 
                                         />
                                         <FlexStyled>
@@ -192,6 +194,7 @@ const Rotate = ({navigation, route}) => {
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setTakeTime(val)}
                                                 value={takeTime}
+                                                returnKeyType="next"
                                             />
 
                                         </FlexStyled>
@@ -219,6 +222,7 @@ const Rotate = ({navigation, route}) => {
                     </Content>
                 </Container>
             </RefreshHandler>
+
         </Layout>
     )
 }

@@ -252,12 +252,10 @@ export const Line = styled.View`
 
 `;
 export const FlexStyled = styled.View`
-  width: 75%;
+  width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
- 
- 
   
 `;
 export const FlexEnd = styled.View`
