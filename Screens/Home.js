@@ -161,11 +161,13 @@ const Home = ({navigation}) => {
 
 
                     </Container>
+
+
             </RefreshHandler>
 
                 {
                     !productLoading && !loading ?
-                        <ContainerAddIcon>
+                        <ContainerAddIcon >
                             <AddIcon onPress={() => {
                                 navigation.dispatch(DrawerActions.openDrawer())
                             }}>

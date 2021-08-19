@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 import {View} from "react-native";
 import {LeftIcon, RightIcon, Colors, Label, TextInputStyled} from "./Styles";
 import {AntDesign, Ionicons} from "@expo/vector-icons";

@@ -1,4 +1,4 @@
-import {BtnScan, BtnSearch, ButtonText, Scan} from "./Styles";
+import {BtnSearch, ButtonText, Scan} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 import React from "react";
 
