@@ -60,9 +60,9 @@ if (Platform.OS === 'ios') {
 
 export const Container = styled.View`
   height: 100%;
+  width: 100%;
   flex: 1;
   align-items: center;
-  justify-content: center;
   margin-top: ${StatusBarHeight - 10}px;
   margin-bottom: ${StatusBarHeight + 30}px;
 `;
@@ -75,6 +75,7 @@ export const ImageBackground = styled.ImageBackground`
 export const HeaderOpacityStyle = styled.View`
   width: 100%;
   height: 90px;
+  justify-content: flex-start;
   background-color: ${greenLight2};
   border-bottom-left-radius: 200px;
 `;
@@ -94,8 +95,9 @@ export const HeaderStyle = styled.View`
 export const TitleStyle = styled.Text`
   margin-left: ${Platform.OS === 'ios' ? '150px' : '30px'};
   color: ${white};
-  font-size: ${PixelRatio.getFontScale() + 25}px;
+  font-size: 22px;
   font-weight: bold;
+
 
 `;
 export const HeaderLogin = styled.View`
@@ -166,7 +168,7 @@ export const TextInputStyled = styled.TextInput`
 
 export const Label = styled.Text`
   color: ${darkLight};
-  font-size: ${PixelRatio.getFontScale() + 14}px;
+  font-size: 14px;
 
 `;
 
@@ -201,7 +203,7 @@ export const Button = styled.TouchableOpacity`
 `;
 export const ButtonText = styled.Text`
   color: ${white};
-  font-size: ${PixelRatio.getFontScale() + 20}px;
+  font-size: 20px;
   text-align: center;
 
 `;

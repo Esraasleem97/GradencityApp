@@ -117,12 +117,13 @@ const Home = ({navigation}) => {
 
     const heightScreen = Dimensions.get('window').height;
     return (
-        <Layout  style={{height:heightScreen + 90}}>
+        <Layout style={{height:heightScreen}}>
+
             <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
-                <RefreshHandler pullToRefresh={handlePullToRefresh}>
-                    <Container >
 
+                    <Container >
+                        <RefreshHandler pullToRefresh={handlePullToRefresh} >
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'space-around',
@@ -142,7 +143,7 @@ const Home = ({navigation}) => {
                             </Text>
                             </Text>
                         </View>
-                        <Grid style={{marginBottom:StatusBarHeight+80}}>
+                        <Grid style={{marginBottom:StatusBarHeight+20}}>
 
                             {!productLoading && !loading ?
                                 data.map((item) => {
@@ -160,10 +161,10 @@ const Home = ({navigation}) => {
                         </Grid>
 
 
+                        </RefreshHandler>
                     </Container>
 
 
-            </RefreshHandler>
 
                 {
                     !productLoading && !loading ?
@@ -178,6 +179,7 @@ const Home = ({navigation}) => {
                 }
 
             </ImageBackground>
+
         </Layout>
 
     );

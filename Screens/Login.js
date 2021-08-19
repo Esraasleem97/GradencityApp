@@ -51,7 +51,7 @@ const Login = () => {
             <Header title='تسجيل الدخول'/>
 
 
-            <KeyboardAvoidingView   enabled   keyboardVerticalOffset={27}
+            <KeyboardAvoidingView   enabled   keyboardVerticalOffset={25}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView style={{height:'100%'}}>
                         <Container>

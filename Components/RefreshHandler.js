@@ -24,12 +24,12 @@ const RefreshHandler = ({children, pullToRefresh}) => {
 const heightScreen = Dimensions.get('window').height;
 
     return (
-        <KeyboardAvoidingView   enabled   keyboardVerticalOffset={27} style={{height:heightScreen}}
+        <KeyboardAvoidingView   enabled keyboardVerticalOffset={28}
                                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
         <FlatList
             keyExtractor={() => 'App-Init'}
-            style={{ height: '100%'}}
+            style={{height:'100%'}}
             removeClippedSubviews={false}
             showsVerticalScrollIndicator={true}
             refreshControl={

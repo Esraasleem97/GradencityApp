@@ -37,7 +37,7 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
                                     value={takeTime}
                                     onChangeText={onSelectTakenTime}
                                 />
-                                <TakePicture/>
+                                {/*<TakePicture/>*/}
                                 {children && onBottom ? onBottom : null}
 
                             </FormArea>
