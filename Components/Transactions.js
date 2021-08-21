@@ -9,6 +9,7 @@ import {
 import RefreshHandler from "../Components/RefreshHandler";
 import Input from "../Components/Input";
 import {Spinner} from "@ui-kitten/components";
+import TakePicture from "./Camera";
 
 
 const Transactions = ({
@@ -41,6 +42,7 @@ const Transactions = ({
                             value={takeTime}
                             onChangeText={onSelectTakeTime}
                         />
+
                         {
                             loading
                                 ?

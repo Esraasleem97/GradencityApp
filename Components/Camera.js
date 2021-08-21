@@ -1,73 +1,93 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
-import { Camera } from 'expo-camera';
+// App.js
+import React, { useState } from 'react';
+import {View, StyleSheet, Image} from 'react-native';
 
-export default function TakePicture() {
-    const [hasPermission, setHasPermission] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.back);
-    const [isPreview,setIsPreview] = useState(false);
-    const [pathImage,setPathImage] = useState('');
-    const ref = useRef(null)
-
-    useEffect(() => {
-        (async () => {
-            const { status } = await Camera.requestPermissionsAsync();
-            setHasPermission(status === 'granted');
-        })();
-    }, []);
-
-    const _takePhoto = async () => {
-        const photo = await ref.current.takePictureAsync()
-        console.debug(photo)
-
-            setPathImage(photo.uri);
-            // setIsPreview(!isPreview);
+import * as ImagePicker from 'expo-image-picker';
+import {BtnUploadImg, Colors, UploadImgText} from "./Styles";
+import {AntDesign} from "@expo/vector-icons";
 
 
+function TakePicture() {
+    // The path of the picked image
+    const [pickedImagePath, setPickedImagePath] = useState('');
 
+    // This function is triggered when the "Select an image" button pressed
+    const showImagePicker = async () => {
+        // Ask the user for the permission to access the media library
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("You've refused to allow this appp to access your photos!");
+            return;
+        }
+
+        const result = await ImagePicker.launchImageLibraryAsync();
+
+        // Explore the result
+        console.log(result);
+
+        if (!result.cancelled) {
+            setPickedImagePath(result.uri);
+            console.log(result.uri);
+        }
     }
 
-    if (hasPermission === null) {
-        return <View />;
-    }
-    if (hasPermission === false) {
-        return <Text>No access to camera</Text>;
-    }
+    // This function is triggered when the "Open camera" button pressed
+    const openCamera = async () => {
+        // Ask the user for the permission to access the camera
+        const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
+        if (permissionResult.granted === false) {
+            alert("You've refused to allow this appp to access your camera!");
+            return;
+        }
+
+        const result = await ImagePicker.launchCameraAsync();
+
+        // Explore the result
+        console.log(result);
+
+        if (!result.cancelled) {
+            setPickedImagePath(result.uri);
+            console.log(result.uri);
+        }
+    }
+const {green3} = Colors;
     return (
-        <View style={{ flex: 1 }}>
-            <Camera style={{ flex: 1 }} type={type} ref={ref}>
-                <View
-                    style={{
-                        flex: 1,
-                        backgroundColor: 'transparent',
-                        flexDirection: 'row',
-                    }}>
-                    <TouchableOpacity
-                        style={{
-                            flex: 0.1,
-                            alignSelf: 'flex-end',
-                            alignItems: 'center',
-                        }}
-                        onPress={() => {
-                            setType(
-                                type === Camera.Constants.Type.back
-                                    ? Camera.Constants.Type.front
-                                    : Camera.Constants.Type.back
-                            );
-                        }}>
-                        <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Flip </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={_takePhoto}
-                    >
-                        <Text>Snap Photo</Text>
-                    </TouchableOpacity>
-                    <View style={{flex:1,}}>
-                        {pathImage !== '' &&  <Image source={{uri : pathImage}} width={100} height={100}/> }
-                    </View>
-                </View>
-            </Camera>
+        <View style={styles.screen}>
+            <View>
+                <BtnUploadImg onPress={openCamera}>
+                    <AntDesign name='clouduploado' size={25} color={green3}/>
+                    <UploadImgText>رفع صورة</UploadImgText>
+                </BtnUploadImg>
+            </View>
+            <View style={styles.imageContainer}>
+                {
+                    pickedImagePath !== '' && <Image
+                        source={{ uri: pickedImagePath }}
+                        style={styles.image}
+                    />
+                }
+            </View>
         </View>
     );
 }
+
+export default TakePicture;
+
+
+const styles = StyleSheet.create({
+    screen: {
+
+    },
+
+    imageContainer: {
+        padding: 15,
+        alignSelf:'center'
+    },
+    image: {
+        width: 200,
+        height: 300,
+        resizeMode: 'cover'
+    }
+});

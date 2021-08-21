@@ -117,7 +117,7 @@ const Home = ({navigation}) => {
 
     const heightScreen = Dimensions.get('window').height;
     return (
-        <Layout style={{height:heightScreen}}>
+        <Layout >
 
             <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
@@ -143,7 +143,7 @@ const Home = ({navigation}) => {
                             </Text>
                             </Text>
                         </View>
-                        <Grid style={{marginBottom:StatusBarHeight+20}}>
+                        <Grid >
 
                             {!productLoading && !loading ?
                                 data.map((item) => {

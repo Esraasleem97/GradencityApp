@@ -322,3 +322,17 @@ export const BtnScan = styled.TouchableOpacity`
   border-radius: 3px;
  
 `;
+export const BtnUploadImg = styled.TouchableOpacity`
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border-bottom-width: 1px;
+  border-bottom-color: ${greenLight1};
+  
+`;
+export const UploadImgText = styled.Text`
+  color: ${green3};
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+`;

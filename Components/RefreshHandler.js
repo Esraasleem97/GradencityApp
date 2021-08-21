@@ -29,7 +29,7 @@ const heightScreen = Dimensions.get('window').height;
 
         <FlatList
             keyExtractor={() => 'App-Init'}
-            style={{height:'100%'}}
+            style={{height:heightScreen}}
             removeClippedSubviews={false}
             showsVerticalScrollIndicator={true}
             refreshControl={

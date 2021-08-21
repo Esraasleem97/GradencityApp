@@ -12,6 +12,7 @@ import SelectDropDown from "../Components/SelectDropDown";
 
 import {groupsListHandler} from "../Redux/Actions/groupActions";
 import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
+import TakePicture from "../Components/Camera";
 
 
 const AddProduct = ({navigation}) => {
@@ -145,6 +146,7 @@ const AddProduct = ({navigation}) => {
 
 
                                         </FlexStyled>
+                                        <TakePicture/>
                                         {
                                             productLoading
                                                 ?

@@ -11,6 +11,7 @@ import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
+import TakePicture from "../Components/Camera";
 
 
 const Rotate = ({navigation, route}) => {
@@ -139,9 +140,9 @@ const Rotate = ({navigation, route}) => {
 
                                     ? <View>
                                         <Input
-                                            label='أسم البند الجديد'
+                                            label='اسم البند الجديد'
                                             icon='form'
-                                            placeholder='ادخل أسم البند الجديد هنا'
+                                            placeholder='ادخل اسم البند الجديد هنا'
                                             onChangeText={(val) => setName(val)}
                                             value={name}
                                             returnKeyType="next"
@@ -197,7 +198,9 @@ const Rotate = ({navigation, route}) => {
                                                 returnKeyType="next"
                                             />
 
+
                                         </FlexStyled>
+
                                         {
                                             loading
                                                 ?
