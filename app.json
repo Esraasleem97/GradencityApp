@@ -25,8 +25,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.yarubsolutions.gardencityapp",
-      "versionCode": 2 ,
-      "enableDangerousExperimentalLeanBuilds": true
+      "versionCode": 2
+
 
     },
     "description": "monitors and follow up the activity and movement of employees within the organization, this app is for a specific party only.",

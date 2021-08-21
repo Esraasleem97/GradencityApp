@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
 import {Dimensions, KeyboardAvoidingView, Platform, RefreshControl, View} from "react-native";
 import {FlatList} from 'react-native-gesture-handler'
+import {height} from "./Styles";
 
 const RefreshHandler = ({children, pullToRefresh}) => {
 
@@ -21,15 +22,15 @@ const RefreshHandler = ({children, pullToRefresh}) => {
            return pullToRefresh ?   pullToRefresh(true) : null ;
         });
     }, []);
-const heightScreen = Dimensions.get('window').height;
+
 
     return (
-        <KeyboardAvoidingView   enabled keyboardVerticalOffset={28}
+        <KeyboardAvoidingView   enabled  keyboardVerticalOffset={25}
                                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
         <FlatList
             keyExtractor={() => 'App-Init'}
-            style={{height:heightScreen}}
+            style={{height:height}}
             removeClippedSubviews={false}
             showsVerticalScrollIndicator={true}
             refreshControl={

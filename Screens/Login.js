@@ -6,12 +6,13 @@ import {
     FormArea,
     Button,
     ButtonText,
-    Logo
+    Logo,height
 } from "../Components/Styles";
 import {Layout, Spinner} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
 import {
+    Dimensions,
     KeyboardAvoidingView,
     Platform,
     ScrollView,
@@ -51,9 +52,9 @@ const Login = () => {
             <Header title='تسجيل الدخول'/>
 
 
-            <KeyboardAvoidingView   enabled   keyboardVerticalOffset={25}
+            <KeyboardAvoidingView  keyboardVerticalOffset={25}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-                <ScrollView style={{height:'100%'}}>
+                <ScrollView style={{height:'100%',width:'100%'}}>
                         <Container>
                             <HeaderLogin>
                                 <Logo source={require('../assets/icon.png') }  resizeMode='center' />
@@ -73,7 +74,7 @@ const Login = () => {
                                     <Input
                                         label='كلمة المرور'
                                         icon='lock'
-                                        placeholder='  * * * * * * * *   '
+                                        placeholder=' * * * * * * * * '
                                         onChangeText={(value) => setPassword(value)}
                                         value={password}
                                         secureTextEntry={hidePassword}

@@ -20,7 +20,7 @@ const {white} = Colors
 
 const Checkout = ({navigation, route}) => {
 
-    const tableHead = ['الرقم', 'البند', 'الكمية', 'الاجراء'];
+    const tableHead = ['الكود', 'البند', 'الكمية', 'الحذف'];
 
     const [product, setProduct] = useState(null);
 
