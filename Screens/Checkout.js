@@ -20,11 +20,13 @@ const {white} = Colors
 
 const Checkout = ({navigation, route}) => {
 
-    const tableHead = ['الكود', 'البند', 'الكمية', 'الحذف'];
+    const {params: {data: {stocks, projects, products}}} = route
+
+    const tableHead = ['الكود', 'البند', 'الكمية', "الطول", "الحجم", 'القطر', 'الحذف'];
 
     const [product, setProduct] = useState(null);
 
-    const [stock, setStock] = useState(null);
+    const [stock, setStock] = useState();
 
     const [project, setProject] = useState(null);
 
@@ -65,6 +67,7 @@ const Checkout = ({navigation, route}) => {
         return setModalQty(val)
     }
 
+
     useEffect(() => {
 
         if (data && data.success) {
@@ -77,15 +80,19 @@ const Checkout = ({navigation, route}) => {
         }
     }, [data])
 
+
     const modalSubmitHandler = async () => {
         if (product && modalQty) {
             await tableData.push
             ([
-                    product.id,
-                    product.name,
-                    modalQty,
-                    product
-                ])
+                product.code,
+                product.name,
+                modalQty,
+                product.height ,
+                product.size ,
+                product.diameter,
+                product
+            ])
             setProduct(null)
             setModalQty(null)
             setVisible(false)
@@ -113,7 +120,6 @@ const Checkout = ({navigation, route}) => {
 
     }
 
-    const {params: {data: {stocks, projects, products}}} = route
 
     return (
         <Layout>

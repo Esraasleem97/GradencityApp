@@ -19,11 +19,18 @@ const Seed = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null);
 
+    const [image, setImage] = useState(null);
+
+
     const dispatch = useDispatch()
 
     const {transaction} = useSelector(state => state)
 
     const {loading, data, error} = transaction
+
+    const handleOnSelectImage = (val) => {
+        return setImage(val)
+    }
 
     const handleOnSelectQty = (val) => {
         return setQty(val)
@@ -49,12 +56,13 @@ const Seed = ({navigation, route}) => {
 
         const {guid: product_id} = product
 
-        dispatch(TransactionsHandler({
-            product_id,
-            take_time: takeTime,
-            qty,
-            type: SEEDING
-        }))
+        const data = new FormData();
+        data.append('product_id', product_id)
+        data.append('take_time', takeTime)
+        data.append('qty', qty)
+        data.append('image', image)
+        data.append('type', SEEDING)
+        dispatch(TransactionsHandler(data))
 
     }
 
@@ -63,11 +71,12 @@ const Seed = ({navigation, route}) => {
             setQty(null)
             setTakenTime(null)
             setProduct(null)
+            setImage(null)
         }
 
     }, [data])
 
-    const {params: {data: {products} } } = route
+    const {params: {data: {products}}} = route
 
     return (
         <Layout>
@@ -76,6 +85,8 @@ const Seed = ({navigation, route}) => {
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <SharedScreens
+                unlinkPickedImage={data && data.success}
+                onSelectImage={handleOnSelectImage}
                 onTop={true}
                 onSelectQty={handleOnSelectQty}
                 onSelectTakenTime={handleOnSelectTakenTime}

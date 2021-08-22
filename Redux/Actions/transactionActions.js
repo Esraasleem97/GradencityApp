@@ -37,8 +37,9 @@ export const TransactionsHandler = (Data = {}, Url = TRANSACTION) => async (disp
 
         const config = {
             headers: {
-                'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 'X-API-KEY': API_PROTECTION,
+                'Content-Type': 'multipart/form-data',
                 Authorization: token.toString()
             }
         }

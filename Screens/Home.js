@@ -10,7 +10,7 @@ import {
     CardImage,
     CardText,
     ContainerAddIcon,
-    AddIcon, StatusBarHeight
+    AddIcon
 } from "../Components/Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Header from "../Components/Header";
@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {projectsListHandler} from "../Redux/Actions/projectActions";
 import {stocksListHandler} from "../Redux/Actions/stockActions";
 
-import {Dimensions, View} from "react-native";
+import { View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 import {AntDesign} from "@expo/vector-icons";
@@ -45,6 +45,7 @@ const Home = ({navigation}) => {
     const dispatch = useDispatch()
 
     const handlePullToRefresh = () => {
+
         return setRefresh(true)
     }
 
@@ -115,7 +116,7 @@ const Home = ({navigation}) => {
         },
     ]
 
-    const heightScreen = Dimensions.get('window').height;
+
     return (
         <Layout >
 

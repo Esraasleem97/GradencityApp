@@ -4,7 +4,17 @@ import Input from "./Input";
 import RefreshHandler from "./RefreshHandler";
 import TakePicture from "./Camera";
 
-const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTime, qty, takeTime}) => {
+const SharedScreens = ({
+                           children,
+                           onTop,
+                           onBottom,
+                           onSelectQty,
+                           onSelectTakenTime,
+                           qty,
+                           takeTime,
+                           onSelectImage,
+                           unlinkPickedImage
+                       }) => {
 
 
     return (
@@ -14,33 +24,33 @@ const SharedScreens = ({children, onTop, onBottom, onSelectQty, onSelectTakenTim
             <Container>
                 <Content>
 
-                            <FormArea>
-                                {children && onTop ? children : null}
-                                <Input
+                    <FormArea>
+                        {children && onTop ? children : null}
+                        <Input
 
-                                    label='الكمية'
-                                    icon='form'
-                                    placeholder='ادخل الكمية هنا'
-                                    keyboardType='number-pad'
-                                    value={qty}
-                                    onChangeText={onSelectQty}
-
-
-                                />
-                                <Input
+                            label='الكمية'
+                            icon='form'
+                            placeholder='ادخل الكمية هنا'
+                            keyboardType='number-pad'
+                            value={qty}
+                            onChangeText={onSelectQty}
 
 
-                                    label='الوقت المستغرق بالدقائق'
-                                    icon='dashboard'
-                                    placeholder='00:00:00'
-                                    keyboardType='number-pad'
-                                    value={takeTime}
-                                    onChangeText={onSelectTakenTime}
-                                />
-                                <TakePicture/>
-                                {children && onBottom ? onBottom : null}
+                        />
+                        <Input
 
-                            </FormArea>
+
+                            label='الوقت المستغرق بالدقائق'
+                            icon='dashboard'
+                            placeholder='00:00:00'
+                            keyboardType='number-pad'
+                            value={takeTime}
+                            onChangeText={onSelectTakenTime}
+                        />
+                        <TakePicture onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>
+                        {children && onBottom ? onBottom : null}
+
+                    </FormArea>
 
 
                 </Content>

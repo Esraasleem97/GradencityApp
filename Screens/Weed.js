@@ -26,6 +26,12 @@ const Weed = ({navigation, route}) => {
 
     const {loading, data, error} = transaction
 
+    const [image, setImage] = useState(null);
+
+    const handleOnSelectImage = (val) => {
+        return setImage(val)
+    }
+
     const handleOnSelectQty = (val) => {
         return setQty(val)
     }
@@ -49,12 +55,21 @@ const Weed = ({navigation, route}) => {
         }
         const {guid: product_id} = product
 
-        dispatch(TransactionsHandler({
-            product_id,
-            take_time: takeTime,
-            qty,
-            type: WEEDING
-        }))
+
+        const data = new FormData();
+
+        data.append('product_id', product_id)
+
+        data.append('take_time', takeTime)
+
+        data.append('qty', qty)
+
+        data.append('image', image)
+
+        data.append('type', WEEDING)
+
+        dispatch(TransactionsHandler(data))
+
 
     }
 
@@ -63,6 +78,8 @@ const Weed = ({navigation, route}) => {
             setQty(null)
             setTakenTime(null)
             setProduct(null)
+            setImage(null)
+
         }
     }, [data])
 
@@ -73,6 +90,8 @@ const Weed = ({navigation, route}) => {
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <SharedScreens
+                unlinkPickedImage={data && data.success}
+                onSelectImage={handleOnSelectImage}
                 onTop={true}
                 onSelectQty={handleOnSelectQty}
                 onSelectTakenTime={handleOnSelectTakenTime}

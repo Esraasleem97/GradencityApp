@@ -31,7 +31,7 @@ export const DataTable = ({tableHead, tableData, setTableData, ...props}) => {
                             {
                                 item.map((cellData, cellIndex) =>
                                     <Cell key={`cell_${cellIndex}`}
-                                          data={cellIndex === 3 ? element(cellData, index) : cellData}
+                                          data={cellIndex === 6 ? element(cellData, index) : cellData}
                                           textStyle={styles.text}/>
                                 )
                             }

@@ -15,13 +15,14 @@ import {CHECK_IN} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import ProductModals from "../Components/ProductModals";
 import SelectDropDown from "../Components/SelectDropDown";
+
 const {white} = Colors
 
 const ProjectsReceipt = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null);
 
-    const tableHead = ['الكود', 'البند', 'الكمية', 'الحذف'];
+    const tableHead = ['الكود', 'البند', 'الكمية', "الطول", "الحجم", 'القطر', 'الحذف'];
 
     const [tableData, setTableData] = useState([]);
 
@@ -40,7 +41,6 @@ const ProjectsReceipt = ({navigation, route}) => {
     const {transaction} = useSelector(state => state)
 
     const {loading, data, error} = transaction
-
 
 
     const handleOnSelectProject = (val) => {
@@ -75,6 +75,9 @@ const ProjectsReceipt = ({navigation, route}) => {
                     product.id,
                     product.name,
                     modalQty,
+                    product.height,
+                    product.size,
+                    product.diameter,
                     product
                 ]
             )
@@ -83,7 +86,6 @@ const ProjectsReceipt = ({navigation, route}) => {
             setVisible(false)
         }
     }
-
 
 
     const submitHandler = () => {
@@ -124,7 +126,7 @@ const ProjectsReceipt = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='إستلام من المشاريع'  navigation={navigation}/>
+            <Header title='إستلام من المشاريع' navigation={navigation}/>
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
 

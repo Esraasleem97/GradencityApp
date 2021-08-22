@@ -50,6 +50,11 @@ const Achievement = ({navigation, route}) => {
         return setTakenTime(val)
     }
 
+    const [image, setImage] = useState(null);
+
+    const handleOnSelectImage = (val) => {
+        return setImage(val)
+    }
 
     const SubmitHandler = () => {
 
@@ -62,13 +67,16 @@ const Achievement = ({navigation, route}) => {
         const {guid: project_id} = project
 
 
-        dispatch(TransactionsHandler({
-            product_id,
-            project_id ,
-            take_time: takeTime,
-            qty,
-            type: ACHIEVEMENT
-        }))
+        const data = new FormData();
+        data.append('product_id', product_id)
+        data.append('project_id', project_id)
+        data.append('take_time', takeTime)
+        data.append('qty', qty)
+        data.append('image', image)
+        data.append('type', ACHIEVEMENT)
+        dispatch(TransactionsHandler(data))
+
+
 
     }
 
@@ -77,6 +85,8 @@ const Achievement = ({navigation, route}) => {
             setQty(null)
             setTakenTime(null)
             setProduct(null)
+            setImage(null)
+            setProject(null)
         }
     }, [data])
 
@@ -88,6 +98,9 @@ const Achievement = ({navigation, route}) => {
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <SharedScreens
+                unlinkPickedImage={data && data.success}
+                onSelectImage={handleOnSelectImage}
+
                 onTop={true}
                 onSelectQty={handleOnSelectQty}
                 onSelectTakenTime={handleOnSelectTakenTime}

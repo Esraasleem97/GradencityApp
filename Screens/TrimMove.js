@@ -5,7 +5,7 @@ import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
-import {TransactionsHandler, TRIM} from "../Redux/Actions/transactionActions";
+import { TransactionsHandler, TRIM} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import {Button, ButtonText, width} from "../Components/Styles";
 import Scanner from "../Components/Scanner";
@@ -22,6 +22,11 @@ const TrimMove = ({navigation, route}) => {
 
     const dispatch = useDispatch()
 
+    const [image, setImage] = useState(null);
+
+    const handleOnSelectImage = (val) => {
+        return setImage(val)
+    }
 
     const {transaction} = useSelector(state => state)
 
@@ -49,12 +54,19 @@ const TrimMove = ({navigation, route}) => {
         }
         const {guid: product_id} = product
 
-        dispatch(TransactionsHandler({
-            product_id,
-            take_time: takeTime,
-            qty,
-            type: TRIM
-        }))
+        const data = new FormData();
+
+        data.append('product_id', product_id)
+
+        data.append('take_time', takeTime)
+
+        data.append('qty', qty)
+
+        data.append('image', image)
+
+        data.append('type', TRIM)
+
+        dispatch(TransactionsHandler(data))
 
     }
 
@@ -63,6 +75,8 @@ const TrimMove = ({navigation, route}) => {
             setQty(null)
             setTakenTime(null)
             setProduct(null)
+            setImage(null)
+
         }
     }, [data])
 
@@ -73,6 +87,8 @@ const TrimMove = ({navigation, route}) => {
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
             <SharedScreens
+                unlinkPickedImage={data && data.success}
+                onSelectImage={handleOnSelectImage}
                 onTop={true}
                 onSelectQty={handleOnSelectQty}
                 onSelectTakenTime={handleOnSelectTakenTime}

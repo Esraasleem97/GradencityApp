@@ -1,5 +1,4 @@
-// App.js
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
@@ -7,7 +6,7 @@ import {BtnUploadImg, Colors, UploadImgText} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 
 
-function TakePicture() {
+function TakePicture({onSelectImage, unlinkPickedImage = false}) {
     // The path of the picked image
     const [pickedImagePath, setPickedImagePath] = useState('');
 
@@ -17,21 +16,47 @@ function TakePicture() {
         const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
         if (permissionResult.granted === false) {
-            alert("You've refused to allow this appp to access your camera!");
+            alert("You've refused to allow this app to access your camera!");
             return;
         }
 
         const result = await ImagePicker.launchCameraAsync();
 
-        // Explore the result
-        console.log(result);
-
         if (!result.cancelled) {
-            setPickedImagePath(result.uri);
-            console.log(result.uri);
+
+            try {
+
+                const {uri} = result
+
+                setPickedImagePath(uri);
+
+                let dataForm = new FormData();
+
+                let fileType = uri.substring(uri.lastIndexOf(".") + 1);
+
+                onSelectImage({
+                    uri,
+                    name: `photo.${fileType}`,
+                    type: `image/${fileType}`
+                })
+
+                console.log(dataForm);
+
+            } catch (e) {
+
+                console.log(e)
+
+            }
+
         }
     }
-const {green3} = Colors;
+    const {green3} = Colors;
+
+    useEffect(() => {
+        if (unlinkPickedImage === true) {
+            setPickedImagePath('')
+        }
+    }, [unlinkPickedImage])
     return (
         <View style={styles.screen}>
             <View>
@@ -43,7 +68,7 @@ const {green3} = Colors;
             <View style={styles.imageContainer}>
                 {
                     pickedImagePath !== '' && <Image
-                        source={{ uri: pickedImagePath }}
+                        source={{uri: pickedImagePath}}
                         style={styles.image}
                     />
                 }
@@ -56,13 +81,11 @@ export default TakePicture;
 
 
 const styles = StyleSheet.create({
-    screen: {
-
-    },
+    screen: {},
 
     imageContainer: {
         padding: 15,
-        alignSelf:'center'
+        alignSelf: 'center'
     },
     image: {
         width: 200,
