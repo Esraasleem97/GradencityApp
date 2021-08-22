@@ -39,6 +39,8 @@ export const userLoginHandler = (username, password) => async (dispatch) => {
             payload: data
         })
 
+
+
         await AsyncStorage.removeItem('user')
 
         await AsyncStorage.setItem('user', JSON.stringify(data))
