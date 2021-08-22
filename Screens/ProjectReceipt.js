@@ -22,7 +22,7 @@ const ProjectsReceipt = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null);
 
-    const tableHead = ['الكود', 'البند', 'الكمية', "الطول", "الحجم", 'القطر', 'الحذف'];
+    const tableHead = ['كود', 'بند', 'كمية', "طول", "حجم", 'قطر', 'حذف'];
 
     const [tableData, setTableData] = useState([]);
 

@@ -22,7 +22,7 @@ const Checkout = ({navigation, route}) => {
 
     const {params: {data: {stocks, projects, products}}} = route
 
-    const tableHead = ['الكود', 'البند', 'الكمية', "الطول", "الحجم", 'القطر', 'الحذف'];
+    const tableHead = ['كود', 'بند', 'كمية', "طول", "حجم", 'قطر', 'حذف'];
 
     const [product, setProduct] = useState(null);
 
@@ -88,8 +88,8 @@ const Checkout = ({navigation, route}) => {
                 product.code,
                 product.name,
                 modalQty,
-                product.height ,
-                product.size ,
+                product.height,
+                product.size,
                 product.diameter,
                 product
             ])
