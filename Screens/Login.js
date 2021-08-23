@@ -6,13 +6,13 @@ import {
     FormArea,
     Button,
     ButtonText,
-    Logo,height
+    Logo
 } from "../Components/Styles";
 import {Layout, Spinner} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
 import Input from "../Components/Input";
 import {
-    Dimensions,
+
     KeyboardAvoidingView,
     Platform,
     ScrollView,
@@ -27,6 +27,7 @@ import Messages from "../Components/Messages";
 
 
 const Login = () => {
+
     const [username, setUsername] = useState(null);
 
     const [password, setPassword] = useState(null);

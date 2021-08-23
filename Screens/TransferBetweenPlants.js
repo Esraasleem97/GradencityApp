@@ -27,7 +27,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null);
 
-    const tableHead = ['الكود', 'البند', 'الكمية', 'الحذف'];
+    const tableHead = ['كود', 'بند', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
 
     const [tableData, setTableData] = useState([]);
 
@@ -73,6 +73,9 @@ const TransferBetweenPlants = ({navigation, route}) => {
                     product.id,
                     product.name,
                     modalQty,
+                    product.height,
+                    product.size,
+                    product.diameter,
                     product
                 ]
             )
@@ -88,8 +91,8 @@ const TransferBetweenPlants = ({navigation, route}) => {
             id: item[0],
             name: item[1],
             quantity: item[2],
-            guid: item[3].guid,
-            code: item[3].code
+            guid: item[6].guid,
+            code: item[6].code
         }))
 
         dispatch(TransactionsHandler({
@@ -98,7 +101,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
             in_stock: inStock ? inStock.guid : '',
             out_stock: outStock ? outStock.guid : '',
             type: TRANSFER_PLANTS
-        }, TRANSFER))
+        }, TRANSFER , true))
 
     }
 

@@ -72,8 +72,13 @@ const Achievement = ({navigation, route}) => {
         data.append('project_id', project_id)
         data.append('take_time', takeTime)
         data.append('qty', qty)
-        data.append('image', image)
+
+        if (image !== null) {
+            data.append('image', image)
+        }
+
         data.append('type', ACHIEVEMENT)
+
         dispatch(TransactionsHandler(data))
 
 

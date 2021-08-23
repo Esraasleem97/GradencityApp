@@ -20,13 +20,17 @@ const {white} = Colors
 
 const ProjectsReceipt = ({navigation, route}) => {
 
+    const {params: {data: {stocks, projects, products}}} = route
+
+    const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
+
     const [product, setProduct] = useState(null);
 
-    const tableHead = ['كود', 'بند', 'كمية', "طول", "حجم", 'قطر', 'حذف'];
+    const tableHead = ['كود', 'بند', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
 
     const [tableData, setTableData] = useState([]);
 
-    const [stock, setStock] = useState(null);
+    const [stock, setStock] = useState(setDefaultStock[0]);
 
     const [project, setProject] = useState(null);
 
@@ -94,8 +98,8 @@ const ProjectsReceipt = ({navigation, route}) => {
             id: item[0],
             name: item[1],
             quantity: item[2],
-            guid: item[3].guid,
-            code: item[3].code
+            guid: item[6].guid,
+            code: item[6].code
         }))
 
         dispatch(TransactionsHandler({
@@ -104,7 +108,7 @@ const ProjectsReceipt = ({navigation, route}) => {
             stock: stock ? stock.guid : '',
             project: project ? project.guid : '',
             type: CHECKIN
-        }, CHECK_IN))
+        }, CHECK_IN, true))
 
     }
 
@@ -121,8 +125,6 @@ const ProjectsReceipt = ({navigation, route}) => {
         }
     }, [data])
 
-
-    const {params: {data: {stocks, projects, products}}} = route
 
     return (
         <Layout>

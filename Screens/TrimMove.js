@@ -62,7 +62,10 @@ const TrimMove = ({navigation, route}) => {
 
         data.append('qty', qty)
 
-        data.append('image', image)
+        if (image !== null) {
+            data.append('image', image)
+        }
+
 
         data.append('type', TRIM)
 

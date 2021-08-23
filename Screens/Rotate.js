@@ -11,7 +11,6 @@ import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
-import TakePicture from "../Components/Camera";
 
 
 const Rotate = ({navigation, route}) => {
@@ -42,7 +41,9 @@ const Rotate = ({navigation, route}) => {
 
     const [diameter, setDiameter] = useState(null)
 
-    const [stock, setStock] = useState(null);
+    const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
+
+    const [stock, setStock] = useState(setDefaultStock[0]);
 
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
@@ -76,7 +77,7 @@ const Rotate = ({navigation, route}) => {
                 diameter,
                 stock: stock.guid,
                 type: ROTATE_TYPE
-            }, ROTATE))
+            }, ROTATE , true))
         }
 
 

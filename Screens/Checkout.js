@@ -22,11 +22,13 @@ const Checkout = ({navigation, route}) => {
 
     const {params: {data: {stocks, projects, products}}} = route
 
-    const tableHead = ['كود', 'بند', 'كمية', "طول", "حجم", 'قطر', 'حذف'];
+    const tableHead = ['كود', 'بند', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
 
     const [product, setProduct] = useState(null);
 
-    const [stock, setStock] = useState();
+    const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
+
+    const [stock, setStock] = useState(setDefaultStock[0]);
 
     const [project, setProject] = useState(null);
 
@@ -106,8 +108,8 @@ const Checkout = ({navigation, route}) => {
             id: item[0],
             name: item[1],
             quantity: item[2],
-            guid: item[3].guid,
-            code: item[3].code
+            guid: item[6].guid,
+            code: item[6].code
         }))
 
         dispatch(TransactionsHandler({
@@ -115,8 +117,10 @@ const Checkout = ({navigation, route}) => {
             take_time: takeTime,
             stock: stock ? stock.guid : '',
             project: project ? project.guid : '',
-            type: CHECKOUT
-        }, CHECK_OUT))
+            type: CHECKOUT ,
+            image: null
+
+        }, CHECK_OUT , true))
 
     }
 

@@ -17,6 +17,8 @@ const defaultItemValue = {
 };
 import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js' ;
 
+
+const fontSize = 13
 export default class SearchableDropDownScroll extends SearchableDropDown {
 
     constructor(props) {
@@ -28,7 +30,8 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         this.state = {
             item: {},
             listItems: [],
-            focus: false
+            focus: false,
+            isEnItem: false
         };
     }
 
@@ -77,9 +80,15 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         let setSort = this.props.setSort;
         if (!setSort && typeof setSort !== 'function') {
             setSort = (item, searchedText) => {
-                return item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1
-                    ? item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1
-                    : item.code.indexOf(searchedText.toLowerCase()) > -1
+                if (item.latin_name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1) {
+                    this.setState({isEnItem: true})
+                    return item.latin_name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1
+                } else if (item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1) {
+                    return item.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1;
+                } else {
+                    return item.code.indexOf(searchedText.toLowerCase()) > -1
+                }
+
             };
         }
         var ac = this.props.items.filter((item) => {
@@ -90,7 +99,10 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
             name: searchedText
         };
         this.setState({listItems: ac, item: item});
-        const onTextChange = this.props.onTextChange || this.props.textInputProps.onTextChange || this.props.onChangeText || this.props.textInputProps.onChangeText;
+        const onTextChange = this.props.onTextChange ||
+            this.props.textInputProps.onTextChange ||
+            this.props.onChangeText ||
+            this.props.textInputProps.onChangeText;
         if (onTextChange && typeof onTextChange === 'function') {
             setTimeout(() => {
                 onTextChange(searchedText);
@@ -99,13 +111,27 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
     };
 
     renderItems = (item, index) => {
+        let itemPresentation = item.name;
+
+        if (item.name && item.size && item.height && item.diameter) {
+            let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
+            let sizeTextLang = this.state.isEnItem ? ' size: ' : 'حجم:'
+            let heightTextLang = this.state.isEnItem ? ' height: ' : ' طول: '
+            let diameterTextLang = this.state.isEnItem ? ' diameter: ' : 'عبوة:'
+
+            itemPresentation = nameItemLanguage +
+                sizeTextLang + item.size +
+                heightTextLang + item.height +
+                diameterTextLang + item.diameter
+        }
+
         if (this.props.multi && this.props.selectedItems && this.props.selectedItems.length > 0) {
             return (
                 this.props.selectedItems.find(sitem => sitem.id === item.id)
                     ?
                     <TouchableOpacity style={{...this.props.itemStyle, flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 0.9, flexDirection: 'row', alignItems: 'flex-start'}}>
-                            <Text>{item.name}</Text>
+                            <Text style={{fontSize:fontSize}}>{itemPresentation}</Text>
                         </View>
                         <View style={{flex: 0.1, flexDirection: 'row', alignItems: 'flex-end'}}>
                             <TouchableOpacity onPress={() => setTimeout(() => {
@@ -135,7 +161,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                         }}
                         style={{...this.props.itemStyle, flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start'}}>
-                            <Text>{item.name}</Text>
+                            <Text style={{fontSize:fontSize}}>{itemPresentation}</Text>
                         </View>
                     </TouchableOpacity>
             )
@@ -158,9 +184,9 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                     {
                         this.props.selectedItems && this.props.selectedItems.length > 0 && this.props.selectedItems.find(x => x.id === item.id)
                             ?
-                            <Text style={{...this.props.itemTextStyle}}>{item.name}</Text>
+                            <Text style={{...this.props.itemTextStyle , fontSize:fontSize}}>{itemPresentation}</Text>
                             :
-                            <Text style={{...this.props.itemTextStyle}}>{item.name}</Text>
+                            <Text style={{...this.props.itemTextStyle , fontSize:fontSize}}>{itemPresentation}</Text>
                     }
                 </TouchableOpacity>
             );

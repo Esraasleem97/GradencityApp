@@ -21,7 +21,6 @@ const Seed = ({navigation, route}) => {
 
     const [image, setImage] = useState(null);
 
-
     const dispatch = useDispatch()
 
     const {transaction} = useSelector(state => state)
@@ -60,7 +59,11 @@ const Seed = ({navigation, route}) => {
         data.append('product_id', product_id)
         data.append('take_time', takeTime)
         data.append('qty', qty)
-        data.append('image', image)
+
+       if (image !== null) {
+            data.append('image', image)
+        }
+
         data.append('type', SEEDING)
         dispatch(TransactionsHandler(data))
 

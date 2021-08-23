@@ -40,7 +40,6 @@ export const userLoginHandler = (username, password) => async (dispatch) => {
         })
 
 
-
         await AsyncStorage.removeItem('user')
 
         await AsyncStorage.setItem('user', JSON.stringify(data))
@@ -99,7 +98,7 @@ export const userDetailsHandler = () => async (dispatch) => {
  */
 export const userLogoutHandler = () => async (dispatch) => {
 
-    await AsyncStorage.removeItem('user' , (error) => console.log(error));
+    await AsyncStorage.removeItem('user', (error) => console.log(error));
 
     dispatch({type: USER_REFRESH})
 

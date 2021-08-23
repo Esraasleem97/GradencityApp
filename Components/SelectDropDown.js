@@ -4,10 +4,22 @@ import {Colors, Label} from "./Styles";
 import SearchableDropDownScroll from "../Support/SearchableDropDown";
 
 
-const SelectDropDown = ({items, title = 'البند', style, onSelectItem , selectedItem}) => {
+const SelectDropDown = ({items, title = 'البند', style, onSelectItem, selectedItem}) => {
 
 
+    let itemPresentation = selectedItem ?selectedItem.name : null ;
 
+    if (selectedItem &&
+        selectedItem.name &&
+        selectedItem.size &&
+        selectedItem.height &&
+        selectedItem.diameter
+    ) {
+        itemPresentation = selectedItem.name + ' حجم: '
+            + selectedItem.size + ' طول: '
+            + selectedItem.height + ' العبوة: '
+            + selectedItem.diameter
+    }
     return (
         <View style={{marginTop: 5}}>
             <Label style={style}>{title}</Label>
@@ -37,7 +49,7 @@ const SelectDropDown = ({items, title = 'البند', style, onSelectItem , sele
                 //mapping of item array
                 defaultIndex={0}
                 //default selected item index
-                placeholder={selectedItem && selectedItem.name ? selectedItem.name.toString() : 'الرجاء أختيار ' + title}
+                placeholder={selectedItem ? itemPresentation : 'الرجاء أختيار ' + title}
                 //place holder for the search input
                 resetValue={false}
                 //reset textInput Value with true and false state
