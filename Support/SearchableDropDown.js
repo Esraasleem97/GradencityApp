@@ -115,9 +115,9 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
 
         if (item.name && item.size && item.height && item.diameter) {
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
-            let sizeTextLang = this.state.isEnItem ? ' size: ' : 'حجم:'
+            let sizeTextLang = this.state.isEnItem ? ' size: ' : ' حجم: '
             let heightTextLang = this.state.isEnItem ? ' height: ' : ' طول: '
-            let diameterTextLang = this.state.isEnItem ? ' diameter: ' : 'عبوة:'
+            let diameterTextLang = this.state.isEnItem ? ' diameter: ' : 'عبوة: '
 
             itemPresentation = nameItemLanguage +
                 sizeTextLang + item.size +
