@@ -17,7 +17,7 @@ const SelectDropDown = ({items, title = 'البند', style, onSelectItem, selec
     ) {
         itemPresentation = selectedItem.name + ' حجم: '
             + selectedItem.size + ' طول: '
-            + selectedItem.height + ' العبوة: '
+            + selectedItem.height + ' عبوة: '
             + selectedItem.diameter
     }
     return (
