@@ -65,6 +65,7 @@ const Seed = ({navigation, route}) => {
         }
 
         data.append('type', SEEDING)
+
         dispatch(TransactionsHandler(data))
 
     }

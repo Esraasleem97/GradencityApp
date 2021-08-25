@@ -4,6 +4,7 @@ import {View, StyleSheet, Image} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {BtnUploadImg, Colors, UploadImgText} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
+import mime from "mime";
 
 
 function TakePicture({onSelectImage, unlinkPickedImage = false}) {
@@ -25,25 +26,19 @@ function TakePicture({onSelectImage, unlinkPickedImage = false}) {
         if (!result.cancelled) {
 
             try {
-
                 const {uri} = result
 
                 setPickedImagePath(uri);
 
-                let dataForm = new FormData();
-
-                let fileType = uri.substring(uri.lastIndexOf(".") + 1);
+                const newImageUri =  "file:///" + uri.split("file:/").join("");
 
                 onSelectImage({
-                    uri,
-                    name: `photo.${fileType}`,
-                    type: `image/${fileType}`
+                    uri : newImageUri,
+                    name: `photo.${newImageUri.split("/").pop()}`,
+                    type: mime.getType(newImageUri)
                 })
 
-                console.log(dataForm);
-
             } catch (e) {
-
                 console.log(e)
 
             }

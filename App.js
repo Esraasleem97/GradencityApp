@@ -118,12 +118,15 @@ const App = () => {
 
     return (
         <Provider store={store}>
-            <ApplicationProvider {...eva} theme={eva.light}>
-                {
-                    !isConnected && <OfflineNotification/>
-                }
-                <NavigationHandler/>
-            </ApplicationProvider>
+
+                <ApplicationProvider {...eva} theme={eva.light}>
+                    {
+                        !isConnected && <OfflineNotification/>
+                    }
+
+                    <NavigationHandler/>
+                </ApplicationProvider>
+
         </Provider>
     );
 

@@ -1,9 +1,12 @@
 import React, {useCallback, useState} from "react";
-import {Dimensions, KeyboardAvoidingView, Platform, RefreshControl, View} from "react-native";
+import {KeyboardAvoidingView, Platform, RefreshControl, View} from "react-native";
 import {FlatList} from 'react-native-gesture-handler'
 import {height} from "./Styles";
 
+
 const RefreshHandler = ({children, pullToRefresh}) => {
+
+
 
     const wait = timeout => {
 
@@ -19,39 +22,44 @@ const RefreshHandler = ({children, pullToRefresh}) => {
 
         wait(2000).then(() => {
             setRefreshing(false)
-           return pullToRefresh ?   pullToRefresh(true) : null ;
+
+
+            return pullToRefresh ? pullToRefresh(true) : null;
         });
+
+
     }, []);
 
 
     return (
-        <KeyboardAvoidingView   enabled  keyboardVerticalOffset={25}
-                                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <KeyboardAvoidingView enabled keyboardVerticalOffset={25}
+                              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
-        <FlatList
-            keyExtractor={() => 'App-Init'}
-            style={{height:height}}
-            removeClippedSubviews={false}
-            showsVerticalScrollIndicator={true}
-            refreshControl={
-                <RefreshControl
-                    refreshing={refreshing}
-                    onRefresh={onRefresh}
-                    colors={['#36970c']}
-                />
-            }
-            nestedScrollEnabled={true}
-            keyboardShouldPersistTaps='handled'
+            <FlatList
+                keyExtractor={() => 'App-Init'}
+                style={{height: height}}
+                removeClippedSubviews={false}
+                showsVerticalScrollIndicator={true}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                        colors={['#36970c']}
+                    />
+                }
+                nestedScrollEnabled={true}
+                keyboardShouldPersistTaps='handled'
 
-            data={[0]}
-            renderItem={() =>
+                data={[0]}
+                renderItem={() =>
 
                     <View>
-                    {children}
+
+                        {children}
                     </View>
 
-            }
-        />
+                }
+            />
 
         </KeyboardAvoidingView>
     )

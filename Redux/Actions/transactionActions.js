@@ -53,7 +53,7 @@ export const TransactionsHandler = (Data = {}, Url = TRANSACTION, isJsonContent 
 
 
     } catch (e) {
-console.log(e)
+
         dispatch({
             type: TRANSACTIONS_FAILED,
             payload: e.response && e.response.data.errors
