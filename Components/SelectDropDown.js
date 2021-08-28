@@ -7,25 +7,14 @@ import SearchableDropDownScroll from "../Support/SearchableDropDown";
 const SelectDropDown = ({items, title = 'البند', style, onSelectItem, selectedItem}) => {
 
 
+
     let itemPresentation = selectedItem ?selectedItem.name : null ;
 
-    if (selectedItem &&
-        selectedItem.name &&
-        selectedItem.size &&
-        selectedItem.height &&
-        selectedItem.diameter
-    ) {
-        itemPresentation = selectedItem.name + ' حجم: '
-            + selectedItem.size + ' طول: '
-            + selectedItem.height + ' عبوة: '
-            + selectedItem.diameter
-    }
     return (
         <View style={{marginTop: 5}}>
             <Label style={style}>{title}</Label>
             <SearchableDropDownScroll
                 onTextChange={(text) => console.log(text)}
-
                 Icon='email'
                 //On text change listener on the searchable input
                 onItemSelect={(val) => onSelectItem(val) || null}

@@ -15,11 +15,12 @@ import {FlatList} from 'react-native-gesture-handler'
 const defaultItemValue = {
     name: '', id: 0
 };
-import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js' ;
+import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js';
 
 
 const fontSize = 12
 const textAlign = 'left'
+
 export default class SearchableDropDownScroll extends SearchableDropDown {
 
     constructor(props) {
@@ -28,13 +29,16 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         this.renderFlatList = this.renderFlatList.bind(this);
         this.searchedItems = this.searchedItems.bind(this);
         this.renderItems = this.renderItems.bind(this);
+
         this.state = {
             item: {},
             listItems: [],
             focus: false,
-            isEnItem: false
+            isEnItem: false,
+            width: 50
         };
     }
+
 
     renderFlatList = () => {
         if (this.state.focus) {
@@ -64,6 +68,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         }
     };
 
+
     componentDidMount = () => {
         const listItems = this.props.items;
         const defaultIndex = this.props.defaultIndex;
@@ -75,6 +80,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         } else {
             this.setState({listItems});
         }
+
     };
 
     searchedItems = searchedText => {
@@ -117,15 +123,29 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         let itemPresentation = item.name;
 
         if (item.name && item.size && item.height && item.diameter) {
-            let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
-            let sizeTextLang = this.state.isEnItem ? ' size: ' : ' حجم: '
-            let heightTextLang = this.state.isEnItem ? ' height: ' : ' طول: '
-            let diameterTextLang = this.state.isEnItem ? ' diameter: ' : 'عبوة: '
 
-            itemPresentation = nameItemLanguage +
-                sizeTextLang + item.size +
-                heightTextLang + ' ' + item.height +
-                diameterTextLang + ' ' + item.diameter
+            let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
+
+            itemPresentation = <View style={{flexDirection: 'row'}}>
+
+                <Text style={{width: 70, paddingHorizontal: 4, textAlign: textAlign}}>
+                    {item.size.replace(' ', '')}
+                </Text>
+
+                <Text style={{width: 50, paddingHorizontal: 4}}>
+                    {item.height.replace(' ', '')}
+                </Text>
+
+                <Text style={{width: 50, paddingHorizontal: 4}}>
+                    {item.diameter.replace(' ', '')}
+                </Text>
+
+                <Text style={{width: 80, paddingHorizontal: 4}}>
+                    {nameItemLanguage}
+                </Text>
+
+            </View>
+
         }
 
         if (this.props.multi && this.props.selectedItems && this.props.selectedItems.length > 0) {

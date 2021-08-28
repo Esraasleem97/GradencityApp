@@ -23,8 +23,20 @@ export const TRIM = 7
 export const TRANSFER_PLANTS = 8
 export const ROTATE_TYPE = 9
 
-export const TransactionsHandler = (Data = {}, Url = TRANSACTION, isJsonContent = false) => async (dispatch) => {
+export const TransactionsHandler = (
+       Data = {},
+       Url = TRANSACTION,
+       isJsonContent = false
+     ) => async (dispatch) => {
 
+
+    let contentType = 'application/json';
+
+    if (!isJsonContent) {
+
+        contentType = 'multipart/form-data'
+
+    }
 
     try {
 
@@ -39,7 +51,7 @@ export const TransactionsHandler = (Data = {}, Url = TRANSACTION, isJsonContent 
             headers: {
                 'Accept': 'application/json',
                 'X-API-KEY': API_PROTECTION,
-                'Content-Type': isJsonContent ? 'application/json' : 'multipart/form-data',
+                'Content-Type': contentType.toString(),
                 Authorization: token.toString()
             }
         }

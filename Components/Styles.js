@@ -302,7 +302,7 @@ export const AddsText = styled.Text`
 
 `;
 export const Scan = styled.View`
- width: 100%;
+ width: 85%;
   flex-direction: row;
   justify-content: space-between;
 `;
