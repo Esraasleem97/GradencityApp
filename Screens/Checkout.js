@@ -173,7 +173,6 @@ const Checkout = ({navigation, route}) => {
                 </FlexRow>
                 {
                     <ProductModals
-
                         products={products}
                         handleOnSelectProduct={handleOnSelectProduct}
                         product={product}
