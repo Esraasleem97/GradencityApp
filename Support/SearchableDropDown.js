@@ -8,7 +8,7 @@ import {
     TextInput,
     View,
     TouchableOpacity,
-    Keyboard
+    Keyboard, ScrollView
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler'
 
@@ -16,6 +16,7 @@ const defaultItemValue = {
     name: '', id: 0
 };
 import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js';
+import {TextInsideSelect} from "../Components/Styles";
 
 
 const fontSize = 12
@@ -126,32 +127,31 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
 
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
 
-            itemPresentation = <View style={{flexDirection: 'row', width: '100%'}}>
-
-                <Text style={{width: 50, paddingHorizontal: 1}}>
+            itemPresentation = <View style={{ width: '100%',flexDirection:'row'}}>
+                <TextInsideSelect>
                     {item.size.replace(' ', '')}
-                </Text>
+                </TextInsideSelect>
 
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
+                <TextInsideSelect>
                     {'ط:' + item.height.replace(' ', '')}
-                </Text>
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
+                <TextInsideSelect>
                     {'ق:' + item.diameter.replace(' ', '')}
-                </Text>
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
+                <TextInsideSelect>
                     {'ك:' + item.qty.replace(' ', '')}
-                </Text>
+                </TextInsideSelect>
 
-                <Text style={{width: 80, paddingHorizontal: 1}}>
+                <TextInsideSelect>
                     {nameItemLanguage}
-                </Text>
+                </TextInsideSelect>
 
-                <Text style={{width: 50}}>
+                <TextInsideSelect >
                     {item.code.replace(' ', '')}
-                </Text>
+                </TextInsideSelect>
 
             </View>
 
