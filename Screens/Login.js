@@ -6,7 +6,7 @@ import {
     FormArea,
     Button,
     ButtonText,
-    Logo
+    Logo, ButtonLogin
 } from "../Components/Styles";
 import {Layout, Spinner} from "@ui-kitten/components";
 import {StatusBar} from "expo-status-bar";
@@ -96,10 +96,10 @@ const Login = () => {
                                                     <Spinner status='success' size='giant'
                                                              style={{alignSelf: 'center'}}/>
                                                 </ButtonText>
-                                                : <Button onPress={SubmitHandler}>
+                                                : <ButtonLogin onPress={SubmitHandler}>
 
                                                     <ButtonText>تسجيل الدخول</ButtonText>
-                                                </Button>
+                                                </ButtonLogin>
                                         }
                                     </View>
                                 </FormArea>

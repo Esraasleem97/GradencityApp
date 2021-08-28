@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Layout} from "@ui-kitten/components";
+import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import ProductModals from "../Components/ProductModals";
@@ -7,7 +7,7 @@ import Transactions from "../Components/Transactions";
 import {TRANSFER_PLANTS, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {TRANSFER} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
-import {ButtonAdd, ButtonText, Colors, FlexEnd} from "../Components/Styles";
+import {Button, ButtonAdd, ButtonText, Colors, FlexEnd, FlexRow, ViewSelect} from "../Components/Styles";
 import {Feather} from "@expo/vector-icons";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
@@ -23,7 +23,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
 
     const {transaction} = useSelector(state => state)
 
-    const {loading , data , error} = transaction
+    const {loading, data, error} = transaction
 
     const [product, setProduct] = useState(null);
 
@@ -64,7 +64,9 @@ const TransferBetweenPlants = ({navigation, route}) => {
     const handleSetTableData = (val) => {
         return setTableData(val)
     }
-
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
     const modalSubmitHandler = async () => {
         if (product && modalQty) {
             await tableData.push
@@ -101,7 +103,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
             in_stock: inStock ? inStock.guid : '',
             out_stock: outStock ? outStock.guid : '',
             type: TRANSFER_PLANTS
-        }, TRANSFER , true))
+        }, TRANSFER, true))
 
     }
 
@@ -120,23 +122,21 @@ const TransferBetweenPlants = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='النقل بين المشاتل' navigation={navigation}/>
+            <Header title='النقل بين المشاتل' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={submitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
 
-            {
-                visible && <ProductModals
-                    setVisible={setVisible}
-                    visible={visible}
-                    products={products}
-                    handleOnSelectProduct={handleOnSelectProduct}
-                    product={product}
-                    modalQty={modalQty}
-                    handleOnSelectModalQty={handleOnSelectModalQty}
-                    modalSubmitHandler={modalSubmitHandler}
 
-                />
-            }
 
             <Transactions tableHead={tableHead}
                           tableData={tableData}
@@ -146,18 +146,37 @@ const TransferBetweenPlants = ({navigation, route}) => {
                           submit={submitHandler}
                           loading={loading}
             >
-                <SelectDropDown title='من المستودع'
-                                items={stocks}
-                                onSelectItem={handleOnSelectInStock}
-                                selectedItem={inStock}
-                />
+                <FlexRow>
+                    <ViewSelect>
+                        <SelectDropDown title='من المستودع'
+                                        items={stocks}
+                                        onSelectItem={handleOnSelectInStock}
+                                        selectedItem={inStock}
+                        />
+                    </ViewSelect>
+                    <ViewSelect>
+                        <SelectDropDown title='الى المستودع'
+                                        items={stocks}
+                                        onSelectItem={handleOnSelectOutStock}
+                                        selectedItem={outStock}
+                        />
+                    </ViewSelect>
+                </FlexRow>
+                {
+                    visible && <ProductModals
+                        setVisible={setVisible}
+                        visible={visible}
+                        products={products}
+                        handleOnSelectProduct={handleOnSelectProduct}
+                        product={product}
+                        modalQty={modalQty}
+                        handleOnSelectModalQty={handleOnSelectModalQty}
+                        modalSubmitHandler={modalSubmitHandler}
+                        navigation={navigation}
+                        handleOnSelectScannedProduct={handleOnSelectScannedProduct}
 
-                <SelectDropDown title='الى المستودع'
-                                items={stocks}
-                                onSelectItem={handleOnSelectOutStock}
-                                selectedItem={outStock}
-                />
-
+                    />
+                }
                 <FlexEnd>
 
                     <ButtonAdd onPress={() => setVisible(true)}>

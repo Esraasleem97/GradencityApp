@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Layout} from "@ui-kitten/components";
+import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
+    Button,
     ButtonAdd,
     ButtonText,
     Colors,
-    FlexEnd
+    FlexEnd, FlexRow, ViewSelect
 } from "../Components/Styles";
 import {Feather} from "@expo/vector-icons";
 import Transactions from "../Components/Transactions";
@@ -15,6 +16,7 @@ import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions
 import {useDispatch, useSelector} from "react-redux";
 import {CHECK_OUT} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {View} from "react-native";
 
 const {white} = Colors
 
@@ -69,7 +71,9 @@ const Checkout = ({navigation, route}) => {
         return setModalQty(val)
     }
 
-
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
     useEffect(() => {
 
         if (data && data.success) {
@@ -117,34 +121,32 @@ const Checkout = ({navigation, route}) => {
             take_time: takeTime,
             stock: stock ? stock.guid : '',
             project: project ? project.guid : '',
-            type: CHECKOUT ,
+            type: CHECKOUT,
             image: null
 
-        }, CHECK_OUT , true))
+        }, CHECK_OUT, true))
 
     }
 
 
     return (
         <Layout>
-            <Header title='الإخراج' navigation={navigation}/>
+            <Header title='الإخراج' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={submitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
 
-            {
-                visible && <ProductModals
-                    setVisible={setVisible}
-                    visible={visible}
-                    products={products}
-                    handleOnSelectProduct={handleOnSelectProduct}
-                    product={product}
-                    modalQty={modalQty}
-                    handleOnSelectModalQty={handleOnSelectModalQty}
-                    modalSubmitHandler={modalSubmitHandler}
 
-                />
-            }
 
 
             <Transactions tableHead={tableHead}
@@ -156,19 +158,39 @@ const Checkout = ({navigation, route}) => {
                           loading={loading}
             >
 
+                <FlexRow>
+                    <ViewSelect>
+                        <SelectDropDown title='اسم المشروع'
+                                        items={projects}
+                                        onSelectItem={handleOnSelectProject}
+                                        selectedItem={project}
 
-                <SelectDropDown title='أسم المشروع'
-                                items={projects}
-                                onSelectItem={handleOnSelectProject}
-                                selectedItem={project}
-                />
+                        />
+                    </ViewSelect>
+                    <ViewSelect>
+                        <SelectDropDown title='المستودع'
+                                        items={stocks}
+                                        onSelectItem={handleOnSelectStock}
+                                        selectedItem={stock}
+                                        style={{width: 100}}
+                        />
+                    </ViewSelect>
+                </FlexRow>
+                {
+                    visible && <ProductModals
+                        setVisible={setVisible}
+                        visible={visible}
+                        products={products}
+                        handleOnSelectProduct={handleOnSelectProduct}
+                        product={product}
+                        modalQty={modalQty}
+                        handleOnSelectModalQty={handleOnSelectModalQty}
+                        modalSubmitHandler={modalSubmitHandler}
+                        navigation={navigation}
+                        handleOnSelectScannedProduct={handleOnSelectScannedProduct}
 
-                <SelectDropDown title='المستودع'
-                                items={stocks}
-                                onSelectItem={handleOnSelectStock}
-                                selectedItem={stock}
-                />
-
+                    />
+                }
                 <FlexEnd>
 
                     <ButtonAdd onPress={() => setVisible(true)}>

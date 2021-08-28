@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Layout} from "@ui-kitten/components";
+import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
+    Button,
     ButtonAdd,
     ButtonText,
     Colors,
-    FlexEnd
+    FlexEnd, FlexRow, ViewSelect
 } from "../Components/Styles";
 import {Feather} from "@expo/vector-icons";
 import Transactions from "../Components/Transactions";
@@ -70,7 +71,9 @@ const ProjectsReceipt = ({navigation, route}) => {
         return setTableData(val)
     }
 
-
+    const handleOnSelectScannedProduct = (val) => {
+        return setProduct(val)
+    }
     const modalSubmitHandler = async () => {
         if (product && modalQty) {
             await tableData.push
@@ -128,23 +131,21 @@ const ProjectsReceipt = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='إستلام من المشاريع' navigation={navigation}/>
+            <Header title='إستلام من المشاريع' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={submitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
 
-            {
-                visible && <ProductModals
-                    setVisible={setVisible}
-                    visible={visible}
-                    products={products}
-                    handleOnSelectProduct={handleOnSelectProduct}
-                    product={product}
-                    modalQty={modalQty}
-                    handleOnSelectModalQty={handleOnSelectModalQty}
-                    modalSubmitHandler={modalSubmitHandler}
 
-                />
-            }
 
 
             <Transactions tableHead={tableHead}
@@ -157,18 +158,39 @@ const ProjectsReceipt = ({navigation, route}) => {
             >
 
 
-                <SelectDropDown title='أسم المشروع'
-                                items={projects}
-                                onSelectItem={handleOnSelectProject}
-                                selectedItem={project}
-                />
+                <FlexRow>
+                    <ViewSelect>
+                        <SelectDropDown title='اسم المشروع'
+                                        items={projects}
+                                        onSelectItem={handleOnSelectProject}
+                                        selectedItem={project}
 
-                <SelectDropDown title='المستودع'
-                                items={stocks}
-                                onSelectItem={handleOnSelectStock}
-                                selectedItem={stock}
-                />
+                        />
+                    </ViewSelect>
+                    <ViewSelect>
+                        <SelectDropDown title='المستودع'
+                                        items={stocks}
+                                        onSelectItem={handleOnSelectStock}
+                                        selectedItem={stock}
+                                        style={{width: 100}}
+                        />
+                    </ViewSelect>
+                </FlexRow>
+                {
+                    visible && <ProductModals
+                        setVisible={setVisible}
+                        visible={visible}
+                        products={products}
+                        handleOnSelectProduct={handleOnSelectProduct}
+                        product={product}
+                        modalQty={modalQty}
+                        handleOnSelectModalQty={handleOnSelectModalQty}
+                        modalSubmitHandler={modalSubmitHandler}
+                        navigation={navigation}
+                        handleOnSelectScannedProduct={handleOnSelectScannedProduct}
 
+                    />
+                }
                 <FlexEnd>
 
                     <ButtonAdd onPress={() => setVisible(true)}>

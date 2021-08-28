@@ -3,7 +3,7 @@ import {Layout, Spinner} from "@ui-kitten/components";
 import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {Button, width, ButtonText} from "../Components/Styles";
+import {Button, width, ButtonText, ViewSelectScan} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {Alert} from "react-native";
@@ -84,7 +84,17 @@ const Seed = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='زراعة البذور' navigation={navigation}/>
+            <Header title='زراعة البذور' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={SubmitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
@@ -96,27 +106,17 @@ const Seed = ({navigation, route}) => {
                 onSelectTakenTime={handleOnSelectTakenTime}
                 qty={qty}
                 takeTime={takeTime}
-                onBottom={
-
-                    loading
-                        ?
-                        <ButtonText>
-                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                        </ButtonText>
-                        :
-                        <Button onPress={SubmitHandler}>
-                            <ButtonText>حفظ</ButtonText>
-                        </Button>
-                }>
+            >
 
                 <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
                          products={products}>
+                    <ViewSelectScan>
+                        <SelectDropDown items={products}
+                                        onSelectItem={handleOnSelectProduct}
+                                        selectedItem={product}
 
-                    <SelectDropDown items={products}
-                                    onSelectItem={handleOnSelectProduct}
-                                    selectedItem={product}
-                                    style={{width: width - 120}}
-                    />
+                        />
+                    </ViewSelectScan>
                 </Scanner>
 
             </SharedScreens>

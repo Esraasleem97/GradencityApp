@@ -195,6 +195,13 @@ export const ForgetPassword = styled.Text`
 `;
 export const Button = styled.TouchableOpacity`
   padding: ${15}px;
+  background-color: ${green1};
+  justify-content: center;
+  border-radius: ${50}px;
+  margin: ${5}px;
+  height: ${40}px;
+`;
+export const ButtonLogin = styled.TouchableOpacity`
   background-color: ${orangeLight};
   justify-content: center;
   border-radius: ${50}px;
@@ -265,7 +272,7 @@ export const FlexEnd = styled.View`
 align-items: flex-end;
 `;
 export const FlexRow = styled.View`
-  width: 100%;
+ 
   flex-direction: row;
   justify-content: center;
 `;
@@ -335,4 +342,12 @@ export const UploadImgText = styled.Text`
   font-weight: bold;
   font-size: 18px;
   padding: 10px;
+`;
+
+export const ViewSelect = styled.View`
+  margin: 10px;
+  width:50% ;
+`;
+export const ViewSelectScan = styled.View`
+  width: 80%;
 `;

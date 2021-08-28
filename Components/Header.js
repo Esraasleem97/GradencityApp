@@ -1,10 +1,11 @@
 import React from "react";
 import {Ionicons} from '@expo/vector-icons';
-import {HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
-import {TouchableOpacity} from "react-native";
+import {Button, ButtonText, HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
+import {TouchableOpacity, View} from "react-native";
 
 
-const Header = ({title, navigation, backNavigation}) => {
+
+const Header = ({title, navigation, backNavigation,onTop}) => {
 
     return (
         <HeaderOpacityStyle>
@@ -13,23 +14,26 @@ const Header = ({title, navigation, backNavigation}) => {
                     {title}
                 </TitleStyle>
 
-                {
-                    navigation &&
 
-                    <TouchableOpacity onPress={() => {
-                        if (backNavigation) {
-                            return navigation.goBack()
-                        }
+                    {
+                        navigation &&
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            {onTop}
+                        <TouchableOpacity onPress={() => {
+                            if (backNavigation) {
+                                return navigation.goBack()
+                            }
 
-                        return navigation.navigate('Home')
-                    }}>
-                        <Ionicons name="arrow-back-circle"
-                                  size={40}
-                                  color="white"
+                            return navigation.navigate('Home')
+                        }}>
+                            <Ionicons name="arrow-back-circle"
+                                      size={40}
+                                      color="white"
 
-                        />
-                    </TouchableOpacity>
-                }
+                            />
+                        </TouchableOpacity>
+                        </View>
+                    }
 
             </HeaderStyle>
         </HeaderOpacityStyle>
