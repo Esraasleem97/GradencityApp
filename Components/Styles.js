@@ -309,7 +309,7 @@ export const AddsText = styled.Text`
 
 `;
 export const Scan = styled.View`
- width: 85%;
+ width: 100%;
   flex-direction: row;
   justify-content: space-between;
 `;

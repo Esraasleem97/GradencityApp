@@ -3,12 +3,9 @@ import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
     Button,
-    ButtonAdd,
     ButtonText,
-    Colors,
-    FlexEnd, FlexRow, ViewSelect
+     FlexRow, ViewSelect
 } from "../Components/Styles";
-import {Feather} from "@expo/vector-icons";
 import Transactions from "../Components/Transactions";
 import SelectDropDown from "../Components/SelectDropDown";
 import ProductModals from "../Components/ProductModals";
@@ -16,9 +13,8 @@ import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions
 import {useDispatch, useSelector} from "react-redux";
 import {CHECK_OUT} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {View} from "react-native";
 
-const {white} = Colors
+
 
 const Checkout = ({navigation, route}) => {
 
@@ -38,7 +34,6 @@ const Checkout = ({navigation, route}) => {
 
     const [modalQty, setModalQty] = useState(null);
 
-    const [visible, setVisible] = useState(false);
 
     const [tableData, setTableData] = useState([]);
 
@@ -101,7 +96,7 @@ const Checkout = ({navigation, route}) => {
             ])
             setProduct(null)
             setModalQty(null)
-            setVisible(false)
+
         }
     }
 
@@ -177,9 +172,8 @@ const Checkout = ({navigation, route}) => {
                     </ViewSelect>
                 </FlexRow>
                 {
-                    visible && <ProductModals
-                        setVisible={setVisible}
-                        visible={visible}
+                    <ProductModals
+
                         products={products}
                         handleOnSelectProduct={handleOnSelectProduct}
                         product={product}
@@ -191,13 +185,7 @@ const Checkout = ({navigation, route}) => {
 
                     />
                 }
-                <FlexEnd>
 
-                    <ButtonAdd onPress={() => setVisible(true)}>
-                        <Feather name='plus' size={15} color={white}/>
-                        <ButtonText>إضافة</ButtonText>
-                    </ButtonAdd>
-                </FlexEnd>
 
 
             </Transactions>

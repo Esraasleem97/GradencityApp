@@ -155,7 +155,7 @@ const Rotate = ({navigation, route}) => {
                                             icon='form'
                                             placeholder='ادخل اسم البند الجديد هنا'
                                             onChangeText={(val) => setName(val)}
-                                            value={name}
+                                            value={product.name}
                                             returnKeyType="next"
 
                                         />

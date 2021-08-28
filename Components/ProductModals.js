@@ -1,16 +1,15 @@
 import React from "react";
-import {StyleSheet, View, Modal, Alert} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import SelectDropDown from "./SelectDropDown";
 import Input from "./Input";
-import {FlexRow, ViewSelectScan} from "./Styles";
-import {Button as ButtonUI} from "@ui-kitten/components/ui/button/button.component";
+import {ButtonAdd, ButtonText, Colors, FlexRow, ViewSelectScan} from "./Styles";
 import Scanner from "./Scanner";
+import {Feather} from "@expo/vector-icons";
 
+const {white} = Colors
 
 
 const ProductModals = ({
-                           setVisible,
-                           visible,
                            products,
                            handleOnSelectProduct,
                            product,
@@ -19,25 +18,10 @@ const ProductModals = ({
                            modalSubmitHandler,
                            navigation,
                            handleOnSelectScannedProduct,
-
-                           ...props
                        }) => {
 
         return (
             <View  >
-                {/*<Modal {...props}*/}
-
-                {/*       visible={visible}*/}
-                {/*       animationType="slide"*/}
-                {/*       transparent={true}*/}
-                {/*       onRequestClose={() => {*/}
-                {/*           Alert.alert("Modal has been closed.");*/}
-                {/*           setVisible(!visible);*/}
-                {/*       }}*/}
-
-
-
-                {/*>*/}
                     <View disabled={true} style={styles.centeredView}>
                         <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
                                  products={products}>
@@ -60,17 +44,14 @@ const ProductModals = ({
                         />
 
                         <FlexRow>
-                            <ButtonUI onPress={modalSubmitHandler} status='success'
-                                      style={styles.button}>
-                                 إضافة بند
-                            </ButtonUI>
-                            <ButtonUI onPress={() => setVisible(false)} status='basic'
-                                      style={styles.button}>
-                                إلغاء
-                            </ButtonUI>
+
+                            <ButtonAdd onPress={modalSubmitHandler}>
+                                <Feather name='plus' size={15} color={white}/>
+                                <ButtonText>إضافة</ButtonText>
+                            </ButtonAdd>
                         </FlexRow>
                     </View>
-                {/*</Modal>*/}
+
             </View>
         )
 
