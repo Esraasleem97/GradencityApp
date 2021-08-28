@@ -34,17 +34,19 @@ const ProductModals = ({
                                 />
                             </ViewSelectScan>
                         </Scanner>
-                        <Input
-                            label='الكمية'
-                            icon='form'
-                            placeholder='الكمية'
-                            keyboardType='numeric'
-                            value={modalQty}
-                            onChangeText={(val) => handleOnSelectModalQty(val)}
-                        />
+
 
                         <FlexRow>
-
+                            <View style={{width:'70%'}}>
+                            <Input
+                                label='الكمية'
+                                icon='form'
+                                placeholder='الكمية'
+                                keyboardType='numeric'
+                                value={modalQty}
+                                onChangeText={(val) => handleOnSelectModalQty(val)}
+                            />
+                            </View>
                             <ButtonAdd onPress={modalSubmitHandler}>
                                 <Feather name='plus' size={15} color={white}/>
                                 <ButtonText>إضافة</ButtonText>
