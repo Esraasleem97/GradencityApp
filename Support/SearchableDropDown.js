@@ -117,11 +117,13 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                 onTextChange(searchedText);
             }, 0);
         }
+
     };
 
     renderItems = (item, index) => {
         let itemPresentation = item.name;
 
+        // only products contain these attributes
         if (item.name && item.size && item.height && item.diameter) {
 
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
@@ -129,20 +131,20 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
             itemPresentation = <View style={{flexDirection: 'row', width: '100%'}}>
 
                 <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {item.size.replace(' ', '')}
+                    {item.size.toString().trim()}
                 </Text>
 
 
                 <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ط:' + item.height.replace(' ', '')}
+                    {'ط: ' + item.height.toString().trim()}
                 </Text>
 
                 <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ق:' + item.diameter.replace(' ', '')}
+                    {'ق: ' + item.diameter.toString().trim()}
                 </Text>
 
                 <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ك:' + item.qty.replace(' ', '')}
+                    {'ك: ' + item.qty.toString().trim()}
                 </Text>
 
                 <Text style={{width: 80, paddingHorizontal: 1}}>
@@ -150,7 +152,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                 </Text>
 
                 <Text style={{width: 50}}>
-                    {item.code.replace(' ', '')}
+                    {item.code.toString().trim()}
                 </Text>
 
             </View>
