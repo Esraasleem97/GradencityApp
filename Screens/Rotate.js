@@ -103,7 +103,17 @@ const Rotate = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='التدوير' navigation={navigation}/>
+            <Header title='التدوير' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={submitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 

@@ -3,12 +3,12 @@ import {Layout, Spinner} from "@ui-kitten/components";
 
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {Button, ButtonText, width} from "../Components/Styles";
+import {Button, ButtonText, ViewSelectScan, width} from "../Components/Styles";
 import Scanner from "../Components/Scanner";
 import SharedScreens from "../Components/SharedScreen";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Alert} from "react-native";
+import {Alert, View} from "react-native";
 import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 
 
@@ -82,7 +82,6 @@ const Achievement = ({navigation, route}) => {
         dispatch(TransactionsHandler(data))
 
 
-
     }
 
     useEffect(() => {
@@ -97,7 +96,17 @@ const Achievement = ({navigation, route}) => {
 
     return (
         <Layout>
-            <Header title='الإنجازات' navigation={navigation}/>
+            <Header title='الإنجازات' navigation={navigation} onTop={
+                loading
+                    ?
+                    <ButtonText>
+                        <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
+                    </ButtonText>
+                    :
+                    <Button onPress={SubmitHandler}>
+                        <ButtonText>حفظ</ButtonText>
+                    </Button>
+            }/>
 
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
@@ -111,18 +120,7 @@ const Achievement = ({navigation, route}) => {
                 onSelectTakenTime={handleOnSelectTakenTime}
                 qty={qty}
                 takeTime={takeTime}
-                onBottom={
-
-                    loading
-                        ?
-                        <ButtonText>
-                            <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                        </ButtonText>
-                        :
-                        <Button onPress={SubmitHandler}>
-                            <ButtonText>حفظ</ButtonText>
-                        </Button>
-                }>
+            >
 
 
                 <SelectDropDown items={projects} title='المشروع'
@@ -132,12 +130,13 @@ const Achievement = ({navigation, route}) => {
 
                 <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
                          products={products}>
+                    <ViewSelectScan>
+                        <SelectDropDown items={products}
+                                        onSelectItem={handleOnSelectProduct}
+                                        selectedItem={product}
 
-                    <SelectDropDown items={products}
-                                    onSelectItem={handleOnSelectProduct}
-                                    selectedItem={product}
-                                    style={{width: width - 120}}
-                    />
+                        />
+                    </ViewSelectScan>
                 </Scanner>
             </SharedScreens>
 

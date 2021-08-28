@@ -43,17 +43,7 @@ const Transactions = ({
                             onChangeText={onSelectTakeTime}
                         />
 
-                        {
-                            loading
-                                ?
-                                <ButtonText>
-                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                                </ButtonText>
-                                :
-                                <Button onPress={submit}>
-                                    <ButtonText>حفظ</ButtonText>
-                                </Button>
-                        }
+
 
                     </FormArea>
                 </Content>
