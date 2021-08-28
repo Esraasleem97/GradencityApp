@@ -3,12 +3,9 @@ import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
 import {
     Button,
-    ButtonAdd,
     ButtonText,
-    Colors,
-    FlexEnd, FlexRow, ViewSelect
+    FlexRow, ViewSelect
 } from "../Components/Styles";
-import {Feather} from "@expo/vector-icons";
 import Transactions from "../Components/Transactions";
 import {useDispatch, useSelector} from "react-redux";
 import {CHECKIN, TransactionsHandler} from "../Redux/Actions/transactionActions";
@@ -17,7 +14,7 @@ import TransactionMessagesHandlerComponent from "../Components/transactionMessag
 import ProductModals from "../Components/ProductModals";
 import SelectDropDown from "../Components/SelectDropDown";
 
-const {white} = Colors
+
 
 const ProjectsReceipt = ({navigation, route}) => {
 
@@ -37,7 +34,6 @@ const ProjectsReceipt = ({navigation, route}) => {
 
     const [takeTime, setTakeTime] = useState(null);
 
-    const [visible, setVisible] = useState(false);
 
     const [modalQty, setModalQty] = useState(null);
 
@@ -90,7 +86,6 @@ const ProjectsReceipt = ({navigation, route}) => {
             )
             setProduct(null)
             setModalQty(null)
-            setVisible(false)
         }
     }
 
@@ -177,9 +172,8 @@ const ProjectsReceipt = ({navigation, route}) => {
                     </ViewSelect>
                 </FlexRow>
                 {
-                    visible && <ProductModals
-                        setVisible={setVisible}
-                        visible={visible}
+                    <ProductModals
+
                         products={products}
                         handleOnSelectProduct={handleOnSelectProduct}
                         product={product}
@@ -191,13 +185,6 @@ const ProjectsReceipt = ({navigation, route}) => {
 
                     />
                 }
-                <FlexEnd>
-
-                    <ButtonAdd onPress={() => setVisible(true)}>
-                        <Feather name='plus' size={15} color={white}/>
-                        <ButtonText>إضافة</ButtonText>
-                    </ButtonAdd>
-                </FlexEnd>
 
 
             </Transactions>

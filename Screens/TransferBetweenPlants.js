@@ -7,11 +7,10 @@ import Transactions from "../Components/Transactions";
 import {TRANSFER_PLANTS, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {TRANSFER} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
-import {Button, ButtonAdd, ButtonText, Colors, FlexEnd, FlexRow, ViewSelect} from "../Components/Styles";
-import {Feather} from "@expo/vector-icons";
+import {Button, ButtonText, FlexRow, ViewSelect} from "../Components/Styles";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 
-const {white} = Colors
+
 
 
 const TransferBetweenPlants = ({navigation, route}) => {
@@ -37,7 +36,6 @@ const TransferBetweenPlants = ({navigation, route}) => {
 
     const [takeTime, setTakeTime] = useState(null);
 
-    const [visible, setVisible] = useState(false);
 
     const [modalQty, setModalQty] = useState(null);
 
@@ -83,7 +81,6 @@ const TransferBetweenPlants = ({navigation, route}) => {
             )
             setProduct(null)
             setModalQty(null)
-            setVisible(false)
         }
     }
 
@@ -163,9 +160,8 @@ const TransferBetweenPlants = ({navigation, route}) => {
                     </ViewSelect>
                 </FlexRow>
                 {
-                    visible && <ProductModals
-                        setVisible={setVisible}
-                        visible={visible}
+                     <ProductModals
+
                         products={products}
                         handleOnSelectProduct={handleOnSelectProduct}
                         product={product}
@@ -177,13 +173,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
 
                     />
                 }
-                <FlexEnd>
 
-                    <ButtonAdd onPress={() => setVisible(true)}>
-                        <Feather name='plus' size={15} color={white}/>
-                        <ButtonText>إضافة</ButtonText>
-                    </ButtonAdd>
-                </FlexEnd>
             </Transactions>
         </Layout>
     );

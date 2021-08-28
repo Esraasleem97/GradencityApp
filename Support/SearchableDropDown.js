@@ -126,22 +126,31 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
 
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
 
-            itemPresentation = <View style={{flexDirection: 'row'}}>
+            itemPresentation = <View style={{flexDirection: 'row', width: '100%'}}>
 
-                <Text style={{width: 70, paddingHorizontal: 4, textAlign: textAlign}}>
+                <Text style={{width: 50, paddingHorizontal: 1}}>
                     {item.size.replace(' ', '')}
                 </Text>
 
-                <Text style={{width: 50, paddingHorizontal: 4}}>
-                    {item.height.replace(' ', '')}
+
+                <Text style={{width: 50, paddingHorizontal: 1}}>
+                    {'ط:' + item.height.replace(' ', '')}
                 </Text>
 
-                <Text style={{width: 50, paddingHorizontal: 4}}>
-                    {item.diameter.replace(' ', '')}
+                <Text style={{width: 50, paddingHorizontal: 1}}>
+                    {'ق:' + item.diameter.replace(' ', '')}
                 </Text>
 
-                <Text style={{width: 80, paddingHorizontal: 4}}>
+                <Text style={{width: 50, paddingHorizontal: 1}}>
+                    {'ك:' + item.qty.replace(' ', '')}
+                </Text>
+
+                <Text style={{width: 80, paddingHorizontal: 1}}>
                     {nameItemLanguage}
+                </Text>
+
+                <Text style={{width: 50}}>
+                    {item.code.replace(' ', '')}
                 </Text>
 
             </View>

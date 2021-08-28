@@ -212,17 +212,7 @@ const Rotate = ({navigation, route}) => {
 
                                         </FlexStyled>
 
-                                        {
-                                            loading
-                                                ?
-                                                <ButtonText>
-                                                    <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
-                                                </ButtonText>
-                                                :
-                                                <Button onPress={submitHandler}>
-                                                    <ButtonText>حفظ</ButtonText>
-                                                </Button>
-                                        }
+
 
                                     </View>
                                     : product && Number(product.qty) < 0
