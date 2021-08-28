@@ -272,7 +272,7 @@ export const FlexEnd = styled.View`
 align-items: flex-end;
 `;
 export const FlexRow = styled.View`
- 
+ align-items: center;
   flex-direction: row;
   justify-content: center;
 `;
@@ -283,9 +283,12 @@ export const ButtonAdd = styled.TouchableOpacity`
   width: 30%;
   padding: 10px;
   background-color: ${orangeLight};
-  margin-vertical:10px ;
-  margin-left: 5px;
+  position: relative;
+  top: 6px;
+  margin-vertical:14px ;
+  margin-left: 7px;
   border-radius: 5px;
+
 `;
 export const ContainerAddIcon = styled.View`
   position: absolute;
