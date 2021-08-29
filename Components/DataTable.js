@@ -6,7 +6,7 @@ import {FontAwesome} from "@expo/vector-icons";
 
 const {secondary} = Colors;
 const {red} = Colors
-export const DataTable = ({tableHead, tableData, setTableData, ...props}) => {
+export const DataTable = ({tableHead, tableData, setTableData,hasImg, ...props}) => {
 
 
     const removeIndex = async (index) => {
@@ -24,9 +24,20 @@ export const DataTable = ({tableHead, tableData, setTableData, ...props}) => {
             <Row data={tableHead} style={styles.head} textStyle={styles.text} {...props} />
 
             {
-                tableData.map((item, index) => {
 
-                    return (
+                tableData.map((item, index) => {
+                     return hasImg ?   (
+                        <TableWrapper style={[styles.wrapper, styles.row]} key={`item_${index}`}>
+                            {
+                                item.map((cellData, cellIndex) =>
+                                    <Cell key={`cell_${cellIndex}`}
+                                          data={cellIndex === 7 ? element(cellData, index) : cellData}
+                                          textStyle={styles.text}/>
+                                )
+                            }
+                        </TableWrapper>
+                    ) :
+                     (
                         <TableWrapper style={[styles.wrapper, styles.row]} key={`item_${index}`}>
                             {
                                 item.map((cellData, cellIndex) =>
@@ -37,6 +48,7 @@ export const DataTable = ({tableHead, tableData, setTableData, ...props}) => {
                             }
                         </TableWrapper>
                     )
+
                 })
             }
 

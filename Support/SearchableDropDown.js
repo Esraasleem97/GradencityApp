@@ -8,7 +8,7 @@ import {
     TextInput,
     View,
     TouchableOpacity,
-    Keyboard, ScrollView
+    Keyboard
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler'
 
