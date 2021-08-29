@@ -359,7 +359,6 @@ export const TextInsideSelect = styled.Text`
 
 export const FlexWrap = styled.View`
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
+
+  align-items: flex-start;
 `;

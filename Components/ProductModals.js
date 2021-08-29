@@ -41,7 +41,7 @@ const ProductModals = ({
 
 
                 <FlexWrap>
-                    <View style={{width: hasImg ? '80%' :'65%'  }}>
+                    <View style={{width: hasImg ? '35%' :'65%'  }}>
                         <Input
                             label='الكمية'
                             icon='form'
@@ -51,11 +51,15 @@ const ProductModals = ({
                             onChangeText={(val) => handleOnSelectModalQty(val)}
                         />
                     </View>
-                    {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
-                    <ButtonAdd onPress={modalSubmitHandler}>
+                    <View style={{marginTop:15}}>
+                    {hasImg && <TakePicture  hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
+                    </View>
+
+                        <ButtonAdd onPress={modalSubmitHandler} style={{marginTop:10}}>
                         <Feather name='plus' size={15} color={white}/>
                         <ButtonText>إضافة</ButtonText>
                     </ButtonAdd>
+
                 </FlexWrap>
             </View>
 
