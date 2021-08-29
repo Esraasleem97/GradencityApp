@@ -2,9 +2,10 @@ import React from "react";
 import {StyleSheet, View} from 'react-native';
 import SelectDropDown from "./SelectDropDown";
 import Input from "./Input";
-import {ButtonAdd, ButtonText, Colors, FlexRow, ViewSelectScan} from "./Styles";
+import {ButtonAdd, ButtonText, Colors, FlexWrap, ViewSelectScan} from "./Styles";
 import Scanner from "./Scanner";
 import {Feather} from "@expo/vector-icons";
+import TakePicture from "./Camera";
 
 const {white} = Colors
 
@@ -18,6 +19,9 @@ const ProductModals = ({
                            modalSubmitHandler,
                            navigation,
                            handleOnSelectScannedProduct,
+                           hasImg = false,
+                           onSelectImage,
+                           unlinkPickedImage,
                        }) => {
 
     return (
@@ -36,8 +40,8 @@ const ProductModals = ({
                 </Scanner>
 
 
-                <FlexRow>
-                    <View style={{width: '70%'}}>
+                <FlexWrap>
+                    <View style={{width: hasImg ? '80%' :'65%'  }}>
                         <Input
                             label='الكمية'
                             icon='form'
@@ -47,11 +51,12 @@ const ProductModals = ({
                             onChangeText={(val) => handleOnSelectModalQty(val)}
                         />
                     </View>
+                    {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
                     <ButtonAdd onPress={modalSubmitHandler}>
                         <Feather name='plus' size={15} color={white}/>
                         <ButtonText>إضافة</ButtonText>
                     </ButtonAdd>
-                </FlexRow>
+                </FlexWrap>
             </View>
 
         </View>

@@ -80,7 +80,10 @@ const styles = StyleSheet.create({
 
     imageContainer: {
         padding: 15,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderTopWidth:1,
+        borderTopColor: Colors.greenLight1,
+        width:'100%'
     },
     image: {
         width: 200,
