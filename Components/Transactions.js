@@ -30,7 +30,7 @@ const Transactions = ({
                 <Content>
                     <FormArea>
                         {children}
-                        {hasImg && <TakePicture onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
+                        {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
                         <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}
                                    hasImg={hasImg}/>
 

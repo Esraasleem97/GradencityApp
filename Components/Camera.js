@@ -6,7 +6,7 @@ import {BtnUploadImg, Colors, UploadImgText} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 
 
-function TakePicture({onSelectImage, unlinkPickedImage = false}) {
+function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }) {
     // The path of the picked image
     const [pickedImagePath, setPickedImagePath] = useState('');
 
@@ -64,7 +64,7 @@ function TakePicture({onSelectImage, unlinkPickedImage = false}) {
                 {
                     pickedImagePath !== '' && <Image
                         source={{uri: pickedImagePath}}
-                        style={styles.image}
+                        style={hasImg ? styles.smallPreview: styles.image}
                     />
                 }
             </View>
@@ -85,6 +85,11 @@ const styles = StyleSheet.create({
     image: {
         width: 200,
         height: 300,
+        resizeMode: 'cover'
+    } ,
+    smallPreview: {
+        width: 100,
+        height: 150,
         resizeMode: 'cover'
     }
 });
