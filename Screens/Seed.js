@@ -132,8 +132,7 @@ const Seed = ({navigation, route}) => {
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
                           hasImg={true}
-                          unlinkPickedImage={product === null}
-                          onSelectImage={handleOnSelectImage}
+
             >
 
 
@@ -146,6 +145,9 @@ const Seed = ({navigation, route}) => {
                     modalSubmitHandler={modalSubmitHandler}
                     navigation={navigation}
                     handleOnSelectScannedProduct={handleOnSelectScannedProduct}
+                    hasImg={true}
+                    unlinkPickedImage={product === null}
+                    onSelectImage={handleOnSelectImage}
 
                 />
 

@@ -280,7 +280,7 @@ export const ButtonAdd = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   width: 30%;
-  padding: 7px;
+  padding: 10px;
   background-color: ${orangeLight};
   position: relative;
   top: 6px;
@@ -335,8 +335,7 @@ export const BtnUploadImg = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
     padding: 5px;
-    border-bottom-width: 1px;
-  border-bottom-color: ${greenLight1};
+    
   
 `;
 export const UploadImgText = styled.Text`
@@ -356,4 +355,11 @@ export const ViewSelectScan = styled.View`
 export const TextInsideSelect = styled.Text`
   padding-horizontal: 3px ;
   font-size: 10px;
+`;
+
+export const FlexWrap = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 `;

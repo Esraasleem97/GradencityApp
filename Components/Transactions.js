@@ -7,7 +7,7 @@ import {
 } from "./Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Input from "../Components/Input";
-import TakePicture from "./Camera";
+
 
 
 const Transactions = ({
@@ -17,9 +17,7 @@ const Transactions = ({
                           takeTime,
                           onSelectTakeTime,
                           setTableData,
-                          hasImg = false,
-                          onSelectImage,
-                          unlinkPickedImage,
+                         hasImg=false,
                           ...props
                       }) => {
 
@@ -30,7 +28,7 @@ const Transactions = ({
                 <Content>
                     <FormArea>
                         {children}
-                        {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
+
                         <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}
                                    hasImg={hasImg}/>
 
