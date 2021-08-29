@@ -135,7 +135,7 @@ export const Logo = styled.Image`
 `;
 
 export const Content = styled.View`
-  width: 80%;
+  width: 85%;
   height: 100%;
   flex: 1;
   justify-content: center;
@@ -284,7 +284,7 @@ export const ButtonAdd = styled.TouchableOpacity`
   background-color: ${orangeLight};
   position: relative;
   top: 6px;
-  margin-vertical:14px ;
+  margin-bottom:12px ;
   margin-left: 7px;
   border-radius: 5px;
 
@@ -361,5 +361,5 @@ export const FlexWrap = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 `;

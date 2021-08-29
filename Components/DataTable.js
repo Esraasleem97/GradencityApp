@@ -84,7 +84,7 @@ export const DataTable = ({tableHead, tableData, setTableData, hasImg, ...props}
 const styles = StyleSheet.create({
     row: {flexDirection: 'row', backgroundColor: '#FFF1C1'},
     head: {height: 40, backgroundColor: secondary},
-    text: {margin: 6, textAlign: 'center'},
+    text: {margin: 2, textAlign: 'center',fontSize:10},
     btn: {width: 58, height: 18, backgroundColor: '#78B7BB', borderRadius: 2},
     btnText: {textAlign: 'center', color: '#fff'},
 
@@ -96,9 +96,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     image: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+
+        width: 30,
+        height: 30,
+        borderRadius: 20 ,
         resizeMode: 'cover'
     }
 });

@@ -74,10 +74,12 @@ export default TakePicture;
 
 
 const styles = StyleSheet.create({
-    screen: {},
+    screen: {
+        width:'60%'
+    },
 
     imageContainer: {
-        padding: 15,
+        padding: 10,
         alignSelf: 'center',
         borderTopWidth:1,
         borderTopColor: Colors.greenLight1,
