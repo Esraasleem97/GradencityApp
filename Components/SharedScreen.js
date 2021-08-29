@@ -27,19 +27,14 @@ const SharedScreens = ({
                     <FormArea>
                         {children && onTop ? children : null}
                         <Input
-
                             label='الكمية'
                             icon='form'
                             placeholder='ادخل الكمية هنا'
                             keyboardType='number-pad'
                             value={qty}
                             onChangeText={onSelectQty}
-
-
                         />
                         <Input
-
-
                             label='الوقت المستغرق بالدقائق'
                             icon='dashboard'
                             placeholder='00:00:00'
@@ -49,13 +44,9 @@ const SharedScreens = ({
                         />
                         <TakePicture onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>
                         {children && onBottom ? onBottom : null}
-
                     </FormArea>
-
-
                 </Content>
             </Container>
-
 
         </RefreshHandler>
 
