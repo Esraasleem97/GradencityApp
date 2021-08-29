@@ -79,7 +79,7 @@ const Seed = ({navigation, route}) => {
 
     }, [data])
 
-    const tableHead = ['كود', 'بند', 'صورة', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
+    const tableHead = ['كود', 'بند', 'صور', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
 
     const {params: {data: {products}}} = route
 
