@@ -1,28 +1,27 @@
 import React from "react";
 import {DataTable} from "./DataTable";
 import {
-    Button, ButtonText,
     Container,
     Content,
     FormArea,
 } from "./Styles";
 import RefreshHandler from "../Components/RefreshHandler";
 import Input from "../Components/Input";
-import {Spinner} from "@ui-kitten/components";
-
+import TakePicture from "./Camera";
 
 
 const Transactions = ({
-                            children,
-                            tableHead,
-                            tableData,
-                            takeTime,
-                            onSelectTakeTime,
-                            setTableData,
-                            submit,
-                            loading,
-                            ...props
-                        }) => {
+                          children,
+                          tableHead,
+                          tableData,
+                          takeTime,
+                          onSelectTakeTime,
+                          setTableData,
+                          hasImg = false,
+                          onSelectImage,
+                          unlinkPickedImage,
+                          ...props
+                      }) => {
 
 
     return (
@@ -31,8 +30,9 @@ const Transactions = ({
                 <Content>
                     <FormArea>
                         {children}
-
-                        <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}/>
+                        {hasImg && <TakePicture onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
+                        <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}
+                                   hasImg={hasImg}/>
 
                         <Input
                             label='الوقت المستغرق بالدقائق'
@@ -42,8 +42,6 @@ const Transactions = ({
                             value={takeTime}
                             onChangeText={onSelectTakeTime}
                         />
-
-
 
                     </FormArea>
                 </Content>

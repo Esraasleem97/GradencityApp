@@ -148,8 +148,6 @@ const ProjectsReceipt = ({navigation, route}) => {
                           takeTime={takeTime}
                           onSelectTakeTime={handleOnSelectTakeTime}
                           setTableData={handleSetTableData}
-                          submit={submitHandler}
-                          loading={loading}
             >
 
 

@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Layout, Spinner} from "@ui-kitten/components";
-import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
-import SelectDropDown from "../Components/SelectDropDown";
-import {Button, width, ButtonText, ViewSelectScan} from "../Components/Styles";
+import {Button, ButtonText} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {Alert} from "react-native";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import Scanner from "../Components/Scanner";
+import Transactions from "../Components/Transactions";
+import ProductModals from "../Components/ProductModals";
 
 
 const Seed = ({navigation, route}) => {
@@ -60,7 +59,7 @@ const Seed = ({navigation, route}) => {
         data.append('take_time', takeTime)
         data.append('qty', qty)
 
-       if (image !== null) {
+        if (image !== null) {
             data.append('image', image)
         }
 
@@ -80,7 +79,36 @@ const Seed = ({navigation, route}) => {
 
     }, [data])
 
+    const tableHead = ['كود', 'بند', 'صورة', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
+
     const {params: {data: {products}}} = route
+
+    const [tableData, setTableData] = useState([]);
+
+
+    const handleSetTableData = (val) => {
+        return setTableData(val)
+    }
+
+    const modalSubmitHandler = () => {
+        if (product && qty) {
+            tableData.push
+            ([
+                product.code,
+                product.name,
+                image,
+                qty,
+                product.height,
+                product.size,
+                product.diameter,
+                product
+            ])
+            setProduct(null)
+            setQty(null)
+
+        }
+    }
+
 
     return (
         <Layout>
@@ -98,28 +126,32 @@ const Seed = ({navigation, route}) => {
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
-            <SharedScreens
-                unlinkPickedImage={data && data.success}
-                onSelectImage={handleOnSelectImage}
-                onTop={true}
-                onSelectQty={handleOnSelectQty}
-                onSelectTakenTime={handleOnSelectTakenTime}
-                qty={qty}
-                takeTime={takeTime}
+            <Transactions tableHead={tableHead}
+                          tableData={tableData}
+                          takeTime={takeTime}
+                          onSelectTakeTime={handleOnSelectTakenTime}
+                          setTableData={handleSetTableData}
+                          hasImg={true}
+                          unlinkPickedImage={product === null}
+                          onSelectImage={handleOnSelectImage}
             >
 
-                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
-                         products={products}>
-                    <ViewSelectScan>
-                        <SelectDropDown items={products}
-                                        onSelectItem={handleOnSelectProduct}
-                                        selectedItem={product}
 
-                        />
-                    </ViewSelectScan>
-                </Scanner>
+                <ProductModals
+                    products={products}
+                    handleOnSelectProduct={handleOnSelectProduct}
+                    product={product}
+                    modalQty={qty}
+                    handleOnSelectModalQty={handleOnSelectQty}
+                    modalSubmitHandler={modalSubmitHandler}
+                    navigation={navigation}
+                    handleOnSelectScannedProduct={handleOnSelectScannedProduct}
 
-            </SharedScreens>
+                />
+
+
+            </Transactions>
+
         </Layout>
     )
 }
