@@ -16,6 +16,7 @@ const defaultItemValue = {
     name: '', id: 0
 };
 import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js';
+import {TextInsideSelect} from "../Components/Styles";
 
 
 const fontSize = 12
@@ -128,32 +129,32 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
 
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
 
-            itemPresentation = <View style={{flexDirection: 'row', width: '100%'}}>
+            itemPresentation = <View style={{ width: '100%',flexDirection:'row'}}>
+                <TextInsideSelect>
+                    {'ق:' + item.size.replace(' ', '')}
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {item.size.toString().trim()}
-                </Text>
 
+                <TextInsideSelect>
+                    {'ط:' + item.height.replace(' ', '')}
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ط: ' + item.height.toString().trim()}
-                </Text>
+                <TextInsideSelect>
+                    {'م:' + item.diameter.replace(' ', '')}
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ق: ' + item.diameter.toString().trim()}
-                </Text>
+                <TextInsideSelect>
+                    {'ك:' + item.qty.replace(' ', '')}
+                </TextInsideSelect>
 
-                <Text style={{width: 50, paddingHorizontal: 1}}>
-                    {'ك: ' + item.qty.toString().trim()}
-                </Text>
-
-                <Text style={{width: 80, paddingHorizontal: 1}}>
+                <TextInsideSelect>
                     {nameItemLanguage}
-                </Text>
+                </TextInsideSelect>
 
-                <Text style={{width: 50}}>
-                    {item.code.toString().trim()}
-                </Text>
+
+                <TextInsideSelect >
+                    {item.code.replace(' ', '')}
+                </TextInsideSelect>
 
             </View>
 

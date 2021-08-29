@@ -43,7 +43,7 @@ const Rotate = ({navigation, route}) => {
 
     const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
 
-    const [stock, setStock] = useState(setDefaultStock[0]);
+    const [stock, setStock] = useState(setDefaultStock && setDefaultStock[0] || null );
 
     const handleOnSelectProduct = (val) => {
         return setProduct(val)

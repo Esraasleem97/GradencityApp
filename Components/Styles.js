@@ -272,7 +272,6 @@ export const FlexEnd = styled.View`
 align-items: flex-end;
 `;
 export const FlexRow = styled.View`
- align-items: center;
   flex-direction: row;
   justify-content: center;
 `;
@@ -281,7 +280,7 @@ export const ButtonAdd = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   width: 30%;
-  padding: 10px;
+  padding: 7px;
   background-color: ${orangeLight};
   position: relative;
   top: 6px;
@@ -353,4 +352,8 @@ export const ViewSelect = styled.View`
 `;
 export const ViewSelectScan = styled.View`
   width: 80%;
+`;
+export const TextInsideSelect = styled.Text`
+  padding-horizontal: 3px ;
+  font-size: 10px;
 `;

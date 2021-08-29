@@ -170,9 +170,7 @@ const Home = ({navigation}) => {
                 {
                     !productLoading && !loading ?
                         <ContainerAddIcon >
-                            <AddIcon onPress={() => {
-                                navigation.dispatch(DrawerActions.openDrawer())
-                            }}>
+                            <AddIcon onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
                                 <AntDesign name='plus' color='#fff' size={20}/>
                             </AddIcon>
                         </ContainerAddIcon>

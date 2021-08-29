@@ -28,7 +28,7 @@ const ProjectsReceipt = ({navigation, route}) => {
 
     const [tableData, setTableData] = useState([]);
 
-    const [stock, setStock] = useState(setDefaultStock[0]);
+    const [stock, setStock] = useState(setDefaultStock && setDefaultStock[0] || null );
 
     const [project, setProject] = useState(null);
 
