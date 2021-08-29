@@ -168,7 +168,7 @@ export const TextInputStyled = styled.TextInput`
 
 export const Label = styled.Text`
   color: ${darkLight};
-  font-size: 14px;
+  font-size: 12px;
 
 `;
 
@@ -315,7 +315,7 @@ export const Scan = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
-export const BtnSearch = styled.TouchableOpacity`
+export const BtnIcon = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   border-radius: 100px;
@@ -338,11 +338,11 @@ export const BtnUploadImg = styled.TouchableOpacity`
     
   
 `;
-export const UploadImgText = styled.Text`
-  color: ${green3};
-  font-weight: bold;
-  font-size: 18px;
-  padding: 10px;
+export const LabelIcon = styled.Text`
+  color: ${darkLight};
+  font-size: 12px;
+  padding: 2px 10px;
+ 
 `;
 
 export const ViewSelect = styled.View`

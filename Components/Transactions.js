@@ -32,6 +32,7 @@ const Transactions = ({
                         <DataTable tableHead={tableHead} tableData={tableData} setTableData={setTableData} {...props}
                                    hasImg={hasImg}/>
 
+
                         <Input
                             label='الوقت المستغرق بالدقائق'
                             icon='dashboard'
