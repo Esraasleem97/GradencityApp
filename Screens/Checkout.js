@@ -82,9 +82,9 @@ const Checkout = ({navigation, route}) => {
     }, [data])
 
 
-    const modalSubmitHandler = async () => {
+    const modalSubmitHandler =  () => {
         if (product && modalQty) {
-            await tableData.push
+             tableData.push
             ([
                 product.code,
                 product.name,

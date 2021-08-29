@@ -35,8 +35,6 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
                     name: `${uri.split("/").pop()}`,
                     type:`image/${uri.split(".").pop()}`,
                     mimeType:`image/${uri.split(".").pop()}`,
-
-
                 })
 
             } catch (e) {

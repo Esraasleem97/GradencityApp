@@ -48,6 +48,19 @@ const Seed = ({navigation, route}) => {
 
     const SubmitHandler = () => {
 
+        console.log(tableData)
+        const products = tableData.map(item => Object.assign({
+            id:item[7].id,
+            name: item[1],
+            quantity: item[3],
+            guid: item[7].guid,
+            code: item[7].code ,
+            image: item[2],
+        }))
+        console.log(`----------------------------------------------------------------------`)
+
+        console.log(products)
+        return;
         if (!product) {
             return Alert.alert('', 'يجب ادخال البند أولا')
         }
@@ -55,6 +68,7 @@ const Seed = ({navigation, route}) => {
         const {guid: product_id} = product
 
         const data = new FormData();
+
         data.append('product_id', product_id)
         data.append('take_time', takeTime)
         data.append('qty', qty)
@@ -105,7 +119,7 @@ const Seed = ({navigation, route}) => {
             ])
             setProduct(null)
             setQty(null)
-
+            setImage(null)
         }
     }
 
