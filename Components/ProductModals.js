@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, View} from 'react-native';
 import SelectDropDown from "./SelectDropDown";
 import Input from "./Input";
-import {ButtonAdd, ButtonText, Colors, FlexWrap, ViewSelectScan} from "./Styles";
+import {BtnIcon, ButtonAdd, Colors, FlexWrap, LabelIcon, ViewSelectScan} from "./Styles";
 import Scanner from "./Scanner";
 import {Feather} from "@expo/vector-icons";
 import TakePicture from "./Camera";
@@ -22,6 +22,8 @@ const ProductModals = ({
                            hasImg = false,
                            onSelectImage,
                            unlinkPickedImage,
+                           takeTime,
+                           onSelectTakeTime,
                        }) => {
 
     return (
@@ -41,7 +43,7 @@ const ProductModals = ({
 
 
                 <FlexWrap>
-                    <View style={{width: hasImg ? '35%' :'65%'  }}>
+                    <View style={{width: hasImg ? '55%' : '65%'}}>
                         <Input
                             label='الكمية'
                             icon='form'
@@ -51,14 +53,17 @@ const ProductModals = ({
                             onChangeText={(val) => handleOnSelectModalQty(val)}
                         />
                     </View>
-                    <View style={{marginTop:15}}>
-                    {hasImg && <TakePicture  hasImg={hasImg} onSelectImage={onSelectImage} unlinkPickedImage={unlinkPickedImage}/>}
-                    </View>
 
-                        <ButtonAdd onPress={modalSubmitHandler} style={{marginTop:10}}>
-                        <Feather name='plus' size={15} color={white}/>
-                        <ButtonText>إضافة</ButtonText>
-                    </ButtonAdd>
+                    <View>
+                        {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage}
+                                                unlinkPickedImage={unlinkPickedImage}/>}
+                    </View>
+                    <View>
+                        <LabelIcon style={{textAlign:'right'}}>إضافة</LabelIcon>
+                        <BtnIcon onPress={modalSubmitHandler} style={{backgroundColor: Colors.green1}}>
+                            <Feather name='plus' size={15} color={white}/>
+                        </BtnIcon>
+                    </View>
 
                 </FlexWrap>
             </View>

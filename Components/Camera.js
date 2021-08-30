@@ -2,7 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
-import { Button, ButtonText, Colors} from "./Styles";
+
+import {BtnIcon, Colors, LabelIcon} from "./Styles";
+import {AntDesign} from "@expo/vector-icons";
+
 
 
 function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }) {
@@ -52,10 +55,10 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
     return (
         <View style={styles.screen}>
             <View>
-                <Button onPress={openCamera}>
-
-                    <ButtonText>رفع صورة</ButtonText>
-                </Button>
+                <LabelIcon>رفع صورة</LabelIcon>
+                <BtnIcon onPress={openCamera} style={{backgroundColor:Colors.green1}}>
+                    <AntDesign name='clouduploado' size={25} color={Colors.white}/>
+                </BtnIcon>
             </View>
             <View style={styles.imageContainer}>
                 {
@@ -90,8 +93,9 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     } ,
     smallPreview: {
-        width: 100,
-        height: 100,
-        resizeMode: 'cover'
+        width: 60,
+        height: 60,
+        resizeMode: 'cover',
+        margin:10
     }
 });

@@ -158,6 +158,8 @@ const Seed = ({navigation, route}) => {
                     hasImg={true}
                     unlinkPickedImage={product === null}
                     onSelectImage={handleOnSelectImage}
+                    takeTime={takeTime}
+                    onSelectTakeTime={handleOnSelectTakenTime}
 
                 />
             </Transactions>
