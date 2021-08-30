@@ -46,40 +46,36 @@ const Seed = ({navigation, route}) => {
         return setProduct(val)
     }
 
+
     const SubmitHandler = () => {
 
-        console.log(tableData)
-        const products = tableData.map(item => Object.assign({
-            id:item[7].id,
-            name: item[1],
-            quantity: item[3],
-            guid: item[7].guid,
-            code: item[7].code ,
-            image: item[2],
-        }))
-        console.log(`----------------------------------------------------------------------`)
-
-        console.log(products)
-        return;
-        if (!product) {
-            return Alert.alert('', 'يجب ادخال البند أولا')
+        if (!tableData.length > 0) {
+            return Alert.alert('', 'يجب ادخال البيانات أولا')
         }
 
-        const {guid: product_id} = product
 
-        const data = new FormData();
+        console.log(typeof products, Array.isArray(products))
 
-        data.append('product_id', product_id)
-        data.append('take_time', takeTime)
-        data.append('qty', qty)
+        const form = new FormData();
 
-        if (image !== null) {
-            data.append('image', image)
-        }
+        tableData.map((item, i) => {
 
-        data.append('type', SEEDING)
+                form.append('products[' + i + '][id]', (item[7].id))
+                form.append('products[' + i + '][name]', (item[1]))
+                form.append('products[' + i + '][quantity]', (item[3]))
+                form.append('products[' + i + '][guid]', (item[7].guid))
+                form.append('products[' + i + '][code]', (item[7].code))
+                return form.append('products[' + i + '][image]', (item[2]))
+            }
+        )
 
-        dispatch(TransactionsHandler(data))
+
+        form.append('type', SEEDING)
+
+        form.append('take_time', takeTime)
+
+        console.log(form)
+        dispatch(TransactionsHandler(form))
 
     }
 
@@ -89,6 +85,7 @@ const Seed = ({navigation, route}) => {
             setTakenTime(null)
             setProduct(null)
             setImage(null)
+            setTableData([])
         }
 
     }, [data])
@@ -120,6 +117,8 @@ const Seed = ({navigation, route}) => {
             setProduct(null)
             setQty(null)
             setImage(null)
+        } else {
+            Alert.alert('', 'يجب ادخال البند و الكمية ')
         }
     }
 
@@ -146,10 +145,7 @@ const Seed = ({navigation, route}) => {
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
                           hasImg={true}
-
             >
-
-
                 <ProductModals
                     products={products}
                     handleOnSelectProduct={handleOnSelectProduct}
@@ -164,8 +160,6 @@ const Seed = ({navigation, route}) => {
                     onSelectImage={handleOnSelectImage}
 
                 />
-
-
             </Transactions>
 
         </Layout>
