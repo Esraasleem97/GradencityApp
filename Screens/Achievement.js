@@ -3,13 +3,13 @@ import {Layout, Spinner} from "@ui-kitten/components";
 
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {Button, ButtonText, ViewSelectScan, width} from "../Components/Styles";
-import Scanner from "../Components/Scanner";
-import SharedScreens from "../Components/SharedScreen";
+import {Button, ButtonText} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Alert, View} from "react-native";
+import {Alert} from "react-native";
 import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import Transactions from "../Components/Transactions";
+import ProductModals from "../Components/ProductModals";
 
 
 const Achievement = ({navigation, route}) => {
@@ -58,29 +58,41 @@ const Achievement = ({navigation, route}) => {
 
     const SubmitHandler = () => {
 
-        if (!product || !project) {
-            return Alert.alert('', 'يجب ادخال البند ,المشروع أولا')
+        if (!tableData.length > 0) {
+            return Alert.alert('', 'يجب ادخال البيانات أولا')
         }
 
-        const {guid: product_id} = product
+        if (!project) {
+            return Alert.alert('', 'يجب ادخال المشروع أولا')
+        }
+
+        console.log(typeof products, Array.isArray(products))
+
+        const form = new FormData();
+
+        tableData.map((item, i) => {
+
+                form.append('products[' + i + '][id]', (item[7].id))
+                form.append('products[' + i + '][name]', (item[1]))
+                form.append('products[' + i + '][quantity]', (item[3]))
+                form.append('products[' + i + '][guid]', (item[7].guid))
+                form.append('products[' + i + '][code]', (item[7].code))
+                return form.append('products[' + i + '][image]', (item[2]))
+            }
+        )
+
 
         const {guid: project_id} = project
 
 
-        const data = new FormData();
-        data.append('product_id', product_id)
-        data.append('project_id', project_id)
-        data.append('take_time', takeTime)
-        data.append('qty', qty)
+        form.append('project_id', project_id)
 
-        if (image !== null) {
-            data.append('image', image)
-        }
+        form.append('type', ACHIEVEMENT)
 
-        data.append('type', ACHIEVEMENT)
+        form.append('take_time', takeTime)
 
-        dispatch(TransactionsHandler(data))
-
+        console.log(form)
+        dispatch(TransactionsHandler(form))
 
     }
 
@@ -90,9 +102,43 @@ const Achievement = ({navigation, route}) => {
             setTakenTime(null)
             setProduct(null)
             setImage(null)
+            setTableData([])
             setProject(null)
         }
+
     }, [data])
+
+    const tableHead = ['كود', 'بند', 'صور', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
+
+
+    const [tableData, setTableData] = useState([]);
+
+
+    const handleSetTableData = (val) => {
+        return setTableData(val)
+    }
+
+    const modalSubmitHandler = () => {
+        if (product && qty) {
+            tableData.push
+            ([
+                product.code,
+                product.name,
+                image,
+                qty,
+                product.height,
+                product.size,
+                product.diameter,
+                product
+            ])
+            setProduct(null)
+            setQty(null)
+            setImage(null)
+        } else {
+            Alert.alert('', 'يجب ادخال البند و الكمية ')
+        }
+    }
+
 
     return (
         <Layout>
@@ -111,35 +157,37 @@ const Achievement = ({navigation, route}) => {
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
-            <SharedScreens
-                unlinkPickedImage={data && data.success}
-                onSelectImage={handleOnSelectImage}
 
-                onTop={true}
-                onSelectQty={handleOnSelectQty}
-                onSelectTakenTime={handleOnSelectTakenTime}
-                qty={qty}
-                takeTime={takeTime}
+            <Transactions tableHead={tableHead}
+                          tableData={tableData}
+                          takeTime={takeTime}
+                          onSelectTakeTime={handleOnSelectTakenTime}
+                          setTableData={handleSetTableData}
+                          hasImg={true}
             >
-
 
                 <SelectDropDown items={projects} title='المشروع'
                                 onSelectItem={handleOnSelectProject}
                                 selectedItem={project}
                 />
 
-                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
-                         products={products}>
-                    <ViewSelectScan>
-                        <SelectDropDown items={products}
-                                        onSelectItem={handleOnSelectProduct}
-                                        selectedItem={product}
+                <ProductModals
+                    products={products}
+                    handleOnSelectProduct={handleOnSelectProduct}
+                    product={product}
+                    modalQty={qty}
+                    handleOnSelectModalQty={handleOnSelectQty}
+                    modalSubmitHandler={modalSubmitHandler}
+                    navigation={navigation}
+                    handleOnSelectScannedProduct={handleOnSelectScannedProduct}
+                    hasImg={true}
+                    unlinkPickedImage={product === null}
+                    onSelectImage={handleOnSelectImage}
+                    takeTime={takeTime}
+                    onSelectTakeTime={handleOnSelectTakenTime}
 
-                        />
-                    </ViewSelectScan>
-                </Scanner>
-            </SharedScreens>
-
+                />
+            </Transactions>
 
         </Layout>
     )
