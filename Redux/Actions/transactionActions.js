@@ -24,18 +24,17 @@ export const TRANSFER_PLANTS = 8
 export const ROTATE_TYPE = 9
 
 export const TransactionsHandler = (
-       Data = {},
-       Url = TRANSACTION,
-       isJsonContent = false
-     ) => async (dispatch) => {
+    Data = {},
+    Url = TRANSACTION,
+    isJsonContent = false
+) => async (dispatch) => {
 
 
-    let contentType = 'application/json';
+    let contentType = 'application/json'
 
     if (!isJsonContent) {
-
         contentType = 'multipart/form-data'
-
+        // contentType = 'application/x-www-form-urlencoded'
     }
 
     try {
@@ -43,7 +42,6 @@ export const TransactionsHandler = (
         dispatch({type: TRANSACTIONS_REQUESTS})
 
         let User = await AsyncStorage.getItem('user')
-
 
         const {token} = JSON.parse(User)
 
@@ -82,9 +80,9 @@ export const TransactionsHandler = (
 
     setTimeout(() => {
         dispatch({
-            type: TRANSACTIONS_REFRESH,
+            type: TRANSACTIONS_REFRESH
         })
-    }, 3000)
+    }, 5000)
 }
 
 
@@ -117,7 +115,7 @@ export const MyTransactionsHandler = () => async (dispatch) => {
 
 
     } catch (e) {
-        console.log(e)
+
         dispatch({
             type: MY_TRANSACTIONS_FAILED,
             payload: e.response && e.response.data.errors

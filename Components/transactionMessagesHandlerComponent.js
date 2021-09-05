@@ -18,6 +18,7 @@ const TransactionMessagesHandlerComponent = ({data, error}) => {
 
 
         <View style={error || data ? {margin:20} : [] }>
+
             {
                 error && eachData(error) && errorMessage.map(
                     (value, index) =>

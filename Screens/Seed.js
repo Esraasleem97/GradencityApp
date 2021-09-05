@@ -46,26 +46,36 @@ const Seed = ({navigation, route}) => {
         return setProduct(val)
     }
 
+
     const SubmitHandler = () => {
 
-        if (!product) {
-            return Alert.alert('', 'يجب ادخال البند أولا')
+        if (!tableData.length > 0) {
+            return Alert.alert('', 'يجب ادخال البيانات أولا')
         }
 
-        const {guid: product_id} = product
 
-        const data = new FormData();
-        data.append('product_id', product_id)
-        data.append('take_time', takeTime)
-        data.append('qty', qty)
+        console.log(typeof products, Array.isArray(products))
 
-        if (image !== null) {
-            data.append('image', image)
-        }
+        const form = new FormData();
 
-        data.append('type', SEEDING)
+        tableData.map((item, i) => {
 
-        dispatch(TransactionsHandler(data))
+                form.append('products[' + i + '][id]', (item[7].id))
+                form.append('products[' + i + '][name]', (item[1]))
+                form.append('products[' + i + '][quantity]', (item[3]))
+                form.append('products[' + i + '][guid]', (item[7].guid))
+                form.append('products[' + i + '][code]', (item[7].code))
+                return form.append('products[' + i + '][image]', (item[2]))
+            }
+        )
+
+
+        form.append('type', SEEDING)
+
+        form.append('take_time', takeTime)
+
+        console.log(form)
+        dispatch(TransactionsHandler(form))
 
     }
 
@@ -75,11 +85,12 @@ const Seed = ({navigation, route}) => {
             setTakenTime(null)
             setProduct(null)
             setImage(null)
+            setTableData([])
         }
 
     }, [data])
 
-    const tableHead = ['كود', 'بند', 'صورة', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
+    const tableHead = ['كود', 'بند', 'صور', 'كمية', "طول", "عبوة", 'قطر', 'حذف'];
 
     const {params: {data: {products}}} = route
 
@@ -105,7 +116,9 @@ const Seed = ({navigation, route}) => {
             ])
             setProduct(null)
             setQty(null)
-
+            setImage(null)
+        } else {
+            Alert.alert('', 'يجب ادخال البند و الكمية ')
         }
     }
 
@@ -132,10 +145,7 @@ const Seed = ({navigation, route}) => {
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
                           hasImg={true}
-
             >
-
-
                 <ProductModals
                     products={products}
                     handleOnSelectProduct={handleOnSelectProduct}
@@ -152,8 +162,6 @@ const Seed = ({navigation, route}) => {
                     onSelectTakeTime={handleOnSelectTakenTime}
 
                 />
-
-
             </Transactions>
 
         </Layout>

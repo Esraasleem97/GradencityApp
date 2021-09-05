@@ -5,7 +5,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, LogBox,  View} from "react-native";
+import {Alert, LogBox, View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,10 +43,12 @@ const Rotate = ({navigation, route}) => {
 
     const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
 
-    const [stock, setStock] = useState(setDefaultStock && setDefaultStock[0] || null );
+    const [stock, setStock] = useState(setDefaultStock && setDefaultStock[0] || null);
 
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
+
+
     }
 
     const handleOnSelectStock = (val) => {
@@ -77,7 +79,7 @@ const Rotate = ({navigation, route}) => {
                 diameter,
                 stock: stock.guid,
                 type: ROTATE_TYPE
-            }, ROTATE , true))
+            }, ROTATE, true))
         }
 
 
@@ -98,8 +100,11 @@ const Rotate = ({navigation, route}) => {
             setQty(null)
         }
 
+        if (product) {
+            product && setName(product.name.toString())
 
-    }, [data])
+        }
+    }, [data, product])
 
     return (
         <Layout>
@@ -155,7 +160,7 @@ const Rotate = ({navigation, route}) => {
                                             icon='form'
                                             placeholder='ادخل اسم البند الجديد هنا'
                                             onChangeText={(val) => setName(val)}
-                                            value={product.name}
+                                            value={name}
                                             returnKeyType="next"
 
                                         />
@@ -169,7 +174,6 @@ const Rotate = ({navigation, route}) => {
                                             value={qty}
 
 
-
                                         />
                                         <FlexStyled>
                                             <Input
@@ -179,7 +183,7 @@ const Rotate = ({navigation, route}) => {
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setHeight(val)}
                                                 value={height}
-                                                autoFocus = {true}
+                                                autoFocus={true}
 
                                             />
                                             <Input
@@ -213,13 +217,12 @@ const Rotate = ({navigation, route}) => {
                                         </FlexStyled>
 
 
-
                                     </View>
                                     : product && Number(product.qty) < 0
-                                    ? <Text style={{color: '#dc3838'}}>
-                                        يجب ان تكون الكمية الحالية للبند أكبر من صفر
-                                        لأتمام العملية</Text>
-                                    : null
+                                        ? <Text style={{color: '#dc3838'}}>
+                                            يجب ان تكون الكمية الحالية للبند أكبر من صفر
+                                            لأتمام العملية</Text>
+                                        : null
                             }
 
                         </FormArea>

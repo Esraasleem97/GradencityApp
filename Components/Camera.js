@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
-import {BtnIcon,  Colors, LabelIcon} from "./Styles";
+import {BtnIcon, Colors, LabelIcon} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
+
 
 
 function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }) {
@@ -33,10 +34,8 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
                 onSelectImage({
                     uri: uri,
                     name: `${uri.split("/").pop()}`,
-                    type:`image/${uri.split(".").pop()}`,
+                    type:'multipart/form-data',
                     mimeType:`image/${uri.split(".").pop()}`,
-
-
                 })
 
             } catch (e) {
@@ -45,7 +44,9 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
 
         }
     }
+
     const {green1,white} = Colors;
+
 
     useEffect(() => {
         if (unlinkPickedImage === true) {

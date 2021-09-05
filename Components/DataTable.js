@@ -1,6 +1,6 @@
 import React from "react";
 import {Table, Row, TableWrapper, Cell} from 'react-native-table-component';
-import {Image, StyleSheet, View} from "react-native";
+import {Image, StyleSheet, Text, View} from "react-native";
 import {Colors} from "./Styles";
 import {FontAwesome} from "@expo/vector-icons";
 
@@ -18,12 +18,16 @@ export const DataTable = ({tableHead, tableData, setTableData, hasImg, ...props}
     );
 
     const image = (data) => (
+
+
         <View style={styles.imageContainer}>
             {
-                data !== '' && <Image
-                    source={{uri: data.uri}}
-                    style={styles.image}
-                />
+                data !== '' && data !== null && data.uri
+                    ? <Image
+                        source={{uri: data.uri}}
+                        style={styles.image}
+                    /> :
+                    <Text>-- </Text>
             }
         </View>
     );
@@ -42,6 +46,7 @@ export const DataTable = ({tableHead, tableData, setTableData, hasImg, ...props}
                                     item.map((cellData, cellIndex) => {
 
                                             if (cellIndex === 2) {
+
                                                 return (<Cell key={`cell_${cellIndex}`}
                                                               data={image(cellData, index)}
                                                               textStyle={styles.text}/>)
@@ -91,6 +96,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     image: {
+
         width: 30,
         height: 30,
         borderRadius: 20 ,

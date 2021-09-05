@@ -70,9 +70,9 @@ const ProjectsReceipt = ({navigation, route}) => {
     const handleOnSelectScannedProduct = (val) => {
         return setProduct(val)
     }
-    const modalSubmitHandler = async () => {
+    const modalSubmitHandler =  () => {
         if (product && modalQty) {
-            await tableData.push
+             tableData.push
             (
                 [
                     product.id,
