@@ -4,7 +4,7 @@ import SharedScreens from "../Components/SharedScreen";
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
 import {Alert} from "react-native";
-import {Button, ButtonText, ViewSelectScan, width} from "../Components/Styles";
+import {Button, ButtonText, ViewSelectScan} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {IMPACT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";

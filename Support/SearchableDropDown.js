@@ -12,13 +12,13 @@ import {
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler'
 
-const defaultItemValue = {
-    name: '', id: 0
-};
+
 import SearchableDropDown from '../node_modules/react-native-searchable-dropdown/index.js';
 import {TextInsideSelect} from "../Components/Styles";
 
-
+const defaultItemValue = {
+    name: '', id: 0
+};
 const fontSize = 12
 const textAlign = 'left'
 

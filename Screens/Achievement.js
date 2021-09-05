@@ -3,12 +3,12 @@ import {Layout, Spinner} from "@ui-kitten/components";
 
 import Header from "../Components/Header";
 import SelectDropDown from "../Components/SelectDropDown";
-import {Button, ButtonText, ViewSelectScan, width} from "../Components/Styles";
+import {Button, ButtonText, ViewSelectScan} from "../Components/Styles";
 import Scanner from "../Components/Scanner";
 import SharedScreens from "../Components/SharedScreen";
 import {useDispatch, useSelector} from "react-redux";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Alert, View} from "react-native";
+import {Alert} from "react-native";
 import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 
 

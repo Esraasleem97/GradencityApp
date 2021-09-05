@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
 import { TransactionsHandler, TRIM} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
-import {Button, ButtonText, ViewSelectScan, width} from "../Components/Styles";
+import {Button, ButtonText, ViewSelectScan} from "../Components/Styles";
 import Scanner from "../Components/Scanner";
 
 const TrimMove = ({navigation, route}) => {

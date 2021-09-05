@@ -4,7 +4,6 @@ import {
     Content,
     HeaderLogin,
     FormArea,
-    Button,
     ButtonText,
     Logo, ButtonLogin
 } from "../Components/Styles";
