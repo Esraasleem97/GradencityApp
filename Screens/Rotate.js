@@ -48,7 +48,6 @@ const Rotate = ({navigation, route}) => {
     const handleOnSelectProduct = (val) => {
         return setProduct(val)
 
-
     }
 
     const handleOnSelectStock = (val) => {
