@@ -86,9 +86,9 @@ const Checkin = ({navigation}) => {
                                 keyboardType='numeric'
                             />
                             <Input
-                                label='الحجم'
+                                label='العبوة'
                                 icon='form'
-                                placeholder='الحجم'
+                                placeholder='العبوة'
                                 keyboardType='numeric'
                             />
                             <Input

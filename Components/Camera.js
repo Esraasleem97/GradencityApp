@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
-
 import {BtnIcon, Colors, LabelIcon} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 
@@ -46,6 +45,8 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
         }
     }
 
+    const {green1,white} = Colors;
+
 
     useEffect(() => {
         if (unlinkPickedImage === true) {
@@ -56,8 +57,8 @@ function TakePicture({onSelectImage, unlinkPickedImage = false , hasImg= false }
         <View style={styles.screen}>
             <View>
                 <LabelIcon>رفع صورة</LabelIcon>
-                <BtnIcon onPress={openCamera} style={{backgroundColor:Colors.green1}}>
-                    <AntDesign name='clouduploado' size={25} color={Colors.white}/>
+                <BtnIcon onPress={openCamera} style={{backgroundColor:green1}}>
+                    <AntDesign name='clouduploado' size={25} color={white}/>
                 </BtnIcon>
             </View>
             <View style={styles.imageContainer}>
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
 
     imageContainer: {
 
-
+margin: 10
         // borderTopWidth:1,
         // borderTopColor: Colors.greenLight1,
 

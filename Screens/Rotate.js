@@ -186,9 +186,9 @@ const Rotate = ({navigation, route}) => {
 
                                             />
                                             <Input
-                                                label='الحجم'
+                                                label='العبوة'
                                                 icon='form'
-                                                placeholder='الحجم'
+                                                placeholder='العبوة'
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setSize(val)}
                                                 value={size}

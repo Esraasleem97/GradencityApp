@@ -1,6 +1,6 @@
 import React from "react";
 import {Ionicons} from '@expo/vector-icons';
-import {Button, ButtonText, HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
+import { HeaderOpacityStyle, HeaderStyle, TitleStyle} from "./Styles";
 import {TouchableOpacity, View} from "react-native";
 
 

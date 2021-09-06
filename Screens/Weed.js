@@ -9,6 +9,7 @@ import {Button, ButtonText} from "../Components/Styles";
 import Transactions from "../Components/Transactions";
 import ProductModals from "../Components/ProductModals";
 
+
 const Weed = ({navigation, route}) => {
 
     const dispatch = useDispatch()

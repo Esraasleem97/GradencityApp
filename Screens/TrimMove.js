@@ -5,9 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {Alert} from "react-native";
 import {TransactionsHandler, TRIM} from "../Redux/Actions/transactionActions";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+
 import {Button, ButtonText} from "../Components/Styles";
 import Transactions from "../Components/Transactions";
 import ProductModals from "../Components/ProductModals";
+
 
 const TrimMove = ({navigation, route}) => {
 

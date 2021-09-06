@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet, View} from 'react-native';
 import SelectDropDown from "./SelectDropDown";
 import Input from "./Input";
-import {BtnIcon, ButtonAdd, Colors, FlexWrap, LabelIcon, ViewSelectScan} from "./Styles";
+import {BtnIcon, Colors, FlexWrap, LabelIcon, ViewSelectScan} from "./Styles";
 import Scanner from "./Scanner";
 import {Feather} from "@expo/vector-icons";
 import TakePicture from "./Camera";
@@ -22,8 +22,7 @@ const ProductModals = ({
                            hasImg = false,
                            onSelectImage,
                            unlinkPickedImage,
-                           takeTime,
-                           onSelectTakeTime,
+
                        }) => {
 
     return (
