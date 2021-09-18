@@ -68,7 +68,6 @@ const Achievement = ({navigation, route}) => {
             return Alert.alert('', 'يجب ادخال المشروع أولا')
         }
 
-        console.log(typeof products, Array.isArray(products))
 
         const form = new FormData();
 
@@ -93,7 +92,6 @@ const Achievement = ({navigation, route}) => {
 
         form.append('take_time', takeTime)
 
-        console.log(form)
         dispatch(TransactionsHandler(form))
 
     }
