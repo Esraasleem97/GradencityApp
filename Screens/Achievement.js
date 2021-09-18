@@ -20,6 +20,8 @@ const Achievement = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null)
 
+    const [other, setOther] = useState(null)
+
     const [project, setProject] = useState(null);
 
     const [qty, setQty] = useState(null);
@@ -92,6 +94,8 @@ const Achievement = ({navigation, route}) => {
 
         form.append('take_time', takeTime)
 
+        form.append('note', other)
+
         dispatch(TransactionsHandler(form))
 
     }
@@ -104,6 +108,7 @@ const Achievement = ({navigation, route}) => {
             setImage(null)
             setTableData([])
             setProject(null)
+            setOther(null)
         }
 
     }, [data])
@@ -116,6 +121,10 @@ const Achievement = ({navigation, route}) => {
 
     const handleSetTableData = (val) => {
         return setTableData(val)
+    }
+
+    const handleOnSelectOther = (val) => {
+        return setOther(val)
     }
 
     const modalSubmitHandler = () => {
@@ -134,6 +143,7 @@ const Achievement = ({navigation, route}) => {
             setProduct(null)
             setQty(null)
             setImage(null)
+
         } else {
             Alert.alert('', 'يجب ادخال البند و الكمية ')
         }
@@ -163,8 +173,10 @@ const Achievement = ({navigation, route}) => {
                           takeTime={takeTime}
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
+                          otherValue={other}
+                          onSelectOther={handleOnSelectOther}
                           hasImg={true}
-                          other{...true}
+                          other={true}
             >
 
                 <SelectDropDown items={projects} title='المشروع'

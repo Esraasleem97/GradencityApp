@@ -17,7 +17,9 @@ const Transactions = ({
                           onSelectTakeTime,
                           setTableData,
                           hasImg = false,
-                          other=null,
+                          other=false ,
+                          otherValue ,
+                          onSelectOther ,
                           ...props
                       }) => {
 
@@ -41,10 +43,13 @@ const Transactions = ({
                             value={takeTime}
                             onChangeText={onSelectTakeTime}
                         />
-                        {other ? <Input
+
+                        {other === true  ? <Input
                             label='أخرى'
                             icon='dashboard'
                             placeholder='أخرى'
+                            value={otherValue}
+                            onChangeText={onSelectOther}
 
                         /> : null}
                     </FormArea>
