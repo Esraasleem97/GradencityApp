@@ -56,7 +56,6 @@ const Taeqil = ({navigation, route}) => {
         }
 
 
-        console.log(typeof products, Array.isArray(products))
 
         const form = new FormData();
 
@@ -76,7 +75,6 @@ const Taeqil = ({navigation, route}) => {
 
         form.append('take_time', takeTime)
 
-        console.log(form)
         dispatch(TransactionsHandler(form))
 
     }
