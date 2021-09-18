@@ -12,6 +12,7 @@ import {Alert} from "react-native";
 import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import Transactions from "../Components/Transactions";
 import ProductModals from "../Components/ProductModals";
+import Input from "../Components/Input";
 
 
 const Achievement = ({navigation, route}) => {
@@ -190,7 +191,15 @@ const Achievement = ({navigation, route}) => {
 
                 />
             </Transactions>
+            <Input
 
+
+                label='أخرى'
+                icon='dashboard'
+                placeholder='أخرى'
+                keyboardType='text'
+
+            />
         </Layout>
     )
 }
