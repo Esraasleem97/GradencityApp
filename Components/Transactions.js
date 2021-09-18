@@ -46,7 +46,7 @@ const Transactions = ({
 
                         {other === true  ? <Input
                             label='أخرى'
-                            icon='dashboard'
+                            icon='form'
                             placeholder='أخرى'
                             value={otherValue}
                             onChangeText={onSelectOther}
