@@ -9,7 +9,6 @@ import RefreshHandler from "../Components/RefreshHandler";
 import Input from "../Components/Input";
 
 
-
 const Transactions = ({
                           children,
                           tableHead,
@@ -17,7 +16,8 @@ const Transactions = ({
                           takeTime,
                           onSelectTakeTime,
                           setTableData,
-                         hasImg=false,
+                          hasImg = false,
+                          other=null,
                           ...props
                       }) => {
 
@@ -41,7 +41,12 @@ const Transactions = ({
                             value={takeTime}
                             onChangeText={onSelectTakeTime}
                         />
+                        {other ? <Input
+                            label='أخرى'
+                            icon='dashboard'
+                            placeholder='أخرى'
 
+                        /> : null}
                     </FormArea>
                 </Content>
             </Container>

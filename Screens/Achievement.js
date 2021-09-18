@@ -12,7 +12,6 @@ import {Alert} from "react-native";
 import {ACHIEVEMENT, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import Transactions from "../Components/Transactions";
 import ProductModals from "../Components/ProductModals";
-import Input from "../Components/Input";
 
 
 const Achievement = ({navigation, route}) => {
@@ -167,6 +166,7 @@ const Achievement = ({navigation, route}) => {
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
                           hasImg={true}
+                          other{...true}
             >
 
                 <SelectDropDown items={projects} title='المشروع'
@@ -190,16 +190,10 @@ const Achievement = ({navigation, route}) => {
                     onSelectTakeTime={handleOnSelectTakenTime}
 
                 />
+
+
             </Transactions>
-            <Input
 
-
-                label='أخرى'
-                icon='dashboard'
-                placeholder='أخرى'
-                keyboardType='text'
-
-            />
         </Layout>
     )
 }

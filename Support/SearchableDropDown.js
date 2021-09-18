@@ -19,7 +19,7 @@ import {TextInsideSelect} from "../Components/Styles";
 const defaultItemValue = {
     name: '', id: 0
 };
-const fontSize = 12
+const fontSize = 14
 const textAlign = 'left'
 
 export default class SearchableDropDownScroll extends SearchableDropDown {
