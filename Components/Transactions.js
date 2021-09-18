@@ -43,7 +43,7 @@ const Transactions = ({
                         />
                         {other ? <Input
                             label='أخرى'
-                            icon='dashboard'
+                            icon='form'
                             placeholder='أخرى'
 
                         /> : null}
