@@ -5,7 +5,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import {Alert, LogBox, View} from "react-native";
+import { LogBox, View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -35,11 +35,11 @@ const Rotate = ({navigation, route}) => {
 
     const [qty, setQty] = useState(null)
 
-    const [height, setHeight] = useState(null)
+    const [height, setHeight] = useState(0)
 
-    const [size, setSize] = useState(null)
+    const [size, setSize] = useState(0)
 
-    const [diameter, setDiameter] = useState(null)
+    const [diameter, setDiameter] = useState(0)
 
     const setDefaultStock = stocks ? stocks.filter(stock => stock.guid === 'B34050DE-935F-4230-BD93-619D395C5268') : null
 
@@ -55,11 +55,6 @@ const Rotate = ({navigation, route}) => {
     }
 
     const submitHandler = () => {
-
-        if (qty > Number(product.qty)) {
-            return Alert.alert('تنبيه !', 'لا يمكن لكمية البند الجديد ان تكون أكبر من الكمية الحالية. ')
-        }
-
 
         if (stock && products) {
 
@@ -217,10 +212,7 @@ const Rotate = ({navigation, route}) => {
 
 
                                     </View>
-                                    : product && Number(product.qty) < 0
-                                        ? <Text style={{color: '#dc3838'}}>
-                                            يجب ان تكون الكمية الحالية للبند أكبر من صفر
-                                            لأتمام العملية</Text>
+
                                         : null
                             }
 
