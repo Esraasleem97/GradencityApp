@@ -13,6 +13,7 @@ import {CHECKOUT, TransactionsHandler} from "../Redux/Actions/transactionActions
 import {useDispatch, useSelector} from "react-redux";
 import {CHECK_OUT} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
+import {Alert} from "react-native";
 
 
 
@@ -97,7 +98,10 @@ const Checkout = ({navigation, route}) => {
             setProduct(null)
             setModalQty(null)
 
+        }else{
+            return    Alert.alert('تنبيه' , "يجب ادخال الكمية و البند أولا")
         }
+
     }
 
 

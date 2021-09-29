@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import Constants from "expo-constants";
 import {Dimensions, PixelRatio, Platform} from "react-native";
+
 export const StatusBarHeight = Constants.statusBarHeight;
 
 export const width = Dimensions.get('window').width;
@@ -20,8 +21,8 @@ export const Colors = {
     green3: '#099567',
     greenLight2: '#d5f2e3',
     red: '#EF4444',
-    orangeLight:'#FF7E68',
-    redLight:'#ffd1d1',
+    orangeLight: '#FF7E68',
+    redLight: '#ffd1d1',
     darkgray: '#555555',
 };
 
@@ -130,7 +131,7 @@ export const HeaderShape = styled.View`
 export const Logo = styled.Image`
   width: ${200}px;
   height: ${250}px;
- 
+
 
 `;
 
@@ -265,11 +266,11 @@ export const FlexStyled = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  
+
 `;
 export const FlexEnd = styled.View`
   width: 100%;
-align-items: flex-end;
+  align-items: flex-end;
 `;
 export const FlexRow = styled.View`
   flex-direction: row;
@@ -284,7 +285,7 @@ export const ButtonAdd = styled.TouchableOpacity`
   background-color: ${orangeLight};
   position: relative;
   top: 6px;
-  margin-bottom:12px ;
+  margin-bottom: 12px;
   margin-left: 7px;
   border-radius: 5px;
 
@@ -303,15 +304,15 @@ export const AddIcon = styled.TouchableOpacity`
   align-items: center;
 `;
 export const AddsText = styled.Text`
-    color: ${darkLight}; 
- padding-horizontal : 25px;
+  color: ${darkLight};
+  padding-horizontal: 25px;
   font-size: 20px;
   font-weight: bold;
 
 
 `;
 export const Scan = styled.View`
- width: 100%;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -323,38 +324,38 @@ export const BtnIcon = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-left: 10px;
-  
+
 `;
 export const BtnScan = styled.TouchableOpacity`
   padding: 6px 10px;
   background-color: ${orangeLight};
   border-radius: 3px;
- 
+
 `;
 export const BtnUploadImg = styled.TouchableOpacity`
-    flex-direction: row;
-    align-items: center;
-    padding: 5px;
-    
-  
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+
+
 `;
 export const LabelIcon = styled.Text`
   color: ${darkLight};
   font-size: 12px;
   padding: 2px 10px;
- 
+
 `;
 
 export const ViewSelect = styled.View`
   margin: 10px;
-  width:50% ;
+  width: 50%;
 `;
 export const ViewSelectScan = styled.View`
   width: 80%;
 `;
 export const TextInsideSelect = styled.Text`
-  padding-horizontal: 1.5px ;
-  font-size: 12px;
+  padding-horizontal: 2px;
+  font-size: 13px;
 `;
 
 export const FlexWrap = styled.View`

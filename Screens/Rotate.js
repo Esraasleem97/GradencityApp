@@ -176,7 +176,7 @@ const Rotate = ({navigation, route}) => {
                                                 placeholder='الطول'
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setHeight(val)}
-                                                value={height}
+                                                value={height.toString()}
                                                 autoFocus={true}
 
                                             />
@@ -186,7 +186,7 @@ const Rotate = ({navigation, route}) => {
                                                 placeholder='العبوة'
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setSize(val)}
-                                                value={size}
+                                                value={size.toString()}
                                             />
                                             <Input
                                                 label='القطر'
@@ -194,7 +194,7 @@ const Rotate = ({navigation, route}) => {
                                                 placeholder='القطر'
                                                 keyboardType='numeric'
                                                 onChangeText={(val) => setDiameter(val)}
-                                                value={diameter}
+                                                value={diameter.toString()}
                                             />
 
                                             <Input
