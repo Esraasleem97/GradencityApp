@@ -5,7 +5,7 @@ import RefreshHandler from "../Components/RefreshHandler";
 import {Button, ButtonText, Container, Content, FlexStyled, FormArea, Line} from "../Components/Styles";
 import SelectDropDown from "../Components/SelectDropDown";
 import Input from "../Components/Input";
-import { LogBox, View} from "react-native";
+import {LogBox, View} from "react-native";
 import {ROTATE_TYPE, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {ROTATE} from "../Api";
 import {useDispatch, useSelector} from "react-redux";
@@ -86,9 +86,9 @@ const Rotate = ({navigation, route}) => {
             dispatch({type: PRODUCTS_LIST_REFRESH})
             setProduct(null)
             setStock(null)
-            setHeight(null)
-            setSize(null)
-            setDiameter(null)
+            setHeight(0)
+            setSize(0)
+            setDiameter(0)
             setTakeTime(null)
             setName(null)
             setQty(null)
@@ -108,10 +108,12 @@ const Rotate = ({navigation, route}) => {
                     <ButtonText>
                         <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
                     </ButtonText>
-                    :
-                    <Button onPress={submitHandler}>
-                        <ButtonText>حفظ</ButtonText>
-                    </Button>
+                    : product && Number(product.qty) >= 0
+                        ?
+                        <Button onPress={submitHandler}>
+                            <ButtonText>حفظ</ButtonText>
+                        </Button>
+                        : null
             }/>
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
@@ -213,7 +215,7 @@ const Rotate = ({navigation, route}) => {
 
                                     </View>
 
-                                        : null
+                                    : null
                             }
 
                         </FormArea>
