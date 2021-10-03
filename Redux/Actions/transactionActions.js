@@ -22,7 +22,7 @@ export const WEEDING = 6
 export const TRIM = 7
 export const TRANSFER_PLANTS = 8
 export const ROTATE_TYPE = 9
-
+export const OTHERS = 10
 export const TransactionsHandler = (
     Data = {},
     Url = TRANSACTION,
