@@ -125,26 +125,26 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
         let itemPresentation = item.name;
 
         // only products contain these attributes
-        if (item.name && item.size && item.height && item.diameter) {
+        if (item.isProduct) {
 
             let nameItemLanguage = this.state.isEnItem ? item.latin_name : item.name
 
             itemPresentation = <View style={{ width: '100%',flexDirection:'row'}}>
                 <TextInsideSelect>
-                    {'ق:' + item.size.replace(' ', '')}
+                    {'ق:' + item.size.toString().replace(' ', '')}
                 </TextInsideSelect>
 
 
                 <TextInsideSelect>
-                    {'ط:' + item.height.replace(' ', '')}
+                    {'ط:' + item.height.toString().replace(' ', '')}
                 </TextInsideSelect>
 
                 <TextInsideSelect>
-                    {'م:' + item.diameter.replace(' ', '')}
+                    {'م:' + item.diameter.toString().replace(' ', '')}
                 </TextInsideSelect>
 
                 <TextInsideSelect>
-                    {'ك:' + item.qty.replace(' ', '')}
+                    {'ك:' + item.qty.toString().replace(' ', '')}
                 </TextInsideSelect>
 
                 <TextInsideSelect>
@@ -153,7 +153,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
 
 
                 <TextInsideSelect >
-                    {item.code.replace(' ', '')}
+                    {item.code.toString().replace(' ', '')}
                 </TextInsideSelect>
 
             </View>

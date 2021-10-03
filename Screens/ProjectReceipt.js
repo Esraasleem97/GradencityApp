@@ -13,6 +13,7 @@ import {CHECK_IN} from "../Api";
 import TransactionMessagesHandlerComponent from "../Components/transactionMessagesHandlerComponent";
 import ProductModals from "../Components/ProductModals";
 import SelectDropDown from "../Components/SelectDropDown";
+import {Alert} from "react-native";
 
 
 
@@ -86,6 +87,8 @@ const ProjectsReceipt = ({navigation, route}) => {
             )
             setProduct(null)
             setModalQty(null)
+        }else{
+            return    Alert.alert('تنبيه' , "يجب ادخال الكمية و البند أولا")
         }
     }
 
