@@ -95,24 +95,31 @@ const Home = ({navigation}) => {
             nav: 'Checkout',
             data: {projects, stocks, products}
         },
-          {id: 8, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
-        {id: 2, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
-        {id: 3, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
-        {id: 4, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
-        {id: 5, title: 'تقليم أو نقل', img: require('../assets/transform.png'), nav: 'TrimMove', data: {products}},
+          {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
+        {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
+        {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
+        {id: 5, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
+        {id: 6, title: 'تقليم أو نقل', img: require('../assets/transform.png'), nav: 'TrimMove', data: {products}},
         {
-            id: 6,
+            id: 7,
             title: 'التدوير',
             img: require('../assets/rotate.png'),
             nav: 'Rotate',
             data: {products, stocks}
         },
         {
-            id: 7,
+            id: 8,
             title: 'النقل بين المشاتل',
             img: require('../assets/plant.png'),
             nav: 'Transfer',
             data: {stocks, products}
+        },
+        {
+            id: 9,
+            title: 'أُخرى',
+            img: require('../assets/plant.png'),
+            nav: 'Other',
+            data: {products}
         },
     ]
 

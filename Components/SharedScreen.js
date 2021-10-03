@@ -27,7 +27,6 @@ const SharedScreens = ({
                     <FormArea>
                         {children && onTop ? children : null}
                         <Input
-
                             label='الكمية'
                             icon='form'
                             placeholder='ادخل الكمية هنا'
