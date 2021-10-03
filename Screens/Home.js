@@ -119,7 +119,6 @@ const Home = ({navigation}) => {
             title: 'أُخرى',
             img: require('../assets/plant.png'),
             nav: 'Other',
-            data: {products}
         },
     ]
 
