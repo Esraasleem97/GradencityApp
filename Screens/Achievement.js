@@ -20,11 +20,8 @@ const Achievement = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null)
 
-<<<<<<< HEAD
-=======
     const [other, setOther] = useState(null)
 
->>>>>>> e55a4ac464281fc0b5b9feca4f3622c89fb8ab3c
     const [project, setProject] = useState(null);
 
     const [qty, setQty] = useState(null);
@@ -111,10 +108,7 @@ const Achievement = ({navigation, route}) => {
             setImage(null)
             setTableData([])
             setProject(null)
-<<<<<<< HEAD
-=======
             setOther(null)
->>>>>>> e55a4ac464281fc0b5b9feca4f3622c89fb8ab3c
         }
 
     }, [data])
@@ -129,13 +123,10 @@ const Achievement = ({navigation, route}) => {
         return setTableData(val)
     }
 
-<<<<<<< HEAD
-=======
     const handleOnSelectOther = (val) => {
         return setOther(val)
     }
 
->>>>>>> e55a4ac464281fc0b5b9feca4f3622c89fb8ab3c
     const modalSubmitHandler = () => {
         if (product && qty) {
             tableData.push
@@ -152,10 +143,7 @@ const Achievement = ({navigation, route}) => {
             setProduct(null)
             setQty(null)
             setImage(null)
-<<<<<<< HEAD
-=======
 
->>>>>>> e55a4ac464281fc0b5b9feca4f3622c89fb8ab3c
         } else {
             Alert.alert('', 'يجب ادخال البند و الكمية ')
         }
@@ -185,15 +173,10 @@ const Achievement = ({navigation, route}) => {
                           takeTime={takeTime}
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
-<<<<<<< HEAD
-                          hasImg={true}
-                          other{...true}
-=======
                           otherValue={other}
                           onSelectOther={handleOnSelectOther}
                           hasImg={true}
                           other={true}
->>>>>>> e55a4ac464281fc0b5b9feca4f3622c89fb8ab3c
             >
 
                 <SelectDropDown items={projects} title='المشروع'
