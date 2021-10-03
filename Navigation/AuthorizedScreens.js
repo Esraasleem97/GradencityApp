@@ -23,6 +23,7 @@ import AddProject from "../Screens/AddProject";
 import AddProduct from "../Screens/AddProduct";
 import {Colors, Line} from "../Components/Styles";
 import Scanner from "../Screens/Scanner";
+import Other from "../Screens/Other";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +48,7 @@ export const HomeScreensContainer = () => {
             <Stack.Screen name='Transfer' component={TransferBetweenPlants}/>
             <Stack.Screen name='Achievement' component={Achievement}/>
             <Stack.Screen name='Rotate' component={Rotate}/>
+            <Stack.Screen name='Other' component={Other}/>
             <Stack.Screen name='AddProject' component={AddProject}/>
             <Stack.Screen name='AddProduct' component={AddProduct}/>
             <Stack.Screen name='Scanner' component={Scanner}/>
