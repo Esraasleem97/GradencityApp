@@ -20,7 +20,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {projectsListHandler} from "../Redux/Actions/projectActions";
 import {stocksListHandler} from "../Redux/Actions/stockActions";
 
-import { View} from "react-native";
+import {View} from "react-native";
 import {Text} from "@ui-kitten/components";
 import {MyTransactionsHandler} from "../Redux/Actions/transactionActions";
 import {AntDesign} from "@expo/vector-icons";
@@ -95,7 +95,7 @@ const Home = ({navigation}) => {
             nav: 'Checkout',
             data: {projects, stocks, products}
         },
-          {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
+        {id: 2, title: 'الإنجازات', img: require('../assets/ach.png'), nav: 'Achievement', data: {projects, products}},
         {id: 3, title: 'زراعة البذور', img: require('../assets/seeding.png'), nav: 'Seed', data: {products}},
         {id: 4, title: 'التعقيل', img: require('../assets/taq.png'), nav: 'Taeqil', data: {products}},
         {id: 5, title: 'التعشيب', img: require('../assets/ta3sheeb.png'), nav: 'Weed', data: {products}},
@@ -119,18 +119,19 @@ const Home = ({navigation}) => {
             title: 'أُخرى',
             img: require('../assets/plant.png'),
             nav: 'Other',
+            data: {projects}
         },
     ]
 
 
     return (
-        <Layout >
+        <Layout>
 
             <ImageBackground source={require('../assets/bg-plants6.jpg')} resizeMode='cover'>
                 <Header title='الصفحة الرئيسية'/>
 
-                    <Container >
-                        <RefreshHandler pullToRefresh={handlePullToRefresh} >
+                <Container>
+                    <RefreshHandler pullToRefresh={handlePullToRefresh}>
                         <View style={{
                             flexDirection: 'row',
                             justifyContent: 'space-around',
@@ -150,7 +151,7 @@ const Home = ({navigation}) => {
                             </Text>
                             </Text>
                         </View>
-                        <Grid >
+                        <Grid>
 
                             {!productLoading && !loading ?
                                 data.map((item) => {
@@ -168,14 +169,13 @@ const Home = ({navigation}) => {
                         </Grid>
 
 
-                        </RefreshHandler>
-                    </Container>
-
+                    </RefreshHandler>
+                </Container>
 
 
                 {
                     !productLoading && !loading ?
-                        <ContainerAddIcon >
+                        <ContainerAddIcon>
                             <AddIcon onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
                                 <AntDesign name='plus' color='#fff' size={20}/>
                             </AddIcon>

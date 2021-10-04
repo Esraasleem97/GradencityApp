@@ -10,9 +10,12 @@ import TransactionMessagesHandlerComponent from "../Components/transactionMessag
 import {PRODUCTS_LIST_REFRESH} from "../Redux/Constants/productConstants";
 import SharedScreens from "../Components/SharedScreen";
 import {OTHERS, TransactionsHandler} from "../Redux/Actions/transactionActions";
+import SelectDropDown from "../Components/SelectDropDown";
 
 
-const Other = ({navigation}) => {
+const Other = ({navigation, route}) => {
+
+    const {params: {data: {projects}}} = route
 
     LogBox.ignoreLogs([
         'Non-serializable values were found in the navigation state',
@@ -32,8 +35,14 @@ const Other = ({navigation}) => {
 
     const [image, setImage] = useState(null)
 
+    const [project, setProject] = useState(null);
+
     const handleOnSelectQty = (val) => {
         return setQty(val)
+    }
+
+    const handleOnSelectProject = (val) => {
+        return setProject(val)
     }
 
     const handleOnSelectTakenTime = (val) => {
@@ -51,11 +60,13 @@ const Other = ({navigation}) => {
             setSubject(null)
             setQty(null)
             setImage(null)
+            setProject(null)
         }
     }, [data])
 
     const SubmitHandler = () => {
-        if (qty === null || subject === null || takeTime === null) {
+        if (qty === null || subject === null || takeTime === null || project === null) {
+            console.log(project)
             return Alert.alert('تنبيه', 'يجب ادخال جميع البيانات')
         }
         const form = new FormData();
@@ -65,6 +76,8 @@ const Other = ({navigation}) => {
         form.append('take_time', takeTime)
 
         form.append('note', subject)
+
+        form.append('project_id', project.guid)
 
         form.append('products[0][quantity]', qty)
 
@@ -98,6 +111,12 @@ const Other = ({navigation}) => {
                 takeTime={takeTime}
                 qty={qty}
                 onTop={true}>
+
+                <SelectDropDown items={projects} title='المشروع'
+                                onSelectItem={handleOnSelectProject}
+                                selectedItem={project}
+                />
+
                 <Input
                     label='الموضوع'
                     icon='form'
