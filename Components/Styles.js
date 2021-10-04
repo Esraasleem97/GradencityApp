@@ -355,7 +355,7 @@ export const ViewSelectScan = styled.View`
 `;
 export const TextInsideSelect = styled.Text`
   padding-horizontal: 2px;
-  font-size: 13px;
+  font-size: 14px;
 `;
 
 export const FlexWrap = styled.View`
