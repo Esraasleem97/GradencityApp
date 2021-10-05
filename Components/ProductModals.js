@@ -26,8 +26,8 @@ const ProductModals = ({
                        }) => {
 
     return (
-        <View>
-            <View disabled={true} style={styles.centeredView}>
+
+            <View disabled={true}>
 
                     <SelectDropDown items={products}
                                     onSelectItem={handleOnSelectProduct}
@@ -39,7 +39,7 @@ const ProductModals = ({
                          products={products}>
 
                     <FlexWrap>
-                        <View style={{width: hasImg ? '58%' : '80%'}}>
+                        <View style={{width: hasImg ? '55%' : '75%'}}>
                             <Input
                                 label='الكمية'
                                 icon='form'
@@ -49,7 +49,6 @@ const ProductModals = ({
                                 onChangeText={(val) => handleOnSelectModalQty(val)}
                             />
                         </View>
-
                         <View>
                             {hasImg && <TakePicture hasImg={hasImg} onSelectImage={onSelectImage}
                                                     unlinkPickedImage={unlinkPickedImage}/>}
@@ -60,15 +59,11 @@ const ProductModals = ({
                                 <Feather name='plus' size={15} color={white}/>
                             </BtnIcon>
                         </View>
-
                     </FlexWrap>
                 </Scanner>
-
-
-
             </View>
 
-        </View>
+
     )
 
 
