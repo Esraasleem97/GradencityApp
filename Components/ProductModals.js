@@ -34,9 +34,9 @@ const ProductModals = ({
                                     selectedItem={product}
 
                     />
-                <Scan>
+
                 <FlexWrap>
-                    <View style={{width: hasImg ? '55%' : '70%'}}>
+                    <View style={{width: hasImg ? '53%' : '68%'}}>
                         <Input
                             label='الكمية'
                             icon='form'
@@ -56,13 +56,14 @@ const ProductModals = ({
                             <Feather name='plus' size={15} color={white}/>
                         </BtnIcon>
                     </View>
+                    <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
+                             products={products}>
+
+
+                    </Scanner>
                 </FlexWrap>
-                <Scanner navigation={navigation} handler={handleOnSelectScannedProduct}
-                         products={products}>
 
 
-                </Scanner>
-                </Scan>
 
             </View>
 
