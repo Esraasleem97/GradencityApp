@@ -39,7 +39,7 @@ const ProductModals = ({
                          products={products}>
 
                     <FlexWrap>
-                        <View style={{width: hasImg ? '55%' : '75%'}}>
+                        <View style={{width: hasImg ? '55%' : '70%'}}>
                             <Input
                                 label='الكمية'
                                 icon='form'

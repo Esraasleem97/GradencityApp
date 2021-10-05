@@ -314,7 +314,7 @@ export const AddsText = styled.Text`
 export const Scan = styled.View`
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 export const BtnIcon = styled.TouchableOpacity`
   width: 40px;
@@ -360,6 +360,5 @@ export const TextInsideSelect = styled.Text`
 
 export const FlexWrap = styled.View`
   flex-direction: row;
-
   align-items: flex-start;
 `;
