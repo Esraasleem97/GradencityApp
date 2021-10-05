@@ -147,7 +147,7 @@ export default class SearchableDropDownScroll extends SearchableDropDown {
                     {'ك:' + item.qty.toString().replace(' ', '')}
                 </TextInsideSelect>
 
-                <TextInsideSelect style={{fontSize:18}}>
+                <TextInsideSelect>
                     {nameItemLanguage}
                 </TextInsideSelect>
 
