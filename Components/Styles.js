@@ -314,7 +314,7 @@ export const AddsText = styled.Text`
 export const Scan = styled.View`
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 export const BtnIcon = styled.TouchableOpacity`
   width: 40px;
@@ -323,7 +323,7 @@ export const BtnIcon = styled.TouchableOpacity`
   background-color: ${orangeLight};
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 7px;
 
 `;
 export const BtnScan = styled.TouchableOpacity`
@@ -355,7 +355,7 @@ export const ViewSelectScan = styled.View`
 `;
 export const TextInsideSelect = styled.Text`
   padding-horizontal: 2px;
-  font-size: 13px;
+  font-size: 15px;
 `;
 
 export const FlexWrap = styled.View`

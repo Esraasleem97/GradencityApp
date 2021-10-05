@@ -12,7 +12,7 @@ const Scanner = ({
     return (
         <Scan>
             {children}
-            <BtnIcon style={{marginTop: 26}}
+            <BtnIcon style={{marginTop: 19}}
                      onPress={() => navigation.navigate('Scanner', {
                          products,
                          handler

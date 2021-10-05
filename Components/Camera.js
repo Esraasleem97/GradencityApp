@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 
     imageContainer: {
 
-margin: 10
+margin: 5
         // borderTopWidth:1,
         // borderTopColor: Colors.greenLight1,
 
@@ -97,6 +97,5 @@ margin: 10
         width: 60,
         height: 60,
         resizeMode: 'cover',
-        margin:10
     }
 });
