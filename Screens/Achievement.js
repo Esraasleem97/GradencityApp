@@ -20,13 +20,15 @@ const Achievement = ({navigation, route}) => {
 
     const [product, setProduct] = useState(null)
 
-    const [other, setOther] = useState(null)
+  //  const [other, setOther] = useState(null)
 
     const [project, setProject] = useState(null);
 
     const [qty, setQty] = useState(null);
 
     const [takeTime, setTakenTime] = useState(null);
+
+    const [image, setImage] = useState(null);
 
     const dispatch = useDispatch()
 
@@ -54,7 +56,7 @@ const Achievement = ({navigation, route}) => {
         return setTakenTime(val)
     }
 
-    const [image, setImage] = useState(null);
+
 
     const handleOnSelectImage = (val) => {
         return setImage(val)
@@ -94,7 +96,7 @@ const Achievement = ({navigation, route}) => {
 
         form.append('take_time', takeTime)
 
-        form.append('note', other)
+       // form.append('note', other)
 
         dispatch(TransactionsHandler(form))
 
@@ -108,7 +110,7 @@ const Achievement = ({navigation, route}) => {
             setImage(null)
             setTableData([])
             setProject(null)
-            setOther(null)
+      //      setOther(null)
         }
 
     }, [data])
@@ -123,9 +125,9 @@ const Achievement = ({navigation, route}) => {
         return setTableData(val)
     }
 
-    const handleOnSelectOther = (val) => {
-        return setOther(val)
-    }
+    // const handleOnSelectOther = (val) => {
+    //     return setOther(val)
+    // }
 
     const modalSubmitHandler = () => {
         if (product && qty) {
@@ -173,10 +175,10 @@ const Achievement = ({navigation, route}) => {
                           takeTime={takeTime}
                           onSelectTakeTime={handleOnSelectTakenTime}
                           setTableData={handleSetTableData}
-                          otherValue={other}
-                          onSelectOther={handleOnSelectOther}
+                         // otherValue={other}
+                        //  onSelectOther={handleOnSelectOther}
                           hasImg={true}
-                          other={true}
+                         // other={true}
             >
 
                 <SelectDropDown items={projects} title='المشروع'
