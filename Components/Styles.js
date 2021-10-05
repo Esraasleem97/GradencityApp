@@ -323,7 +323,7 @@ export const BtnIcon = styled.TouchableOpacity`
   background-color: ${orangeLight};
   justify-content: center;
   align-items: center;
-  margin-left: 7px;
+  margin-left: 5px;
 
 `;
 export const BtnScan = styled.TouchableOpacity`
@@ -342,7 +342,7 @@ export const BtnUploadImg = styled.TouchableOpacity`
 export const LabelIcon = styled.Text`
   color: ${darkLight};
   font-size: 12px;
-  padding: 2px 10px;
+  padding: 2px 2px;
 
 `;
 

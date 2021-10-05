@@ -36,7 +36,7 @@ const ProductModals = ({
                     />
 
                 <FlexWrap>
-                    <View style={{width: hasImg ? '53%' : '68%'}}>
+                    <View style={{width: hasImg ? '50%' : '68%'}}>
                         <Input
                             label='الكمية'
                             icon='form'
