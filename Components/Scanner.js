@@ -1,6 +1,7 @@
 import {BtnIcon, ButtonText, Scan} from "./Styles";
 import {AntDesign} from "@expo/vector-icons";
 import React from "react";
+import {View} from "react-native";
 
 const Scanner = ({
                      children,
@@ -10,7 +11,7 @@ const Scanner = ({
                  }) => {
 
     return (
-        <Scan>
+        <View>
             {children}
             <BtnIcon style={{marginTop: 19}}
                      onPress={() => navigation.navigate('Scanner', {
@@ -24,7 +25,7 @@ const Scanner = ({
                 </ButtonText>
 
             </BtnIcon>
-        </Scan>
+        </View>
     );
 }
 
