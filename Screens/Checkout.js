@@ -170,6 +170,7 @@ const Checkout = ({navigation, route}) => {
                                         onSelectItem={handleOnSelectStock}
                                         selectedItem={stock}
                                         style={{width: 100}}
+                                        defaultValue={'المشتل'}
                         />
                     </ViewSelect>
                 </FlexRow>

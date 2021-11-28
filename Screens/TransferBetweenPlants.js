@@ -149,6 +149,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
                                         items={stocks}
                                         onSelectItem={handleOnSelectInStock}
                                         selectedItem={inStock}
+                                        defaultValue={'المشتل'}
                         />
                     </ViewSelect>
                     <ViewSelect>
@@ -156,6 +157,7 @@ const TransferBetweenPlants = ({navigation, route}) => {
                                         items={stocks}
                                         onSelectItem={handleOnSelectOutStock}
                                         selectedItem={outStock}
+                                        defaultValue={'المشتل'}
                         />
                     </ViewSelect>
                 </FlexRow>

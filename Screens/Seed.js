@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Layout, Spinner} from "@ui-kitten/components";
 import Header from "../Components/Header";
-import {Button, ButtonText} from "../Components/Styles";
+import { Button, ButtonText} from "../Components/Styles";
 import {useDispatch, useSelector} from "react-redux";
 import {SEEDING, TransactionsHandler} from "../Redux/Actions/transactionActions";
 import {Alert} from "react-native";
@@ -132,10 +132,15 @@ const Seed = ({navigation, route}) => {
                         <Spinner status='success' size='giant' style={{alignSelf: 'center'}}/>
                     </ButtonText>
                     :
-                    <Button onPress={SubmitHandler}>
-                        <ButtonText>حفظ</ButtonText>
-                    </Button>
+                    <>
+                        <Button onPress={SubmitHandler}>
+                            <ButtonText>حفظ</ButtonText>
+                        </Button>
+                    </>
+
+
             }/>
+
 
             <TransactionMessagesHandlerComponent data={data} error={error}/>
 
